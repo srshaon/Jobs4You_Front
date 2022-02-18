@@ -5,13 +5,13 @@ import {Card,Button} from 'react-bootstrap';
 import "./SingleCandidate.css";
  
 const SingleCandidate = () => {
-    const{candidateId}=useParams()
+    const{candidateID}=useParams()
     const[candidate,setCandidate]=useState({})
     useEffect(()=>{
-        fetch(`https://jsonplaceholder.typicode.com/users/${candidateId}`)
+        fetch(`https://jsonplaceholder.typicode.com/users/${candidateID}`)
         .then(res=>res.json())
         .then(data=>setCandidate(data))
-    },[candidateId])
+    },[candidateID])
     console.log(candidate)
     return (
         <div className='d-flex justify-content-center mt-5'>
