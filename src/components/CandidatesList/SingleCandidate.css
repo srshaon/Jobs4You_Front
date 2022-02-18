@@ -1,0 +1,11 @@
+.my-image{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.my-card{
+ height: 600px;
+ width: 600px;
+    background: linear-gradient(#9c9c9c60);
+}

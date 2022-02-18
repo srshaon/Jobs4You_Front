@@ -1,0 +1,10 @@
+.pagination{
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    margin-left: 10px;
+    color: red;
+}
+a{
+    text-decoration: none;
+}

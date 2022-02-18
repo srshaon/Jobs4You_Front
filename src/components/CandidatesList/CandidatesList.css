@@ -1,0 +1,15 @@
+.remove-btn{
+    background-color: red;
+}
+
+.theme{
+    background-color: #9c9c9c60;
+}
+.theme2{
+    background-color: #e9e7e7;
+}
+.custom-img{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}

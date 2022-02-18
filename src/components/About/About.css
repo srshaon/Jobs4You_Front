@@ -1,0 +1,7 @@
+.custom-sqeeze-left {
+    box-shadow: -3px 0px 10px black, 3px 0px 10px rgb(161, 231, 245);
+}
+
+.custom-sqeeze-right {
+    box-shadow: 3px 0px 10px black, -3px 0px 10px rgb(161, 231, 245);
+}
