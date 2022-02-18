@@ -7,10 +7,15 @@ import { useLocation } from 'react-router-dom';
 import { signInWithEmailAndPassword } from '@firebase/auth';
 const LogIn = () => {
     const history = useHistory();
-    const { googleSignIn, handleEmailChange, handlePasswordChange, email, password, auth, saveUser } = useAuth();
+    const { user, logOut, googleSignIn, handleEmailChange, handlePasswordChange, email, password, handleNameChange, setName, handleRegistration, auth, saveUser } = useAuth();
+
     const [error, setError] = useState("");
     const location = useLocation();
     const redirect_Url = location.state?.from || '/';
+    const redirect = () => {
+        history.push(redirect_Url);
+
+    }
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
@@ -25,6 +30,7 @@ const LogIn = () => {
                 // setErrorMsg(error.message);
             });
     }
+
     const handleEmailLogin = e => {
         // console.log('hit first time');
         e.preventDefault();
@@ -53,37 +59,103 @@ const LogIn = () => {
             });
     }
 
+    const handleEmailRegistration = e => {
+        console.log('hit first time');
+        e.preventDefault();
+        handleRegistration(redirect)
+
+    }
+    // registration 
+
+    const userFormDisplay = () => {
+
+        console.log('hitted first form')
+        document.getElementById('user-signup-form').style.visibility = 'visible'
+        document.getElementById('user-signup-form').style.display = 'block'
+        document.getElementById('company-signup-form').style.display = 'none'
+
+        document.getElementById('google-signin').style.visibility = 'visible';
+
+    }
+    const companyFormDisplay = () => {
+        console.log('hitted second form form')
+        // document.getElementById('company-signup-form').style.visibility = 'visible'
+        document.getElementById('user-signup-form').style.display = 'none'
+        document.getElementById('user-signup-form').style.visibility = 'hidden'
+        document.getElementById('company-signup-form').style.visibility = 'visible'
+        document.getElementById('company-signup-form').style.display = 'block'
+
+        document.getElementById('google-signin').style.visibility = 'hidden';
+    }
+
+
+
+
+
     return (
-        <div className="pt-5 login-section" >
 
-            <div className="h-100 pb-4 login-container d-flex flex-column justify-content-between">
-                <div  >
-                    <div>
-                        <h5 style={{ backgroundColor: 'black', color: 'white' }} className="py-1">Please Login To Get Full Access</h5>
-                    </div>
-                    <div className="login-form-div">
-                        <form onSubmit={handleEmailLogin} className="mb-1 login-form-only">
+        <div className='o'>
+            <div className="main">
+                <input type="checkbox" id="chk" aria-hidden="true" />
 
-                            <input onBlur={handleEmailChange} className=" p-1 login-input" type="email" name="" id="" placeholder="Your Email" />
-                            <br />
-                            <br />
-                            <input onBlur={handlePasswordChange} placeholder="Your Password" className="p-1 login-input" type="password" name="" id="" />
-                            <br />
+                <div className="login">
+                    <form onSubmit={handleEmailLogin}>
+                        <label className='login-label' for="chk" aria-hidden="true">Login </label>
 
-                            <p className=" my-1 display-error" >{error}</p>
-                            <input style={{ backgroundColor: 'transparent', color: 'white', border: '2px solid black' }} className="login-submit-input" type="submit" value="Login" />
-
-                        </form>
-                        <span className=" or-span" >-----------Or-----------</span>
-                        <br />
-                        <button style={{ backgroundColor: 'transparent', color: 'white', border: '2px solid black' }} onClick={handleGoogleSignIn} className="google-sign-btn mt-1">Google Sign In</button>
+                        <input onBlur={handleEmailChange} className='email-input' type="email" name="email" placeholder="Email" required="" />
+                        <input onBlur={handlePasswordChange} className='password-input' type="password" name="pswd" placeholder="Password" required="" />
+                        {/* <button className='login-button'>Login</button> */}
+                        <input className="login-button" type="submit" value="Login" />
+                    </form>
+                    {/* <form>
+                        <label for="chk" aria-hidden="true">Sign up</label>
+                        <input type="text" name="txt" placeholder="User name" required="" />
+                        <input type="email" name="email" placeholder="Email" required="" />
+                        <input type="password" name="pswd" placeholder="Password" required="" />
+                        <button>Sign up</button>
+                    </form> */}
+                    {/* <button onClick={handleGoogleSignIn} className="google-login-button">Google Login</button> */}
+                    <div className='d-flex justify-content-center' >
+                        <span style={{ color: 'white' }} className='login-google-span' >sign in with</span>
+                        <button className="google-login-button"><i onClick={handleGoogleSignIn} className="fa-brands fa-google"></i></button>
                     </div>
                 </div>
-                <div style={{ backgroundColor: 'black', color: 'white' }} className="login-reg-div mt-2 mb-5 py-1">
-                    <span><strong style={{ fontSize: '18px' }}>Are You A New Member? <Link style={{ textDecoration: 'none', color: 'white' }} to='/register'> Click Here To Register </Link> </strong></span>
+
+                <div className=" signup">
+
+                    <div className='d-flex justify-content-center signup-option-button-div' >
+                        <button onClick={userFormDisplay} className='signup-option-button'>Job Seeker</button>
+                        <button onClick={companyFormDisplay} className='signup-option-button'>Job Recruiter</button>
+                    </div>
+
+                    <form onSubmit={handleEmailRegistration}>
+                        <label className='signup-label' for="chk" aria-hidden="true">Sign Up</label>
+
+                        <div id='user-signup-form' style={{ marginTop: '70px', visibility: 'hidden' }}>
+                            <input onBlur={handleNameChange} className='username-input' type="text" name="txt" placeholder="User name" required="" />
+                            <input onChange={handleEmailChange} className='email-input' type="email" name="email" placeholder="Email" required="" />
+                            <input onChange={handlePasswordChange} className='password-input' type="password" name="pswd" placeholder="Password" required="" />
+                            {/* <button className='signup-button'>Sign Up</button> */}
+                            <input className="signup-button" type="submit" value="Register" />
+                        </div>
+
+                        <div id='company-signup-form' style={{ marginTop: '70px', visibility: 'hidden' }}>
+                            <input onBlur={handleNameChange} className='username-input' type="text" name="txt" placeholder="Company name" required="" />
+                            <input onChange={handleEmailChange} className='email-input' type="email" name="email" placeholder="Email" required="" />
+                            <input onChange={handlePasswordChange} className='password-input' type="password" name="pswd" placeholder="Password" required="" />
+                            {/* <button className='signup-button'>Sign Up</button> */}
+                            <input className="signup-button" type="submit" value="Register" />
+                        </div>
+                    </form>
+
+                    <div id='google-signin' className='d-flex justify-content-center google-signin-div' >
+                        <span className='signin-google-span' >sign in with</span>
+                        <button className="google-login-button"><i onClick={handleGoogleSignIn} className="fa-brands fa-google"></i></button>
+                    </div>
+
+
                 </div>
             </div>
-
         </div>
     );
 };
