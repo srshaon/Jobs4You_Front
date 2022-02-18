@@ -111,11 +111,11 @@ function App() {
               <InterviewTips></InterviewTips>
             </Route>
             {/* Razu's Route */}
-            <Route path="/candidates">
-              <CandidatesList></CandidatesList>
-            </Route>
             <Route path="/candidates/:candidateID">
               <SingleCandidate></SingleCandidate>
+            </Route>
+            <Route path="/candidates">
+              <CandidatesList></CandidatesList>
             </Route>
             <Route path="/latestjobs">
               <LatestJobs></LatestJobs>
