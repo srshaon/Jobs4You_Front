@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { Table,Button,InputGroup,FormControl } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import './CandidatesList.css'
 
 import ModalMessage from './../ModalMessage/ModalMessage';
 import Pagination from './../Pagination/Pagination';
@@ -59,7 +60,7 @@ fetch(`https://jsonplaceholder.typicode.com/users`)
       <td>{username}</td>
       <td>{email}</td>
       <td>{phone}</td>
-      <td><Link to={`/candidate/${id}`}>Details</Link></td>
+      <td><Link to={`/candidates/${id}`}>Details</Link></td>
       <td><Button className="remove-btn" onClick={()=>{removeCandidate(id)}}>Remove</Button></td>
     </tr>)})}
   </tbody>
