@@ -1,0 +1,31 @@
+.add-job {
+  background-color: #9c9c9c60;
+}
+
+.add-job form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.add-job form input,
+textarea {
+  width: 50%;
+  line-height: 40px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 25px;
+  padding-left: 11px;
+}
+
+@media (max-width: 576px) {
+  .add-car form input {
+    width: 100%;
+  }
+
+  .add-car textarea {
+    width: 100%;
+  }
+}

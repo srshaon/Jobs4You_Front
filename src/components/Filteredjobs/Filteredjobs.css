@@ -1,5 +1,22 @@
-.button{
-    border-radius: 5px;
-    background-color: skyblue;
-    border: none;
+.button {
+  background-color: skyblue;
+  border: none;
+  font-size: 20px;
+}
+
+.browse-window {
+  width: 90%;
+  margin: 0 auto;
+  padding: 50px;
+  border: none;
+  border-radius: 15px;
+  background-image: linear-gradient(
+    to right,
+    #97a7b6,
+    #adb7c2,
+    #adb7c2,
+    #97a7b6
+  );
+
+  /* box-shadow: 3px 3px 3px 3px #537890; */
 }

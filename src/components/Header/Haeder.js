@@ -25,17 +25,31 @@ const Header = () => {
               fontWeight: "500",
             }}
           >
-            <span style={{ fontSize: "50px" }}>J</span>obs
+            <span
+              style={{
+                color: "white",
+                fontSize: "42px",
+                fontWeight: "900",
+              }}
+            >
+              J
+            </span>
+            obs
             <span
               style={{
                 color: "orangered",
                 fontWeight: "900",
-                fontSize: "40px",
+                fontSize: "65px",
               }}
             >
               4
             </span>
-            <span style={{ fontSize: "50px" }}>Y</span>ou
+            <span
+              style={{ color: "white", fontSize: "42px", fontWeight: "900" }}
+            >
+              Y
+            </span>
+            ou
           </a>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
@@ -60,6 +74,11 @@ const Header = () => {
             <li className="nav-item">
               <a className="nav-link text-white" href="/jobSeeker">
                 JOB SEEKER
+              </a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link text-white" href="/faq">
+                FAQ
               </a>
             </li>
             <li className="nav-item">
