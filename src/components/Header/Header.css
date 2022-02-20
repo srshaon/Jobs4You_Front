@@ -1,14 +1,68 @@
+/* .nav-bg {
+  height: 80px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  background: #440541;
+
+  box-shadow: 5px 5px 10px rgb(175, 174, 174);
+}
+a.nav-link {
+  padding: 7px 20px !important;
+  font-size: 16px;
+  color: #fff !important;
+  border-radius: 3px;
+  background-color: rgb(129 88 136);
+  margin-right: 5px;
+  transition: 0.3s;
+}
+a.nav-link:hover {
+  background-color: rgb(175, 139, 175);
+  box-shadow: 0 3px orangered;
+  color: black !important;
+} */
+
 .nav-bg {
   height: 80px;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   background: #537895;
   box-shadow: 5px 5px 10px rgb(175, 174, 174);
+  /* background-image: linear-gradient(
+    to right bottom,
+    #537895,
+    #6f8ea7,
+    #8ba5ba,
+    #a7bdcd,
+    #c4d5e1,
+    #c4d5e1,
+    #c4d5e1,
+    #c4d5e1,
+    #a7bdcd,
+    #8ba5ba,
+    #6f8ea7,
+    #537895
+  ); */
+  /* background-image: linear-gradient(
+    to right,
+    #537890,
+    #6b879d,
+    #8197a9,
+    #97a7b6,
+    #adb7c2,
+    #adb7c2,
+    #adb7c2,
+    #adb7c2,
+    #97a7b6,
+    #8197a9,
+    #6b879d,
+    #537890
+  ); */
 }
 a.nav-link {
   padding: 7px 17px !important;
-  font-size: 15px;
-  color: #fff !important;
+  font-size: 17px;
+
+  color: white !important;
   border-radius: 3px;
   box-shadow: -2px 2px 5px 2px #4c4177;
   margin-right: 5px;
