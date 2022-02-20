@@ -1,8 +1,18 @@
-.jobcategory{
-    color: #7983f8;
-    
+.jobcategory {
+  color: brown;
 }
-.company{
-    color: #7983f8;
-    font-size: 20px;
+.company {
+  color: brown;
+  font-size: 20px;
+}
+
+.filter-box {
+  background-image: linear-gradient(
+    to right,
+    #97a7b6,
+    #adb7c2,
+    #adb7c2,
+    #97a7b6
+  );
+  padding: 30px;
 }
