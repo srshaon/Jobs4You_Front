@@ -1,0 +1,27 @@
+#interviewtips{
+    box-shadow: 0 15px 30px 1px grey;
+	background: rgba(255, 255, 255, 0.90);
+	text-align: justify;
+	border-radius: 5px;
+	overflow: hidden;
+	margin: 5em auto;
+	height: 40%;
+	width: 100%
+    
+}
+
+.interviewimage{
+    transition: all 0.3s ease-out;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	float: right;
+	width: 50%;
+	display: inline-block;
+	
+
+}
+.interviewimage:hover .info{transform: translateX(0);}
+.interviewimage:hover img {transition: all 0.3s ease-out;}
+.interviewimage:hover img {transform: scale(1.2, 1.2);}
