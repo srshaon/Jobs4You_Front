@@ -10,12 +10,22 @@ const Categories = () => {
     fetch("https://still-cliffs-68775.herokuapp.com/jobs")
       .then((res) => res.json())
       .then((data) => {
-        setJobs(data);
         const categoryList = data.map((category) => category.category);
         console.log(categoryList);
-
         const uniqueCategories = [...new Set(categoryList)];
-        setCategories(uniqueCategories);
+
+        let categoriesJobsList = [];
+        for (let categoryName of uniqueCategories) {
+          const similarCategories = categoryList.filter(
+            (category) => category === categoryName
+          );
+          const jobCategory = {
+            categoryName: categoryName,
+            totaljobs: similarCategories.length,
+          };
+          categoriesJobsList.push(jobCategory);
+        }
+        setCategories(categoriesJobsList);
       });
   }, []);
 
@@ -30,7 +40,7 @@ const Categories = () => {
                 <h3 className="justify-content-between">
                   <Link
                     className="category-title"
-                    to={`/categoryjobs/${category}`}
+                    to={`/categoryjobs/${category.categoryName}`}
                   >
                     {category}
                   </Link>
