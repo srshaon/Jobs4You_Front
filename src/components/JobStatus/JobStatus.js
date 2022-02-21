@@ -8,9 +8,19 @@ const JobStatus = () => {
     fetch("https://still-cliffs-68775.herokuapp.com/jobs")
       .then((res) => res.json())
       .then((data) => {
-        const statusList = data.map((status) => status.employmentStatus);
+
+        const statusList = data.map(status => (status.employmentStatus))
         const uniqueStatus = [...new Set(statusList)];
-        setStatus(uniqueStatus);
+        let statusJobList = [];
+        for (let statusName of uniqueStatus) {
+          const similarStatus = statusList.filter(status => status === statusName)
+          const jobLocation = {
+            statusName: statusName,
+            totaljobs: similarStatus.length
+          }
+          statusJobList.push(jobLocation)
+        }
+        setStatus(statusJobList)
       });
   }, []);
 
@@ -22,8 +32,9 @@ const JobStatus = () => {
             <div>
               <div class="box text-center my-3">
                 <h3>
-                  <Link className="category-title" to={`/jobstatus/${status}`}>
-                    {status}
+                  <Link className="category-title" to={`/jobstatus/${status.statusName}`}>
+                    {status.statusName}
+                    <span className='jobcount'>{status.totaljobs}</span>
                     <FiChevronRight
                       className="ms-4"
                       style={{ color: "brown" }}
