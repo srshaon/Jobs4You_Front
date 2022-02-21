@@ -8,9 +8,21 @@ const Locations = () => {
     fetch("https://still-cliffs-68775.herokuapp.com/jobs")
       .then((res) => res.json())
       .then((data) => {
-        const LocationList = data.map((location) => location.jobLocation);
+
+        const LocationList = data.map(location => (location.jobLocation))
+
+
         const uniqueLocations = [...new Set(LocationList)];
-        setLocations(uniqueLocations);
+        let locationJobList = [];
+        for (let locationName of uniqueLocations) {
+          const similarlocation = LocationList.filter(location => location === locationName)
+          const jobLocation = {
+            locationName: locationName,
+            totaljobs: similarlocation.length
+          }
+          locationJobList.push(jobLocation)
+        }
+        setLocations(locationJobList)
       });
   }, []);
 
@@ -24,9 +36,10 @@ const Locations = () => {
                 <h3>
                   <Link
                     className="category-title"
-                    to={`/locationjobs/${location}`}
+                    to={`/locationjobs/${location.locationName}`}
                   >
-                    {location}
+                    {location.locationName}
+                    <span className='jobcount'>{location.totaljobs}</span>
                     <FiChevronRight
                       className="ms-4"
                       style={{ color: "brown" }}
