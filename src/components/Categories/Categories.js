@@ -26,18 +26,15 @@ const Categories = () => {
         <div className="category-bg row row-cols-lg-3 row-cols-md-3 row-cols-1 justify-content-center">
           {categories.map((category) => (
             <div>
-              <div class="box text-center my-3">
-                <h3>
+              <div class="box my-3">
+                <h3 className="justify-content-between">
                   <Link
                     className="category-title"
                     to={`/categoryjobs/${category}`}
                   >
                     {category}
-                    <FiChevronRight
-                      className="ms-4"
-                      style={{ color: "brown" }}
-                    />
                   </Link>
+                  <FiChevronRight style={{ color: "brown" }} />
                 </h3>
               </div>
             </div>

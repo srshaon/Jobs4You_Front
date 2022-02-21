@@ -2,3 +2,12 @@
   background-color: #9c9c9c60;
   padding: 65px 0;
 }
+
+.mobile-app {
+  background-image: url("../../assets//Images//bg_blue.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 25vh;
+  border-radius: 15px;
+}

@@ -9,7 +9,7 @@ const Resources = () => {
       .then((data) => setResources(data));
   }, []);
   return (
-    <div className="browse-window mb-5">
+    <div className="container browse-window mb-5">
       <div>
         <div className="container text-center">
           <h2 className="" style={{ fontSize: "35px", color: "brown" }}>
