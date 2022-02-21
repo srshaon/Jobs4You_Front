@@ -4,11 +4,12 @@
   position: relative;
   border-radius: 5px;
   background: rgb(43, 96, 143);
+  border:2px solid  red;
 }
 
 .box h3 {
   text-align: center;
-  font-size: 23px;
+  font-size: 20px;
   color: #fff;
   margin: 0 10px 0 10px;
   position: relative;
@@ -16,6 +17,9 @@
   border-radius: 5px;
   padding: 7px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border: 2px solid blue;
+ 
+  
 }
 
 .box h3 {
@@ -50,4 +54,19 @@
 .category-title {
   text-decoration: none;
   color: black;
+}
+.jobcount{
+  content: counter(my-awesome-counter);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 2rem;
+  color: #fcd000;
+  background: black;
+  text-align: center;
+  margin-right: 0.5rem;
+  margin-left: 10px;
+  font-size: 1.7rem;
+  font-weight: bold;
 }
