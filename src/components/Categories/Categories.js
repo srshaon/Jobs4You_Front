@@ -51,6 +51,7 @@ const Categories = () => {
                       style={{ color: "brown" }}
                     />
                   </Link>
+                  {/*  */}
                 </h3>
               </div>
             </div>
