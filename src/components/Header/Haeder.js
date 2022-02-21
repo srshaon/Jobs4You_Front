@@ -81,6 +81,11 @@ const Header = () => {
                 FAQ
               </a>
             </li>
+            {/* <li className="nav-item">
+              <a className="nav-link text-white" href="/faq">
+                FAQ
+              </a>
+            </li> */}
             <li className="nav-item">
               <a className="nav-link text-white" href="/contact">
                 CONTACT
