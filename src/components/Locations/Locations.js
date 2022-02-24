@@ -1,55 +1,58 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
+import React, { useEffect, useState } from "react";
+import { FiChevronRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Locations = () => {
+  const [locations, setLocations] = useState([]);
+  useEffect(() => {
+    fetch("https://still-cliffs-68775.herokuapp.com/jobs")
+      .then((res) => res.json())
+      .then((data) => {
 
-    const [locations, setLocations] = useState([]);
-    useEffect(() => {
-        fetch("https://still-cliffs-68775.herokuapp.com/jobs")
-            .then((res) => res.json())
-            .then((data) => {
-
-                const LocationList = data.map(location => (location.jobLocation))
-
-
-                const uniqueLocations = [...new Set(LocationList)];
-                setLocations(uniqueLocations)
-            });
-    }, []);
-
-    return (
-        <div className='mt-5 row row-cols-lg-3 row-cols-md-3 row-cols-1 cardbg ms-3 me-3'>
-            {
-                locations.map(location => <div >
+        const LocationList = data.map(location => (location.jobLocation))
 
 
-                    <div className='mt-5'>
-                        <div class="box me-5">
-                            <h3>{location}</h3>
+        const uniqueLocations = [...new Set(LocationList)];
+        let locationJobList = [];
+        for (let locationName of uniqueLocations) {
+          const similarlocation = LocationList.filter(location => location === locationName)
+          const jobLocation = {
+            locationName: locationName,
+            totaljobs: similarlocation.length
+          }
+          locationJobList.push(jobLocation)
+        }
+        setLocations(locationJobList)
+      });
+  }, []);
 
-                            <div className='d-flex justify-content-center'>
-
-                                <Link to={`/locationjobs/${location}`}>
-
-                                    View All Jobs
-                                </Link>
-
-                            </div>
-                        </div>
-
-
-
-
-
-
-                    </div>
-
-
-                </div>)
-            }
+  return (
+    <div className="category-container">
+      <div className="cardbg">
+        <div className="category-bg row row-cols-lg-3 row-cols-md-3 row-cols-1">
+          {locations.map((location) => (
+            <div>
+              <div className="box text-center my-3">
+                <h3>
+                  <Link
+                    className="category-title"
+                    to={`/locationjobs/${location.locationName}`}
+                  >
+                    {location.locationName}
+                    <span className='jobcount'>{location.totaljobs}</span>
+                    <FiChevronRight
+                      className="ms-4"
+                      style={{ color: "brown" }}
+                    />
+                  </Link>
+                </h3>
+              </div>
+            </div>
+          ))}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Locations;
