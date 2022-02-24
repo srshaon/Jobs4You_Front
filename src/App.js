@@ -33,6 +33,8 @@ import Faq from "./components/Faq/Faq";
 import FaqCustom from "./components/FaqCustom/FaqCustom";
 import AddJob from "./components/AddJob/AddJob";
 import About from "./components/About/About";
+import AddGovJob from "./components/AddGovJob/AddGovJob";
+import PdfCreator from "./components/PdfCreator/PdfCreator";
 
 
 function App() {
@@ -119,6 +121,12 @@ function App() {
             </Route>
             <Route path="/latestjobs">
               <LatestJobs></LatestJobs>
+            </Route>
+            <Route path="/add-govjob">
+              <AddGovJob></AddGovJob>
+            </Route>
+            <Route path="/create-resume">
+              <PdfCreator></PdfCreator>
             </Route>
             {/* Nuzhat's Route  */}
             <Route path="/postJob">
