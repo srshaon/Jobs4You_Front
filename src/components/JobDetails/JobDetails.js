@@ -4,7 +4,7 @@ import "./JobDetails.css";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import image from "../../assets/Images/job_search.jpg";
 import { Spinner } from "react-bootstrap";
-
+import { Link } from 'react-router-dom';
 const JobDetails = () => {
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
@@ -134,6 +134,11 @@ const JobDetails = () => {
           </div>
         </div>
       }
+      <div className='d-flex justify-content-center mt-4 mb-3'>
+        <Link to={`/apply/${jobs._id}`}>
+          <button>Apply</button>
+        </Link>
+      </div>
     </div>
   );
 };
