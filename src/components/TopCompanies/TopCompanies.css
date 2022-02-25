@@ -1,4 +1,7 @@
 .topCompany-container {
+  background-image: url("../../assets//Images//bg_blue.jpg");
+  background-size: cover;
+  background-position: center;
   background-color: #6b879d;
   border: none;
   box-shadow: 3px 5px 3px 3px navy;
