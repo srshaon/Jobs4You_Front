@@ -10,6 +10,7 @@ import mobile from "../../assets/Images/mobile_app.png";
 import google_app from "../../assets/Images/google_app.jpg";
 import apple_app from "../../assets/Images/apple_app.jpg";
 import { Col } from "react-bootstrap";
+import Header from "../Header/Haeder";
 
 const Home = () => {
   return (
@@ -17,9 +18,9 @@ const Home = () => {
       <Cover></Cover>
       <main className="main-container">
         <Filteredjobs></Filteredjobs>
-        <TopCompanies></TopCompanies>
+
         <div className="container mobile-app my-5">
-          <div className="row align-items-center">
+          <div className="row align-items-center d-md-flex">
             <Col md={7}>
               <div className="text-center">
                 <h5>The job you want is just an app away.</h5>
@@ -39,6 +40,7 @@ const Home = () => {
         </div>
         {/* <About></About> */}
         <Resources></Resources>
+        <TopCompanies></TopCompanies>
       </main>
     </div>
   );

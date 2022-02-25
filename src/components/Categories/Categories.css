@@ -4,20 +4,19 @@
   position: relative;
   border-radius: 5px;
   background: rgb(43, 96, 143);
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 .box h3 {
-  text-align: right;
-  font-size: 23px;
-  color: #fff;
+  font-size: 21px;
+  color: black;
   margin: 0 10px 0 10px;
   position: relative;
   top: -10px;
   border-radius: 5px;
   padding: 7px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
 }
 
 .box h3 {
@@ -45,13 +44,13 @@
 }
 
 .category-container {
-  width: 90%;
+  width: 93%;
   margin: 0 auto;
 }
 
 .category-title {
   text-decoration: none;
-  color: black;
+  color: black !important;
 }
 .jobcount {
   content: counter(my-awesome-counter);
@@ -63,8 +62,7 @@
   color: #fcd000;
   background: black;
   text-align: center;
-  margin-right: 0.5rem;
-  margin-left: 10px;
-  font-size: 1.7rem;
+  margin-left: 8px;
+  font-size: 21px;
   font-weight: bold;
 }

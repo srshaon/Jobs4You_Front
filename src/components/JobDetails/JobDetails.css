@@ -1,7 +1,14 @@
 .detailBody {
-  background: #dfc2f2;
-  background-image: linear-gradient(to right, #ffffb3, #ffe6e6);
-  background-attachment: fixed;
+  /* background: #dfc2f2; */
+  /* background-image: linear-gradient(to right, #ffffb3, #ffe6e6); */
+  /* background-attachment: fixed; */
+  background-image: linear-gradient(
+    to right,
+    #97a7b6,
+    #adb7c2,
+    #adb7c2,
+    #97a7b6
+  );
   background-size: cover;
   padding: 65px;
 }
