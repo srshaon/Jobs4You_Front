@@ -13,7 +13,7 @@ const Filteredjobs = () => {
     return <Spinner animation="border" variant="danger" />;
   }
   return (
-    <div className="browse-window">
+    <div className="container browse-window">
       <div className="text-center">
         <h2 style={{ fontSize: "35px", color: "brown" }}>
           Extend your job search with Jobs4You

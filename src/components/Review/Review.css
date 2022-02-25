@@ -1,39 +1,45 @@
-.review-section{
-    display: grid;
-    grid-template-rows: 8% 92%;
+.review-section {
+  background-image: linear-gradient(
+    to right,
+    #97a7b6,
+    #adb7c2,
+    #adb7c2,
+    #97a7b6
+  );
+  display: grid;
+  grid-template-rows: 8% 92%;
+  padding: 50px;
 }
 
-.review-form{
-    
-    display: flex;
-    flex-direction: column;
-    
+.review-form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
 }
 .review-form input {
-    display: block;
-    padding: 5px;
-    width: 100%;
-    border: 2px solid gray;
-    border-radius: 3px;
+  display: block;
+  padding: 9px;
+  width: 100%;
+
+  border: none;
+  border-radius: 5px;
 }
 
 .review-form textarea {
-    display: block;
-    padding: 5px;
-    width: 100%;
-    border: 2px solid gray;
-    border-radius: 3px;
+  display: block;
+  padding: 9px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
 }
-.review-submit-input:hover{
-    background-color: black;
-    color: white;
+.review-submit-input:hover {
+  background-color: brown;
+  color: white;
 }
-@media (max-width:700px) {
-
-.review-section{
+@media (max-width: 700px) {
+  .review-section {
     display: grid;
     grid-template-rows: 10%;
     padding-bottom: 5px;
-}
-
+  }
 }

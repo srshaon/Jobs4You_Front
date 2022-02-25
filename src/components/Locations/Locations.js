@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FiChevronRight } from "react-icons/fi";
+import { MdDoubleArrow } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Locations = () => {
@@ -8,21 +8,21 @@ const Locations = () => {
     fetch("https://still-cliffs-68775.herokuapp.com/jobs")
       .then((res) => res.json())
       .then((data) => {
-
-        const LocationList = data.map(location => (location.jobLocation))
-
+        const LocationList = data.map((location) => location.jobLocation);
 
         const uniqueLocations = [...new Set(LocationList)];
         let locationJobList = [];
         for (let locationName of uniqueLocations) {
-          const similarlocation = LocationList.filter(location => location === locationName)
+          const similarlocation = LocationList.filter(
+            (location) => location === locationName
+          );
           const jobLocation = {
             locationName: locationName,
-            totaljobs: similarlocation.length
-          }
-          locationJobList.push(jobLocation)
+            totaljobs: similarlocation.length,
+          };
+          locationJobList.push(jobLocation);
         }
-        setLocations(locationJobList)
+        setLocations(locationJobList);
       });
   }, []);
 
@@ -39,9 +39,9 @@ const Locations = () => {
                     to={`/locationjobs/${location.locationName}`}
                   >
                     {location.locationName}
-                    <span className='jobcount'>{location.totaljobs}</span>
-                    <FiChevronRight
-                      className="ms-4"
+                    <span className="jobcount">{location.totaljobs}</span>
+                    <MdDoubleArrow
+                      className="ms-3"
                       style={{ color: "brown" }}
                     />
                   </Link>
