@@ -1,7 +1,17 @@
 .custom-sqeeze-left {
-    box-shadow: -3px 0px 10px black, 3px 0px 10px rgb(161, 231, 245);
+  box-shadow: -3px 0px 10px black, 3px 0px 10px rgb(161, 231, 245);
 }
 
 .custom-sqeeze-right {
-    box-shadow: 3px 0px 10px black, -3px 0px 10px rgb(161, 231, 245);
+  box-shadow: 3px 0px 10px black, -3px 0px 10px rgb(161, 231, 245);
+}
+
+.about-section {
+  background-image: linear-gradient(
+    to right,
+    #97a7b6,
+    #adb7c2,
+    #adb7c2,
+    #97a7b6
+  );
 }
