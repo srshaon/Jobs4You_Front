@@ -36,6 +36,8 @@ import About from "./components/About/About";
 import AddGovJob from "./components/AddGovJob/AddGovJob";
 import PdfCreator from "./components/PdfCreator/PdfCreator";
 import Apply from "./components/Apply/Apply";
+import ManageJob from "./components/ManageJob/ManageJob";
+import ManageJobs from "./components/ManageJobs/ManageJobs";
 
 
 function App() {
@@ -116,6 +118,7 @@ function App() {
             <Route path="/apply/:jobId">
               <Apply></Apply>
             </Route>
+
             {/* Razu's Route */}
             <Route path="/candidates/:candidateID">
               <SingleCandidate></SingleCandidate>
@@ -132,12 +135,16 @@ function App() {
             <Route path="/create-resume">
               <PdfCreator></PdfCreator>
             </Route>
+
             {/* Nuzhat's Route  */}
             <Route path="/postJob">
               <AddJob></AddJob>
             </Route>
             <Route path="/about">
               <About></About>
+            </Route>
+            <Route path="/managejobs">
+              <ManageJobs></ManageJobs>
             </Route>
           </Switch>
           <Footer></Footer>
