@@ -17,7 +17,10 @@ const AllCategoriesJobs = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        const filtercategory = data.filter(
+        const approvedJobs = data.filter(
+          (job) => job?.status?.toLowerCase() === "approved"
+        );
+        const filtercategory = approvedJobs.filter(
           (category) => category.category === categoryName
         );
         setJobs(filtercategory);
