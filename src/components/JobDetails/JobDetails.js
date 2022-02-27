@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import "./JobDetails.css";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import image from "../../assets/Images/job_search.jpg";
-import { Spinner } from "react-bootstrap";
-import { Link } from 'react-router-dom';
+import { Button, Spinner } from "react-bootstrap";
+import { Link } from "react-router-dom";
 const JobDetails = () => {
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
@@ -20,6 +20,9 @@ const JobDetails = () => {
   }
   return (
     <div className="detailBody">
+      <h2 className="mb-5 text-center">
+        <u>Job Details</u>
+      </h2>
       {
         <div className="row row-cols-lg-2 row-cols-md-2 row-cols-1 mx-auto">
           <div className="" style={{ borderRight: "2px solid gray" }}>
@@ -55,14 +58,14 @@ const JobDetails = () => {
               <b style={{ fontSize: 20 }}> Salary ➾</b>{" "}
               <span>৳ {jobs.salary}</span>
             </p>
-            <p>
+            <div>
               <b style={{ fontSize: 20 }}>Additional Requirements ➾</b>
               <ul>
                 {jobs?.additionalRequirements.map((item) => (
                   <li>{item}</li>
                 ))}
               </ul>
-            </p>
+            </div>
           </div>
 
           <div>
@@ -134,9 +137,9 @@ const JobDetails = () => {
           </div>
         </div>
       }
-      <div className='d-flex justify-content-center mt-4 mb-3'>
+      <div className="d-flex justify-content-center mt-4 mb-3">
         <Link to={`/apply/${jobs._id}`}>
-          <button>Apply</button>
+          <Button className="apply-btn">Apply</Button>
         </Link>
       </div>
     </div>
