@@ -55,7 +55,7 @@ const Footer = () => {
               <Col md={3}>
                 <div>
                   <h5>Exploring --</h5>
-                  <span class="animate-border border-black"></span>
+                  <span className="animate-border border-black"></span>
                 </div>
                 <img
                   src={footer}
@@ -68,7 +68,7 @@ const Footer = () => {
               <Col md={3} className="">
                 <div>
                   <h5>Information</h5>
-                  <span class="animate-border border-black"></span>
+                  <span className="animate-border border-black"></span>
                 </div>
                 <div className="footer-list mt-3">
                   <Link to="/about">About</Link>
@@ -85,7 +85,7 @@ const Footer = () => {
               <Col md={3} className="">
                 <div>
                   <h5>Company</h5>
-                  <span class="animate-border border-black"></span>
+                  <span className="animate-border border-black"></span>
                 </div>
                 <div className="footer-list mt-3">
                   <Link to="/services">Our Services</Link>
@@ -102,7 +102,7 @@ const Footer = () => {
               <Col md={3} className="">
                 <div>
                   <h5>Subscribe</h5>
-                  <span class="animate-border border-black"></span>
+                  <span className="animate-border border-black"></span>
                 </div>
                 <div>
                   <form action="" className="d-md-flex mt-4">
@@ -124,14 +124,14 @@ const Footer = () => {
           </div>
         </div>
 
-        <div class="copyright">
-          <div class="container">
-            <div class="row align-items-center text-center">
-              <div class="col-md-6">
+        <div className="copyright">
+          <div className="container">
+            <div className="row align-items-center text-center">
+              <div className="col-md-6">
                 <span>&copy; 2022 Nuzhat Parveen | All rights reserved</span>
               </div>
 
-              <div class="col-md-6">
+              <div className="col-md-6">
                 <div className="social-icons d-flex justify-content-center">
                   <a
                     href="https://facebook.com"

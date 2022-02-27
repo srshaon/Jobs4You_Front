@@ -1,13 +1,13 @@
-import './ManageJobs.css';
+import "./ManageJobs.css";
 
-import React from 'react';
+import React from "react";
 
 const ManageJobs = () => {
-    return (
-        <div>
-
-        </div>
-    );
+  return (
+    <div>
+      <h2>Manage Jobs by Recruiter</h2>
+    </div>
+  );
 };
 
 export default ManageJobs;
