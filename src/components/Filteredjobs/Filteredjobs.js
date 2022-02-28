@@ -14,7 +14,7 @@ const Filteredjobs = () => {
   const [control, setControl] = useState("categories");
 
   useEffect(() => {
-    axios.get("http://localhost:5000/jobs").then((res) => {
+    axios.get("https://still-cliffs-68775.herokuapp.com/jobs").then((res) => {
       const approvedJobs = res.data.filter(
         (job) => job?.status?.toLowerCase() === "approved"
       );
