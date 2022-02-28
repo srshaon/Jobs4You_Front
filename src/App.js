@@ -38,6 +38,7 @@ import PdfCreator from "./components/PdfCreator/PdfCreator";
 import Apply from "./components/Apply/Apply";
 import ManageJob from "./components/ManageJob/ManageJob";
 import ManageJobs from "./components/ManageJobs/ManageJobs";
+import AccountForm from "./components/ProfileForm/AccountForm";
 
 
 function App() {
@@ -65,6 +66,9 @@ function App() {
             </Route>
             <Route path="/allreviews">
               <AllReviews></AllReviews>
+            </Route>
+            <Route path="/profileform">
+              <AccountForm></AccountForm>
             </Route>
 
             {/* Rifat's Route */}
