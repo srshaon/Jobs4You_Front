@@ -1,6 +1,7 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 import { Typewriter } from "react-simple-typewriter";
+
 import banner from "../../assets/Images/banner_7.jpg";
 import "./Cover.css";
 
@@ -16,17 +17,16 @@ const Cover = () => {
               <h2>Explore Our Multiple Jobs & Unlock Your Potential</h2>
             </div> */}
             <div>
-              {/* <h1 data-aos="zoom-in" data-aos-duration="300">
-                EXPLORE OUR
-              </h1> */}
               <h2
-              // style={{
-              //   color: "#537890",
-              //   fontSize: "45px",
-              //   fontWeight: "bolder",
-              //   letterSpacing: "1px",
-              // }}
+                style={{
+                  color: "#537890",
+                  fontFamily: "Alegreya, sans-serif",
+                  fontSize: "45px",
+                  fontWeight: "bolder",
+                  letterSpacing: "1px",
+                }}
               >
+                {/* Explore Our */}
                 <span
                   style={{
                     fontSize: "60px",
@@ -49,7 +49,7 @@ const Cover = () => {
                   />
                 </span>
               </h2>
-              <div className="banner-form mt-2">
+              <div className="banner-form">
                 <form action="" className="d-md-flex justify-content-center">
                   <input
                     type="text"
@@ -67,7 +67,7 @@ const Cover = () => {
                     className="search-field"
                     style={{ color: "orange" }}
                   />
-                  <button type="submit" className="search-btn">
+                  <button type="submit" className="search-btn p-3">
                     Find Jobs
                   </button>
                 </form>

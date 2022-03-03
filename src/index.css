@@ -4,5 +4,11 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Alegreya", sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
+}
+
+:root {
+  --color-primary: hsl(200, 50%, 42%);
+  --color-primary-light: hsl(200, 50%, 62%);
+  --color-primary-dark: hsl(200, 50%, 22%);
 }

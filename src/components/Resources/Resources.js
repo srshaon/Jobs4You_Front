@@ -9,13 +9,13 @@ const Resources = () => {
       .then((data) => setResources(data));
   }, []);
   return (
-    <div className="container browse-window mb-5">
-      <div>
-        <div className="container text-center">
+    <div className="container">
+      <div className="">
+        <div className="text-center">
           <h2 className="" style={{ fontSize: "35px", color: "brown" }}>
             Resources
           </h2>
-          <div className="row d-flex justify-content-center py-4">
+          <div className="row d-flex justify-content-center mt-4">
             {resources.map((resource) => {
               return (
                 <div
@@ -30,12 +30,14 @@ const Resources = () => {
                       <div className="d-flex">
                         <img
                           className="w-100"
-                          style={{ opacity: "0.8" }}
+                          style={{
+                            opacity: "0.4",
+                          }}
                           src={resource?.img}
                           alt=""
                         />
                       </div>
-                      <h4 className="pt-4">{resource?.title}</h4>
+                      <h5 className="pt-4">{resource?.title}</h5>
                     </div>
                   </Link>
                 </div>
