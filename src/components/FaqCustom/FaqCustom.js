@@ -6,7 +6,7 @@ const FaqCustom = () => {
     const [customFaq, setCustomFaq] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/customfaq')
+        fetch('https://still-cliffs-68775.herokuapp.com/customfaq')
         .then(res => res.json())
         .then(data => {
             let sortedFaq = [];
@@ -23,7 +23,7 @@ const FaqCustom = () => {
 
     const postHandle = (e) => {
         e.preventDefault();
-        fetch('http://localhost:5000/customfaq', {
+        fetch('https://still-cliffs-68775.herokuapp.com/customfaq', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ const FaqCustom = () => {
 
             <form style={{marginBottom: '80px'}} onSubmit={postHandle}>
                 <div className="d-flex justify-content-center">
-                    <input style={{border: '1px solid black'}} onChange={handleComment} className="w-50 mx-0 bg-light" /><button style={{background: 'white', border: '1px solid rgba(0, 0, 0, 1)', borderLeft: 'none'}} className="px-4">Post</button>
+                    <input style={{border: '1px solid black'}} onChange={handleComment} className="w-50 mx-0 py-2 rounded" /><button style={{background: 'white', border: '1px solid rgba(0, 0, 0, 1)', borderLeft: 'none'}} className="px-4">Post</button>
                 </div>
             </form><hr />
 
