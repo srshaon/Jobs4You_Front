@@ -8,7 +8,7 @@ const TopCompanies = () => {
     dots: false,
     arrows: false,
     infinite: true,
-    slidesToShow: 6,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3200,
@@ -39,9 +39,12 @@ const TopCompanies = () => {
     ],
   };
   return (
-    <div className="topCompany-container my-5">
+    <div className="container my-5 p-2">
+      <div className="text-center">
+        <h2 style={{ color: "brown" }}>Featured Companies</h2>
+      </div>
       <div>
-        <div style={{}} className="shadow-lg py-4 rounded">
+        <div style={{}} className="mt-5 rounded">
           <Slider {...settings}>
             <div className="img-container">
               <div className="d-flex justify-content-center">

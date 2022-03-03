@@ -1,7 +1,4 @@
-.detailBody {
-  /* background: #dfc2f2; */
-  /* background-image: linear-gradient(to right, #ffffb3, #ffe6e6); */
-  /* background-attachment: fixed; */
+/* .detailBody {
   background-image: linear-gradient(
     to right,
     #97a7b6,
@@ -10,27 +7,43 @@
     #97a7b6
   );
   background-size: cover;
-  padding: 65px;
+} */
+
+.job-detail-container {
+  background-color: #9c9c9c60;
+}
+
+.job-detail-card {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border-radius: 7px;
+}
+
+.job-detail-btn {
+  background-color: green;
+  font-size: 17px;
+  color: white;
+  border-radius: 5px;
 }
 
 #container {
   box-shadow: 0 15px 30px 1px grey;
-  background: rgba(255, 255, 255, 0.9);
+  /* background: rgba(255, 255, 255, 0.9); */
+  background: var(--color-primary-light);
   text-align: center;
   border-radius: 5px;
   overflow: hidden;
-  margin: 5em auto;
-  height: 60%;
-  width: 100%;
+  /* margin: 5em auto; */
+  /* height: 70%;
+  width: 105%; */
 }
 
 .job-details {
   position: relative;
-  text-align: left;
+  /* text-align: left; */
   overflow: hidden;
-  padding: 30px;
-  height: 100%;
-  float: left;
+  /* padding: 30px;
+  height: 100%; */
+  /* float: left; */
   width: 50%;
 }
 
@@ -38,7 +51,7 @@
   font-family: "Bebas Neue", cursive;
   display: inline-block;
   position: relative;
-  font-size: 30px;
+  font-size: 17px;
   color: #344055;
   margin: 0;
 }
@@ -58,12 +71,11 @@
   animation: chan-sh 6s ease infinite;
 }
 
-#container .job-details > p {
+/* #container .job-details > p {
   text-align: center;
-  font-size: 18px;
+  font-size: 17px;
   color: #7d7d7d;
-  padding: 20px;
-}
+} */
 .control {
   position: absolute;
   bottom: 20%;
@@ -116,7 +128,7 @@
   position: absolute;
   line-height: 1.8;
   text-align: left;
-  font-size: 105%;
+  font-size: 16px;
   cursor: no-drop;
   color: #fff;
   height: 100%;
@@ -125,7 +137,7 @@
   top: 0;
 }
 
-.info h2 {
+.info h3 {
   text-align: center;
 }
 .job-image:hover .info {
@@ -156,10 +168,10 @@
 }
 
 .apply-btn {
-  width: 110px;
-  height: 40px;
-  font-size: 21px;
-  background-color: brown;
-  color: black;
+  /* width: 110px; */
+  height: 50px;
+  font-size: 17px;
+  background-color: var(--color-primary);
+  color: white;
   border-radius: 7px;
 }

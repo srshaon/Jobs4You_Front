@@ -1,5 +1,6 @@
 import React from "react";
 import MobileView from "../../assets/Images/view-mobile.png";
+import Resources from "../Resources/Resources";
 import Review from "../Review/Review";
 import "./About.css";
 
@@ -7,7 +8,7 @@ const About = () => {
   return (
     <div className="main-container">
       <div className="container">
-        <div>
+        <div className="mb-5">
           <div className="text-center mb-5 pb-3">
             <h1 style={{ color: "brown" }}>
               Grow Your Career and Business via Jobs4You
@@ -127,7 +128,10 @@ const About = () => {
             </div>
           </div>
         </div>
-        <div style={{ padding: "65px 0" }}>
+        <div className="mb-5 py-3">
+          <Resources></Resources>
+        </div>
+        <div className="mb-5 pb-3">
           <Review></Review>
         </div>
       </div>

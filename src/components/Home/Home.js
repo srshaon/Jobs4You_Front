@@ -9,8 +9,9 @@ import AddJob from "../AddJob/AddJob";
 import mobile from "../../assets/Images/mobile_app.png";
 import google_app from "../../assets/Images/google_app.jpg";
 import apple_app from "../../assets/Images/apple_app.jpg";
-import { Col } from "react-bootstrap";
+import { Button, Col, Row } from "react-bootstrap";
 import Header from "../Header/Haeder";
+import image from "../../assets/Images/banner3.png";
 
 const Home = () => {
   return (
@@ -19,6 +20,45 @@ const Home = () => {
       <main className="main-container">
         <Filteredjobs></Filteredjobs>
 
+        <div className="explore-bg">
+          <div className="container">
+            <div className="explore-container row align-items-center d-md-flex">
+              <Col md={5}>
+                <div className="explore-text ps-3">
+                  <h3 className="mb-4">
+                    Explore a faster, easier and better job search
+                  </h3>
+                  <ul className="checkmark">
+                    <li className="checkmark-list d-md-flex align-items-center">
+                      <span className="checkmark-icon">&#10003;</span>
+                      <span className="checkmark-text px-3">
+                        Unmatched quality of remote, hybrid, and flexible jobs
+                      </span>
+                    </li>
+                    <li className="checkmark-list d-md-flex align-items-center">
+                      <span className="checkmark-icon">&#10003;</span>
+                      <span className="checkmark-text px-3">
+                        Explore the rate of your skill set with the job
+                        requirements
+                      </span>
+                    </li>
+                    <li className="checkmark-list d-md-flex align-items-center">
+                      <span className="checkmark-icon">&#10003;</span>
+                      <span className="checkmark-text px-3">
+                        Chat anonymously with our Jobs4You admin 24/7.
+                      </span>
+                    </li>
+                  </ul>
+                  <Button className="explore-btn mt-3 p-3">Browse Jobs</Button>
+                </div>
+              </Col>
+              <Col md={7}>
+                <img src={image} alt="" className="w-100 text-center p-3" />
+              </Col>
+            </div>
+          </div>
+        </div>
+        <TopCompanies></TopCompanies>
         <div className="container mobile-app my-5">
           <div className="row align-items-center d-md-flex">
             <Col md={7}>
@@ -38,9 +78,6 @@ const Home = () => {
             </Col>
           </div>
         </div>
-        {/* <About></About> */}
-        <Resources></Resources>
-        <TopCompanies></TopCompanies>
       </main>
     </div>
   );
