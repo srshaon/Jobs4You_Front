@@ -42,6 +42,11 @@ import AccountForm from "./components/ProfileForm/AccountForm";
 import Chat from "./components/Chat/Chat";
 import Chart from "./components/Chart/Chart";
 import Skills from "./components/Skills/Skills";
+import ProfileEdit from "./components/ProfileForm/ProfileEdit";
+import AllGovJobs from "./components/AddGovJob/AllGovJobs";
+import EditGovJob from "./components/AddGovJob/EditGovJob";
+import UploadViewResume from "./components/UploadViewResume/UploadViewResume";
+import MyJobs from "./components/Myjobs/Myjobs";
 
 
 function App() {
@@ -134,6 +139,12 @@ function App() {
             <Route path="/apply/:jobId">
               <Apply></Apply>
             </Route>
+            <Route path="/uploadviewresume">
+              <UploadViewResume></UploadViewResume>
+            </Route>
+            <Route path="/myjobs">
+              <MyJobs></MyJobs>
+            </Route>
 
             {/* Razu's Route */}
             <Route path="/candidates/:candidateID">
@@ -150,6 +161,16 @@ function App() {
             </Route>
             <Route path="/create-resume">
               <PdfCreator></PdfCreator>
+            </Route>
+            <Route path="/profileedit/:profileId">
+              <ProfileEdit />
+            </Route>
+
+            <Route path="/allgovjobs">
+              <AllGovJobs />
+            </Route>
+            <Route path="/edit/:jobId">
+              <EditGovJob />
             </Route>
 
             {/* Nuzhat's Route  */}

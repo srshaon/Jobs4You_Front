@@ -18,11 +18,9 @@ const ProfileForm2 = (props) => {
         console.log(data);
 
         props.history.push("./profileForm3");
-        console.log(data);
-        console.log(state.data);
-        console.log(data);
-        console.log(state);
-        console.log(actions);
+        console.log('form2',data);
+        console.log('form2',state);
+        console.log('form2',actions);
     };
     return (
         <div className='profile-form-div' >
@@ -35,7 +33,6 @@ const ProfileForm2 = (props) => {
 
                         <div class="profile-form-inputs">
                             <div className='profile-form-input-pair d-flex justify-content-center'>
-
                                 <textarea rows={8} className='profile-form2-bio-textarea' placeholder="Your Bio" defaultValue="" {...register("bio", { required: true })} />
                             </div>
                             <br />
@@ -49,6 +46,7 @@ const ProfileForm2 = (props) => {
                                 <textarea rows={5} className='profile-form2-hobby-textarea' placeholder="Achievements / Awards" defaultValue="" {...register("achievements", { required: true })} />
                             </div>
                             <div className='profile-form-input-pair d-flex justify-content-center'>
+                                <input className='profile-form-input' placeholder="Role (candidate/Eployer)" defaultValue={''} {...register("role", { required: true })} />
                                 <input className='profile-form-input' placeholder="Job Preference" defaultValue={''} {...register("preference", { required: true })} />
                                 <input className='profile-form-input' placeholder="Available For" defaultValue={''} {...register("available", { required: true })} />
                             </div>
