@@ -29,10 +29,10 @@ const PdfCreator = () => {
       img: imgUrl,
     };
     axios
-      .post("https://still-cliffs-68775.herokuapp.com/createPdf", info)
+      .post("https://afternoon-headland-45054.herokuapp.com/createPdf", info)
       .then((response) => {
         axios
-          .get("https://still-cliffs-68775.herokuapp.com/fetch-pdf", {
+          .get("https://afternoon-headland-45054.herokuapp.com/fetch-pdf", {
             responseType: "blob",
           })
           .then((res) => {

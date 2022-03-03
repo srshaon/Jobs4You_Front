@@ -35,7 +35,7 @@ const Apply = () => {
     formData.append("resumepdfFile", resumepdfFile);
     formData.append("coverLetterpdfFile", coverLetterpdfFile);
 
-    fetch("https://still-cliffs-68775.herokuapp.com/applyList", {
+    fetch("https://afternoon-headland-45054.herokuapp.com/applyList", {
       method: "POST",
       body: formData,
     })
