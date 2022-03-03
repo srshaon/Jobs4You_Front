@@ -17,7 +17,6 @@ const SingleFaq = (props) => {
     }
 
     const handleSubmit = (e) => {
-<<<<<<< HEAD
         e.preventDefault();
 
         const fullDoc = { _id: _id, comment: comment, reply: reply.reply };
@@ -48,34 +47,6 @@ const SingleFaq = (props) => {
                     });
 
                     setCustomFaq(updated);
-=======
-    e.preventDefault();
-    
-    const fullDoc = { _id: _id, comment: comment, reply: reply.reply };
-    
-
-    fetch('https://still-cliffs-68775.herokuapp.com/customfaq', {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(fullDoc)
-    })
-    .then(res => res.json())
-    .then(data => {
-        if(data?.acknowledged) {
-            e.target.reset();
-
-            const updated = [];
-
-            customFaq.forEach(single => {
-                if (single._id === _id) {
-                    let tmp = { _id: _id, comment: comment, reply: reply };
-                    updated.push(tmp);
-                }
-                else {
-                    updated.push(single);
->>>>>>> a7a71487154c7ccc9db316b14ccc5432468735d7
                 }
             })
             .catch(error => {
@@ -87,7 +58,6 @@ const SingleFaq = (props) => {
     };
 
     return (
-<<<<<<< HEAD
         <div style={{ marginBottom: '45px' }}>
             <div style={{ maxWidth: '700px' }} class="container">
 
@@ -95,15 +65,6 @@ const SingleFaq = (props) => {
                     <p className="p-0 m-0"><strong>{comment}</strong></p>
                 </div>
 
-=======
-        <div style={{marginBottom: '45px'}}>
-            <div style={{maxWidth: '700px'}} class="container">
-               
-                 <div className="border shadow py-4 px-3">
-                        <p className="p-0 m-0"><strong>Q: {comment}</strong></p>
-                    </div>
-                
->>>>>>> a7a71487154c7ccc9db316b14ccc5432468735d7
                 {
                     !singleFaq?.reply &&
                     <div>
