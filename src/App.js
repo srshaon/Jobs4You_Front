@@ -39,6 +39,9 @@ import Apply from "./components/Apply/Apply";
 import ManageJob from "./components/ManageJob/ManageJob";
 import ManageJobs from "./components/ManageJobs/ManageJobs";
 import AccountForm from "./components/ProfileForm/AccountForm";
+import Chat from "./components/Chat/Chat";
+import Chart from "./components/Chart/Chart";
+import Skills from "./components/Skills/Skills";
 
 
 function App() {
@@ -80,6 +83,15 @@ function App() {
             </Route>
             <Route path="/faq">
               <Faq></Faq>
+            </Route>
+            <Route path="/chat">
+              <Chat></Chat>
+            </Route>
+            <Route path="/chart">
+              <Chart></Chart>
+            </Route>
+            <Route path="/skills">
+              <Skills></Skills>
             </Route>
 
             {/* Sadia's Route */}
