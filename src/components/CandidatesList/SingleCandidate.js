@@ -3,18 +3,15 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import {Card,Button} from 'react-bootstrap';
 import "./SingleCandidate.css";
+import { useGetProfileByIdQuery } from '../../Redux-handler/ManageProfiles';
  
 const SingleCandidate = () => {
     const{candidateID}=useParams()
-    const[candidate,setCandidate]=useState({})
-    useEffect(()=>{
-        fetch(`https://jsonplaceholder.typicode.com/users/${candidateID}`)
-        .then(res=>res.json())
-        .then(data=>setCandidate(data))
-    },[candidateID])
-    console.log(candidate)
+    const{data}=useGetProfileByIdQuery(candidateID)
+    console.log(data)
+  
     return (
-        <div className='d-flex justify-content-center mt-5'>
+        <div className='d-flex justify-content-center my-5'>
         <Card className='my-card rounded'>
         <Card.Header>
                 <img  className='my-image' src='https://th.bing.com/th/id/OIP.c2GTibztP9NW0_ITWQ2qwwHaGo?pid=ImgDet&rs=1'alt="" />
@@ -23,7 +20,7 @@ const SingleCandidate = () => {
                 <blockquote className="blockquote mb-0">
             <p className='mt-3'>
               {' '}
-              {candidate?.name}{' '}
+              {data?.fname}{' '}
             </p>
             <footer className="blockquote-footer">
               <cite title="Source Title">Enginner</cite>
@@ -31,7 +28,7 @@ const SingleCandidate = () => {
           </blockquote>
             <div>
               <p>Uttara,Dhaka</p>
-              <p>Email:{candidate?.email}</p>
+              <p>Email:{data?.pEmail}</p>
               </div>
               </div>
 
