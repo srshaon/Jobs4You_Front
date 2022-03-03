@@ -45,6 +45,8 @@ import Skills from "./components/Skills/Skills";
 import ProfileEdit from "./components/ProfileForm/ProfileEdit";
 import AllGovJobs from "./components/AddGovJob/AllGovJobs";
 import EditGovJob from "./components/AddGovJob/EditGovJob";
+import UploadViewResume from "./components/UploadViewResume/UploadViewResume";
+import MyJobs from "./components/Myjobs/Myjobs";
 
 
 function App() {
@@ -136,6 +138,12 @@ function App() {
             </Route>
             <Route path="/apply/:jobId">
               <Apply></Apply>
+            </Route>
+            <Route path="/uploadviewresume">
+              <UploadViewResume></UploadViewResume>
+            </Route>
+            <Route path="/myjobs">
+              <MyJobs></MyJobs>
             </Route>
 
             {/* Razu's Route */}
