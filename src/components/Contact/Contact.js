@@ -1,12 +1,16 @@
 
 import React, { useRef, useState } from 'react';
 import emailjs from 'emailjs-com';
+import { nanoid } from 'nanoid';
+import { Link, useHistory } from 'react-router-dom';
 
 emailjs.init(process.env.REACT_APP_EMAILJS_USER_ID);
 const Contact = () => {
+    let isAdmin = false;
     const form = useRef();
     const [message, setMessage] = useState('');
     const [messageColor, setMessageColor] = useState('unset');
+    const [id, setId] = useState(nanoid(4));
 
     const modalRemove = (e) => {
         e.target.style.display = 'none';
@@ -70,7 +74,7 @@ const Contact = () => {
                 </div>
 
                 <div className="">
-                    <div className="m-3 mx-5 my-5 py-3">
+                    <div className="mx-5 py-3 pt-5 mt-0">
                         <h1>Leave Us a Message</h1>
                         <p style={{maxWidth: '450px', minWidth: '220px'}}>Wanna reach out? So simple! fill out the form and your work is done. We are so responsive just as our site is with latest CSS and Bootstrap:3</p>
                         <div>
@@ -103,6 +107,13 @@ const Contact = () => {
                                     <p>119/A, Boston, massachusetts</p>
                                 </div>
                             </div>
+
+                            {
+                                !isAdmin ?
+                                <Link to={`/chat?name=${id}&room=${id}`}><button style={{border: '1px solid rgba(0, 0, 0, 0.2)', background: '#537895'}} className="p-3 text-light my-3 mx-3">Chat with Jobs4You</button></Link> :
+                                <Link to={`/chat?name=admin&room=admin`}><button style={{border: '1px solid rgba(0, 0, 0, 0.2)', background: '#537895'}} className="p-3 text-light my-3 mx-3">Chat with Jobs4You</button></Link>
+                            }
+
                         </div>
                     </div>
                 </div>
