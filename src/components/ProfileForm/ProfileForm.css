@@ -7,7 +7,7 @@
 
 .profile-form-div {
   
-  
+    width: 100vw;
   background: #ecf0f3;
   display: flex;
   align-items: center;
@@ -55,7 +55,7 @@
   margin-top: 30px;
 }
 
-.profile-form-label, .profile-form-input, .profile-form-button,.profile-form-textarea, .profile-form2-bio-textarea, .profile-form2-hobby-textarea, .profile-form1-address-textarea {
+.profile-form-label, .profile-form-input, .profile-form-button,.profile-form-textarea, .profile-form2-bio-textarea, .profile-form2-hobby-textarea, .profile-form1-headquarter-textarea, .profile-form1-address-textarea {
   display: block;
   width: 100%;
   padding: 0;
@@ -123,7 +123,7 @@
     
     margin: 5px 15px;
 }
-.profile-form2-bio-textarea, .profile-form2-hobby-textarea, .profile-form1-address-textarea{
+.profile-form2-bio-textarea, .profile-form2-hobby-textarea, .profile-form1-headquarter-textarea, .profile-form1-address-textarea{
   background: #ecf0f3;
   padding: 10px;
   padding-left: 20px;
