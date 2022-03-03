@@ -19,7 +19,7 @@ const Review = () => {
     data.ratingValue = rating;
     console.log(data);
 
-    fetch("https://damp-citadel-82174.herokuapp.com/reviews", {
+    fetch("https://afternoon-headland-45054.herokuapp.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

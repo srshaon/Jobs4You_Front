@@ -6,7 +6,7 @@ const Skills = () => {
     const [skill, setSkill] = useState('');
 
     // const [inputs, setInputs] = useState([]);
-    
+
     // const handleInput = (e, index) => {
     //     let temp = [...inputs];
     //     temp[index] = e.target.value;
@@ -16,7 +16,7 @@ const Skills = () => {
 
     // const addField = (e) => {
     //     e.preventDefault();
-        
+
     //     const len = fields.length;
     //     let temp = [...fields];
     //     console.log(fields);
@@ -39,30 +39,30 @@ const Skills = () => {
         // email != ''
         let addSkills = { email: '', skills: skills };
 
-        fetch('https://still-cliffs-68775.herokuapp.com/skills', {
+        fetch('https://afternoon-headland-45054.herokuapp.com/skills', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(addSkills)
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data?.acknowledged) {
-                e.target.reset();
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data?.acknowledged) {
+                    e.target.reset();
+                }
+            })
     }
 
     return (
-        <div style={{minHeight: '70vh', marginTop: '50px'}}>
+        <div style={{ minHeight: '70vh', marginTop: '50px' }}>
             <h2 className="text-center mb-5">Add your skills (Seperate with ' ,')</h2>
             <form onSubmit={handleSubmit}>
                 {
                     <><input onChange={handleInput} /><button>Submit</button></>
                 }
             </form>
-            
+
         </div>
     )
 }

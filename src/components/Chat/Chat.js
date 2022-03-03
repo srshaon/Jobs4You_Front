@@ -15,12 +15,12 @@ let socket;
 const Chat = () => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
-    const [allUsers, setAllUsers] = useState([]); 
+    const [allUsers, setAllUsers] = useState([]);
     const [users, setUsers] = useState([]);
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
-    const ENDPOINT = 'https://still-cliffs-68775.herokuapp.com/';
+    const ENDPOINT = 'https://afternoon-headland-45054.herokuapp.com/';
 
     const location = useLocation();
     useEffect(() => {
@@ -39,7 +39,7 @@ const Chat = () => {
         // console.log(socket);
 
         socket.emit('join', { name, room }, (error) => {
-            if(error) {
+            if (error) {
                 window.alert(error);
             }
         });
@@ -49,7 +49,7 @@ const Chat = () => {
             socket.off('disconnect');
             socket.off('join');
         };
-        
+
     }, [location.search]);
 
 
@@ -58,14 +58,14 @@ const Chat = () => {
             setMessages([...messages, message]);
         });
 
-        socket.on('getUsers', ({ allUsers }) =>{
+        socket.on('getUsers', ({ allUsers }) => {
             setAllUsers(allUsers);
         });
 
         socket.on('roomData', ({ users }) => {
             setUsers(users);
         });
-        
+
         return () => {
             socket.off('message');
             socket.off('getUsers');
@@ -89,19 +89,19 @@ const Chat = () => {
 
     return (
         <div className="chatOuterContainer">
-                {
-                    !isAdmin && <>
-                        <div className="chatContainer">
-                            <InfoBar name={name} room={room} />
-                            <Messages messages={messages} name={name} />
-                            <ChatInput message={message} setMessage={setMessage} sendMessage={sendMessage} />
+            {
+                !isAdmin && <>
+                    <div className="chatContainer">
+                        <InfoBar name={name} room={room} />
+                        <Messages messages={messages} name={name} />
+                        <ChatInput message={message} setMessage={setMessage} sendMessage={sendMessage} />
 
-                        </div>
-                        <TextContainer users={users} />
-                    </>
-                }
+                    </div>
+                    <TextContainer users={users} />
+                </>
+            }
 
-                {/* {
+            {/* {
                     isAdmin && <div>
                         <ChatList allUsers={allUsers} />
                     </div>
