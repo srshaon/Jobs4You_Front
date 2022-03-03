@@ -28,7 +28,8 @@ const Result = props => {
     };
     return (
         <>
-
+            {/* <h2>Result:</h2> */}
+            {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
             <div className='profile-form-div' >
                 <div class="profile-form-container">
                     <form style={{ height: '300px', marginTop: '80px' }} onSubmit={handleSubmit(onSubmit)}>
