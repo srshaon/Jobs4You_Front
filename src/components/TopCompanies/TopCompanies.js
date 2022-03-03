@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Slider from "react-slick";
-import LogoWallex from '../../assets/Images/logo-wallex.png';
+// import LogoWallex from '../../assets/Images/logo-wallex.png';
 
 const TopCompanies = () => {
     const [companies, setCompanies] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/top')
+        fetch('https://still-cliffs-68775.herokuapp.com/top')
         .then(res => res.json())
         .then(data => setCompanies(data));
     }, []);

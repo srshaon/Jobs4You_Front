@@ -20,7 +20,7 @@ const Chat = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
-    const ENDPOINT = 'https://damp-citadel-82174.herokuapp.com/';
+    const ENDPOINT = 'https://still-cliffs-68775.herokuapp.com/';
 
     const location = useLocation();
     useEffect(() => {

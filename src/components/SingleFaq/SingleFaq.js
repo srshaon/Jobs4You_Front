@@ -22,7 +22,7 @@ const SingleFaq = (props) => {
     const fullDoc = { _id: _id, comment: comment, reply: reply.reply };
     
 
-    fetch('http://localhost:5000/customfaq', {
+    fetch('https://still-cliffs-68775.herokuapp.com/customfaq', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

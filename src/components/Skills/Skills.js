@@ -31,7 +31,7 @@ const Skills = () => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault(e);
+        e.preventDefault();
 
         const temp = skill.split(', ');
 
@@ -39,7 +39,7 @@ const Skills = () => {
         // email != ''
         let addSkills = { email: '', skills: skills };
 
-        fetch('http://localhost:5000/skills', {
+        fetch('https://still-cliffs-68775.herokuapp.com/skills', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
