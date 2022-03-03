@@ -46,7 +46,7 @@ import ProfileEdit from "./components/ProfileForm/ProfileEdit";
 import AllGovJobs from "./components/AddGovJob/AllGovJobs";
 import EditGovJob from "./components/AddGovJob/EditGovJob";
 import UploadViewResume from "./components/UploadViewResume/UploadViewResume";
-import MyJobs from "./components/Myjobs/Myjobs";
+import MyJobs from "./components/Myjobs/MyJobs";
 
 
 function App() {
