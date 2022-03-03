@@ -33,15 +33,17 @@ const Filteredjobs = () => {
   };
 
   useEffect(() => {
-    axios.get("https://afternoon-headland-45054.herokuapp.com/jobs").then((res) => {
-      const approvedJobs = res.data.filter(
-        (job) => job?.status?.toLowerCase() === "approved"
-      );
+    axios
+      .get("https://afternoon-headland-45054.herokuapp.com/jobs")
+      .then((res) => {
+        const approvedJobs = res.data.filter(
+          (job) => job?.status?.toLowerCase() === "approved"
+        );
 
-      setCategories(filteredData(approvedJobs, "category"));
-      setLocations(filteredData(approvedJobs, "jobLocation"));
-      setStatus(filteredData(approvedJobs, "employmentStatus"));
-    });
+        setCategories(filteredData(approvedJobs, "category"));
+        setLocations(filteredData(approvedJobs, "jobLocation"));
+        setStatus(filteredData(approvedJobs, "employmentStatus"));
+      });
   }, []);
 
   if (control.length === 0) {
@@ -59,7 +61,7 @@ const Filteredjobs = () => {
         >
           Find the right career for you
         </h2>
-        <div className="my-4 text-center">
+        <div className="text-center">
           <button
             className="px-3 py-2 button"
             onClick={() => setControl("categories")}
