@@ -27,9 +27,8 @@ const Footer = () => {
                   <FaPhoneAlt className="footer-icon" />
                   <p
                     style={{
-                      color: "black",
-                      fontSize: "23px",
-                      fontWeight: "1200",
+                      color: "white",
+                      fontSize: "18px",
                     }}
                   >
                     +0001111
@@ -37,13 +36,13 @@ const Footer = () => {
                 </Col>
                 <Col>
                   <FaAt className="footer-icon" />
-                  <p style={{ color: "black", fontSize: "23px" }}>
+                  <p style={{ color: "white", fontSize: "18px" }}>
                     jobs4you@email.com
                   </p>
                 </Col>
                 <Col>
                   <FaMapMarkerAlt className="footer-icon" />
-                  <p style={{ color: "black", fontSize: "23px" }}>
+                  <p style={{ color: "white", fontSize: "18px" }}>
                     California, USA
                   </p>
                 </Col>
