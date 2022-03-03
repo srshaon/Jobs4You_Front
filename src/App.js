@@ -38,6 +38,13 @@ import PdfCreator from "./components/PdfCreator/PdfCreator";
 import Apply from "./components/Apply/Apply";
 import ManageJob from "./components/ManageJob/ManageJob";
 import ManageJobs from "./components/ManageJobs/ManageJobs";
+import AccountForm from "./components/ProfileForm/AccountForm";
+import Chat from "./components/Chat/Chat";
+import Chart from "./components/Chart/Chart";
+import Skills from "./components/Skills/Skills";
+import ProfileEdit from "./components/ProfileForm/ProfileEdit";
+import AllGovJobs from "./components/AddGovJob/AllGovJobs";
+import EditGovJob from "./components/AddGovJob/EditGovJob";
 
 
 function App() {
@@ -66,6 +73,9 @@ function App() {
             <Route path="/allreviews">
               <AllReviews></AllReviews>
             </Route>
+            <Route path="/profileform">
+              <AccountForm></AccountForm>
+            </Route>
 
             {/* Rifat's Route */}
             <Route path="/resource/:id">
@@ -76,6 +86,15 @@ function App() {
             </Route>
             <Route path="/faq">
               <Faq></Faq>
+            </Route>
+            <Route path="/chat">
+              <Chat></Chat>
+            </Route>
+            <Route path="/chart">
+              <Chart></Chart>
+            </Route>
+            <Route path="/skills">
+              <Skills></Skills>
             </Route>
 
             {/* Sadia's Route */}
@@ -134,6 +153,16 @@ function App() {
             </Route>
             <Route path="/create-resume">
               <PdfCreator></PdfCreator>
+            </Route>
+            <Route path="/profileedit/:profileId">
+              <ProfileEdit />
+            </Route>
+
+            <Route path="/allgovjobs">
+              <AllGovJobs />
+            </Route>
+            <Route path="/edit/:jobId">
+              <EditGovJob />
             </Route>
 
             {/* Nuzhat's Route  */}
