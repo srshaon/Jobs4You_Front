@@ -9,7 +9,7 @@ const UploadViewResume = () => {
     const [resumeView, setResumeView] = useState([]);
     useEffect(() => {
 
-        fetch("http://localhost:5000/resume")
+        fetch("https://afternoon-headland-45054.herokuapp.com/resume")
             .then(res => res.json())
             .then(data => setResumeView(data))
 
@@ -31,7 +31,7 @@ const UploadViewResume = () => {
         formData.append("resumepdfFile", resumepdfFile);
 
 
-        fetch("http://localhost:5000/resume", {
+        fetch("https://afternoon-headland-45054.herokuapp.com/resume", {
             method: "POST",
             body: formData,
         })
