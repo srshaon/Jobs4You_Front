@@ -8,8 +8,8 @@ const Header = () => {
   const { user, logOut } = useAuth();
 
   return (
-    <Navbar collapseOnSelect expand="lg" variant="dark" className="nav-bg">
-      <Container className="nav-container">
+    <Navbar collapseOnSelect expand="lg" variant="dark" className="nav-bg ">
+      <Container className="d-flex align-items-center justify-items-center">
         <Navbar.Brand
           to="/home"
           className="text-white"
@@ -45,7 +45,7 @@ const Header = () => {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ms-auto">
+          <Nav className="ms-auto d-flex align-items-center justify-content-center">
             <NavLink className="nav-link" to="/home">
               HOME
             </NavLink>
@@ -68,7 +68,7 @@ const Header = () => {
                   Cover Letter
                 </NavLink>
                 <NavLink className="dropdown-item" to="/interview">
-                  Interview
+                  Interview Tips
                 </NavLink>
               </NavDropdown>
             </NavDropdown>
@@ -84,12 +84,17 @@ const Header = () => {
               ABOUT US
             </NavLink>
             {user?.email && (
-              <Navbar.Brand to="/home" className="header-text text-danger">
-                {user.displayName}{" "}
+              <Navbar.Brand className="header-text">
+                <span className="me-2">
+                  <img src={user.photoURL} alt="" className="profile-img" />
+                </span>
+                {user.displayName}
               </Navbar.Brand>
             )}
             {user?.email ? (
-              <Button onClick={logOut}>Sign out</Button>
+              <button className=" signout-btn" onClick={logOut}>
+                SIGN OUT
+              </button>
             ) : (
               <NavLink className="nav-link" to="/login">
                 SIGN IN
