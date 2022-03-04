@@ -12,6 +12,8 @@ import apple_app from "../../assets/Images/apple_app.jpg";
 import { Button, Col, Row } from "react-bootstrap";
 import Header from "../Header/Haeder";
 import image from "../../assets/Images/banner3.png";
+import Companies from "../Companies/Companies";
+import FeaturedJobs from "../FeaturedJobs/FeaturedJobs";
 
 const Home = () => {
   return (
@@ -19,13 +21,13 @@ const Home = () => {
       <Cover></Cover>
       <main className="main-container">
         <Filteredjobs></Filteredjobs>
-
+        <FeaturedJobs></FeaturedJobs>
         <div className="explore-bg">
           <div className="container">
             <div className="explore-container row align-items-center d-md-flex">
               <Col md={5}>
-                <div className="explore-text ps-3">
-                  <h3 className="mb-4">
+                <div className="explore-text ps-4">
+                  <h3 className="mb-3">
                     Explore a faster, easier and better job search
                   </h3>
                   <ul className="checkmark">
@@ -49,7 +51,7 @@ const Home = () => {
                       </span>
                     </li>
                   </ul>
-                  <Button className="explore-btn mt-3 p-3">Browse Jobs</Button>
+                  <Button className="explore-btn p-3">Browse Jobs</Button>
                 </div>
               </Col>
               <Col md={7}>
@@ -58,8 +60,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <TopCompanies></TopCompanies>
-        <div className="container mobile-app my-5">
+        {/* <TopCompanies></TopCompanies> */}
+        <Companies></Companies>
+        <div className="container mobile-app my-5 p-2">
           <div className="row align-items-center d-md-flex">
             <Col md={7}>
               <div className="text-center">

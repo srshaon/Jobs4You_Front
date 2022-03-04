@@ -127,7 +127,10 @@ const Footer = () => {
           <div className="container">
             <div className="row align-items-center text-center">
               <div className="col-md-6">
-                <span>&copy; 2022 Nuzhat Parveen | All rights reserved</span>
+                <span>
+                  &copy; 2022 <span style={{ color: "brown" }}>Team Alpha</span>{" "}
+                  | All rights reserved
+                </span>
               </div>
 
               <div className="col-md-6">

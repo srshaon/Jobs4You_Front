@@ -47,6 +47,7 @@ import AllGovJobs from "./components/AddGovJob/AllGovJobs";
 import EditGovJob from "./components/AddGovJob/EditGovJob";
 import UploadViewResume from "./components/UploadViewResume/UploadViewResume";
 import MyJobs from "./components/Myjobs/MyJobs";
+import ApplySuccess from "./components/ApplySuccess/ApplySuccess";
 
 
 function App() {
@@ -144,6 +145,9 @@ function App() {
             </Route>
             <Route path="/myjobs">
               <MyJobs></MyJobs>
+            </Route>
+            <Route path="/success">
+              <ApplySuccess></ApplySuccess>
             </Route>
 
             {/* Razu's Route */}
