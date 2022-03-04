@@ -70,7 +70,7 @@ const LogIn = () => {
   // registration 
 
   const userFormDisplay = () => {
-    setRole('user');
+    setRole('seeker');
     console.log(role);
     console.log('hitted first form')
     document.getElementById('user-signup-form').style.visibility = 'visible'
