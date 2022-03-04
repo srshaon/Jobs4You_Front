@@ -10,7 +10,7 @@ const AddJob = () => {
     const requirements = data.additionalRequirements.split(/\r?\n/g);
     const newData = { ...data, additionalRequirements: requirements };
     console.log(newData);
-    axios.post("https://still-cliffs-68775.herokuapp.com/jobs", newData).then((res) => {
+    axios.post("https://afternoon-headland-45054.herokuapp.com/jobs", newData).then((res) => {
       if (res.data.insertedId) {
         alert("added successfully");
         reset();

@@ -1,0 +1,81 @@
+# npm resolution error report
+
+2022-03-03T23:16:22.369Z
+
+While resolving: job4you_front@0.1.0
+Found: react@17.0.2
+node_modules/react
+  react@"^17.0.2" from the root project
+
+Could not resolve dependency:
+peer react@">= 15.4.1 < 17.0.0-0" from react-animate-on-scroll@2.1.5
+node_modules/react-animate-on-scroll
+  react-animate-on-scroll@"^2.1.5" from the root project
+
+Fix the upstream dependency conflict, or retry
+this command with --force, or --legacy-peer-deps
+to accept an incorrect (and potentially broken) dependency resolution.
+
+Raw JSON explanation object:
+
+{
+  "code": "ERESOLVE",
+  "current": {
+    "name": "react",
+    "version": "17.0.2",
+    "whileInstalling": {
+      "name": "job4you_front",
+      "version": "0.1.0",
+      "path": "C:\\WebDev_Batch04\\End_Game\\Final_Team_Project\\Jobs4You_Front"
+    },
+    "location": "node_modules/react",
+    "isWorkspace": false,
+    "dependents": [
+      {
+        "type": "prod",
+        "name": "react",
+        "spec": "^17.0.2",
+        "from": {
+          "location": "C:\\WebDev_Batch04\\End_Game\\Final_Team_Project\\Jobs4You_Front"
+        }
+      }
+    ]
+  },
+  "currentEdge": {
+    "type": "prod",
+    "name": "react",
+    "spec": "^17.0.2",
+    "from": {
+      "location": "C:\\WebDev_Batch04\\End_Game\\Final_Team_Project\\Jobs4You_Front"
+    }
+  },
+  "edge": {
+    "type": "peer",
+    "name": "react",
+    "spec": ">= 15.4.1 < 17.0.0-0",
+    "error": "INVALID",
+    "from": {
+      "name": "react-animate-on-scroll",
+      "version": "2.1.5",
+      "whileInstalling": {
+        "name": "job4you_front",
+        "version": "0.1.0",
+        "path": "C:\\WebDev_Batch04\\End_Game\\Final_Team_Project\\Jobs4You_Front"
+      },
+      "location": "node_modules/react-animate-on-scroll",
+      "isWorkspace": false,
+      "dependents": [
+        {
+          "type": "prod",
+          "name": "react-animate-on-scroll",
+          "spec": "^2.1.5",
+          "from": {
+            "location": "C:\\WebDev_Batch04\\End_Game\\Final_Team_Project\\Jobs4You_Front"
+          }
+        }
+      ]
+    }
+  },
+  "strictPeerDeps": false,
+  "force": false
+}

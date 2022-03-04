@@ -4,11 +4,13 @@ import { withRouter } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 import clearAction from "./clearAction";
+import { useCreateProfileMutation } from "../../Redux-handler/ManageProfiles";
+import { useHistory } from 'react-router';
 const ProfileForm3 = (props) => {
     const { register, handleSubmit } = useForm();
     const { actions, state } = useStateMachine({ clearAction });
     const onSubmit = (data) => {
-        const splitBio2 = state.data.bio.split(/\r?\n/g);
+        const splitBio2 = state?.data?.bio?.split(/\r?\n/g);
         const newData2 = { ...state.data, bio: splitBio2 };
         console.log(newData2);
         console.log(data);
