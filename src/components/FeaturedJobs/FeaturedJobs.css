@@ -1,0 +1,27 @@
+.featured-job-card {
+  background: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  /* border: 3px solid var(--color-primary-dark); */
+  border-radius: 5px;
+}
+
+.featured-job-btn-full {
+  background-color: var(--color-primary-dark);
+  color: white;
+  border-radius: 5px;
+}
+.featured-job-btn-part {
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 5px;
+}
+.featured-job-btn-hybrid {
+  background-color: var(--color-primary-light);
+  color: white;
+  border-radius: 5px;
+}
+.featured-job-btn-remote {
+  background-color: orange;
+  color: white;
+  border-radius: 5px;
+}

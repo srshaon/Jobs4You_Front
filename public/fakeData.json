@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "name": "IBM",
+        "year": 1995,
+        "postedJob": 300,
+        "hired": 60,
+        "review": 4.0,
+        "img": "https://i.ibb.co/HH2dsS6/IBM.png"
+    },
+    {
+        "id": 2,
+        "name": "YMCA",
+        "year": 1982,
+        "postedJob": 270,
+        "hired": 85,
+        "review": 4.0,
+        "img": "https://i.ibb.co/Bsgq3w8/YMCA.png"
+    },
+    {
+        "id": 3,
+        "name": "Desjardins",
+        "year": 1900,
+        "postedJob": 500,
+        "hired": 105,
+        "review": 3.9,
+        "img": "https://i.ibb.co/6vNZRZw/Desjardins.png"
+    },
+    {
+        "id": 4,
+        "name": "Royal Bank Canada",
+        "year": 1864,
+        "postedJob": 150,
+        "hired": 50,
+        "review": 4.0,
+        "img": "https://i.ibb.co/h1MMXRw/RBC.png"
+    },
+    {
+        "id": 5,
+        "name": "City of Toronto",
+        "year": 1997,
+        "postedJob": 600,
+        "hired": 250,
+        "review": 4.2,
+        "img": "https://i.ibb.co/85XFS6s/city-of-toronto.png"
+    },
+    {
+        "id": 6,
+        "name": "Rogers",
+        "year": 1960,
+        "postedJob": 320,
+        "hired": 95,
+        "review": 4.5,
+        "img": "https://i.ibb.co/23xZd1k/rogers.png"
+    }
+]

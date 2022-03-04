@@ -2,6 +2,12 @@
   background-color: #9c9c9c60;
 }
 
+.jobpost-form {
+  width: 65%;
+  background-color: white;
+  opacity: 0.7;
+}
+
 .add-job form {
   display: flex;
   flex-direction: column;
@@ -12,20 +18,37 @@
 
 .add-job form input,
 textarea {
-  width: 50%;
-  line-height: 40px;
-  border: none;
+  width: 80%;
+
+  line-height: 50px;
+  border: 1px solid grey;
   border-radius: 5px;
   margin-bottom: 25px;
   padding-left: 11px;
+  background: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.submit-btn {
+  width: 30% !important;
+  background-color: var(--color-primary) !important;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 19px;
+}
+
+.submit-btn:hover {
+  background-color: brown !important;
+  color: black;
 }
 
 @media (max-width: 576px) {
-  .add-car form input {
+  .add-job form input {
     width: 100%;
   }
 
-  .add-car textarea {
+  .add-job textarea {
     width: 100%;
   }
 }

@@ -1,4 +1,3 @@
-import "./PdfCreator.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
@@ -6,7 +5,7 @@ import ModalMessage from "./../ModalMessage/ModalMessage";
 import { saveAs } from "file-saver";
 
 const PdfCreator = () => {
-  // const{user,admin}=useAuth()
+  const [downloading, setDownloading] = useState(false);
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
   const [imgUrl, setImgUrl] = useState("");
@@ -27,17 +26,27 @@ const PdfCreator = () => {
       date: new Date().toLocaleString(),
       // email:user.email,
       img: imgUrl,
+      location: data.location,
+      education: data.education,
+      expYear: data.expYear,
+      company: data.company,
+      designation: data.designation,
+      skills: data.skills,
+      languages: data.languages,
+      institute: data.institute,
     };
+    setDownloading(true);
     axios
-      .post("https://still-cliffs-68775.herokuapp.com/createPdf", info)
+      .post("https://afternoon-headland-45054.herokuapp.com/createPdf", info)
       .then((response) => {
         axios
-          .get("https://still-cliffs-68775.herokuapp.com/fetch-pdf", {
+          .get("https://afternoon-headland-45054.herokuapp.com/fetch-pdf", {
             responseType: "blob",
           })
           .then((res) => {
             const pdfBlob = new Blob([res.data], { type: "application/pdf" });
             saveAs(pdfBlob, "Resume.pdf");
+            setDownloading(false);
             console.log(res.data);
             handleShow();
             reset();
@@ -61,13 +70,20 @@ const PdfCreator = () => {
   const productImageRegister = register("productImage");
   // {required: true}
   return (
-    <>
-      <ModalMessage show={show} setShow={setShow} message={"Submitted"} />
-      <div className="my-5 py-5 d-flex justify-content-center row">
+    <div className="pb-5">
+      {downloading && (
+        <h3 className="mb-2 mt-5 text-center" style={{ color: "brown" }}>
+          Resume Downloading....
+        </h3>
+      )}
+      <ModalMessage
+        show={show}
+        setShow={setShow}
+        message={"Resume Downloaded"}
+      />
+      <div className="my-5 d-flex justify-content-center row mx-auto">
         <div className="p-4 rounded col-lg-6 col-sm-10 shadow">
-          <h2 className="text-center text-primary mb-4">
-            Create a Short Resume
-          </h2>
+          <h2 className="text-center text-primary mb-4">Create a Resume</h2>
           <form onSubmit={handleSubmit(onSubmit)}>
             <input
               className="form-control mt-2"
@@ -83,9 +99,51 @@ const PdfCreator = () => {
             />
             <input
               className="form-control mt-2"
+              type="text"
+              placeholder="Location"
+              {...register("location", { required: true })}
+            />
+            <input
+              className="form-control mt-2"
+              type="text"
+              placeholder="Last Education Status"
+              {...register("education", { required: true })}
+            />
+            <input
+              className="form-control mt-2"
+              type="text"
+              placeholder="Institute"
+              {...register("institute", { required: true })}
+            />
+            <input
+              className="form-control mt-2"
               type="number"
-              placeholder="Phone"
-              {...register("phone", { required: true })}
+              placeholder="Experience year (optional)"
+              {...register("expYear")}
+            />
+            <input
+              className="form-control mt-2"
+              type="text"
+              placeholder="Company name (optional)"
+              {...register("company")}
+            />
+            <input
+              className="form-control mt-2"
+              type="text"
+              placeholder="Designation (optional)"
+              {...register("designation")}
+            />
+            <input
+              className="form-control mt-2"
+              type="text"
+              placeholder="skills"
+              {...register("skills", { required: true })}
+            />
+            <input
+              className="form-control mt-2"
+              type="text"
+              placeholder="Languages"
+              {...register("languages", { required: true })}
             />
             <input
               className="form-control mt-2"
@@ -100,12 +158,15 @@ const PdfCreator = () => {
             {uploading ? (
               <p>Uploading....</p>
             ) : (
-              <input className="form-control mt-2 bg-primary" type="Submit" />
+              <input
+                className="form-control mt-3 p-3 submit-btn mx-auto"
+                type="Submit"
+              />
             )}
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

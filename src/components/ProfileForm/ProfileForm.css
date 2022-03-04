@@ -3,11 +3,10 @@
     flex-direction: row;
 } */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&display=swap");
 
 .profile-form-div {
-  
-  
+  /* width: 100vw; */
   background: #ecf0f3;
   display: flex;
   align-items: center;
@@ -16,14 +15,10 @@
   place-items: center;
   overflow: hidden;
   font-family: poppins;
-  
 }
 
 .profile-form-container {
-    
   position: relative;
-  
-  
   border-radius: 20px;
   padding: 40px;
   box-sizing: border-box;
@@ -45,17 +40,23 @@
   margin-top: 10px;
   font-weight: 900;
   font-size: 1.8rem;
-  color: #1DA1F2;
+  color: #1da1f2;
   letter-spacing: 1px;
 }
 
 .profile-form-inputs {
-    
   text-align: left;
   margin-top: 30px;
 }
 
-.profile-form-label, .profile-form-input, .profile-form-button,.profile-form-textarea, .profile-form2-bio-textarea, .profile-form2-hobby-textarea, .profile-form1-address-textarea {
+.profile-form-label,
+.profile-form-input,
+.profile-form-button,
+.profile-form-textarea,
+.profile-form2-bio-textarea,
+.profile-form2-hobby-textarea,
+.profile-form1-headquarter-textarea,
+.profile-form1-address-textarea {
   display: block;
   width: 100%;
   padding: 0;
@@ -83,53 +84,53 @@
   height: 50px;
   width: 400px;
   font-size: 14px;
-  
+
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }
 .profile-form-textarea {
-    background: #ecf0f3;
-    padding: 10px;
-    padding-left: 20px;
-    height: 50px;
-    width: 830px;
-    font-size: 14px;
-    
-    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
-  }
+  background: #ecf0f3;
+  padding: 10px;
+  padding-left: 20px;
+  height: 50px;
+  width: 830px;
+  font-size: 14px;
+
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
 .profile-form-button {
   font-size: larger;
   color: white;
   margin-top: 20px;
-  background: #1DA1F2;
-  height: 40px;
+  background: var(--color-primary);
+  /* height: 40px; */
   border-radius: 10px;
   cursor: pointer;
   font-weight: 500;
   /* font-weight: bold; */
   box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
   transition: 0.5s;
-  width: 40%;
-  
+  width: 30%;
 }
 
 .profile-form-button:hover {
   box-shadow: none;
 }
-.profile-form-input-pair{
-    
-    margin: 5px 15px;
+.profile-form-input-pair {
+  margin: 5px 15px;
 }
-.profile-form-input{
-    
-    margin: 5px 15px;
+.profile-form-input {
+  margin: 5px 15px;
 }
-.profile-form2-bio-textarea, .profile-form2-hobby-textarea, .profile-form1-address-textarea{
+.profile-form2-bio-textarea,
+.profile-form2-hobby-textarea,
+.profile-form1-headquarter-textarea,
+.profile-form1-address-textarea {
   background: #ecf0f3;
   padding: 10px;
   padding-left: 20px;
-  
+
   width: 830px;
   font-size: 14px;
-  
+
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }

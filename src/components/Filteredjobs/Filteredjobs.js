@@ -13,61 +13,37 @@ const Filteredjobs = () => {
   const [status, setStatus] = useState([]);
   const [control, setControl] = useState("categories");
 
+  const filteredData = (collection, property) => {
+    const newList = collection.map((item) => item[property]);
+    const uniqueCollection = [...new Set(newList)];
+
+    let jobList = [];
+    for (let job of uniqueCollection) {
+      const similarJobs = newList.filter(
+        (item) => item?.toLowerCase() === job?.toLowerCase()
+      );
+      const jobData = {
+        job: job,
+        totalJobs: similarJobs.length,
+      };
+      jobList.push(jobData);
+    }
+
+    return jobList;
+  };
+
   useEffect(() => {
-    axios.get("https://still-cliffs-68775.herokuapp.com/jobs").then((res) => {
-      const approvedJobs = res.data.filter(
-        (job) => job?.status?.toLowerCase() === "approved"
-      );
-      // console.log(res.data);
-
-      const categoryList = approvedJobs?.map((category) => category.category);
-      const uniqueCategories = [...new Set(categoryList)];
-
-      let categoriesJobsList = [];
-      for (let categoryName of uniqueCategories) {
-        const similarCategories = categoryList.filter(
-          (category) => category === categoryName
+    axios
+      .get("https://afternoon-headland-45054.herokuapp.com/jobs")
+      .then((res) => {
+        const approvedJobs = res.data.filter(
+          (job) => job?.status?.toLowerCase() === "approved"
         );
-        const jobCategory = {
-          categoryName: categoryName,
-          totaljobs: similarCategories.length,
-        };
-        categoriesJobsList.push(jobCategory);
-      }
-      setCategories(categoriesJobsList);
 
-      const LocationList = approvedJobs?.map(
-        (location) => location.jobLocation
-      );
-      const uniqueLocations = [...new Set(LocationList)];
-      let locationJobList = [];
-      for (let locationName of uniqueLocations) {
-        const similarlocation = LocationList.filter(
-          (location) => location === locationName
-        );
-        const jobLocation = {
-          locationName: locationName,
-          totaljobs: similarlocation.length,
-        };
-        locationJobList.push(jobLocation);
-      }
-      setLocations(locationJobList);
-
-      const statusList = approvedJobs?.map((status) => status.employmentStatus);
-      const uniqueStatus = [...new Set(statusList)];
-      let statusJobList = [];
-      for (let statusName of uniqueStatus) {
-        const similarStatus = statusList.filter(
-          (status) => status === statusName
-        );
-        const jobLocation = {
-          statusName: statusName,
-          totaljobs: similarStatus.length,
-        };
-        statusJobList.push(jobLocation);
-      }
-      setStatus(statusJobList);
-    });
+        setCategories(filteredData(approvedJobs, "category"));
+        setLocations(filteredData(approvedJobs, "jobLocation"));
+        setStatus(filteredData(approvedJobs, "employmentStatus"));
+      });
   }, []);
 
   if (control.length === 0) {
@@ -75,33 +51,41 @@ const Filteredjobs = () => {
   }
 
   return (
-    <div className="browse-window">
-      <div className="text-center">
-        <h2 style={{ fontSize: "35px", color: "brown" }}>
-          Extend your job search with Jobs4You
+    <div className="container">
+      <div>
+        <h2
+          className="text-center"
+          style={{
+            color: "brown",
+          }}
+        >
+          Find the right career for you
         </h2>
-        <div className="py-4">
+        <div className="text-center">
           <button
-            className="p-2 button"
+            className="px-3 py-2 button"
             onClick={() => setControl("categories")}
           >
             Categories
             <BiChevronDown style={{ fontSize: "30px", fontWeight: "900" }} />
           </button>
           <button
-            className="p-2 button"
+            className="px-3 py-2 button"
             onClick={() => setControl("locations")}
           >
             Locations
             <BiChevronDown style={{ fontSize: "30px", fontWeight: "900" }} />
           </button>
-          <button className="p-2 button" onClick={() => setControl("status")}>
+          <button
+            className="px-3 py-2 button"
+            onClick={() => setControl("status")}
+          >
             Employment Status
             <BiChevronDown style={{ fontSize: "30px", fontWeight: "900" }} />
           </button>
         </div>
       </div>
-      <div>
+      <div className="my-5">
         {control === "categories" && (
           <Categories jobs={categories}></Categories>
         )}

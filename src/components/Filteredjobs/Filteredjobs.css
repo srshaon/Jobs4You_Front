@@ -1,7 +1,15 @@
 .button {
-  background-color: skyblue;
+  /* background-color: var(--color-primary-dark); */
+  background-image: linear-gradient(
+    to right,
+    #537890,
+    #6b879d,
+    #6b879d,
+    #537890
+  );
   border: none;
-  font-size: 20px;
+  font-size: 16px;
+  color: black !important;
 }
 
 .browse-window {
@@ -20,3 +28,8 @@
 
   /* box-shadow: 3px 3px 3px 3px #537890; */
 }
+
+/* .container {
+  width: 1200px;
+  margin: 0 auto;
+} */
