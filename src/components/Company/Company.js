@@ -6,7 +6,7 @@ const Company = (props) => {
   const { name, year, postedJob, hired, review, img } = props.company;
   return (
     <Col>
-      <div className="card mx-auto">
+      <div className="company-card mx-auto">
         <div className="company-img d-md-flex align-items-center justify-content-center text-center">
           <div className="company-img-bg">
             <h4 className="mb-3">{name}</h4>
