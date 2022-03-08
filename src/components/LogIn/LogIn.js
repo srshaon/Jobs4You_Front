@@ -12,10 +12,13 @@ const LogIn = () => {
   } = useAuth();
 
   const [error, setError] = useState("");
+  const [url, setUrl] = useState("");
   const location = useLocation();
-  const redirect_Url = location.state?.from || '/profileform';
+  console.log(location);
+  let redirect_Url = location.state?.from || '/profileform';
+  let redirect_Url2 = '/profileform';
   const redirect = () => {
-    history.push(redirect_Url);
+    history.push(redirect_Url2);
 
   }
   const handleGoogleSignIn = () => {
@@ -71,6 +74,7 @@ const LogIn = () => {
 
   const userFormDisplay = () => {
     setRole('seeker');
+    redirect_Url = '/profileform';
     console.log(role);
     console.log('hitted first form')
     document.getElementById('user-signup-form').style.visibility = 'visible'
@@ -84,6 +88,7 @@ const LogIn = () => {
   }
   const companyFormDisplay = () => {
     setRole('company');
+    redirect_Url = '/profileform';
     console.log(role);
     console.log('hitted second form form')
     // document.getElementById('company-signup-form').style.visibility = 'visible'
