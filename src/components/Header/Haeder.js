@@ -1,152 +1,109 @@
 import React from "react";
+import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import "./Header.css";
 
 const Header = () => {
-  const activeStyle = {
-    fontWeight: "bold",
-    color: "black",
-  };
+  const { user, logOut } = useAuth();
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light nav-bg">
-      <div className="container container-fluid">
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo01"
-          aria-controls="navbarTogglerDemo01"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+    <Navbar collapseOnSelect expand="lg" variant="dark" className="nav-bg ">
+      <Container className="d-flex align-items-center justify-items-center">
+        <Navbar.Brand
+          to="/home"
+          className="text-white"
+          style={{
+            fontFamily: "Alegreya, sans-serif",
+            fontSize: "32px",
+            fontWeight: "500",
+          }}
         >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <NavLink
-            className="navbar-brand text-white"
-            to="/home"
+          <span
             style={{
-              fontSize: "35px",
-              fontWeight: "500",
+              color: "white",
+              fontSize: "45px",
+              fontWeight: "900",
             }}
           >
-            <span
-              style={{
-                color: "white",
-                fontSize: "42px",
-                fontWeight: "900",
-              }}
-            >
-              J
-            </span>
-            obs
-            <span
-              style={{
-                color: "orangered",
-                fontWeight: "900",
-                fontSize: "65px",
-              }}
-            >
-              4
-            </span>
-            <span
-              style={{ color: "white", fontSize: "42px", fontWeight: "900" }}
-            >
-              Y
-            </span>
-            ou
-          </NavLink>
-          <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <NavLink
-                className="nav-link active text-white"
-                aria-current="page"
-                to="/home"
-              >
-                Home
+            J
+          </span>
+          obs
+          <span
+            style={{
+              color: "orangered",
+              fontWeight: "900",
+              fontSize: "65px",
+            }}
+          >
+            4
+          </span>
+          <span style={{ color: "white", fontSize: "45px", fontWeight: "900" }}>
+            Y
+          </span>
+          ou
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="ms-auto d-flex align-items-center justify-content-center">
+            <NavLink className="nav-link" to="/home">
+              HOME
+            </NavLink>
+            <NavDropdown title="JOB SEEKER" id="collasible-nav-dropdown">
+              <NavLink className="dropdown-item" to="/browseJob">
+                Browse Jobs
               </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link text-white" to="/jobSeeker">
-                Job Seeker
+              <NavLink className="dropdown-item" to="/companies">
+                Browse Companies
               </NavLink>
-            </li>
-
-            <li class="nav-item dropdown">
-              <NavLink
-                className="nav-link dropdown-toggle"
-                to="/careerguide"
-                id="navbarDropdownMenuLink"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
+              <NavDropdown
+                drop={"end"}
+                title="Career Advice"
+                id="collasible-nav-dropdown"
               >
-                Career Advice
-              </NavLink>
-              <ul
-                class="dropdown-menu"
-                aria-labelledby="navbarDropdownMenuLink"
-              >
-                <li>
-                  <NavLink
-                    className="dropdown-item"
-                    activeStyle={{ activeStyle }}
-                    to="/resumetips"
-                  >
-                    Resume Tips
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className="dropdown-item"
-                    activeStyle={{ activeStyle }}
-                    to="/coverletter"
-                  >
-                    Cover Letter
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink
-                    className="dropdown-item"
-                    activeStyle={{ activeStyle }}
-                    to="/interview"
-                  >
-                    Interview
-                  </NavLink>
-                </li>
-              </ul>
-            </li>
-
-            <li className="nav-item">
-              <NavLink className="nav-link text-white" to="/postJob">
+                <NavLink className="dropdown-item" to="/resumetips">
+                  Resume Tips
+                </NavLink>
+                <NavLink className="dropdown-item" to="/coverletter">
+                  Cover Letter
+                </NavLink>
+                <NavLink className="dropdown-item" to="/interview">
+                  Interview Tips
+                </NavLink>
+              </NavDropdown>
+            </NavDropdown>
+            <NavDropdown title="EMPLOYER" id="collasible-nav-dropdown">
+              <NavLink className="dropdown-item" to="/postJob">
                 Post a Job
               </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link text-white" to="/about">
-                About Us
+              <NavLink className="dropdown-item" to="/postJob">
+                Browse Candidates
               </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link text-white" to="/login">
-                Sign In
+            </NavDropdown>
+            <NavLink className="nav-link" to="/about">
+              ABOUT US
+            </NavLink>
+            {user?.email && (
+              <Navbar.Brand className="header-text">
+                <span className="me-2">
+                  <img src={user.photoURL} alt="" className="profile-img" />
+                </span>
+                {user.displayName}
+              </Navbar.Brand>
+            )}
+            {user?.email ? (
+              <button className=" signout-btn" onClick={logOut}>
+                SIGN OUT
+              </button>
+            ) : (
+              <NavLink className="nav-link" to="/login">
+                SIGN IN
               </NavLink>
-            </li>
-            {/* <li className="nav-item">
-              <a className="nav-link text-white" href="/faq">
-                FAQ
-              </a>
-            </li> */}
-            {/* <li className="nav-item">
-              <a className="nav-link text-white" href="/contact">
-                CONTACT
-              </a>
-            </li> */}
-          </ul>
-        </div>
-      </div>
-    </nav>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

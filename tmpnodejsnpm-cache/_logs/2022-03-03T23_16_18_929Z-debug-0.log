@@ -1,0 +1,124 @@
+0 verbose cli [
+0 verbose cli   'C:\\Program Files\\nodejs\\node.exe',
+0 verbose cli   'C:\\Users\\nupa_\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+0 verbose cli   'i'
+0 verbose cli ]
+1 info using npm@8.5.1
+2 info using node@v16.14.0
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:C:\Users\nupa_\AppData\Roaming\npm\node_modules\npm\npmrc Completed in 2ms
+6 timing config:load:builtin Completed in 4ms
+7 timing config:load:cli Completed in 1ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:C:\WebDev_Batch04\End_Game\Final_Team_Project\Jobs4You_Front\.npmrc Completed in 0ms
+10 timing config:load:project Completed in 3ms
+11 timing config:load:file:C:\Users\nupa_\.npmrc Completed in 0ms
+12 timing config:load:user Completed in 1ms
+13 timing config:load:file:C:\Users\nupa_\AppData\Roaming\npm\etc\npmrc Completed in 1ms
+14 timing config:load:global Completed in 1ms
+15 timing config:load:validate Completed in 0ms
+16 timing config:load:credentials Completed in 1ms
+17 timing config:load:setEnvs Completed in 0ms
+18 timing config:load Completed in 13ms
+19 timing npm:load:configload Completed in 13ms
+20 timing npm:load:setTitle Completed in 0ms
+21 timing config:load:flatten Completed in 2ms
+22 timing npm:load:display Completed in 3ms
+23 verbose logfile C:\WebDev_Batch04\End_Game\Final_Team_Project\Jobs4You_Front\tmpnodejsnpm-cache\_logs\2022-03-03T23_16_18_929Z-debug-0.log
+24 timing npm:load:logFile Completed in 13ms
+25 timing npm:load:timers Completed in 0ms
+26 timing npm:load:configScope Completed in 0ms
+27 timing npm:load Completed in 29ms
+28 timing arborist:ctor Completed in 1ms
+29 silly logfile start cleaning logs, removing 2 files
+30 timing arborist:ctor Completed in 0ms
+31 timing idealTree:init Completed in 11ms
+32 timing idealTree:userRequests Completed in 0ms
+33 silly idealTree buildDeps
+34 silly fetch manifest @reduxjs/toolkit@^1.8.0
+35 http fetch GET 200 https://registry.npmjs.org/@reduxjs%2ftoolkit 278ms (cache revalidated)
+36 silly fetch manifest react@^17.0.2
+37 http fetch GET 200 https://registry.npmjs.org/react 44ms (cache revalidated)
+38 silly fetch manifest react-redux@^7.2.6
+39 http fetch GET 200 https://registry.npmjs.org/react-redux 41ms (cache revalidated)
+40 silly fetch manifest @testing-library/jest-dom@^5.16.2
+41 http fetch GET 200 https://registry.npmjs.org/@testing-library%2fjest-dom 59ms (cache revalidated)
+42 silly fetch manifest @testing-library/react@^12.1.3
+43 http fetch GET 200 https://registry.npmjs.org/@testing-library%2freact 61ms (cache revalidated)
+44 silly fetch manifest react-dom@^17.0.2
+45 http fetch GET 200 https://registry.npmjs.org/react-dom 53ms (cache revalidated)
+46 silly fetch manifest @testing-library/user-event@^13.5.0
+47 http fetch GET 200 https://registry.npmjs.org/@testing-library%2fuser-event 178ms (cache revalidated)
+48 silly fetch manifest @testing-library/dom@>=7.21.4
+49 http fetch GET 200 https://registry.npmjs.org/@testing-library%2fdom 80ms (cache revalidated)
+50 silly fetch manifest animate.css@^4.1.1
+51 http fetch GET 200 https://registry.npmjs.org/animate.css 267ms (cache revalidated)
+52 silly fetch manifest aos@^2.3.4
+53 http fetch GET 200 https://registry.npmjs.org/aos 335ms (cache revalidated)
+54 silly fetch manifest axios@^0.26.0
+55 http fetch GET 200 https://registry.npmjs.org/axios 43ms (cache revalidated)
+56 silly fetch manifest bootstrap@^5.1.3
+57 http fetch GET 200 https://registry.npmjs.org/bootstrap 39ms (cache revalidated)
+58 silly fetch manifest @popperjs/core@^2.10.2
+59 http fetch GET 200 https://registry.npmjs.org/@popperjs%2fcore 71ms (cache revalidated)
+60 silly fetch manifest emailjs-com@^3.2.0
+61 http fetch GET 200 https://registry.npmjs.org/emailjs-com 324ms (cache revalidated)
+62 silly fetch manifest file-saver@^2.0.5
+63 http fetch GET 200 https://registry.npmjs.org/file-saver 98ms (cache revalidated)
+64 silly fetch manifest firebase@^9.6.7
+65 http fetch GET 200 https://registry.npmjs.org/firebase 319ms (cache updated)
+66 silly fetch manifest little-state-machine@^4.2.3
+67 http fetch GET 200 https://registry.npmjs.org/little-state-machine 311ms (cache revalidated)
+68 silly fetch manifest nanoid@^3.3.1
+69 http fetch GET 200 https://registry.npmjs.org/nanoid 43ms (cache revalidated)
+70 silly fetch manifest query-string@^7.1.1
+71 http fetch GET 200 https://registry.npmjs.org/query-string 46ms (cache revalidated)
+72 silly fetch manifest react-animate-on-scroll@^2.1.5
+73 http fetch GET 200 https://registry.npmjs.org/react-animate-on-scroll 322ms (cache revalidated)
+74 silly fetch manifest classnames@^2.2.5
+75 http fetch GET 200 https://registry.npmjs.org/classnames 44ms (cache revalidated)
+76 silly fetch manifest react@>= 15.4.1 < 17.0.0-0
+77 timing idealTree Completed in 3161ms
+78 timing command:i Completed in 3172ms
+79 verbose stack Error: unable to resolve dependency tree
+79 verbose stack     at Arborist.[failPeerConflict] (C:\Users\nupa_\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:1399:25)
+79 verbose stack     at Arborist.[loadPeerSet] (C:\Users\nupa_\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:1365:34)
+79 verbose stack     at async Arborist.[buildDepStep] (C:\Users\nupa_\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:951:11)
+79 verbose stack     at async Arborist.buildIdealTree (C:\Users\nupa_\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\build-ideal-tree.js:215:7)
+79 verbose stack     at async Promise.all (index 1)
+79 verbose stack     at async Arborist.reify (C:\Users\nupa_\AppData\Roaming\npm\node_modules\npm\node_modules\@npmcli\arborist\lib\arborist\reify.js:152:5)
+79 verbose stack     at async Install.exec (C:\Users\nupa_\AppData\Roaming\npm\node_modules\npm\lib\commands\install.js:157:5)
+79 verbose stack     at async module.exports (C:\Users\nupa_\AppData\Roaming\npm\node_modules\npm\lib\cli.js:66:5)
+80 verbose cwd C:\WebDev_Batch04\End_Game\Final_Team_Project\Jobs4You_Front
+81 verbose Windows_NT 10.0.19044
+82 verbose argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\nupa_\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "i"
+83 verbose node v16.14.0
+84 verbose npm  v8.5.1
+85 error code ERESOLVE
+86 error ERESOLVE unable to resolve dependency tree
+87 error
+88 error While resolving: [1mjob4you_front[22m@[1m0.1.0[22m
+88 error Found: [1mreact[22m@[1m17.0.2[22m[2m[22m
+88 error [2mnode_modules/react[22m
+88 error   [1mreact[22m@"[1m^17.0.2[22m" from the root project
+88 error
+88 error Could not resolve dependency:
+88 error [35mpeer[39m [1mreact[22m@"[1m>= 15.4.1 < 17.0.0-0[22m" from [1mreact-animate-on-scroll[22m@[1m2.1.5[22m[2m[22m
+88 error [2mnode_modules/react-animate-on-scroll[22m
+88 error   [1mreact-animate-on-scroll[22m@"[1m^2.1.5[22m" from the root project
+88 error
+88 error Fix the upstream dependency conflict, or retry
+88 error this command with --force, or --legacy-peer-deps
+88 error to accept an incorrect (and potentially broken) dependency resolution.
+88 error
+88 error See C:\WebDev_Batch04\End_Game\Final_Team_Project\Jobs4You_Front\tmpnodejsnpm-cache\eresolve-report.txt for a full report.
+89 verbose exit 1
+90 timing npm Completed in 3444ms
+91 verbose unfinished npm timer reify 1646349379193
+92 verbose unfinished npm timer reify:loadTrees 1646349379201
+93 verbose unfinished npm timer idealTree:buildDeps 1646349379213
+94 verbose unfinished npm timer idealTree:#root 1646349379214
+95 verbose code 1
+96 error A complete log of this run can be found in:
+96 error     C:\WebDev_Batch04\End_Game\Final_Team_Project\Jobs4You_Front\tmpnodejsnpm-cache\_logs\2022-03-03T23_16_18_929Z-debug-0.log

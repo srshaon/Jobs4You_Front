@@ -19,14 +19,14 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [show, setShow] = useState(true);
     const [backdrop, setBackdrop] = useState(false);
-    const [admin, setAdmin] = useState('user');
-
+    const [admin, setAdmin] = useState('seeker');
+    const [role, setRole] = useState('seeker');
 
     useEffect(() => {
-        fetch(`https://damp-citadel-82174.herokuapp.com/users/${user.email}`)
+        fetch(`https://afternoon-headland-45054.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
-                // console.log(data);
+                console.log(data);
                 setAdmin(data.admin)
 
             })
@@ -37,23 +37,24 @@ const useFirebase = () => {
     const collectHistory = page => {
         setHistory(page);
     }
-    const handleRegistration = rf => {
+    const handleRegistration = (rf, role) => {
+        console.log(role);
         // e.preventDefault();
         if (password.length < 6) {
             setError('password must be 6 character long');
             return;
         }
-        createNewUser(email, password, rf);
+        createNewUser(email, password, rf, role);
         // console.log(email, password);
 
     }
 
-    const createNewUser = (email, password, rf) => {
+    const createNewUser = (email, password, rf, role) => {
         // const userName = name;
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 setUser(result.user);
-                saveUser(email, name, 'POST');
+                saveUser(email, name, role, 'POST');
                 // const user = result.user;
                 // console.log('clicked', result.user.displayName);
                 setError('');
@@ -138,9 +139,9 @@ const useFirebase = () => {
             setIsLoading(false);
         });
     });
-    const saveUser = (email, displayName, method) => {
-        const user = { email, displayName };
-        fetch('https://damp-citadel-82174.herokuapp.com/users', {
+    const saveUser = (email, displayName, role, method) => {
+        const user = { email, displayName, role };
+        fetch('https://afternoon-headland-45054.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'
@@ -149,7 +150,9 @@ const useFirebase = () => {
         })
             .then()
     }
-
+    console.log(user);
+    console.log(role);
+    console.log(admin);
     return {
         user,
         name,
@@ -173,7 +176,8 @@ const useFirebase = () => {
         show, setShow,
         backdrop, setBackdrop,
         saveUser,
-        admin, setAdmin
+        admin, setAdmin,
+        role, setRole
 
     }
 }

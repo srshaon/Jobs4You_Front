@@ -3,11 +3,74 @@
   padding: 65px 0;
 }
 
+/* .container {
+  width: 1200px;
+  margin: 0 auto;
+} */
+
 .mobile-app {
-  background-image: url("../../assets//Images//bg_blue.jpg");
+  /* background-image: url("../../assets//Images//bg_blue.jpg"); */
+  background-color: var(--color-primary-dark);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   /* height: 25vh; */
   border-radius: 15px;
+  color: white;
+}
+
+.explore-bg {
+  background-image: linear-gradient(
+    to right,
+    #537890,
+    #6b879d,
+    #8197a9,
+    #97a7b6,
+    #adb7c2,
+    #adb7c2,
+    #adb7c2,
+    #adb7c2,
+    #97a7b6,
+    #8197a9,
+    #6b879d,
+    #537890
+  );
+}
+
+.explore-container {
+  height: 65vh;
+}
+
+.explore-text {
+  color: white;
+  text-align: justify;
+}
+
+.checkmark {
+  list-style: none;
+}
+
+.checkmark-list {
+  font-size: 17px;
+  font-weight: 400;
+  padding-top: 12px;
+}
+
+.checkmark-icon {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--color-primary-dark);
+}
+
+.checkmark-text {
+  color: black;
+  opacity: 0.5;
+}
+
+.explore-btn {
+  font-size: 16px;
+  font-weight: 500;
+  background-color: var(--color-primary-dark) !important;
+  border: none;
+  border-radius: 7px;
 }

@@ -7,6 +7,7 @@ const FinalResult = props => {
     console.log(state.data.firstName);
     return (
         <>
+		//this is not needed at this point
             <h2>Result:</h2>
             <pre>{JSON.stringify(state, null, 2)}</pre>
         </>
