@@ -11,10 +11,13 @@ import {
 
 } from "cdbreact";
 import LogIn from '../LogIn/LogIn';
+import Welcome from '../Welcome/Welcome';
+import AccountForm from '../ProfileForm/AccountForm';
+import ProfileForm from '../ProfileForm/ProfileForm';
 
 const Dashboard = () => {
     const { logOut, admin } = useAuth();
-    const [control, setControl] = useState("login")
+    const [control, setControl] = useState("welcome")
     console.log(admin);
 
     if (admin === '') {
@@ -36,7 +39,7 @@ const Dashboard = () => {
 
 
                                             <div>
-                                                <li onClick={() => setControl("login")}
+                                                <li onClick={() => setControl("accountform")}
                                                     className="li py-3 px-3">
                                                     My Profile
                                                 </li>
@@ -91,9 +94,12 @@ const Dashboard = () => {
                 <div className="dashboard-second-container"  >
 
                     {control === "login" && <LogIn></LogIn>}
+                    {control === "welcome" && <Welcome></Welcome>}
+                    {control === "accountform" && <AccountForm></AccountForm>}
+                    {control === "profileform" && <ProfileForm></ProfileForm>}
                     {/* {control === "pay" && <Pay></Pay>}
                     {control === "review" && <Review></Review>}
-                    {control === "welcome" && <Welcome></Welcome>}
+                    
                     {control === "makeadmin" && <MakeAdmin></MakeAdmin>}
                     {control === "allorders" && <AllOrders></AllOrders>}
                     {control === "manageproducts" && <ManageProducts></ManageProducts>}

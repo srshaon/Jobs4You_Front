@@ -13,7 +13,7 @@ const LogIn = () => {
 
   const [error, setError] = useState("");
   const location = useLocation();
-  const redirect_Url = location.state?.from || '/';
+  const redirect_Url = location.state?.from || '/profileform';
   const redirect = () => {
     history.push(redirect_Url);
 
