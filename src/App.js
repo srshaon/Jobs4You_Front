@@ -77,9 +77,9 @@ function App() {
             <Route path="/allreviews">
               <AllReviews></AllReviews>
             </Route>
-            <Route path="/profileform">
+            {/* <Route path="/profileform">
               <AccountForm></AccountForm>
-            </Route>
+            </Route> */}
             <Route path="/dashboard">
               <Dashboard></Dashboard>
             </Route>
