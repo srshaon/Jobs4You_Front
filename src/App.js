@@ -49,6 +49,8 @@ import UploadViewResume from "./components/UploadViewResume/UploadViewResume";
 import MyJobs from "./components/Myjobs/MyJobs";
 import ApplySuccess from "./components/ApplySuccess/ApplySuccess";
 import Dashboard from "./components/Dashboard/Dashboard";
+import CompanyDetails from "./components/CompanyProfile/CompanyDetails";
+import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 
 
 function App() {
@@ -179,6 +181,12 @@ function App() {
             </Route>
             <Route path="/edit/:jobId">
               <EditGovJob />
+            </Route>
+            <Route path="/allcompanies">
+              <CompanyProfile></CompanyProfile>
+            </Route>
+            <Route path="/company/:id">
+              <CompanyDetails />
             </Route>
 
             {/* Nuzhat's Route  */}
