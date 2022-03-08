@@ -18,6 +18,14 @@ export const profilesApi = createApi({
    providesTags:["Profiles"]
    
   }),
+  getCompanies: builder.query({
+    query: () => ({
+      url: 'companyprofiles',
+      method: 'GET'
+    }),
+    providesTags: ["Profiles"]
+
+  }),
   getProfileById: builder.query({
    query: (id) => {
     console.log("ID:", id)
@@ -59,4 +67,4 @@ export const profilesApi = createApi({
 
 })
 
-export const {useGetProfilesQuery,useGetProfileByIdQuery,useCreateProfileMutation,useUpdateProfileMutation} = profilesApi
+export const {useGetProfilesQuery,useGetProfileByIdQuery,useGetCompaniesQuery, useCreateProfileMutation,useUpdateProfileMutation} = profilesApi
