@@ -19,7 +19,7 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [show, setShow] = useState(true);
     const [backdrop, setBackdrop] = useState(false);
-    const [admin, setAdmin] = useState('user');
+    const [admin, setAdmin] = useState('seeker');
     const [role, setRole] = useState('seeker');
 
     useEffect(() => {

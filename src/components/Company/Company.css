@@ -1,4 +1,4 @@
-.card {
+.company-card {
   position: relative;
   transition: all 0.5s ease-in;
   background: transparent;
@@ -30,7 +30,7 @@
   overflow: hidden;
 }
 
-.card:hover .card__overlay {
+.company-card:hover .card__overlay {
   opacity: 1;
   left: 0;
 }
