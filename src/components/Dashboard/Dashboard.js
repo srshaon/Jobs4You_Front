@@ -13,6 +13,7 @@ import {
 import LogIn from '../LogIn/LogIn';
 import Welcome from '../Welcome/Welcome';
 import AccountForm from '../ProfileForm/AccountForm';
+import ProfileForm from '../ProfileForm/ProfileForm';
 
 const Dashboard = () => {
     const { logOut, admin } = useAuth();
@@ -38,7 +39,7 @@ const Dashboard = () => {
 
 
                                             <div>
-                                                <li onClick={() => setControl("profileform")}
+                                                <li onClick={() => setControl("accountform")}
                                                     className="li py-3 px-3">
                                                     My Profile
                                                 </li>
@@ -94,7 +95,8 @@ const Dashboard = () => {
 
                     {control === "login" && <LogIn></LogIn>}
                     {control === "welcome" && <Welcome></Welcome>}
-                    {control === "profileform" && <AccountForm></AccountForm>}
+                    {control === "accountform" && <AccountForm></AccountForm>}
+                    {control === "profileform" && <ProfileForm></ProfileForm>}
                     {/* {control === "pay" && <Pay></Pay>}
                     {control === "review" && <Review></Review>}
                     
