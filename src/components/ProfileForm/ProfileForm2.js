@@ -115,12 +115,21 @@ const ProfileForm2 = (props) => {
                     />
                   </div>
                   <div className="profile-form-input-pair d-flex justify-content-center">
-                    <input
+                    <select
+                      className="profile-form-input"
+                      defaultValue={""}
+                      {...register("preference")}
+                    >
+                      <option value="full-time">Full-time</option>
+                      <option value="part-time">Part-time</option>
+                      <option value="remote">Remote</option>
+                    </select>
+                    {/* <input
                       className="profile-form-input"
                       placeholder="Job Preference"
                       defaultValue={""}
                       {...register("preference", { required: true })}
-                    />
+                    /> */}
                     <input
                       className="profile-form-input"
                       placeholder="Available For"

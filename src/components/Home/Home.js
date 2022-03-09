@@ -14,6 +14,7 @@ import Header from "../Header/Haeder";
 import image from "../../assets/Images/banner3.png";
 import Companies from "../Companies/Companies";
 import FeaturedJobs from "../FeaturedJobs/FeaturedJobs";
+import Footer from "../Footer/Footer";
 
 const Home = () => {
   return (

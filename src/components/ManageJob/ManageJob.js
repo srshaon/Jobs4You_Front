@@ -41,30 +41,34 @@ const ManageJob = ({ job, setJobs }) => {
   return (
     <>
       <Col md={12}>
-        <Card className="p-5" style={{ height: "75vh" }}>
+        <Card className="w-75 p-5">
           <div>
-            <div className="row row-cols-lg-2 row-cold-md-2 d-md-flex align-items-center justify-content-center">
-              <Col md={4} className="">
-                <h5>{job?.category}</h5>
-                <img src={job.image} alt="" className="w-25 p-3" />
-                <h4>{job?.job}</h4>
-                <p>{job?.jobLocation}</p>
-                <p>{job?.employmentStatus}</p>
-                <p>${job?.salary}</p>
-                <p>{job?.vacancy}</p>
-                <p>Deadline: {job?.aplicationDeadline}</p>
-              </Col>
-              <Col md={8}>
-                <p>Educational Req: {job?.educationalRequirements}</p>
-                <p>Job Responsibilities: {job?.jobResponsibilities}</p>
-                <p>Additional Req:</p>
-                <ul>
-                  {job?.additionalRequirements.map((item) => (
-                    <li>{item}</li>
-                  ))}
-                </ul>
-              </Col>
+            <div>
+              {/* <div className="w-50 mx-auto d-md-flex align-items-center">
+                <img src={job.image} alt="" className="w-50 p-5" />
+                <h5>
+                  <span style={{ color: "brown", fontWeight: "700" }}>
+                    {job?.company}
+                  </span>
+                </h5>
+              </div> */}
+              <h6>{job?.category}</h6>
+              <h5>{job?.job}</h5>
+              <p>
+                {job?.jobLocation} <span className="ps-4"> ${job?.salary}</span>
+              </p>
+              <p>{job?.employmentStatus}</p>
+              <p>{job?.vacancy}</p>
+              <p>Educational Req: {job?.educationalRequirements}</p>
+              <p>Job Responsibilities: {job?.jobResponsibilities}</p>
+              <p>Additional Req:</p>
+              <ul>
+                {job?.additionalRequirements.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
             </div>
+
             <div className="text-center mt-4">
               {job?.status?.toLowerCase() === "pending" && (
                 <button
@@ -88,7 +92,13 @@ const ManageJob = ({ job, setJobs }) => {
         </Card>
       </Col>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        show={show}
+        onHide={handleClose}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Update field of job details</Modal.Title>
         </Modal.Header>

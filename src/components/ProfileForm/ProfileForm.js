@@ -79,6 +79,7 @@ const ProfileForm = (props) => {
                           {...register("email", { required: true })}
                         />
                         <input
+                          type={"number"}
                           className="profile-form-input"
                           placeholder="Contact No."
                           defaultValue={""}
@@ -134,99 +135,182 @@ const ProfileForm = (props) => {
                 <h2 style={{ color: "brown" }}>User Profile</h2>
                 <div class="profile-form-inputs">
                   <div className="profile-form-input-pair d-flex justify-content-center">
-                    <input
-                      className="profile-form-input"
-                      placeholder="First Name"
-                      defaultValue={""}
-                      {...register("fname", { required: true })}
-                    />
-                    <input
-                      className="profile-form-input"
-                      placeholder="Last Name"
-                      defaultValue={""}
-                      {...register("lname", { required: true })}
-                    />
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        First Name
+                      </label>
+                      <input
+                        type="text"
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("fname", { required: true })}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        Last Name
+                      </label>
+                      <input
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("lname", { required: true })}
+                      />
+                    </div>
                   </div>
 
                   <div className="profile-form-input-pair d-flex justify-content-center">
-                    <input
-                      className="profile-form-input"
-                      placeholder="Date Of Birth"
-                      defaultValue={""}
-                      {...register("dob", { required: true })}
-                    />
-                    <input
-                      className="profile-form-input"
-                      placeholder="Gender"
-                      defaultValue={""}
-                      {...register("gender", { required: true })}
-                    />
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        Date of Birth
+                      </label>
+                      <input
+                        type={"date"}
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("dob", { required: true })}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        Gender
+                      </label>
+                      <select
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("gender")}
+                      >
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
                   </div>
                   <div className="profile-form-input-pair d-flex justify-content-center">
-                    <input
-                      className="profile-form-input"
-                      placeholder="Nationality"
-                      defaultValue={""}
-                      {...register("nationality", { required: true })}
-                    />
-                    <input
-                      className="profile-form-input"
-                      placeholder="NID Number"
-                      defaultValue={""}
-                      {...register("nid", { required: true })}
-                    />
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        Citizen
+                      </label>
+                      <input
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("nationality", { required: true })}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        NID Number
+                      </label>
+                      <input
+                        type={"number"}
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("nid", { required: true })}
+                      />
+                    </div>
                   </div>
                   <div className="profile-form-input-pair d-flex justify-content-center">
-                    <input
-                      className="profile-form-input"
-                      placeholder="Passport No."
-                      defaultValue={""}
-                      {...register("passport", { required: true })}
-                    />
-                    <input
-                      className="profile-form-input"
-                      placeholder="Passport Issue Date"
-                      defaultValue={""}
-                      {...register("passportIssueDate", { required: true })}
-                    />
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        Passport No
+                      </label>
+                      <input
+                        type={"number"}
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("passport", { required: true })}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        Passport Issue Date
+                      </label>
+                      <input
+                        type={"date"}
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("passportIssueDate", { required: true })}
+                      />
+                    </div>
                   </div>
 
                   <div className="profile-form-input-pair d-flex justify-content-center">
-                    <input
-                      className="profile-form-input"
-                      placeholder="Primary Email"
-                      defaultValue={""}
-                      {...register("pEmail", { required: true })}
-                    />
-                    <input
-                      className="profile-form-input"
-                      placeholder="Secondary Email"
-                      defaultValue={""}
-                      {...register("sEmail", { required: true })}
-                    />
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        Primary Email
+                      </label>
+                      <input
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("pEmail", { required: true })}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        Secondary Email
+                      </label>
+                      <input
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("sEmail", { required: true })}
+                      />
+                    </div>
                   </div>
                   <div className="profile-form-input-pair d-flex justify-content-center">
-                    <input
-                      className="profile-form-input"
-                      placeholder="Primary Contact"
-                      defaultValue={""}
-                      {...register("pContact", { required: true })}
-                    />
-                    <input
-                      className="profile-form-input"
-                      placeholder="Emergency Contact"
-                      defaultValue={""}
-                      {...register("eContact", { required: true })}
-                    />
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        Primary Contact
+                      </label>
+                      <input
+                        type={"number"}
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("pContact", { required: true })}
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="" className="ms-3">
+                        Emergency Contact
+                      </label>
+                      <input
+                        type={"number"}
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("eContact", { required: true })}
+                      />
+                    </div>
                   </div>
-                  <div className="profile-form-input-pair d-flex justify-content-center">
-                    <textarea
-                      rows={2}
-                      className="profile-form1-address-textarea"
-                      placeholder="Address"
-                      defaultValue=""
-                      {...register("address", { required: true })}
-                    />
+                  <div className="profile-form-input-pair">
+                    <label htmlFor="" className="ms-4 ps-2">
+                      Address
+                    </label>
+                    <div className="profile-form-input-pair d-flex justify-content-center">
+                      <input
+                        className="profile-form-input"
+                        placeholder="street no."
+                        defaultValue={""}
+                        {...register("address", { required: true })}
+                      />
+                      <input
+                        className="profile-form-input"
+                        placeholder="city"
+                        defaultValue={""}
+                        {...register("address", { required: true })}
+                      />
+                    </div>
+                    <div className="profile-form-input-pair d-flex justify-content-center">
+                      <input
+                        className="profile-form-input"
+                        placeholder="province"
+                        defaultValue={""}
+                        {...register("address", { required: true })}
+                      />
+                      <input
+                        className="profile-form-input"
+                        placeholder="country"
+                        defaultValue={""}
+                        {...register("address", { required: true })}
+                      />
+                    </div>
                   </div>
 
                   <div className="profile-form-button-div d-flex justify-content-center">

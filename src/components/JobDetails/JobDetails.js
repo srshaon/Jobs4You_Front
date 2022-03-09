@@ -20,7 +20,7 @@ const JobDetails = () => {
   }
   return (
     <div className="job-detail-container pb-5">
-      <div className="container">
+      <div className="container pb-5">
         <div className="py-5">
           {
             <div className="job-detail-title">

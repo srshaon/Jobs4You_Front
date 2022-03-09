@@ -93,7 +93,7 @@ const LogIn = () => {
   };
 
   return (
-    <div className="o">
+    <div className="o pb-5">
       <div className="main">
         <input type="checkbox" id="chk" aria-hidden="true" />
 

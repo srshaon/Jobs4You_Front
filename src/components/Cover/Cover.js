@@ -13,8 +13,15 @@ const Cover = () => {
           <img src={banner} alt="" className="banner-img" />
 
           <div className="banner w-100">
-            {/* <div className="">
-              <h2>Explore Our Multiple Jobs & Unlock Your Potential</h2>
+            {/* <div className="mb-5">
+              <h1
+                style={{
+                  color: "purple",
+                  fontWeight: "700",
+                }}
+              >
+                WELCOME! HERE IS WHAT WE ARE!
+              </h1>
             </div> */}
             <div>
               <h2
@@ -56,15 +63,16 @@ const Cover = () => {
                     name=""
                     id=""
                     placeholder="Job title or keyword"
-                    className="search-field"
+                    className="search-field search-icon"
                     style={{ color: "orange" }}
                   />
+
                   <input
                     type="text"
                     name=""
                     id=""
                     placeholder="Location (city or country)"
-                    className="search-field"
+                    className="search-field location-icon"
                     style={{ color: "orange" }}
                   />
                   <button type="submit" className="search-btn p-3">

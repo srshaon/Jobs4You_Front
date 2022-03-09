@@ -61,6 +61,9 @@ const Header = () => {
                 title="Career Advice"
                 id="collasible-nav-dropdown"
               >
+                <NavLink className="dropdown-item" to="/careerguide">
+                  Career Guide
+                </NavLink>
                 <NavLink className="dropdown-item" to="/resumetips">
                   Resume Tips
                 </NavLink>
@@ -85,10 +88,10 @@ const Header = () => {
             </NavLink>
             {user?.email && (
               <Navbar.Brand className="header-text">
-                <span className="me-2">
+                {user.displayName}
+                <span className="ms-2">
                   <img src={user.photoURL} alt="" className="profile-img" />
                 </span>
-                {user.displayName}
               </Navbar.Brand>
             )}
             {user?.email ? (
