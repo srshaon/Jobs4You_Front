@@ -8,89 +8,96 @@ import { signInWithEmailAndPassword } from "@firebase/auth";
 const LogIn = () => {
   const history = useHistory();
   const {
-    user,
-    logOut,
-    googleSignIn,
-    handleEmailChange,
-    handlePasswordChange,
-    email,
-    password,
-    handleNameChange,
-    setName,
-    handleRegistration,
-    auth,
-    saveUser,
+    user, logOut, googleSignIn, handleEmailChange, handlePasswordChange, email, password, handleNameChange, setName, handleRegistration, auth, saveUser, role, setRole
   } = useAuth();
 
   const [error, setError] = useState("");
   const location = useLocation();
-  const redirect_Url = location.state?.from || "/";
+  const redirect_Url = location.state?.from || '/';
   const redirect = () => {
     history.push(redirect_Url);
-  };
+
+  }
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then((result) => {
+      .then(result => {
         const user = result.user;
-        saveUser(user.email, user.displayName, "PUT");
-        setError("");
+        saveUser(user.email, user.displayName, role, 'PUT');
+        setError('');
         history.push(redirect_Url);
       })
       .catch((error) => {
-        setError(error.message);
+        setError(error.message)
         // setUser({});
         // setErrorMsg(error.message);
       });
-  };
+  }
 
-  const handleEmailLogin = (e) => {
+  const handleEmailLogin = e => {
     // console.log('hit first time');
     e.preventDefault();
     // console.log('hit 2nd time');
     // return signInWithEmailAndPassword(auth, email, password)
     processLogIn(email, password);
-  };
+  }
   const processLogIn = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        setError("");
+      .then(result => {
+        setError('');
         history.push(redirect_Url);
       })
       .catch((error) => {
+
+
         //console.log(error.message);
         if (error.code === "auth/user-not-found") {
-          setError("Wrong Email");
-        } else {
-          setError("Wrong Password");
+          setError("Wrong Email")
         }
-      });
-  };
+        else {
+          setError("Wrong Password")
 
-  const handleEmailRegistration = (e) => {
-    console.log("hit first time");
+        }
+
+      });
+  }
+
+  const handleEmailRegistration = e => {
+    console.log('hit first time');
     e.preventDefault();
-    handleRegistration(redirect);
-  };
-  // registration
+    handleRegistration(redirect, role)
+
+  }
+  // registration 
 
   const userFormDisplay = () => {
-    console.log("hitted first form");
-    document.getElementById("user-signup-form").style.visibility = "visible";
-    document.getElementById("user-signup-form").style.display = "block";
-    document.getElementById("company-signup-form").style.display = "none";
+    setRole('seeker');
+    console.log(role);
+    console.log('hitted first form')
+    document.getElementById('user-signup-form').style.visibility = 'visible'
+    document.getElementById('user-signup-form').style.display = 'block'
+    document.getElementById('company-signup-form').style.display = 'none'
 
-    document.getElementById("google-signin").style.visibility = "visible";
-  };
+    document.getElementById('google-signin').style.visibility = 'visible';
+
+
+
+  }
   const companyFormDisplay = () => {
-    console.log("hitted second form form");
+    setRole('company');
+    console.log(role);
+    console.log('hitted second form form')
     // document.getElementById('company-signup-form').style.visibility = 'visible'
-    document.getElementById("user-signup-form").style.display = "none";
-    document.getElementById("user-signup-form").style.visibility = "hidden";
-    document.getElementById("company-signup-form").style.visibility = "visible";
-    document.getElementById("company-signup-form").style.display = "block";
+    document.getElementById('user-signup-form').style.display = 'none'
+    document.getElementById('user-signup-form').style.visibility = 'hidden'
+    document.getElementById('company-signup-form').style.visibility = 'visible'
+    document.getElementById('company-signup-form').style.display = 'block'
 
-    document.getElementById("google-signin").style.visibility = "hidden";
-  };
+    document.getElementById('google-signin').style.visibility = 'hidden';
+
+
+  }
+
+  console.log(role);
 
   return (
     <div className="o pb-5">
