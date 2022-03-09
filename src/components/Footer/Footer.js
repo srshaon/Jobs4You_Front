@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="container">
           <div
             className="card footer-card mb-3"
-            // style={{ border: "2px solid red" }}
+          // style={{ border: "2px solid red" }}
           >
             <div className="card-body">
               <Row className="m-4 align-items-center text-center">

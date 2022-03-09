@@ -10,7 +10,7 @@ const JobDetails = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
+    fetch(`http://localhost:5000/jobs/${jobId}`)
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, [jobId]);

@@ -24,14 +24,14 @@
 }
 
 .footer-card {
-  background-color: #537890;
-  opacity: 0.7;
-  width: 85%;
-  position: relative;
-  top: -40px;
-  margin: 0 auto;
-  height: 160px;
-  border-radius: 50px 0;
+  background-color: #537890 !important;
+  opacity: 0.7 !important;
+  width: 85% !important;
+  position: relative !important;
+  top: -40px !important;
+  margin: 0 auto !important;
+  height: 160px !important;
+  border-radius: 50px 0 !important;
 }
 
 .footer-list a {

@@ -3,8 +3,10 @@ import { useForm } from "react-hook-form";
 import { withRouter } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
+import useAuth from "../../hooks/useAuth";
 
 const ProfileForm2 = (props) => {
+  const { role, setRole } = useAuth();
   const [condition, setCondition] = useState("admin");
   const { register, handleSubmit } = useForm();
   const { actions, state } = useStateMachine({ updateAction });
@@ -28,7 +30,7 @@ const ProfileForm2 = (props) => {
   return (
     <div className="profile-form-div">
       <div>
-        {condition === "admin" && (
+        {role === "company" && (
           <div>
             <div className="profile-form-div">
               <div>
@@ -80,7 +82,7 @@ const ProfileForm2 = (props) => {
             </div>
           </div>
         )}
-        {condition === "user" && (
+        {role === "seeker" && (
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div class="profile-form-container mt-3 mb-5">
