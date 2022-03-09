@@ -48,6 +48,10 @@ import EditGovJob from "./components/AddGovJob/EditGovJob";
 import UploadViewResume from "./components/UploadViewResume/UploadViewResume";
 import MyJobs from "./components/Myjobs/MyJobs";
 import ApplySuccess from "./components/ApplySuccess/ApplySuccess";
+import Dashboard from "./components/Dashboard/Dashboard";
+import CompanyDetails from "./components/CompanyProfile/CompanyDetails";
+import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
+import PrivateRoute from "./components/ProvateRoute/ProvateRoute";
 
 
 function App() {
@@ -76,9 +80,18 @@ function App() {
             <Route path="/allreviews">
               <AllReviews></AllReviews>
             </Route>
-            <Route path="/profileform">
+            {/* <Route path="/profileform">
               <AccountForm></AccountForm>
-            </Route>
+            </Route> */}
+            <PrivateRoute path="/profileform">
+              <AccountForm></AccountForm>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard">
+              <Dashboard></Dashboard>
+            </PrivateRoute>
+            {/* <Route path="/dashboard">
+              <Dashboard></Dashboard>
+            </Route> */}
 
             {/* Rifat's Route */}
             <Route path="/resource/:id">
@@ -175,6 +188,12 @@ function App() {
             </Route>
             <Route path="/edit/:jobId">
               <EditGovJob />
+            </Route>
+            <Route path="/allcompanies">
+              <CompanyProfile></CompanyProfile>
+            </Route>
+            <Route path="/company/:id">
+              <CompanyDetails />
             </Route>
 
             {/* Nuzhat's Route  */}
