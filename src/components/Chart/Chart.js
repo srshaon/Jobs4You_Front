@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom'; 
 import useAuth from '../../hooks/useAuth';
 import { PieChart, Pie, Tooltip, ResponsiveContainer, LabelList, Label, Cell } from 'recharts';
 
-const Chart = ({ _id }) => {
+const Chart = () => {
+    const { _id } = useParams();
     const [postedSkills, setPostedSkills] = useState([]);
     const [gainedSkills, setGainedSkills] = useState([]);
     const [data1, setData1] = useState([]);
@@ -66,6 +68,12 @@ const Chart = ({ _id }) => {
                     </PieChart>
                 </ResponsiveContainer>
             }
+
+            {
+                (gainedSkills?.length === 0) &&
+                <div className="text-center my-5 py-5"><p>You don't have any skills. Go Back to <Link to="/dashboard">Dashboard</Link></p></div>
+            }
+
         </div>
     )
 }
