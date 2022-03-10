@@ -3,7 +3,6 @@ import useAuth from '../../hooks/useAuth';
 
 const Skills = () => {
 
-    const [skills, setSkills] = useState([]);
     const [skill, setSkill] = useState('');
     const { email } = useAuth().user;
 
@@ -35,9 +34,7 @@ const Skills = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        const temp = skill.split(', ');
-
-        setSkills(temp);
+        const skills = skill.split(', ');
         
         let addSkills = { email: email, skills: skills };
 
@@ -58,10 +55,10 @@ const Skills = () => {
 
     return (
         <div style={{ minHeight: '70vh', marginTop: '50px' }}>
-            <h2 className="text-center mb-5">Add your skills (Seperate with ' ,')</h2>
+            <h2 className="text-center mb-5 pt-3">Add your skills (Seperate with ' ,')</h2>
             <form onSubmit={handleSubmit}>
                 {
-                    <><input onChange={handleInput} /><button>Submit</button></>
+                    <div className="text-center py-4"><input className="py-2 px-3" onChange={handleInput} /><button className="py-2 px-3 bg-dark text-light" style={{background: 'white', borderLeft: 'none', border: '1px solid rgba(0, 0, 0, 1)'}}>Submit</button></div>
                 }
             </form>
 
