@@ -39,7 +39,7 @@ const Skills = () => {
         let addSkills = { email: email, skills: skills };
 
         fetch('https://afternoon-headland-45054.herokuapp.com/skills', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
