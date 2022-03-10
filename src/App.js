@@ -106,7 +106,7 @@ function App() {
             <Route path="/chat">
               <Chat></Chat>
             </Route>
-            <Route path="/chart">
+            <Route path="/chart/:_id">
               <Chart></Chart>
             </Route>
             <Route path="/skills">
