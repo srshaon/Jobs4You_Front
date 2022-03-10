@@ -1,0 +1,20 @@
+.smoothy {
+    opacity: 0;
+    animation: 5s;
+    animation-name: animate;
+}
+
+@keyframes animate {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+
