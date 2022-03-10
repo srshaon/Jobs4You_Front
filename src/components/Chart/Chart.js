@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useAuth from '../../hooks/useAuth';
 import { PieChart, Pie, Tooltip, ResponsiveContainer, LabelList, Label, Cell } from 'recharts';
 
