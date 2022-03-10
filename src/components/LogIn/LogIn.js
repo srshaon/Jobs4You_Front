@@ -14,7 +14,7 @@ const LogIn = () => {
   const [error, setError] = useState("");
   const [url, setUrl] = useState("");
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   let redirect_Url = location.state?.from || '/profileform';
   let redirect_Url2 = '/profileform';
   const redirect = () => {
@@ -65,7 +65,7 @@ const LogIn = () => {
   }
 
   const handleEmailRegistration = e => {
-    console.log('hit first time');
+    // console.log('hit first time');
     e.preventDefault();
     handleRegistration(redirect, role)
 
@@ -76,7 +76,7 @@ const LogIn = () => {
     setRole('seeker');
     redirect_Url = '/profileform';
     console.log(role);
-    console.log('hitted first form')
+    // console.log('hitted first form')
     document.getElementById('user-signup-form').style.visibility = 'visible'
     document.getElementById('user-signup-form').style.display = 'block'
     document.getElementById('company-signup-form').style.display = 'none'
@@ -90,7 +90,7 @@ const LogIn = () => {
     setRole('company');
     redirect_Url = '/profileform';
     console.log(role);
-    console.log('hitted second form form')
+    // console.log('hitted second form form')
     // document.getElementById('company-signup-form').style.visibility = 'visible'
     document.getElementById('user-signup-form').style.display = 'none'
     document.getElementById('user-signup-form').style.visibility = 'hidden'
@@ -102,7 +102,7 @@ const LogIn = () => {
 
   }
 
-  console.log(role);
+  // console.log(role);
 
   return (
     <div className="o">
