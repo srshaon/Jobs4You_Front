@@ -23,10 +23,10 @@ const Dashboard = () => {
         return <Spinner animation="border" variant="danger" />
     }
     return (
-        <div >
+        <div  >
 
-            <div className="dashboard-details-div">
-                <div  >
+            <div className="dashboard-details-div ">
+                <div className='dashboard-sidebar-menu w-100' >
                     <div className="h-100">
                         <CDBSidebar className="w-100" textColor="#fff" backgroundColor="#333">
 
