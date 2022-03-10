@@ -21,7 +21,7 @@ const ManageJobs = () => {
     <div className="main-container">
       <div className="container">
         <h2 className="text-center pb-4">Manage Jobs</h2>
-        <Row className="d-md-flex align-items-centre justify-content-centre g-5">
+        <Row className="d-md-flex align-items-centre justify-content-centre g-5 pb-5">
           {jobs.map((job, index) => (
             <ManageJob key={index} job={job} setJobs={setJobs}></ManageJob>
           ))}

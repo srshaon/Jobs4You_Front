@@ -2,6 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Card, Col, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { CgWorkAlt } from "react-icons/cg";
+import { TiLocation } from "react-icons/ti";
+import { FcCurrencyExchange } from "react-icons/fc";
+import "./ManageJob.css";
 
 const ManageJob = ({ job, setJobs }) => {
   const [show, setShow] = useState(false);
@@ -41,9 +45,9 @@ const ManageJob = ({ job, setJobs }) => {
   return (
     <>
       <Col md={12}>
-        <Card className="w-75 p-5">
+        <Card className="updatedjob-card w-75 p-5 mx-auto">
           <div>
-            <div>
+            <div className="px-5 py-3">
               {/* <div className="w-50 mx-auto d-md-flex align-items-center">
                 <img src={job.image} alt="" className="w-50 p-5" />
                 <h5>
@@ -53,23 +57,55 @@ const ManageJob = ({ job, setJobs }) => {
                 </h5>
               </div> */}
               <h6>{job?.category}</h6>
-              <h5>{job?.job}</h5>
+              <h5 style={{ color: "brown" }}>{job?.job}</h5>
               <p>
-                {job?.jobLocation} <span className="ps-4"> ${job?.salary}</span>
+                <TiLocation /> {job?.jobLocation} -{job?.employmentStatus}
               </p>
-              <p>{job?.employmentStatus}</p>
-              <p>{job?.vacancy}</p>
-              <p>Educational Req: {job?.educationalRequirements}</p>
-              <p>Job Responsibilities: {job?.jobResponsibilities}</p>
-              <p>Additional Req:</p>
-              <ul>
+              <h5 className="pt-3" style={{ fontWeight: "600" }}>
+                <u>Job Details</u>
+              </h5>
+              <p>
+                {" "}
+                <span style={{ color: "brown", fontWeight: "600" }}>
+                  Vacancy:{" "}
+                </span>
+                {job?.vacancy}
+              </p>
+              <p>
+                {" "}
+                <span style={{ color: "brown", fontWeight: "600" }}>
+                  Educational Requirements:{" "}
+                </span>
+                {job?.educationalRequirements}
+              </p>
+              <p>
+                {" "}
+                <span style={{ color: "brown", fontWeight: "600" }}>
+                  Job Responsibilities:
+                </span>{" "}
+                {job?.jobResponsibilities}
+              </p>
+              <p>
+                {" "}
+                <span style={{ color: "brown", fontWeight: "600" }}>
+                  {" "}
+                  Additional Requirements:
+                </span>
+              </p>
+              <ul className="ps-5 ms-2">
                 {job?.additionalRequirements.map((item) => (
                   <li>{item}</li>
                 ))}
               </ul>
+              <p>
+                {" "}
+                <span style={{ color: "brown", fontWeight: "600" }}>
+                  Salary:
+                </span>{" "}
+                ${job?.salary}
+              </p>
             </div>
-
-            <div className="text-center mt-4">
+            <div className="text-center">
               {job?.status?.toLowerCase() === "pending" && (
                 <button
                   className="submit-btn p-3"

@@ -14,7 +14,7 @@ const AllJobStatus = () => {
   const { statusName } = useParams();
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
+    fetch("http://localhost:5000/jobs")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -58,19 +58,16 @@ const AllJobStatus = () => {
           <Col md={8}>
             <div className="row d-md-flex align-items-center justify-content-center ">
               {jobs.map((job) => (
-                <Link to={`/jobdetails/${job._id}`}>
+                <Link className="job-list-link" to={`/jobdetails/${job._id}`}>
                   <article
-                    className="job-list-article row p-2 align-items-center justify-content-center"
+                    className="job-list-article row align-items-center justify-content-center"
                     style={{ height: "170px", minHeight: "170px" }}
                   >
-                    <Col
-                      md={5}
-                      className="d-md-flex align-items-center justify-content-center py-3"
-                    >
+                    <Col md={5} className="d-md-flex">
                       <img
                         src={job.image}
                         alt=""
-                        className="w-25"
+                        className="p-3"
                         style={{ borderRadius: "100px" }}
                       />
                       <div className="ps-3">
@@ -92,7 +89,7 @@ const AllJobStatus = () => {
                       <FcCurrencyExchange />
                       <span className="ps-1">{job.salary}</span>
                     </Col>
-                    <Col md={2}>{job.aplicationDeadline}</Col>
+                    <Col md={2}>closing: {job.applicationDeadline}</Col>
                   </article>
                 </Link>
               ))}

@@ -19,6 +19,8 @@ const ProfileForm = (props) => {
     console.log(actions);
   };
 
+  console.log(role);
+
   return (
     <div className="profile-form-div main-container overflow-hidden">
       <div>

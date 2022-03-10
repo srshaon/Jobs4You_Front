@@ -35,6 +35,7 @@
 }
 
 .footer-list a {
+  text-decoration: none;
   display: block;
   color: black;
   font-size: 16px;
@@ -44,7 +45,7 @@
 
 .footer-list a:hover {
   text-decoration: underline;
-  text-decoration-color: orange;
+  text-decoration-color: orangered;
   transform: translateX(10px);
 }
 

@@ -20,19 +20,19 @@
 .dropdown-menu {
   font-size: 15px;
   border: none;
-  background: #064663;
+  background: var(--color-primary-dark) !important;
 }
 
 .dropdown-item {
   text-decoration: none;
   color: white !important;
-  border: none;
-  background: #064663;
+  border: none !important;
+  /* background: #064663; */
 }
 
 .dropdown-item:hover {
   color: #06ff00 !important;
-  background: #064663 !important;
+  background: var(--color-primary-dark) !important;
 }
 
 .signout-btn {

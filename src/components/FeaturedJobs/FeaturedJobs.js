@@ -9,7 +9,7 @@ const FeaturedJobs = () => {
   const [featuredJobs, setFeaturedJobs] = useState([]);
 
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
+    fetch("http://localhost:5000/jobs")
       .then((res) => res.json())
       .then((data) => setFeaturedJobs(data));
   }, []);
@@ -61,7 +61,7 @@ const FeaturedJobs = () => {
                   {job.employmentStatus}
                 </div>
               )}
-              {job.employmentStatus === "Part-Time" && (
+              {job.employmentStatus === "Part-time" && (
                 <div className="featured-job-btn-part p-3 text-center">
                   {job.employmentStatus}
                 </div>
