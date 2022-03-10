@@ -20,7 +20,7 @@ const useFirebase = () => {
     const [show, setShow] = useState(true);
     const [backdrop, setBackdrop] = useState(false);
     const [admin, setAdmin] = useState('seeker');
-    const [role, setRole] = useState('seeker');
+    const [role, setRole] = useState('');
     // const [condition, setCondition] = useState("seeker");
 
     useEffect(() => {
