@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useGetAllPostQuery, useUpdatePostMutation } from '../../Redux-handler/GovJobApiHandler';
+import { Form,Button } from 'react-bootstrap';
 const EditGovJob = () => {
     const history=useHistory()
     const[jobInfo,setJobInfo]=useState({
@@ -35,14 +36,14 @@ history.push('/allgovjobs')
            <div className='d-flex justify-content-center mt-4 '>{isLoading&& <h5 className='test-primary'>Job post updating.....</h5> }</div>
            <div className='d-flex justify-content-center my-4 p-4'>
                
-<form onSubmit={handleSubmit} className="mb-1">
-                            <input required onChange={handleChange} className="login-input p-1" value={jobInfo.organization} placeholder='organization' type="name" name="organization" id="" />
+ <form onSubmit={handleSubmit} className="mb-1">
+                            <input required onChange={handleChange} className="login-input p-1 form-control" value={jobInfo.organization} placeholder='organization' type="name" name="organization" id="" />
                             <br />
                             <br />
                             <input required onChange={handleChange} className="login-input  p-1" value={jobInfo.position} type="text" name="position" id="" placeholder='Position'/>
+
                             <br />
-                            <br />
-                            <input required onChange={handleChange}  value={jobInfo.deadline} className="p-1  login-input" type="text" name="deadline" id="" placeholder="Deadline" />
+                            < Form.Control input required onChange={handleChange}  value={jobInfo.deadline} className="p-1  login-input" type="text" name="deadline" id="" placeholder="Deadline" />
                             <br />
                             <input required onChange={handleChange} 
                             value={jobInfo.vacancy}placeholder="Vacancy" className="p-1  login-input" type="number" name="vacancy" id="" />
@@ -50,7 +51,8 @@ history.push('/allgovjobs')
 
                             <input style={{ backgroundColor: 'transparent', color: 'blue', border: '2px solid black' }} type="submit" value="Update" />
                         </form> 
-                        </div>
+                        </div> 
+                       
                         </>
         
     );
