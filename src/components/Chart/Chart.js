@@ -10,13 +10,13 @@ const Chart = () => {
     const { email } = useAuth();
 
     useEffect(() => {
-        fetch(`http://localhost:5000/posted-skills/:${_id}`)
+        fetch(`https://afternoon-headland-45054.herokuapp.com/posted-skills/:${_id}`)
         .then(res => res.json())
         .then(data => setPostedSkills(data));
     }, []);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/skills/:${email}`)
+        fetch(`https://afternoon-headland-45054.herokuapp.com/skills/:${email}`)
         .then(res => res.json())
         .then(data => setGainedSkills(data));
     }, []);
