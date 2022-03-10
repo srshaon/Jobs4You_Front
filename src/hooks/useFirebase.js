@@ -21,13 +21,16 @@ const useFirebase = () => {
     const [backdrop, setBackdrop] = useState(false);
     const [admin, setAdmin] = useState('seeker');
     const [role, setRole] = useState('seeker');
+    // const [condition, setCondition] = useState("seeker");
 
     useEffect(() => {
-        fetch(`https://afternoon-headland-45054.herokuapp.com/users/${user.email}`)
+        fetch(`http://localhost:5000/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
                 setAdmin(data.admin)
+                // setCondition(data.admin)
+
 
             })
     }, [user.email])
@@ -39,6 +42,7 @@ const useFirebase = () => {
     }
     const handleRegistration = (rf, role) => {
         console.log(role);
+        setRole(role);
         // e.preventDefault();
         if (password.length < 6) {
             setError('password must be 6 character long');
