@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import useAuth from '../../hooks/useAuth';
 
 const Skills = () => {
 
     const [skills, setSkills] = useState([]);
     const [skill, setSkill] = useState('');
+    const { email } = useAuth().user;
 
     // const [inputs, setInputs] = useState([]);
 
@@ -36,8 +38,8 @@ const Skills = () => {
         const temp = skill.split(', ');
 
         setSkills(temp);
-        // email != ''
-        let addSkills = { email: '', skills: skills };
+        
+        let addSkills = { email: email, skills: skills };
 
         fetch('https://afternoon-headland-45054.herokuapp.com/skills', {
             method: 'POST',
