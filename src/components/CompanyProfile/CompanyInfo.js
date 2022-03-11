@@ -90,7 +90,7 @@ console.log(info)
                       <p className="mb-0">Phone</p>
                     </div>
                     <div className="col-sm-9">
-                      <p className="text-muted mb-0">(097){info?.ontact}</p>
+                      <p className="text-muted mb-0">(097){info?.contact}</p>
                     </div>
                   </div>
                   <hr/>
