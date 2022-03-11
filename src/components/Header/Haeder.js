@@ -88,10 +88,10 @@ const Header = () => {
             </NavLink>
             {user?.email && (
               <Navbar.Brand className="header-text">
-                {user.displayName}
-                <span className="ms-2">
-                  <img src={user.photoURL} alt="" className="profile-img" />
+                <span className="me-2" style={{ fontSize: "15px" }}>
+                  {user.displayName}
                 </span>
+                <img src={user.photoURL} alt="" className="profile-img" />
               </Navbar.Brand>
             )}
             {user?.email ? (
@@ -103,6 +103,21 @@ const Header = () => {
                 SIGN IN
               </NavLink>
             )}
+            {/* {user?.email ? (
+              <NavDropdown
+                title={user.displayName}
+                id="collasible-nav-dropdown"
+                className="header-text"
+              >
+                <button className=" signout-btn" onClick={logOut}>
+                  SIGN OUT
+                </button>
+              </NavDropdown>
+            ) : (
+              <NavLink className="nav-link" to="/login">
+                SIGN IN
+              </NavLink>
+            )} */}
           </Nav>
         </Navbar.Collapse>
       </Container>

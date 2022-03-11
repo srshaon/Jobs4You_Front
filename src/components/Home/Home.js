@@ -19,6 +19,7 @@ import Footer from "../Footer/Footer";
 const Home = () => {
   return (
     <div>
+      {/* <Header></Header> */}
       <Cover></Cover>
       <main className="main-container">
         <Filteredjobs></Filteredjobs>
