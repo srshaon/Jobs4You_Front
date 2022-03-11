@@ -8,104 +8,104 @@ import { signInWithEmailAndPassword } from "@firebase/auth";
 const LogIn = () => {
   const history = useHistory();
   const {
-    user,
-    logOut,
-    googleSignIn,
-    handleEmailChange,
-    handlePasswordChange,
-    email,
-    password,
-    handleNameChange,
-    setName,
-    handleRegistration,
-    auth,
-    saveUser,
-    role,
-    setRole,
+    user, logOut, googleSignIn, handleEmailChange, handlePasswordChange, email, password, handleNameChange, setName, handleRegistration, auth, saveUser, role, setRole
   } = useAuth();
 
   const [error, setError] = useState("");
   const [url, setUrl] = useState("");
   const location = useLocation();
-  console.log(location);
-  let redirect_Url = location.state?.from || "/profileform";
-  let redirect_Url2 = "/profileform";
+  // console.log(location);
+  let redirect_Url = location.state?.from || '/profileform';
+  let redirect_Url2 = '/profileform';
   const redirect = () => {
     history.push(redirect_Url2);
-  };
+
+  }
   const handleGoogleSignIn = () => {
     googleSignIn()
-      .then((result) => {
+      .then(result => {
         const user = result.user;
-        saveUser(user.email, user.displayName, role, "PUT");
-        setError("");
+        saveUser(user.email, user.displayName, role, 'PUT');
+        setError('');
         history.push(redirect_Url);
       })
       .catch((error) => {
-        setError(error.message);
+        setError(error.message)
         // setUser({});
         // setErrorMsg(error.message);
       });
-  };
+  }
 
-  const handleEmailLogin = (e) => {
+  const handleEmailLogin = e => {
     // console.log('hit first time');
     e.preventDefault();
     // console.log('hit 2nd time');
     // return signInWithEmailAndPassword(auth, email, password)
     processLogIn(email, password);
-  };
+  }
   const processLogIn = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((result) => {
-        setError("");
+      .then(result => {
+        setError('');
         history.push(redirect_Url);
       })
       .catch((error) => {
+
+
         //console.log(error.message);
         if (error.code === "auth/user-not-found") {
-          setError("Wrong Email");
-        } else {
-          setError("Wrong Password");
+          setError("Wrong Email")
         }
-      });
-  };
+        else {
+          setError("Wrong Password")
 
-  const handleEmailRegistration = (e) => {
-    console.log("hit first time");
+        }
+
+      });
+  }
+
+  const handleEmailRegistration = e => {
+    // console.log('hit first time');
     e.preventDefault();
-    handleRegistration(redirect, role);
-  };
-  // registration
+    handleRegistration(redirect, role)
+
+  }
+  // registration 
 
   const userFormDisplay = () => {
-    setRole("seeker");
-    redirect_Url = "/profileform";
+    setRole('seeker');
+    redirect_Url = '/profileform';
     console.log(role);
-    console.log("hitted first form");
-    document.getElementById("user-signup-form").style.visibility = "visible";
-    document.getElementById("user-signup-form").style.display = "block";
-    document.getElementById("company-signup-form").style.display = "none";
-    document.getElementById("google-signin").style.visibility = "visible";
-  };
+    // console.log('hitted first form')
+    document.getElementById('user-signup-form').style.visibility = 'visible'
+    document.getElementById('user-signup-form').style.display = 'block'
+    document.getElementById('company-signup-form').style.display = 'none'
+
+    document.getElementById('google-signin').style.visibility = 'visible';
+
+
+
+  }
   const companyFormDisplay = () => {
-    setRole("company");
-    redirect_Url = "/profileform";
+    setRole('company');
+    redirect_Url = '/profileform';
     console.log(role);
-    console.log("hitted second form form");
+    // console.log('hitted second form form')
     // document.getElementById('company-signup-form').style.visibility = 'visible'
-    document.getElementById("user-signup-form").style.display = "none";
-    document.getElementById("user-signup-form").style.visibility = "hidden";
-    document.getElementById("company-signup-form").style.visibility = "visible";
-    document.getElementById("company-signup-form").style.display = "block";
+    document.getElementById('user-signup-form').style.display = 'none'
+    document.getElementById('user-signup-form').style.visibility = 'hidden'
+    document.getElementById('company-signup-form').style.visibility = 'visible'
+    document.getElementById('company-signup-form').style.display = 'block'
 
-    document.getElementById("google-signin").style.visibility = "hidden";
-  };
+    document.getElementById('google-signin').style.visibility = 'hidden';
 
-  console.log(role);
+
+  }
+
+  // console.log(role);
 
   return (
-    <div className="o pb-5">
+    <div className="o">
       <div className="main">
         <input type="checkbox" id="chk" aria-hidden="true" />
 

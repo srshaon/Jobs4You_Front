@@ -1,15 +1,16 @@
 import "./ProfileForm.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { withRouter } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 import useAuth from "../../hooks/useAuth";
+import { Spinner } from "react-bootstrap";
 
 const ProfileForm = (props) => {
-  const { role, setRole } = useAuth();
+  const { role, setRole, user, setUser } = useAuth();
   const { register, handleSubmit } = useForm();
-  const [condition, setCondition] = useState("user");
+  const [condition, setCondition] = useState("");
   const { actions, state } = useStateMachine({ updateAction });
   const onSubmit = (data) => {
     actions.updateAction(data);
@@ -18,13 +19,35 @@ const ProfileForm = (props) => {
     console.log(state);
     console.log(actions);
   };
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user.email}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setCondition(data.admin)
 
+
+      })
+  }, [user.email])
   console.log(role);
+  let loadFormCondition = ''
+  if (role !== "") {
+    loadFormCondition = role;
+    console.log(role);
+  }
+  else {
+    loadFormCondition = condition;
+    console.log(condition)
+  }
+  // if (role === '') {
+  //   return <Spinner animation="border" variant="danger" />
+  // }
+  console.log(loadFormCondition);
 
   return (
     <div className="profile-form-div main-container overflow-hidden">
       <div>
-        {role === "company" && (
+        {loadFormCondition === "company" && (
           <div>
             <div className="profile-form-div">
               <div>
@@ -132,7 +155,7 @@ const ProfileForm = (props) => {
           </div>
         )}
 
-        {role === "seeker" && (
+        {loadFormCondition === "seeker" && (
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div class="profile-form-container mt-3 mb-5">
