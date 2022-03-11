@@ -113,7 +113,7 @@ console.log(info)
                   </div>
                 </div>
               </div>
-              {(admin==='seeker')?<div className="">
+              <div className="">
              <div className="ms-1">
                 <div className="card mb-4 mb-md-0">
                     <div className="card-body">
@@ -141,7 +141,7 @@ console.log(info)
                     </div>
                   </div>
                 </div>
-              </div>:<div className='d-flex justify-content-center bg-dark'><Chart/></div>}
+              </div>
             </div>
           </div>
         </div>
