@@ -1,3 +1,4 @@
+
 import "./Dashboard.css";
 
 import React, { useState } from "react";
@@ -17,11 +18,30 @@ import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io";
 
 import Header from "../Header/Haeder";
+import CompanyDetails from '../CompanyProfile/CompanyDetails'
+import CompanyProfile from '../CompanyProfile/CompanyProfile'
+import {useGetProfilesQuery,useGetCompaniesQuery } from '../../Redux-handler/ManageProfiles';
+import CandidateDetails from '../CandidatesList/CandidateDetails';
+import CandidatesList from '../CandidatesList/CandidatesList';
+import PdfCreator from '../PdfCreator/PdfCreator';
+import CompanyInfo from'../CompanyProfile/CompanyInfo';
+
 
 const Dashboard = () => {
-  const { logOut, admin } = useAuth();
+  const { logOut, admin ,user} = useAuth();
   const [control, setControl] = useState("welcome");
   console.log(admin);
+  const{data:candidate}=useGetProfilesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.loginEmail==user?.email),})
+})
+const{data:company}=useGetCompaniesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.loginEmail==user?.email),})
+})
+let profileInfo;
+if(admin==='seeker'){
+profileInfo=candidate
+}else{
+    profileInfo=company
+}
+    console.log(profileInfo)
 
   if (admin === "") {
     return <Spinner animation="border" variant="danger" />;
@@ -40,11 +60,11 @@ const Dashboard = () => {
               // backgroundColor="#333"
             >
               <CDBSidebarContent className="dashboard py-5">
-                {/* {admin === "seeker" && ( */}
+                {admin === "seeker" && (
                 <div>
                   <div className="dashboard-list">
                     <li
-                      onClick={() => setControl("welcome")}
+                      onClick={() => setControl("candiProfile")}
                       className="li py-3 px-5"
                     >
                       <span className="dashboard-icons px-1">
@@ -53,13 +73,22 @@ const Dashboard = () => {
                       My Profile
                     </li>
                     <li
-                      onClick={() => setControl("welcome")}
+                      onClick={() => setControl("candiProfile")}
+                      className="li py-3 px-5"
+                    >
+                      <span className="dashboard-icons px-1">
+                       
+                      </span>{" "}
+                      
+                    </li>
+                    <li
+                      onClick={() => setControl("companies")}
                       className="li py-3 px-5"
                     >
                       <span className="dashboard-icons px-1">
                         <RiEdit2Fill />
                       </span>{" "}
-                      Edit Profile
+                      All Company
                     </li>
                     <li
                       onClick={() => setControl("welcome")}
@@ -72,13 +101,13 @@ const Dashboard = () => {
                     </li>
 
                     <li
-                      onClick={() => setControl("welcome")}
+                      onClick={() => setControl("createResume")}
                       className="li py-3 px-5"
                     >
                       <span className="dashboard-icons px-1">
                         <SiWorkplace />
                       </span>{" "}
-                      Applied Jobs
+                      Create Resume
                     </li>
                     <li
                       onClick={() => setControl("welcome")}
@@ -97,14 +126,14 @@ const Dashboard = () => {
                       Log Out
                     </li>
                   </div>
-                </div>
-                {/* )} */}
-                {admin === "company" && (
+                </div>)}
+                
+                {(admin === "company") && (
                   <div>
                     <div>
                       <ul className="dashboard-list">
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl("companyProfile")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
@@ -113,26 +142,26 @@ const Dashboard = () => {
                           View Profile
                         </li>
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl("companyProfile")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
                             <RiEdit2Fill />
                           </span>{" "}
-                          Edit Profile
+                         Companies
                         </li>
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl("candidates")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
                             <SiWorkplace />
                           </span>{" "}
-                          Posted Jobs
+                          Candidates
                         </li>
 
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl("editProfile")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
@@ -214,6 +243,12 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="dashboard-second-container">
+        {control === "companyProfile" && <CompanyInfo info={company}/>}
+                    {control === "companies" && <CompanyProfile/>}
+                    {control === "candiProfile" && <CandidateDetails info={candidate}/>}
+                    {control === "candidates" && <CandidatesList/>}
+                    {/* {control === "companyProfile" && <CandidateDetails/>} */}
+                    {control === "createResume" && <PdfCreator/>}
           {control === "login" && <LogIn></LogIn>}
           {control === "welcome" && <Welcome></Welcome>}
         </div>
