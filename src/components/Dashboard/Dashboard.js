@@ -28,7 +28,7 @@ import CompanyInfo from'../CompanyProfile/CompanyInfo';
 
 
 const Dashboard = () => {
-  const { logOut, admin } = useAuth();
+  const { logOut, admin ,user} = useAuth();
   const [control, setControl] = useState("welcome");
   console.log(admin);
   const{data:candidate}=useGetProfilesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.loginEmail==user?.email),})
@@ -60,11 +60,11 @@ profileInfo=candidate
               // backgroundColor="#333"
             >
               <CDBSidebarContent className="dashboard py-5">
-                {/* {admin === "seeker" && ( */}
+                {admin === "seeker" && (
                 <div>
                   <div className="dashboard-list">
                     <li
-                      onClick={() => setControl("welcome")}
+                      onClick={() => setControl("candiProfile")}
                       className="li py-3 px-5"
                     >
                       <span className="dashboard-icons px-1">
@@ -73,13 +73,22 @@ profileInfo=candidate
                       My Profile
                     </li>
                     <li
-                      onClick={() => setControl("welcome")}
+                      onClick={() => setControl("candiProfile")}
+                      className="li py-3 px-5"
+                    >
+                      <span className="dashboard-icons px-1">
+                       
+                      </span>{" "}
+                      
+                    </li>
+                    <li
+                      onClick={() => setControl("companies")}
                       className="li py-3 px-5"
                     >
                       <span className="dashboard-icons px-1">
                         <RiEdit2Fill />
                       </span>{" "}
-                      Edit Profile
+                      All Company
                     </li>
                     <li
                       onClick={() => setControl("welcome")}
@@ -92,13 +101,13 @@ profileInfo=candidate
                     </li>
 
                     <li
-                      onClick={() => setControl("welcome")}
+                      onClick={() => setControl("createResume")}
                       className="li py-3 px-5"
                     >
                       <span className="dashboard-icons px-1">
                         <SiWorkplace />
                       </span>{" "}
-                      Applied Jobs
+                      Create Resume
                     </li>
                     <li
                       onClick={() => setControl("welcome")}
@@ -117,14 +126,14 @@ profileInfo=candidate
                       Log Out
                     </li>
                   </div>
-                </div>
-                {/* )} */}
-                {admin === "company" && (
+                </div>)}
+                
+                {(admin === "company") && (
                   <div>
                     <div>
                       <ul className="dashboard-list">
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl("companyProfile")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
@@ -133,26 +142,26 @@ profileInfo=candidate
                           View Profile
                         </li>
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl("companyProfile")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
                             <RiEdit2Fill />
                           </span>{" "}
-                          Edit Profile
+                         Companies
                         </li>
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl("candidates")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
                             <SiWorkplace />
                           </span>{" "}
-                          Posted Jobs
+                          Candidates
                         </li>
 
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl("editProfile")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
