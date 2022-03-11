@@ -16,16 +16,16 @@ const Chart = () => {
     useEffect(() => {
         if (_id && email)
         {
-            fetch(`https://afternoon-headland-45054.herokuapp.com/${_id}`)
+            fetch(`https://afternoon-headland-45054.herokuapp.com/posted-skills/${_id}`)
             .then(res => res.json())
             .then(data => setPostedSkills(data));
             
 
-            fetch(`https://afternoon-headland-45054.herokuapp.com/${email}`)
+            fetch(`https://afternoon-headland-45054.herokuapp.com/skills/${email}`)
             .then(res => res.json())
             .then(data => setGainedSkills(data));
 
-            console.log('this is isssss', email);
+            // console.log('this is isssss', email);
         }
 
     }, [email]);
@@ -71,9 +71,9 @@ const Chart = () => {
 
             {
                 (gainedSkills?.length !== 0) &&
-                <Link to={`/apply/${_id}`}>
+                <div className="d-flex justify-content-center"><Link to={`/apply/${_id}`}>
                     <Button className="apply-btn px-5">Apply for job</Button>
-                </Link>
+                </Link></div>
             }
 
             {
