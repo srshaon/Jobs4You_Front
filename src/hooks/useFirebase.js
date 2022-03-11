@@ -24,7 +24,7 @@ const useFirebase = () => {
     // const [condition, setCondition] = useState("seeker");
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://afternoon-headland-45054.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

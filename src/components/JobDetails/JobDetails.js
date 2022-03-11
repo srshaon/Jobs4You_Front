@@ -10,7 +10,7 @@ const JobDetails = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs/${jobId}`)
+    fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, [jobId]);
@@ -20,7 +20,7 @@ const JobDetails = () => {
   }
   return (
     <div className="job-detail-container pb-5">
-      <div className="container">
+      <div className="container pb-5">
         <div className="py-5">
           {
             <div className="job-detail-title">

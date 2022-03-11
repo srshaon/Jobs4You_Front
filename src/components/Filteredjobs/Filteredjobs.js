@@ -33,17 +33,15 @@ const Filteredjobs = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("https://afternoon-headland-45054.herokuapp.com/jobs")
-      .then((res) => {
-        const approvedJobs = res.data.filter(
-          (job) => job?.status?.toLowerCase() === "approved"
-        );
+    axios.get("http://localhost:5000/jobs").then((res) => {
+      const approvedJobs = res.data.filter(
+        (job) => job?.status?.toLowerCase() === "approved"
+      );
 
-        setCategories(filteredData(approvedJobs, "category"));
-        setLocations(filteredData(approvedJobs, "jobLocation"));
-        setStatus(filteredData(approvedJobs, "employmentStatus"));
-      });
+      setCategories(filteredData(approvedJobs, "category"));
+      setLocations(filteredData(approvedJobs, "jobLocation"));
+      setStatus(filteredData(approvedJobs, "employmentStatus"));
+    });
   }, []);
 
   if (control.length === 0) {

@@ -27,7 +27,7 @@ const Apply = () => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:5000/jobs/${jobId}`)
+    fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then(res => res.json())
       .then(data => setJobs(data))
 
@@ -57,7 +57,7 @@ const Apply = () => {
     formData.append("resumepdfFile", resumepdfFile);
     formData.append("coverLetterpdfFile", coverLetterpdfFile);
 
-    fetch("http://localhost:5000/applyList", {
+    fetch("https://afternoon-headland-45054.herokuapp.com/applyList", {
       method: "POST",
       body: formData,
     })
@@ -282,7 +282,7 @@ const Apply = () => {
                 </div>
 
                 <div className="d-flex justify-content-center pt-3 ">
-                  <Button className="apply-btn text-white" type="submit">
+                  <Button className="submit-btn p-3 text-white" type="submit">
                     Submit
                   </Button>
                 </div>

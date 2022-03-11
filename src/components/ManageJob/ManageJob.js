@@ -2,6 +2,10 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Card, Col, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { CgWorkAlt } from "react-icons/cg";
+import { TiLocation } from "react-icons/ti";
+import { FcCurrencyExchange } from "react-icons/fc";
+import "./ManageJob.css";
 
 const ManageJob = ({ job, setJobs }) => {
   const [show, setShow] = useState(false);
@@ -30,7 +34,7 @@ const ManageJob = ({ job, setJobs }) => {
     // const updatedJob = { ...job, newData };
     // console.log(updatedJob);
     axios
-      .put(`http://localhost:5000/jobs/${job._id}`, newData)
+      .put(`https://afternoon-headland-45054.herokuapp.com/jobs/${job._id}`, newData)
       .then((res) => {
         if (res.data.modifiedCount) {
           alert("updated successfully");
@@ -41,31 +45,67 @@ const ManageJob = ({ job, setJobs }) => {
   return (
     <>
       <Col md={12}>
-        <Card className="p-5" style={{ height: "75vh" }}>
+        <Card className="updatedjob-card w-75 p-5 mx-auto">
           <div>
-            <div className="row row-cols-lg-2 row-cold-md-2 d-md-flex align-items-center justify-content-center">
-              <Col md={4} className="">
-                <h5>{job?.category}</h5>
-                <img src={job.image} alt="" className="w-25 p-3" />
-                <h4>{job?.job}</h4>
-                <p>{job?.jobLocation}</p>
-                <p>{job?.employmentStatus}</p>
-                <p>${job?.salary}</p>
-                <p>{job?.vacancy}</p>
-                <p>Deadline: {job?.aplicationDeadline}</p>
-              </Col>
-              <Col md={8}>
-                <p>Educational Req: {job?.educationalRequirements}</p>
-                <p>Job Responsibilities: {job?.jobResponsibilities}</p>
-                <p>Additional Req:</p>
-                <ul>
-                  {job?.additionalRequirements.map((item) => (
-                    <li>{item}</li>
-                  ))}
-                </ul>
-              </Col>
+            <div className="px-5 py-3">
+              {/* <div className="w-50 mx-auto d-md-flex align-items-center">
+                <img src={job.image} alt="" className="w-50 p-5" />
+                <h5>
+                  <span style={{ color: "brown", fontWeight: "700" }}>
+                    {job?.company}
+                  </span>
+                </h5>
+              </div> */}
+              <h6>{job?.category}</h6>
+              <h5 style={{ color: "brown" }}>{job?.job}</h5>
+              <p>
+                <TiLocation /> {job?.jobLocation} -{job?.employmentStatus}
+              </p>
+              <h5 className="pt-3" style={{ fontWeight: "600" }}>
+                <u>Job Details</u>
+              </h5>
+              <p>
+                {" "}
+                <span style={{ color: "brown", fontWeight: "600" }}>
+                  Vacancy:{" "}
+                </span>
+                {job?.vacancy}
+              </p>
+              <p>
+                {" "}
+                <span style={{ color: "brown", fontWeight: "600" }}>
+                  Educational Requirements:{" "}
+                </span>
+                {job?.educationalRequirements}
+              </p>
+              <p>
+                {" "}
+                <span style={{ color: "brown", fontWeight: "600" }}>
+                  Job Responsibilities:
+                </span>{" "}
+                {job?.jobResponsibilities}
+              </p>
+              <p>
+                {" "}
+                <span style={{ color: "brown", fontWeight: "600" }}>
+                  {" "}
+                  Additional Requirements:
+                </span>
+              </p>
+              <ul className="ps-5 ms-2">
+                {job?.additionalRequirements.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <p>
+                {" "}
+                <span style={{ color: "brown", fontWeight: "600" }}>
+                  Salary:
+                </span>{" "}
+                ${job?.salary}
+              </p>
             </div>
-            <div className="text-center mt-4">
+            <div className="text-center">
               {job?.status?.toLowerCase() === "pending" && (
                 <button
                   className="submit-btn p-3"
@@ -88,7 +128,13 @@ const ManageJob = ({ job, setJobs }) => {
         </Card>
       </Col>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        show={show}
+        onHide={handleClose}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Update field of job details</Modal.Title>
         </Modal.Header>

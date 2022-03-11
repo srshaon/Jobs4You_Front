@@ -1,16 +1,23 @@
-import './Dashboard.css';
 
-import React, { useState } from 'react';
+import "./Dashboard.css";
 
-import { Spinner } from 'react-bootstrap';
-import useAuth from '../../hooks/useAuth';
-import {
-    CDBSidebar,
+import React, { useState } from "react";
 
-    CDBSidebarContent,
+import { Spinner } from "react-bootstrap";
+import useAuth from "../../hooks/useAuth";
+import { CDBSidebar, CDBSidebarContent } from "cdbreact";
+import LogIn from "../LogIn/LogIn";
+import Welcome from "../Welcome/Welcome";
+import { CgProfile } from "react-icons/cg";
+import { MdOutlineCloudUpload, MdUpdate } from "react-icons/md";
+import { SiWorkplace } from "react-icons/si";
+import { FcCalendar, FcManager } from "react-icons/fc";
+import { RiEdit2Fill, RiContactsLine } from "react-icons/ri";
+import { CgCloseO } from "react-icons/cg";
+import { HiOutlineOfficeBuilding } from "react-icons/hi";
+import { IoCheckmarkDoneCircleOutline } from "react-icons/io";
 
-} from "cdbreact";
-import LogIn from '../LogIn/LogIn';
+import Header from "../Header/Haeder";
 import CompanyDetails from '../CompanyProfile/CompanyDetails'
 import CompanyProfile from '../CompanyProfile/CompanyProfile'
 import {useGetProfilesQuery,useGetCompaniesQuery } from '../../Redux-handler/ManageProfiles';
@@ -19,11 +26,12 @@ import CandidatesList from '../CandidatesList/CandidatesList';
 import PdfCreator from '../PdfCreator/PdfCreator';
 import CompanyInfo from'../CompanyProfile/CompanyInfo';
 
+
 const Dashboard = () => {
-    const { logOut, admin,user} = useAuth();
-    const [control, setControl] = useState("candiProfile")
-    console.log(admin,user);
-    const{data:candidate}=useGetProfilesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.loginEmail==user?.email),})
+  const { logOut, admin } = useAuth();
+  const [control, setControl] = useState("welcome");
+  console.log(admin);
+  const{data:candidate}=useGetProfilesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.loginEmail==user?.email),})
 })
 const{data:company}=useGetCompaniesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.loginEmail==user?.email),})
 })
@@ -35,99 +43,209 @@ profileInfo=candidate
 }
     console.log(profileInfo)
 
-    if (admin === '') {
-        return <Spinner animation="border" variant="danger" />
-    }
-    return (
-        <div  >
+  if (admin === "") {
+    return <Spinner animation="border" variant="danger" />;
+  }
+  return (
+    <div
+      className="card dashboard-sec"
+      style={{ backgroundColor: "#9c9c9c60" }}
+    >
+      <div className="dashboard-details-div pb-5">
+        <div className="w-100">
+          <div className="h-100">
+            <CDBSidebar
+              className="w-100"
 
-            <div className="dashboard-details-div ">
-                <div className='dashboard-sidebar-menu w-100' >
-                    <div className="h-100">
-                        <CDBSidebar className="w-100" textColor="#fff" backgroundColor="#333">
+              // backgroundColor="#333"
+            >
+              <CDBSidebarContent className="dashboard py-5">
+                {/* {admin === "seeker" && ( */}
+                <div>
+                  <div className="dashboard-list">
+                    <li
+                      onClick={() => setControl("welcome")}
+                      className="li py-3 px-5"
+                    >
+                      <span className="dashboard-icons px-1">
+                        <CgProfile />
+                      </span>{" "}
+                      My Profile
+                    </li>
+                    <li
+                      onClick={() => setControl("welcome")}
+                      className="li py-3 px-5"
+                    >
+                      <span className="dashboard-icons px-1">
+                        <RiEdit2Fill />
+                      </span>{" "}
+                      Edit Profile
+                    </li>
+                    <li
+                      onClick={() => setControl("welcome")}
+                      className="li py-3 px-5"
+                    >
+                      <span className="dashboard-icons px-1">
+                        <MdOutlineCloudUpload />
+                      </span>{" "}
+                      Upload/View Resume
+                    </li>
 
+                    <li
+                      onClick={() => setControl("welcome")}
+                      className="li py-3 px-5"
+                    >
+                      <span className="dashboard-icons px-1">
+                        <SiWorkplace />
+                      </span>{" "}
+                      Applied Jobs
+                    </li>
+                    <li
+                      onClick={() => setControl("welcome")}
+                      className="li py-3 px-5"
+                    >
+                      <span className="dashboard-icons px-1">
+                        <FcCalendar />
+                      </span>{" "}
+                      Upcoming Interviews
+                    </li>
 
-                            <CDBSidebarContent className="py-5">
-                                {
-                                    (admin === 'seeker') && (
-                                        <div>
-
-
-                                            <div>
-                                                <li onClick={() => setControl("candiProfile")}
-                                                    className="li py-3 px-3">
-                                                    My Profile
-                                                </li>
-                                                <li onClick={() => setControl("companies")}
-                                                    className="li py-3 px-3">
-                                                    All-companies
-                                                </li>
-                                                <li onClick={() => setControl("EditProfile")}
-                                                    className="li py-3 px-3">
-                                                   Edit Profile
-                                                </li>
-                                                <li onClick={() => setControl("createResume")}
-                                                    className="li py-3 px-3">
-                                                    Create-Resume
-                                                </li>
-
-                                                <li onClick={logOut} className="li px-3 py-3">
-                                                    Log Out
-                                                </li>
-                                            </div>
-                                        </div>)
-                                }
-                                {
-                                    (admin === 'company') && (
-                                        <div>
-                                            <div >
-                                                <ul className="">
-                                                    <li onClick={() => setControl("companyProfile")}
-                                                        className="li  py-3">
-                                                        My-profile
-                                                    </li>
-                                                    <li onClick={() => setControl("candidates")} className="li  py-3">
-                                                        All-Candidates
-                                                    </li>
-                                                    <li onClick={() => setControl("Edit-Profile")} className="li  py-3">
-                                                        Edit-Profile
-                                                    </li>
-                                                    <li onClick={logOut} className="li px-3 py-3">
-                                                        Log Out
-                                                    </li>
-
-                                                </ul>
-
-                                            </div>
-                                        </div>
-                                    )
-                                }
-                            </CDBSidebarContent>
-
-                        </CDBSidebar>
-                    </div>
+                    <li onClick={logOut} className="li px-5 py-3">
+                      <span className="dashboard-icons px-1">
+                        <CgCloseO />
+                      </span>{" "}
+                      Log Out
+                    </li>
+                  </div>
                 </div>
-                <div className="dashboard-second-container"  >
+                {/* )} */}
+                {admin === "company" && (
+                  <div>
+                    <div>
+                      <ul className="dashboard-list">
+                        <li
+                          onClick={() => setControl("welcome")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <CgProfile />
+                          </span>{" "}
+                          View Profile
+                        </li>
+                        <li
+                          onClick={() => setControl("welcome")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <RiEdit2Fill />
+                          </span>{" "}
+                          Edit Profile
+                        </li>
+                        <li
+                          onClick={() => setControl("welcome")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <SiWorkplace />
+                          </span>{" "}
+                          Posted Jobs
+                        </li>
 
-                    {control === "companyProfile" && <CompanyInfo info={company}/>}
+                        <li
+                          onClick={() => setControl("welcome")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <FcCalendar />
+                          </span>{" "}
+                          Upcoming Interviews
+                        </li>
+                        <li onClick={logOut} className="li px-3 py-3">
+                          <span className="dashboard-icons px-1">
+                            <CgCloseO />
+                          </span>{" "}
+                          Log Out
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+                {admin === "admin" && (
+                  <div>
+                    <div>
+                      <ul className="dashboard-list">
+                        <li
+                          onClick={() => setControl("welcome")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <FcManager />
+                          </span>
+                          Make Admin
+                        </li>
+                        <li
+                          onClick={() => setControl("welcome")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <RiContactsLine />
+                          </span>
+                          Candidate List
+                        </li>
+                        <li
+                          onClick={() => setControl("welcome")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <HiOutlineOfficeBuilding />
+                          </span>
+                          Company List
+                        </li>
+                        <li
+                          onClick={() => setControl("welcome")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <MdUpdate />
+                          </span>
+                          Manage Jobs
+                        </li>
+                        <li
+                          onClick={() => setControl("welcome")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <SiWorkplace />
+                          </span>{" "}
+                          Post Job
+                        </li>
+                        <li onClick={logOut} className="li px-3 py-3">
+                          <span className="dashboard-icons px-1">
+                            <CgCloseO />
+                          </span>{" "}
+                          Log Out
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+              </CDBSidebarContent>
+            </CDBSidebar>
+          </div>
+        </div>
+        <div className="dashboard-second-container">
+        {control === "companyProfile" && <CompanyInfo info={company}/>}
                     {control === "companies" && <CompanyProfile/>}
                     {control === "candiProfile" && <CandidateDetails info={candidate}/>}
                     {control === "candidates" && <CandidatesList/>}
                     {/* {control === "companyProfile" && <CandidateDetails/>} */}
                     {control === "createResume" && <PdfCreator/>}
-                    {/* {control === "pay" && <Pay></Pay>}
-                    {control === "review" && <Review></Review>}
-                    
-                    {control === "makeadmin" && <MakeAdmin></MakeAdmin>}
-                    {control === "allorders" && <AllOrders></AllOrders>}
-                    {control === "manageproducts" && <ManageProducts></ManageProducts>}
-                    {control === "addnewproduct" && <AddNewProducts></AddNewProducts>} */}
-
-
-                </div>
-            </div>
+          {control === "login" && <LogIn></LogIn>}
+          {control === "welcome" && <Welcome></Welcome>}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default Dashboard;
