@@ -61,6 +61,9 @@ const Header = () => {
                 title="Career Advice"
                 id="collasible-nav-dropdown"
               >
+                <NavLink className="dropdown-item" to="/careerguide">
+                  Career Guide
+                </NavLink>
                 <NavLink className="dropdown-item" to="/resumetips">
                   Resume Tips
                 </NavLink>
@@ -85,10 +88,10 @@ const Header = () => {
             </NavLink>
             {user?.email && (
               <Navbar.Brand className="header-text">
-                <span className="me-2">
-                  <img src={user.photoURL} alt="" className="profile-img" />
+                <span className="me-2" style={{ fontSize: "15px" }}>
+                  {user.displayName}
                 </span>
-                {user.displayName}
+                <img src={user.photoURL} alt="" className="profile-img" />
               </Navbar.Brand>
             )}
             {user?.email ? (
@@ -100,6 +103,21 @@ const Header = () => {
                 SIGN IN
               </NavLink>
             )}
+            {/* {user?.email ? (
+              <NavDropdown
+                title={user.displayName}
+                id="collasible-nav-dropdown"
+                className="header-text"
+              >
+                <button className=" signout-btn" onClick={logOut}>
+                  SIGN OUT
+                </button>
+              </NavDropdown>
+            ) : (
+              <NavLink className="nav-link" to="/login">
+                SIGN IN
+              </NavLink>
+            )} */}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -16,6 +16,7 @@ const MyJobs = () => {
     }, [])
     console.log(applyList)
     const applyCollection = applyList.filter(applies => (applies.email == user.email))
+    console.log(applyCollection)
     return (
         <div className="ms-5">
             <div className="row row-cols-md-3 row-cols-lg-3 mb-5">

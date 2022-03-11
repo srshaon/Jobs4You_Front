@@ -19,11 +19,10 @@
 .add-job form input,
 textarea {
   width: 80%;
-
   line-height: 50px;
   border: 1px solid grey;
   border-radius: 5px;
-  margin-bottom: 25px;
+  margin: 15px 0;
   padding-left: 11px;
   background: transparent;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);

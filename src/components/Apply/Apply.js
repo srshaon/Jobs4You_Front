@@ -282,7 +282,7 @@ const Apply = () => {
                 </div>
 
                 <div className="d-flex justify-content-center pt-3 ">
-                  <Button className="apply-btn text-white" type="submit">
+                  <Button className="submit-btn p-3 text-white" type="submit">
                     Submit
                   </Button>
                 </div>

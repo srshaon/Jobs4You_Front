@@ -1,3 +1,22 @@
+.job-list-form input {
+  width: 75%;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid black;
+  margin: 25px 0;
+}
+.job-list-link {
+  text-decoration: none;
+}
+
+.job-list-article {
+  border-bottom: 2px solid orange;
+  position: relative;
+  top: -90px;
+  background-color: beige;
+  color: rgb(10, 10, 10);
+}
+
 .jobcategory {
   color: brown;
 }

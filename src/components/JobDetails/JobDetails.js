@@ -20,7 +20,7 @@ const JobDetails = () => {
   }
   return (
     <div className="job-detail-container pb-5">
-      <div className="container">
+      <div className="container pb-5">
         <div className="py-5">
           {
             <div className="job-detail-title">
@@ -49,8 +49,8 @@ const JobDetails = () => {
             </Col>
             <Col md={3}>
               <div>
-                <Link to={`/apply/${jobs._id}`}>
-                  <Button className="apply-btn px-5">Apply for job</Button>
+                <Link to={`/chart/${jobs._id}`}>
+                  <Button className="apply-btn px-5">See if you are eligible</Button>
                 </Link>
               </div>
             </Col>

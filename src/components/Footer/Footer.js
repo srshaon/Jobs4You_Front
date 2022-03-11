@@ -14,7 +14,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-    <div>
+    <div style={{ backgroundColor: "#9c9c9c60" }}>
       <footer className="footer">
         <div className="container">
           <div
@@ -74,11 +74,6 @@ const Footer = () => {
                   <Link to="/faq">FAQs</Link>
                   <Link to="/terms&conditions">Terms &#38; Conditions</Link>
                   <Link to="/policy">Privacy Policy</Link>
-
-                  {/* <a href="#about">About</a>
-                  <a href="#faq">FAQs</a>
-                  <a href="#terms&conditions">Terms &#38; Conditions</a>
-                  <a href="#policy">Privacy Policy</a> */}
                 </div>
               </Col>
               <Col md={3} className="">
@@ -91,10 +86,6 @@ const Footer = () => {
                   <Link to="/clients">Clients</Link>
                   <Link to="/blogs">Employers' Blog</Link>
                   <Link to="/contact">Contact</Link>
-                  {/* <a href="#services">Our Services</a>
-                  <a href="#clients">Clients</a>
-                  <a href="#blogs">Employers Blogs</a>
-                  <a href="#contact">Contact</a> */}
                 </div>
               </Col>
 
