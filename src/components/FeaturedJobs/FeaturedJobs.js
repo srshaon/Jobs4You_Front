@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
 import "./FeaturedJobs.css";
+import { CgWorkAlt } from "react-icons/cg";
+import { TiLocation } from "react-icons/ti";
+import { FcCurrencyExchange } from "react-icons/fc";
 
 const FeaturedJobs = () => {
   const [featuredJobs, setFeaturedJobs] = useState([]);
 
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
+    fetch("http://localhost:5000/jobs")
       .then((res) => res.json())
       .then((data) => setFeaturedJobs(data));
   }, []);
@@ -23,13 +26,32 @@ const FeaturedJobs = () => {
             </Col>
             <Col md={8}>
               {
-                <div className="px-2">
+                <div>
                   <h5 className="" style={{ color: "brown" }}>
                     {job.job}
                   </h5>
                   <p>
-                    {job.company} {job.jobLocation} {job.salary}
+                    <span>
+                      <CgWorkAlt />
+                    </span>{" "}
+                    {job.company}
                   </p>
+
+                  <div className="d-md-flex">
+                    <p>
+                      <span>
+                        <TiLocation />
+                      </span>{" "}
+                      {job.jobLocation}
+                    </p>
+                    <p>
+                      <span className="ps-2">
+                        {" "}
+                        <FcCurrencyExchange />
+                      </span>{" "}
+                      {job.salary}
+                    </p>
+                  </div>
                 </div>
               }
             </Col>
@@ -39,7 +61,7 @@ const FeaturedJobs = () => {
                   {job.employmentStatus}
                 </div>
               )}
-              {job.employmentStatus === "Part-Time" && (
+              {job.employmentStatus === "Part-time" && (
                 <div className="featured-job-btn-part p-3 text-center">
                   {job.employmentStatus}
                 </div>

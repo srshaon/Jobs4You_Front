@@ -53,7 +53,6 @@ import CompanyDetails from "./components/CompanyProfile/CompanyDetails";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 import PrivateRoute from "./components/ProvateRoute/ProvateRoute";
 
-
 function App() {
   return (
     <div className="App">
