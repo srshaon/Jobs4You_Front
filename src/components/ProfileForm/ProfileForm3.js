@@ -6,7 +6,10 @@ import updateAction from "./updateAction";
 import clearAction from "./clearAction";
 import { useCreateProfileMutation } from "../../Redux-handler/ManageProfiles";
 import { useHistory } from 'react-router';
+import useAuth from './../../hooks/useAuth';
 const ProfileForm3 = (props) => {
+    const{user}=useAuth()
+    const[createProfile]=useCreateProfileMutation()
     const { register, handleSubmit } = useForm();
     const { actions, state } = useStateMachine({ clearAction });
     const onSubmit = (data) => {
@@ -18,6 +21,8 @@ const ProfileForm3 = (props) => {
         console.log(data);
         console.log(state);
         console.log(actions);
+        state.data.loginEmail=user?.email;
+        createProfile(state.data)
         actions.clearAction(data);
         props.history.push("./result");
         console.log(data);

@@ -4,7 +4,7 @@ export const profilesApi = createApi({
  
  reducerPath: 'profilesApi',
  baseQuery: fetchBaseQuery({
-  baseUrl: 'https://afternoon-headland-45054.herokuapp.com/',
+  baseUrl: 'http://localhost:5000/',
  }),
 
  tagTypes:["Profiles"],
@@ -35,6 +35,23 @@ export const profilesApi = createApi({
     }
    },
   }),
+
+   getCandidateByEmail: builder.query({
+      query: (email) => {
+        return {
+          url: `individualCandidate/${email}`,
+          method: 'GET'
+        }
+      },
+    }),
+    getCompanyByEmail: builder.query({
+      query: (email) => {
+        return {
+          url: `individualCompany/${email}`,
+          method: 'GET'
+        }
+      },
+    }),
 
   createProfile: builder.mutation({
    query: (newPost) => {
@@ -67,4 +84,4 @@ export const profilesApi = createApi({
 
 })
 
-export const {useGetProfilesQuery,useGetProfileByIdQuery,useGetCompaniesQuery, useCreateProfileMutation,useUpdateProfileMutation} = profilesApi
+export const {useGetProfilesQuery,useGetProfileByIdQuery,useGetCompaniesQuery,useGetCandidateByEmailQuery,useGetCompanyByEmailQuery, useCreateProfileMutation,useUpdateProfileMutation} = profilesApi

@@ -11,11 +11,28 @@ import {
 
 } from "cdbreact";
 import LogIn from '../LogIn/LogIn';
+import CompanyDetails from '../CompanyProfile/CompanyDetails'
+import CompanyProfile from '../CompanyProfile/CompanyProfile'
+import {useGetProfilesQuery,useGetCompaniesQuery } from '../../Redux-handler/ManageProfiles';
+import CandidateDetails from '../CandidatesList/CandidateDetails';
+import CandidatesList from '../CandidatesList/CandidatesList';
+import PdfCreator from '../PdfCreator/PdfCreator';
 
 const Dashboard = () => {
-    const { logOut, admin } = useAuth();
+    const { logOut, admin,user} = useAuth();
     const [control, setControl] = useState("login")
-    console.log(admin);
+    console.log(admin,user);
+    const{data:candidate}=useGetProfilesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.loginEmail==user?.email),})
+})
+const{data:company}=useGetCompaniesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.loginEmail==user?.email),})
+})
+let profileInfo;
+if(admin==='seeker'){
+profileInfo=candidate
+}else{
+    profileInfo=company
+}
+    console.log(profileInfo)
 
     if (admin === '') {
         return <Spinner animation="border" variant="danger" />
@@ -36,21 +53,21 @@ const Dashboard = () => {
 
 
                                             <div>
-                                                <li onClick={() => setControl("login")}
+                                                <li onClick={() => setControl("candiProfile")}
                                                     className="li py-3 px-3">
                                                     My Profile
                                                 </li>
-                                                <li onClick={() => setControl("manageproducts")}
+                                                <li onClick={() => setControl("companies")}
                                                     className="li py-3 px-3">
-                                                    Manage Products
+                                                    All-companies
                                                 </li>
-                                                <li onClick={() => setControl("addnewproduct")}
+                                                <li onClick={() => setControl("EditProfile")}
                                                     className="li py-3 px-3">
-                                                    Add Product
+                                                   Edit Profile
                                                 </li>
-                                                <li onClick={() => setControl("makeadmin")}
+                                                <li onClick={() => setControl("createResume")}
                                                     className="li py-3 px-3">
-                                                    Make Admin
+                                                    Create-Resume
                                                 </li>
                                                 <li onClick={logOut} className="li px-3 py-3">
                                                     Log Out
@@ -63,15 +80,15 @@ const Dashboard = () => {
                                         <div>
                                             <div >
                                                 <ul className="">
-                                                    <li onClick={() => setControl("myorders")}
+                                                    <li onClick={() => setControl("companyProfile")}
                                                         className="li  py-3">
-                                                        My Orders
+                                                        My-profile
                                                     </li>
-                                                    <li onClick={() => setControl("pay")} className="li  py-3">
-                                                        Pay
+                                                    <li onClick={() => setControl("candidates")} className="li  py-3">
+                                                        All-Candidates
                                                     </li>
-                                                    <li onClick={() => setControl("review")} className="li  py-3">
-                                                        Review
+                                                    <li onClick={() => setControl("Edit-Profile")} className="li  py-3">
+                                                        Edit-Profile
                                                     </li>
                                                     <li onClick={logOut} className="li  py-3">
                                                         Log Out
@@ -90,7 +107,12 @@ const Dashboard = () => {
                 </div>
                 <div className="dashboard-second-container"  >
 
-                    {control === "login" && <LogIn></LogIn>}
+                    {control === "companyProfile" && <CompanyDetails info={company}/>}
+                    {control === "companies" && <CompanyProfile/>}
+                    {control === "candiProfile" && <CandidateDetails info={candidate}/>}
+                    {control === "candidates" && <CandidatesList/>}
+                    {/* {control === "companyProfile" && <CandidateDetails/>} */}
+                    {control === "createResume" && <PdfCreator/>}
                     {/* {control === "pay" && <Pay></Pay>}
                     {control === "review" && <Review></Review>}
                     {control === "welcome" && <Welcome></Welcome>}
