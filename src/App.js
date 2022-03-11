@@ -51,6 +51,7 @@ import ApplySuccess from "./components/ApplySuccess/ApplySuccess";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CompanyDetails from "./components/CompanyProfile/CompanyDetails";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
+import PrivateRoute from "./components/ProvateRoute/ProvateRoute";
 
 
 function App() {
@@ -79,12 +80,18 @@ function App() {
             <Route path="/allreviews">
               <AllReviews></AllReviews>
             </Route>
-            <Route path="/profileform">
+            {/* <Route path="/profileform">
               <AccountForm></AccountForm>
-            </Route>
-            <Route path="/dashboard">
+            </Route> */}
+            <PrivateRoute path="/profileform">
+              <AccountForm></AccountForm>
+            </PrivateRoute>
+            <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
-            </Route>
+            </PrivateRoute>
+            {/* <Route path="/dashboard">
+              <Dashboard></Dashboard>
+            </Route> */}
 
             {/* Rifat's Route */}
             <Route path="/resource/:id">
@@ -99,7 +106,7 @@ function App() {
             <Route path="/chat">
               <Chat></Chat>
             </Route>
-            <Route path="/chart">
+            <Route path="/chart/:_id">
               <Chart></Chart>
             </Route>
             <Route path="/skills">

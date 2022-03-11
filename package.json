@@ -17,6 +17,7 @@
     "firebase": "^9.6.7",
     "little-state-machine": "^4.2.3",
     "nanoid": "^3.3.1",
+    "prop-types": "^15.8.1",
     "query-string": "^7.1.1",
     "react": "^17.0.2",
     "react-animate-on-scroll": "^2.1.5",

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ApplySuccess = () => {
+const CompanyInfo = () => {
     return (
         <div>
 
@@ -8,4 +8,4 @@ const ApplySuccess = () => {
     );
 };
 
-export default ApplySuccess;
+export default CompanyInfo;

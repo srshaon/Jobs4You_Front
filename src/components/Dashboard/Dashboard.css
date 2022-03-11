@@ -1,6 +1,6 @@
 .dashboard-details-div{
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 20% 80%;
     }
     .dashboard-second-container{
         background-color: #a6a8a8;
