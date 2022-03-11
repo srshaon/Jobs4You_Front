@@ -47,7 +47,7 @@ const FaqCustom = () => {
 
             <form style={{ marginBottom: '80px' }} onSubmit={postHandle}>
                 <div className="d-flex justify-content-center">
-                    <input style={{ border: '1px solid black' }} onChange={handleComment} className="w-50 mx-0 bg-light" /><button style={{ background: 'white', border: '1px solid rgba(0, 0, 0, 1)', borderLeft: 'none' }} className="px-4">Post</button>
+                    <input style={{ border: '1px solid black' }} onChange={handleComment} className="w-50 mx-0 px-3 py-2 rounded bg-light" /><button style={{ background: 'white', border: '1px solid rgba(0, 0, 0, 1)', borderLeft: 'none' }} className="px-4">Post</button>
                 </div>
             </form><hr />
 

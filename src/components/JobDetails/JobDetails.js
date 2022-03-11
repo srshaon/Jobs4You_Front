@@ -10,7 +10,7 @@ const JobDetails = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
+    fetch(`http://localhost:5000/jobs/${jobId}`)
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, [jobId]);
@@ -49,8 +49,8 @@ const JobDetails = () => {
             </Col>
             <Col md={3}>
               <div>
-                <Link to={`/apply/${jobs._id}`}>
-                  <Button className="apply-btn px-5">Apply for job</Button>
+                <Link to={`/chart/${jobs._id}`}>
+                  <Button className="apply-btn px-5">See if you are eligible</Button>
                 </Link>
               </div>
             </Col>

@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import useAuth from '../../hooks/useAuth';
+import { useHistory, useLocation } from 'react-router';
 import "./Apply.css";
 
 const Apply = () => {
+  const { jobId } = useParams();
+  // const history = useHistory()
+  // const location = useLocation()
+  // const url = location.state?.from || "/myjobs"
   // for onchange event
   const [resumepdfFile, setResumePdfFile] = useState(null);
   const [coverLetterpdfFile, setCoverLetterPdfFile] = useState(null);
@@ -15,6 +22,16 @@ const Apply = () => {
   const [contactNo, setContact] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
   const [portfolio, setPortfolio] = useState("");
+  const [jobs, setJobs] = useState({});
+  const { user } = useAuth()
+
+  useEffect(() => {
+
+    fetch(`http://localhost:5000/jobs/${jobId}`)
+      .then(res => res.json())
+      .then(data => setJobs(data))
+
+  }, [])
 
   // form submit
   const handleSubmit = (e) => {
@@ -23,6 +40,11 @@ const Apply = () => {
       return;
     }
     const formData = new FormData();
+    formData.append("job", jobs.job);
+    formData.append("company", jobs.company);
+    formData.append("jobLocation", jobs.jobLocation);
+    formData.append("employmentStatus", jobs.employmentStatus);
+    formData.append("image", jobs.image)
     formData.append("firstName", firstName);
     formData.append("lastName", lastName);
     formData.append("email", email);
@@ -35,7 +57,7 @@ const Apply = () => {
     formData.append("resumepdfFile", resumepdfFile);
     formData.append("coverLetterpdfFile", coverLetterpdfFile);
 
-    fetch("https://afternoon-headland-45054.herokuapp.com/applyList", {
+    fetch("http://localhost:5000/applyList", {
       method: "POST",
       body: formData,
     })
@@ -43,12 +65,17 @@ const Apply = () => {
       .then((data) => {
         if (data.insertedId) {
           alert("successfully applied");
+          e.target.reset();
         }
+
       });
+    // history.push(url)
+
   };
-  console.log(resumepdfFile);
-  console.log(coverLetterpdfFile);
-  console.log(firstName);
+  // console.log(resumepdfFile);
+  // console.log(coverLetterpdfFile);
+  // console.log(firstName);
+  // console.log(jobs.employmentStatus)
 
   return (
     <div className="bodyShadow">
@@ -56,6 +83,7 @@ const Apply = () => {
         <div id="myForms" class="row ">
           <div id="card1" class="">
             <div class="card-body">
+
               <form onSubmit={handleSubmit} action="" method="POST">
                 <div class="row applyform1">
                   <h3

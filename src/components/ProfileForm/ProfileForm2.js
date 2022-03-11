@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { withRouter } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
+import useAuth from "../../hooks/useAuth";
 
 const ProfileForm2 = (props) => {
-  const [condition, setCondition] = useState("admin");
+  const { role, setRole, user, setUser } = useAuth();
+  const [condition, setCondition] = useState("");
+  // const [condition, setCondition] = useState("admin");
   const { register, handleSubmit } = useForm();
   const { actions, state } = useStateMachine({ updateAction });
   const onSubmit = (data) => {
@@ -25,10 +28,34 @@ const ProfileForm2 = (props) => {
     console.log(state);
     console.log(actions);
   };
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user.email}`)
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setCondition(data.admin)
+
+
+      })
+  }, [user.email])
+  console.log(role);
+  let loadFormCondition = ''
+  if (role !== "") {
+    loadFormCondition = role;
+    console.log(role);
+  }
+  else {
+    loadFormCondition = condition;
+    console.log(condition)
+  }
+  // if (role === '') {
+  //   return <Spinner animation="border" variant="danger" />
+  // }
+  console.log(loadFormCondition);
   return (
     <div className="profile-form-div">
       <div>
-        {condition === "admin" && (
+        {loadFormCondition === "company" && (
           <div>
             <div className="profile-form-div">
               <div>
@@ -80,7 +107,7 @@ const ProfileForm2 = (props) => {
             </div>
           </div>
         )}
-        {condition === "user" && (
+        {loadFormCondition === "seeker" && (
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
               <div class="profile-form-container mt-3 mb-5">

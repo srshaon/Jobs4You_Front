@@ -68,7 +68,7 @@ const Contact = () => {
                         <input style={{border: '1px solid rgba(0, 0, 0, 0.5)'}} className="px-2 py-1 px-md-3 py-md-2 rounded w-100 bg-light" type="email" placeholder="Enter your email.." name="email" required />
                         <p className={`mb-3 pt-4 ${messageColor}`}><span style={{visibility: 'hidden'}}>.</span>{message}</p>
                         <label className="mb-2"><strong>Message</strong></label>
-                        <textarea style={{border: '1px solid rgba(0, 0, 0, 0.5)'}} className="px-2 py-1 px-md-3 py-md-2 rounded" placeholder="Drop your message.." style={{resize: 'none'}} name="message" rows="5" required />
+                        <textarea style={{border: '1px solid rgba(0, 0, 0, 0.5)', resize: 'none'}} className="px-2 py-1 px-md-3 py-md-2 rounded" placeholder="Drop your message.." name="message" rows="5" required />
                         <input className="mt-md-5 mt-4 py-md-3 py-2 w-100" type="submit" value="Send" />
                     </form>
                 </div>

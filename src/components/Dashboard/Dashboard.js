@@ -38,10 +38,10 @@ profileInfo=candidate
         return <Spinner animation="border" variant="danger" />
     }
     return (
-        <div >
+        <div  >
 
-            <div className="dashboard-details-div">
-                <div  >
+            <div className="dashboard-details-div ">
+                <div className='dashboard-sidebar-menu w-100' >
                     <div className="h-100">
                         <CDBSidebar className="w-100" textColor="#fff" backgroundColor="#333">
 
@@ -55,7 +55,7 @@ profileInfo=candidate
                                             <div>
                                                 <li onClick={() => setControl("candiProfile")}
                                                     className="li py-3 px-3">
-                                                    My Profile
+                                                    Edit Profile
                                                 </li>
                                                 <li onClick={() => setControl("companies")}
                                                     className="li py-3 px-3">
@@ -69,6 +69,7 @@ profileInfo=candidate
                                                     className="li py-3 px-3">
                                                     Create-Resume
                                                 </li>
+
                                                 <li onClick={logOut} className="li px-3 py-3">
                                                     Log Out
                                                 </li>
@@ -90,7 +91,7 @@ profileInfo=candidate
                                                     <li onClick={() => setControl("Edit-Profile")} className="li  py-3">
                                                         Edit-Profile
                                                     </li>
-                                                    <li onClick={logOut} className="li  py-3">
+                                                    <li onClick={logOut} className="li px-3 py-3">
                                                         Log Out
                                                     </li>
 
@@ -115,7 +116,7 @@ profileInfo=candidate
                     {control === "createResume" && <PdfCreator/>}
                     {/* {control === "pay" && <Pay></Pay>}
                     {control === "review" && <Review></Review>}
-                    {control === "welcome" && <Welcome></Welcome>}
+                    
                     {control === "makeadmin" && <MakeAdmin></MakeAdmin>}
                     {control === "allorders" && <AllOrders></AllOrders>}
                     {control === "manageproducts" && <ManageProducts></ManageProducts>}
