@@ -17,10 +17,11 @@ import {useGetProfilesQuery,useGetCompaniesQuery } from '../../Redux-handler/Man
 import CandidateDetails from '../CandidatesList/CandidateDetails';
 import CandidatesList from '../CandidatesList/CandidatesList';
 import PdfCreator from '../PdfCreator/PdfCreator';
+import CompanyInfo from'../CompanyProfile/CompanyInfo';
 
 const Dashboard = () => {
     const { logOut, admin,user} = useAuth();
-    const [control, setControl] = useState("login")
+    const [control, setControl] = useState("candiProfile")
     console.log(admin,user);
     const{data:candidate}=useGetProfilesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.loginEmail==user?.email),})
 })
@@ -55,7 +56,7 @@ profileInfo=candidate
                                             <div>
                                                 <li onClick={() => setControl("candiProfile")}
                                                     className="li py-3 px-3">
-                                                    Edit Profile
+                                                    My Profile
                                                 </li>
                                                 <li onClick={() => setControl("companies")}
                                                     className="li py-3 px-3">
@@ -108,7 +109,7 @@ profileInfo=candidate
                 </div>
                 <div className="dashboard-second-container"  >
 
-                    {control === "companyProfile" && <CompanyDetails info={company}/>}
+                    {control === "companyProfile" && <CompanyInfo info={company}/>}
                     {control === "companies" && <CompanyProfile/>}
                     {control === "candiProfile" && <CandidateDetails info={candidate}/>}
                     {control === "candidates" && <CandidatesList/>}
