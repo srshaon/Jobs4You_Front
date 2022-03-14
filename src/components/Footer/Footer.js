@@ -11,10 +11,13 @@ import { FaFacebookF } from "react-icons/fa";
 import { FaAt, FaMapMarkerAlt, FaPhoneAlt, FaPaperPlane } from "react-icons/fa";
 import footer from "../../assets/Images/banner.png";
 import "./Footer.css";
+import { useLocation } from "react-router-dom";
 
 const Footer = () => {
+  const location=useLocation()
   return (
-    <div style={{ backgroundColor: "#9c9c9c60" }}>
+    <>
+    {(location.pathname!=='/dashboard') &&<div style={{ backgroundColor: "#9c9c9c60" }}>
       <footer className="footer">
         <div className="container">
           <div
@@ -156,7 +159,8 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-    </div>
+    </div>}
+    </>
   );
 };
 

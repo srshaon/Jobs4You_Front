@@ -25,9 +25,14 @@ import CandidateDetails from '../CandidatesList/CandidateDetails';
 import CandidatesList from '../CandidatesList/CandidatesList';
 import PdfCreator from '../PdfCreator/PdfCreator';
 import CompanyInfo from'../CompanyProfile/CompanyInfo';
-
-
+import UploadViewResume from '../UploadViewResume/UploadViewResume';
+import MyJobs from '../Myjobs/MyJobs'
+import ProfileEdit from './../ProfileForm/ProfileEdit';
+import { ImHome ,ImStatsBars} from "react-icons/im";
+import { useHistory } from 'react-router';
+import Skills from "../Skills/Skills";
 const Dashboard = () => {
+  const history=useHistory()
   const { logOut, admin ,user} = useAuth();
   const [control, setControl] = useState("welcome");
   console.log(admin);
@@ -46,6 +51,9 @@ profileInfo=candidate
   if (admin === "") {
     return <Spinner animation="border" variant="danger" />;
   }
+  const navigateToHome=()=>{
+    history.push('/home')
+    }
   return (
     <div
       className="card dashboard-sec"
@@ -64,6 +72,15 @@ profileInfo=candidate
                 <div>
                   <div className="dashboard-list">
                     <li
+                      onClick={navigateToHome}
+                      className="li py-3 px-5"
+                    >
+                      <span className="dashboard-icons px-1">
+                      <ImHome/>
+                      </span>{" "}
+                      Home
+                    </li>
+                    <li
                       onClick={() => setControl("candiProfile")}
                       className="li py-3 px-5"
                     >
@@ -72,32 +89,33 @@ profileInfo=candidate
                       </span>{" "}
                       My Profile
                     </li>
-                    <li
-                      onClick={() => setControl("candiProfile")}
+                
+                    <li onClick={() => setControl("editCandidate")}
+                     
                       className="li py-3 px-5"
                     >
-                      <span className="dashboard-icons px-1">
-                       
-                      </span>{" "}
-                      
-                    </li>
-                    <li
-                      onClick={() => setControl("companies")}
-                      className="li py-3 px-5"
-                    >
-                      <span className="dashboard-icons px-1">
+                      <span  className="dashboard-icons px-1">
                         <RiEdit2Fill />
                       </span>{" "}
-                      All Company
+                      Edit Profile
                     </li>
                     <li
-                      onClick={() => setControl("welcome")}
+                      onClick={() => setControl("upload")}
                       className="li py-3 px-5"
                     >
                       <span className="dashboard-icons px-1">
                         <MdOutlineCloudUpload />
                       </span>{" "}
                       Upload/View Resume
+                    </li>
+                    <li
+                      onClick={() => setControl("myjobs")}
+                      className="li py-3 px-5"
+                    >
+                      <span className="dashboard-icons px-1">
+                      <SiWorkplace />
+                      </span>{" "}
+                      My Jobs
                     </li>
 
                     <li
@@ -108,6 +126,15 @@ profileInfo=candidate
                         <SiWorkplace />
                       </span>{" "}
                       Create Resume
+                    </li>
+                    <li
+                      onClick={() => setControl("skills")}
+                      className="li py-3 px-5"
+                    >
+                      <span className="dashboard-icons px-1">
+                        <ImStatsBars />
+                      </span>{" "}
+                      Skills
                     </li>
                     <li
                       onClick={() => setControl("welcome")}
@@ -243,14 +270,19 @@ profileInfo=candidate
           </div>
         </div>
         <div className="dashboard-second-container">
-        {control === "companyProfile" && <CompanyInfo info={company}/>}
+        {control === "companyProfile" && <CompanyInfo info={profileInfo}/>}
                     {control === "companies" && <CompanyProfile/>}
-                    {control === "candiProfile" && <CandidateDetails info={candidate}/>}
+                    {control === "candiProfile" && <CandidateDetails info={profileInfo}/>}
                     {control === "candidates" && <CandidatesList/>}
+                    {control === "editCandidate" && <ProfileEdit info={profileInfo} />}
                     {/* {control === "companyProfile" && <CandidateDetails/>} */}
                     {control === "createResume" && <PdfCreator/>}
           {control === "login" && <LogIn></LogIn>}
           {control === "welcome" && <Welcome></Welcome>}
+          {control === "upload" && <UploadViewResume/>}
+          {control === "myjobs" && <MyJobs/>}
+          {control === "skills" && <Skills/>}
+         
         </div>
       </div>
     </div>
