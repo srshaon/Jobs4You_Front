@@ -36,6 +36,23 @@ export const profilesApi = createApi({
    },
   }),
 
+   getCandidateByEmail: builder.query({
+      query: (email) => {
+        return {
+          url: `individualCandidate/${email}`,
+          method: 'GET'
+        }
+      },
+    }),
+    getCompanyByEmail: builder.query({
+      query: (email) => {
+        return {
+          url: `individualCompany/${email}`,
+          method: 'GET'
+        }
+      },
+    }),
+
   createProfile: builder.mutation({
    query: (newPost) => {
      console.log(newPost)
@@ -67,4 +84,4 @@ export const profilesApi = createApi({
 
 })
 
-export const {useGetProfilesQuery,useGetProfileByIdQuery,useGetCompaniesQuery, useCreateProfileMutation,useUpdateProfileMutation} = profilesApi
+export const {useGetProfilesQuery,useGetProfileByIdQuery,useGetCompaniesQuery,useGetCandidateByEmailQuery,useGetCompanyByEmailQuery, useCreateProfileMutation,useUpdateProfileMutation} = profilesApi

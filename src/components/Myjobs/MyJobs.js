@@ -9,13 +9,14 @@ const MyJobs = () => {
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/applyList")
+        fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
             .then(res => res.json())
             .then(data => setApplyList(data))
 
     }, [])
     console.log(applyList)
     const applyCollection = applyList.filter(applies => (applies.email == user.email))
+    console.log(applyCollection)
     return (
         <div className="ms-5">
             <div className="row row-cols-md-3 row-cols-lg-3 mb-5">

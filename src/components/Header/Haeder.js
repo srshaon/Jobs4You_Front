@@ -3,12 +3,14 @@ import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import "./Header.css";
-
+import { useLocation } from "react-router-dom";
 const Header = () => {
   const { user, logOut } = useAuth();
+  const location=useLocation()
 
   return (
-    <Navbar collapseOnSelect expand="lg" variant="dark" className="nav-bg ">
+    <>
+    {(location.pathname!=='/dashboard') &&<Navbar collapseOnSelect expand="lg" variant="dark" className="nav-bg ">
       <Container className="d-flex align-items-center justify-items-center">
         <Navbar.Brand
           to="/home"
@@ -121,7 +123,8 @@ const Header = () => {
           </Nav>
         </Navbar.Collapse>
       </Container>
-    </Navbar>
+    </Navbar>}
+    </>
   );
 };
 
