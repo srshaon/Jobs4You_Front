@@ -25,7 +25,8 @@ import CandidateDetails from '../CandidatesList/CandidateDetails';
 import CandidatesList from '../CandidatesList/CandidatesList';
 import PdfCreator from '../PdfCreator/PdfCreator';
 import CompanyInfo from'../CompanyProfile/CompanyInfo';
-
+import UploadViewResume from '../UploadViewResume/UploadViewResume';
+import MyJobs from '../Myjobs/MyJobs'
 
 const Dashboard = () => {
   const { logOut, admin ,user} = useAuth();
@@ -72,15 +73,7 @@ profileInfo=candidate
                       </span>{" "}
                       My Profile
                     </li>
-                    <li
-                      onClick={() => setControl("candiProfile")}
-                      className="li py-3 px-5"
-                    >
-                      <span className="dashboard-icons px-1">
-                       
-                      </span>{" "}
-                      
-                    </li>
+                
                     <li
                       onClick={() => setControl("companies")}
                       className="li py-3 px-5"
@@ -88,16 +81,25 @@ profileInfo=candidate
                       <span className="dashboard-icons px-1">
                         <RiEdit2Fill />
                       </span>{" "}
-                      All Company
+                      Edit Profile
                     </li>
                     <li
-                      onClick={() => setControl("welcome")}
+                      onClick={() => setControl("upload")}
                       className="li py-3 px-5"
                     >
                       <span className="dashboard-icons px-1">
                         <MdOutlineCloudUpload />
                       </span>{" "}
                       Upload/View Resume
+                    </li>
+                    <li
+                      onClick={() => setControl("myjobs")}
+                      className="li py-3 px-5"
+                    >
+                      <span className="dashboard-icons px-1">
+                        <MdOutlineCloudUpload />
+                      </span>{" "}
+                      My Jobs
                     </li>
 
                     <li
@@ -251,6 +253,8 @@ profileInfo=candidate
                     {control === "createResume" && <PdfCreator/>}
           {control === "login" && <LogIn></LogIn>}
           {control === "welcome" && <Welcome></Welcome>}
+          {control === "upload" && <UploadViewResume/>}
+          {control === "myjobs" && <MyJobs/>}
         </div>
       </div>
     </div>
