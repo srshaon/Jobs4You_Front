@@ -69,7 +69,7 @@ const CandidatesList = () => {
                     {" "}
                     <Link to={`/profileedit/${_id}`}>
                       <span>
-                        <AiTwotoneEdit />
+                        Resume
                       </span>
                     </Link>
                   </td>

@@ -34,7 +34,7 @@ const ManageJob = ({ job, setJobs }) => {
     // const updatedJob = { ...job, newData };
     // console.log(updatedJob);
     axios
-      .put(`http://localhost:5000/jobs/${job._id}`, newData)
+      .put(`https://afternoon-headland-45054.herokuapp.com/jobs/${job._id}`, newData)
       .then((res) => {
         if (res.data.modifiedCount) {
           alert("updated successfully");

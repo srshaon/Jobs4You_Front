@@ -178,7 +178,7 @@ function App() {
             <Route path="/create-resume">
               <PdfCreator></PdfCreator>
             </Route>
-            <Route path="/profileedit/:profileId">
+            <Route path="/profileedit">
               <ProfileEdit />
             </Route>
 
