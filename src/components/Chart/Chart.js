@@ -18,17 +18,17 @@ const Chart = () => {
         {
             fetch(`https://afternoon-headland-45054.herokuapp.com/posted-skills/${_id}`)
             .then(res => res.json())
-            .then(data => setPostedSkills(data));
-            
-
-            fetch(`https://afternoon-headland-45054.herokuapp.com/skills/${email}`)
-            .then(res => res.json())
-            .then(data => setGainedSkills(data));
+            .then(data => setPostedSkills(data))
+            .finally(() => {
+                fetch(`https://afternoon-headland-45054.herokuapp.com/skills/${email}`)
+                .then(res => res.json())
+                .then(data => setGainedSkills(data));
+            });
 
             // console.log('this is isssss', email);
         }
 
-    }, [email]);
+    }, [_id, email]);
 
     useEffect(() => {
             if (postedSkills?.length > 0)
@@ -77,12 +77,12 @@ const Chart = () => {
             }
 
             {
-                ((gainedSkills?.length === 0) && email) &&
+                (!((data1?.length === 0) || (data2?.length === 0)) && ((gainedSkills?.length === 0) && email)) &&
                 <div className="text-center my-5 py-5 smoothy"><p>You don't have any skills. Go Back to <Link to="/dashboard">Dashboard</Link></p></div>
             }
 
             {
-                ((gainedSkills?.length === 0) && !email) &&
+                (((data1?.length === 0) || (data2?.length === 0))) &&
                 <div className="d-flex justify-content-center my-5"><Spinner animation="border" variant="dark" /></div>
             }
 
