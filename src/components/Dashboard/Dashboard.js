@@ -40,65 +40,65 @@ const Dashboard = () => {
               // backgroundColor="#333"
             >
               <CDBSidebarContent className="dashboard py-5">
-                {/* {admin === "seeker" && ( */}
-                <div>
-                  <div className="dashboard-list">
-                    <li
-                      onClick={() => setControl("welcome")}
-                      className="li py-3 px-5"
-                    >
-                      <span className="dashboard-icons px-1">
-                        <CgProfile />
-                      </span>{" "}
-                      My Profile
-                    </li>
-                    <li
-                      onClick={() => setControl("welcome")}
-                      className="li py-3 px-5"
-                    >
-                      <span className="dashboard-icons px-1">
-                        <RiEdit2Fill />
-                      </span>{" "}
-                      Edit Profile
-                    </li>
-                    <li
-                      onClick={() => setControl("welcome")}
-                      className="li py-3 px-5"
-                    >
-                      <span className="dashboard-icons px-1">
-                        <MdOutlineCloudUpload />
-                      </span>{" "}
-                      Upload/View Resume
-                    </li>
+                {admin === "seeker" && (
+                  <div>
+                    <div className="dashboard-list">
+                      <li
+                        onClick={() => setControl("welcome")}
+                        className="li py-3 px-5"
+                      >
+                        <span className="dashboard-icons px-1">
+                          <CgProfile />
+                        </span>{" "}
+                        My Profile
+                      </li>
+                      <li
+                        onClick={() => setControl("welcome")}
+                        className="li py-3 px-5"
+                      >
+                        <span className="dashboard-icons px-1">
+                          <RiEdit2Fill />
+                        </span>{" "}
+                        Edit Profile
+                      </li>
+                      <li
+                        onClick={() => setControl("welcome")}
+                        className="li py-3 px-5"
+                      >
+                        <span className="dashboard-icons px-1">
+                          <MdOutlineCloudUpload />
+                        </span>{" "}
+                        Upload/View Resume
+                      </li>
 
-                    <li
-                      onClick={() => setControl("welcome")}
-                      className="li py-3 px-5"
-                    >
-                      <span className="dashboard-icons px-1">
-                        <SiWorkplace />
-                      </span>{" "}
-                      Applied Jobs
-                    </li>
-                    <li
-                      onClick={() => setControl("welcome")}
-                      className="li py-3 px-5"
-                    >
-                      <span className="dashboard-icons px-1">
-                        <FcCalendar />
-                      </span>{" "}
-                      Upcoming Interviews
-                    </li>
+                      <li
+                        onClick={() => setControl("welcome")}
+                        className="li py-3 px-5"
+                      >
+                        <span className="dashboard-icons px-1">
+                          <SiWorkplace />
+                        </span>{" "}
+                        Applied Jobs
+                      </li>
+                      <li
+                        onClick={() => setControl("welcome")}
+                        className="li py-3 px-5"
+                      >
+                        <span className="dashboard-icons px-1">
+                          <FcCalendar />
+                        </span>{" "}
+                        Upcoming Interviews
+                      </li>
 
-                    <li onClick={logOut} className="li px-5 py-3">
-                      <span className="dashboard-icons px-1">
-                        <CgCloseO />
-                      </span>{" "}
-                      Log Out
-                    </li>
+                      <li onClick={logOut} className="li px-5 py-3">
+                        <span className="dashboard-icons px-1">
+                          <CgCloseO />
+                        </span>{" "}
+                        Log Out
+                      </li>
+                    </div>
                   </div>
-                </div>
-                {/* )} */}
+                )}
                 {admin === "company" && (
                   <div>
                     <div>
