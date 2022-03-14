@@ -33,7 +33,7 @@ const Filteredjobs = () => {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:5000/jobs").then((res) => {
+    axios.get("https://afternoon-headland-45054.herokuapp.com/jobs").then((res) => {
       const approvedJobs = res.data.filter(
         (job) => job?.status?.toLowerCase() === "approved"
       );

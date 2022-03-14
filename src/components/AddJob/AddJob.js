@@ -15,7 +15,7 @@ const AddJob = () => {
       skills: skills,
     };
     console.log(newData);
-    axios.post("http://localhost:5000/jobs", newData).then((res) => {
+    axios.post("https://afternoon-headland-45054.herokuapp.com/jobs", newData).then((res) => {
       if (res.data.insertedId) {
         alert("added successfully");
         reset();
