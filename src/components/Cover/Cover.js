@@ -8,8 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import "./Cover.css";
 
 const Cover = () => {
-  // const [searchKey, setSearchKey] = useState([]);
-  // const [searchLocation, setSearchLocation] = useState([]);
+
 
   const { searchKey, setSearchKey, searchLocation, setSearchLocation, resetSearchKey, setResetSearchKey, resetSearchLocation, setResetSearchLocation } =
     useAuth();
@@ -19,18 +18,9 @@ const Cover = () => {
     const searchText = e.target.value;
     console.log(searchText);
 
-    // if (searchText != "" && searchKey == "") {
-    //   setSearchKey(searchText);
-    // } else if (searchText == "" && searchKey == "") {
-    //   setSearchKey('');
-    // }
 
     setSearchKey(searchText);
 
-    // if (searchText != '') {
-    //   console.log('hitted')
-    //   setResetSearchLocation(1);
-    // }
   };
 
   console.log(searchKey);
@@ -42,15 +32,6 @@ const Cover = () => {
 
     setSearchLocation(searchText);
 
-    // if (searchText != '') {
-    //   setResetSearchLocation(1);
-    // }
-
-    // if (searchText != "" && searchLocation == "") {
-    //   setSearchLocation(searchText);
-    // } else if (searchText == "" && searchLocation == "") {
-    //   setSearchLocation('');
-    // }
   };
 
   const handleFindJobs = (e) => {
