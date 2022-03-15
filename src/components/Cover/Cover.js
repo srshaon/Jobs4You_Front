@@ -17,33 +17,15 @@ const Cover = () => {
   const handleSearchByKey = (e) => {
     e.preventDefault();
     const searchText = e.target.value;
+    setSearchKey(searchText);
     console.log(searchText);
-
-    if (searchKey == "") {
-      setSearchKey("");
-    } else {
-      setSearchKey(searchText);
-    }
   };
-
-  console.log(searchKey);
 
   const handleSearchByLocation = (e) => {
     e.preventDefault();
     const searchText = e.target.value;
     console.log(searchText);
-    // setSearchLocation(searchText);
-    if (searchLocation == "") {
-      setSearchLocation("");
-    } else {
-      setSearchLocation(searchText);
-    }
-  };
-
-  const handleFindJobs = (e) => {
-    e.preventDefault();
-    console.log(searchKey);
-    console.log(searchLocation);
+    setSearchLocation(searchText);
   };
 
   return (

@@ -64,7 +64,7 @@ const AllCategoriesJobs = () => {
             </div>
           </Col>
           <Col md={8}>
-            <div className="row d-md-flex align-items-center justify-content-center ">
+            <div className="row d-md-flex align-items-center justify-content-center">
               {jobs.map((job) => (
                 <Link className="job-list-link" to={`/jobdetails/${job._id}`}>
                   <article
