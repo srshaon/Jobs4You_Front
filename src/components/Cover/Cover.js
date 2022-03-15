@@ -1,11 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
 import banner from "../../assets/Images/banner_7.jpg";
+import useAuth from "../../hooks/useAuth";
 import "./Cover.css";
 
 const Cover = () => {
+  // const [searchKey, setSearchKey] = useState([]);
+  // const [searchLocation, setSearchLocation] = useState([]);
+
+  const { searchKey, setSearchKey, searchLocation, setSearchLocation } =
+    useAuth();
+
+  const handleSearchByKey = (e) => {
+    e.preventDefault();
+    const searchText = e.target.value;
+    console.log(searchText);
+
+    if (searchKey == "") {
+      setSearchKey("");
+    } else {
+      setSearchKey(searchText);
+    }
+  };
+
+  console.log(searchKey);
+
+  const handleSearchByLocation = (e) => {
+    e.preventDefault();
+    const searchText = e.target.value;
+    console.log(searchText);
+    // setSearchLocation(searchText);
+    if (searchLocation == "") {
+      setSearchLocation("");
+    } else {
+      setSearchLocation(searchText);
+    }
+  };
+
+  const handleFindJobs = (e) => {
+    e.preventDefault();
+    console.log(searchKey);
+    console.log(searchLocation);
+  };
+
   return (
     <>
       <div className="banner-container overflow-hidden">
@@ -65,6 +105,7 @@ const Cover = () => {
                     placeholder="Job title or keyword"
                     className="search-field search-icon"
                     style={{ color: "orange" }}
+                    onChange={handleSearchByKey}
                   />
 
                   <input
@@ -74,10 +115,17 @@ const Cover = () => {
                     placeholder="Location (city or country)"
                     className="search-field location-icon"
                     style={{ color: "orange" }}
+                    onChange={handleSearchByLocation}
                   />
-                  <button type="submit" className="search-btn p-3">
-                    Find Jobs
-                  </button>
+                  <Link to="/searchResult">
+                    <button
+                      // onClick={handleFindJobs}
+                      type="submit"
+                      className="search-btn p-3"
+                    >
+                      Find Jobs
+                    </button>
+                  </Link>
                 </form>
               </div>
             </div>
