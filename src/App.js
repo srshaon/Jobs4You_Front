@@ -52,6 +52,7 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import CompanyDetails from "./components/CompanyProfile/CompanyDetails";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 import PrivateRoute from "./components/ProvateRoute/ProvateRoute";
+import SearchResult from "./components/SearchResult/SearchResult";
 
 function App() {
   return (
@@ -178,7 +179,7 @@ function App() {
             <Route path="/create-resume">
               <PdfCreator></PdfCreator>
             </Route>
-            <Route path="/profileedit/:profileId">
+            <Route path="/profileedit">
               <ProfileEdit />
             </Route>
 
@@ -204,6 +205,9 @@ function App() {
             </Route>
             <Route path="/managejobs">
               <ManageJobs></ManageJobs>
+            </Route>
+            <Route path="/searchresult">
+              <SearchResult></SearchResult>
             </Route>
           </Switch>
           <Footer></Footer>

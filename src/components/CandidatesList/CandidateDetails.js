@@ -3,18 +3,25 @@ import { useGetCompaniesQuery,useGetProfilesQuery } from '../../Redux-handler/Ma
 import { useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Chart from '../Chart/Chart'
+import { CgProfile } from 'react-icons/cg';
+import {Button} from 'react-bootstrap'
+import { useHistory } from 'react-router';
+
 const CandidateDetails = ({info}) => {
+  const history=useHistory()
   const{user,admin}=useAuth()
-    const {id}=useParams()
   const{data}=useGetProfilesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.pEmail==user?.loginEmail),})
 
 })
+const navigateToForm=()=>{
+history.push('/profileForm')
+}
 console.log(info)
     return (
         <section className='m-auto' style={{backgroundColor: "#eee"}}>
         <div className="container py-5">
           <div className="row">
-            <div className="col">
+            <div className="col-8">
               <nav aria-label="breadcrumb" className="bg-light rounded-3 p-3 mb-4">
                 <ol className="breadcrumb mb-0">
                   <li className="breadcrumb-item active" aria-current="page">{user?.displayName} Profile</li>
@@ -24,48 +31,19 @@ console.log(info)
           </div>
       
           <div className="row ">
-            <div className="col-lg-4">
-              <div className="card mb-4">
+            {/* <div className="col-lg-4">
+              
+            </div> */}
+         <div className="col-lg-8">
+         <div className="card mb-4">
                 <div className="card-body text-center">
-                  <img src="https://i.ibb.co/k6HhcvX/logo.png" alt="avatar" className="rounded-circle img-fluid" style={{width: "150px"}}/>
-                  <h5 className="my-3">{info?.fname||info?.cname}</h5>
+                  <span className='fs-1 text-primary'><CgProfile /></span>
+                  <h5 className="my-3">{user?.displayName}</h5>
                   <p className="text-muted mb-1">{user?.email}</p>
-                  <p className="text-muted mb-4">{info?.country}</p>
-                  {(admin==='seeker') && <div className="d-flex justify-content-center mb-2">
-                    <button type="button" className="btn btn-primary">Follow</button>
-                    <button type="button" className="btn btn-outline-primary ms-1">Message</button>
-                  </div>}
+                  <Button onClick={navigateToForm}>Complete Profile</Button>
                 </div>
               </div>
-              <div className="card mb-4 mb-lg-0">
-                <div className="card-body p-0">
-                  <ul className="list-group list-group-flush rounded-3">
-                    <li className="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i className="fas fa-globe fa-lg text-warning"></i>
-                      <p className="mb-0">https://{info?.fname||info?.cname}.com</p>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i className="fab fa-github fa-lg" style={{color: "#333333"}}></i>
-                      <p className="mb-0">{info?.fname||info?.cname}</p>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i className="fab fa-twitter fa-lg" style={{color: "#55acee"}}></i>
-                      <p className="mb-0">@{info?.fname||info?.cname}</p>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i className="fab fa-instagram fa-lg" style={{color: "#ac2bac"}}></i>
-                      <p className="mb-0">{info?.fname||info?.cname}</p>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center p-3">
-                      <i className="fab fa-facebook-f fa-lg" style={{color: "#3b5998"}}></i>
-                      <p className="mb-0">{user?.displayName}</p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-8">
-              <div className="card mb-4 ms-1">
+              {info&& <div className="card mb-4 ms-1">
                 <div className="card-body">
                   <div className="row">
                     <div className="col-sm-3">
@@ -112,36 +90,7 @@ console.log(info)
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="">
-             <div className="ms-1">
-                <div className="card mb-4 mb-md-0">
-                    <div className="card-body">
-                      <p className="mb-4"><span className="text-primary font-italic me-1"></span>Candidate History</p>
-                      <p className="mb-1" style={{fontSize: ".77rem"}}>Communication Skill</p>
-                      <div className="progress rounded" style={{height: "5px"}}>
-                        <div className="progress-bar" role="progressbar" style={{width:"80%"}}></div>
-                      </div>
-                      <p className="mt-4 mb-1" style={{fontSize:".77rem"}}>Technical Skill</p>
-                      <div className="progress rounded" style={{height: "5px"}}>
-                        <div className="progress-bar" role="progressbar" style={{width: "72%"}}></div>
-                      </div>
-                      <p className="mt-4 mb-1" style={{fontSize:".77rem"}}>Computer Skill</p>
-                      <div className="progress rounded" style={{height: "5px"}}>
-                        <div className="progress-bar" role="progressbar" style={{width: "89%"}}></div>
-                      </div>
-                      <p className="mt-4 mb-1" style={{fontSize: ".77rem"}}>Extra Curricular</p>
-                      <div className="progress rounded" style={{height: "5px"}}>
-                        <div className="progress-bar" role="progressbar" style={{width: "55%"}}></div>
-                      </div>
-                      <p className="mt-4 mb-1" style={{fontSize: ".77rem"}}>Others</p>
-                      <div className="progress rounded mb-2" style={{height: "5px"}}>
-                        <div className="progress-bar" role="progressbar" style={{width: "66%"}} aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </div>}
             </div>
           </div>
         </div>

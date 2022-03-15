@@ -1,52 +1,67 @@
 import React,{useState,useEffect} from 'react';
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory, useParams,useLocation } from 'react-router-dom'
 import { useGetProfileByIdQuery, useUpdateProfileMutation } from '../../Redux-handler/ManageProfiles';
-const ProfileEdit = () => {
+const ProfileEdit = ({info}) => {
+    const location=useLocation()
+    console.log(location.pathname)
     const history=useHistory()
     const[profileInfo,setProfileInfo]=useState({
-        fname:'',lname:'',pEmail:'',pContact:''
+        fname:'',address:'',pEmail:'',pContact:'',lname:'',eContact:''
     })
-    const{profileId}=useParams()
-    const{data}=useGetProfileByIdQuery(profileId)
+    
     const[updateProfile,{isLoading}]=useUpdateProfileMutation()
 useEffect(()=>{
-if(data){
-  const{fname,lname,pEmail,pContact}=data
-    setProfileInfo({fname,lname,pEmail,pContact})
+if(info){
+  const{fname,lname,pEmail,pContact,address,eContact}=info
+    setProfileInfo({fname,pEmail,pContact,eContact,address,lname})
 }
-},[data])
+},[info])
 
     const handleChange=(e)=>setProfileInfo({...profileInfo,[e.target.name]:e.target.value})
 
     const handleSubmit=async(e)=>{
 e.preventDefault()
-const{fname,lname,pEmail,pContact}=profileInfo
+const{fname,lname,pEmail,pContact,address,eContact}=profileInfo
 await updateProfile({
-    _id:profileId,fname,lname,pEmail,pContact
+    _id:info._id,fname,pEmail,pContact,eContact,address,lname
 })
 history.push('/candidates')
     }
     
        return(
            <>
-           <div className='d-flex justify-content-center mt-4 '>{isLoading&& <h5 className='test-primary'>Job post updating.....</h5> }</div>
-           <div className='d-flex justify-content-center my-4 p-4'>
+           <div className='d-flex justify-content-center mt-4 '>{isLoading&& <h5 className='test-primary'> updating.....</h5> }</div>
+           <div className='d-flex justify-content-center mb-4 p-4 m-auto'>
                
-<form onSubmit={handleSubmit} className="mb-1">
-                            <input required onChange={handleChange} className="login-input p-1" value={profileInfo.fname} type="text" name="fname" id="" />
+{info?<form onSubmit={handleSubmit} className="mb-4">
+                           <div className='form-group w-100'>
+                               <label className='form-label'> First Name</label>
+                           <input required onChange={handleChange} className="form-control px-3" value={profileInfo.fname} type="text" name="fname" id="" />
+                           
+                            
                             <br />
+                            <label className='form-label'> Last Name</label>
+                            <input required onChange={handleChange} className="form-control  px-3" value={profileInfo.lname} type="text" name="lname" id="" />
                             <br />
-                            <input required onChange={handleChange} className="login-input  p-1" value={profileInfo.lname} type="text" name="lname" id="" />
+                            <label className='form-label'>Optional Email</label>
+                            <input required onChange={handleChange}  value={profileInfo.pEmail} className="px-3  
+                            form-control " type="text" name="pEmail" id=""/>
                             <br />
+                            <label className='form-label'>Mobile</label>
+                            <input required onChange={handleChange} value={profileInfo.pContact} className="px-3 form-control  " type="text" name="pContact" id="" />
                             <br />
-                            <input required onChange={handleChange}  value={profileInfo.pEmail} className="p-1  
-                            login-input" type="text" name="pEmail" id=""/>
+                            <label className='form-label'>Address</label>
+                            <input required onChange={handleChange} value={profileInfo.address} className="px-3 form-control  " type="text" name="address" id="" />
                             <br />
-                            <input required onChange={handleChange} value={profileInfo.pContact} className="p-1  login-input" type="text" name="pContact" id="" />
+                            <label className='form-label'>Phone</label>
+                            <input required onChange={handleChange} value={profileInfo.eContact} className="px-3 form-control  " type="text" name="eContact" id="" />
                             <br />
+                            
 
-                            <input style={{ backgroundColor: 'transparent', color: 'blue', border: '2px solid black' }} type="submit" value="Update" />
-                        </form> 
+                            <input className="px-3 form-control  " style={{ backgroundColor: 'transparent', color: 'blue', border: '2px solid black' }} type="submit" value="Update" />
+                            </div>
+                            
+                        </form>:<h3>Please complete your profile</h3> }
                         </div>
                         </>
         
