@@ -8,7 +8,11 @@ import { CDBSidebar, CDBSidebarContent } from "cdbreact";
 import LogIn from "../LogIn/LogIn";
 import Welcome from "../Welcome/Welcome";
 import { CgProfile } from "react-icons/cg";
-import { MdOutlineCloudUpload, MdUpdate } from "react-icons/md";
+import {
+  MdOutlineCloudUpload,
+  MdUpdate,
+  MdCreateNewFolder,
+} from "react-icons/md";
 import { SiWorkplace } from "react-icons/si";
 import { FcCalendar, FcManager } from "react-icons/fc";
 import { RiEdit2Fill, RiContactsLine } from "react-icons/ri";
@@ -105,6 +109,15 @@ const Dashboard = () => {
                         Edit Profile
                       </li>
                       <li
+                        onClick={() => setControl("createResume")}
+                        className="li py-3 px-5"
+                      >
+                        <span className="dashboard-icons px-1">
+                          <MdCreateNewFolder />
+                        </span>{" "}
+                        Create Resume
+                      </li>
+                      <li
                         onClick={() => setControl("upload")}
                         className="li py-3 px-5"
                       >
@@ -112,6 +125,15 @@ const Dashboard = () => {
                           <MdOutlineCloudUpload />
                         </span>{" "}
                         Upload/View Resume
+                      </li>
+                      <li
+                        onClick={() => setControl("skills")}
+                        className="li py-3 px-5"
+                      >
+                        <span className="dashboard-icons px-1">
+                          <ImStatsBars />
+                        </span>{" "}
+                        Skills
                       </li>
                       <li
                         onClick={() => setControl("myjobs")}
@@ -123,24 +145,6 @@ const Dashboard = () => {
                         My Jobs
                       </li>
 
-                      <li
-                        onClick={() => setControl("createResume")}
-                        className="li py-3 px-5"
-                      >
-                        <span className="dashboard-icons px-1">
-                          <SiWorkplace />
-                        </span>{" "}
-                        Create Resume
-                      </li>
-                      <li
-                        onClick={() => setControl("skills")}
-                        className="li py-3 px-5"
-                      >
-                        <span className="dashboard-icons px-1">
-                          <ImStatsBars />
-                        </span>{" "}
-                        Skills
-                      </li>
                       <li
                         onClick={() => setControl("welcome")}
                         className="li py-3 px-5"
