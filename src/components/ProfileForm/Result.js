@@ -31,11 +31,11 @@ const Result = props => {
             {/* <h2>Result:</h2> */}
             {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
             <div className='profile-form-div' >
-                <div class="profile-form-container">
+                <div className="profile-form-container">
                     <form style={{ height: '300px', marginTop: '80px' }} onSubmit={handleSubmit(onSubmit)}>
-                        <h4>Hurray! <i class="fa-solid fa-hand-peace"></i></h4>
+                        <h4>Hurray! <i className="fa-solid fa-hand-peace"></i></h4>
 
-                        <h4>Your profile has been updated successfully <i class="fa-solid fa-face-grin-wide"></i></h4>
+                        <h4>Your profile has been updated successfully <i className="fa-solid fa-face-grin-wide"></i></h4>
 
                         <div className='profile-form-button-div d-flex justify-content-center' >
                             <button className='profile-form-button' type="submit">Back to Dashboard</button>

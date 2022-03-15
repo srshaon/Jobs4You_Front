@@ -60,8 +60,8 @@ const ProfileForm2 = (props) => {
             <div className="profile-form-div">
               <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <div class="profile-form-container">
-                    <div class="profile-form-inputs">
+                  <div className="profile-form-container">
+                    <div className="profile-form-inputs">
                       <div className="profile-form-input-pair d-flex justify-content-center">
                         <textarea
                           rows={8}
@@ -110,8 +110,8 @@ const ProfileForm2 = (props) => {
         {loadFormCondition === "seeker" && (
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div class="profile-form-container mt-3 mb-5">
-                <div class="profile-form-inputs">
+              <div className="profile-form-container mt-3 mb-5">
+                <div className="profile-form-inputs">
                   <div className="profile-form-input-pair d-flex justify-content-center">
                     <textarea
                       rows={8}

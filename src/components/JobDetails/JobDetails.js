@@ -121,7 +121,7 @@ const JobDetails = () => {
                     </p>
                   </div>
 
-                  <div class="job-image">
+                  <div className="job-image">
                     <h1 className="p-3">
                       <IoIosArrowDropdownCircle />
                     </h1>
@@ -133,7 +133,7 @@ const JobDetails = () => {
                       alt=""
                     />
 
-                    <div class="info">
+                    <div className="info">
                       <h3 className="pt-5">Summary</h3>
                       <ul>
                         <li>

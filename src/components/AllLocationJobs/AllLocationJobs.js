@@ -106,8 +106,8 @@ const AllLocationJobs = () => {
     //   <div className="w-75 mx-auto d-flex justify-content-center row row-cols-lg-2 row-cols-md-2 row-cols-1 g-5">
     //     {jobs.map((job) => (
     //       <div className="">
-    //         <div class="">
-    //           <div class="filter-box">
+    //         <div className="">
+    //           <div className="filter-box">
     //             <h4 className="text-center" style={{ color: "brown" }}>
     //               {job.job}
     //             </h4>
