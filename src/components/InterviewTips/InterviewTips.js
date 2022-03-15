@@ -154,7 +154,7 @@ const InterviewTips = () => {
                     >
                       SUMMARY
                     </h5>
-                    <ul class="resume-information text-start">
+                    <ul className="resume-information text-start">
                       <li>Be on time</li>
                       <li>
                         Have some questions of your own prepared in advance.
@@ -172,7 +172,7 @@ const InterviewTips = () => {
                     </ul>
                   </div>
 
-                  <div class="interviewimage">
+                  <div className="interviewimage">
                     <h5 className="mt-4">Interview Question Site</h5>
                     <h1 className="d-flex justify-content-center">
                       <IoIosArrowDropdownCircle />
@@ -185,7 +185,7 @@ const InterviewTips = () => {
                       alt=""
                     />
 
-                    <div class="info">
+                    <div className="info">
                       <h2 className="p-3">Links</h2>
                       <ul>
                         <li>

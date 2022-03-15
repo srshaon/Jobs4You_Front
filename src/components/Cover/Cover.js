@@ -11,7 +11,7 @@ const Cover = () => {
   // const [searchKey, setSearchKey] = useState([]);
   // const [searchLocation, setSearchLocation] = useState([]);
 
-  const { searchKey, setSearchKey, searchLocation, setSearchLocation } =
+  const { searchKey, setSearchKey, searchLocation, setSearchLocation, resetSearchKey, setResetSearchKey, resetSearchLocation, setResetSearchLocation } =
     useAuth();
 
   const handleSearchByKey = (e) => {
@@ -19,11 +19,18 @@ const Cover = () => {
     const searchText = e.target.value;
     console.log(searchText);
 
-    if (searchKey == "") {
-      setSearchKey("");
-    } else {
-      setSearchKey(searchText);
-    }
+    // if (searchText != "" && searchKey == "") {
+    //   setSearchKey(searchText);
+    // } else if (searchText == "" && searchKey == "") {
+    //   setSearchKey('');
+    // }
+
+    setSearchKey(searchText);
+
+    // if (searchText != '') {
+    //   console.log('hitted')
+    //   setResetSearchLocation(1);
+    // }
   };
 
   console.log(searchKey);
@@ -32,12 +39,18 @@ const Cover = () => {
     e.preventDefault();
     const searchText = e.target.value;
     console.log(searchText);
-    // setSearchLocation(searchText);
-    if (searchLocation == "") {
-      setSearchLocation("");
-    } else {
-      setSearchLocation(searchText);
-    }
+
+    setSearchLocation(searchText);
+
+    // if (searchText != '') {
+    //   setResetSearchLocation(1);
+    // }
+
+    // if (searchText != "" && searchLocation == "") {
+    //   setSearchLocation(searchText);
+    // } else if (searchText == "" && searchLocation == "") {
+    //   setSearchLocation('');
+    // }
   };
 
   const handleFindJobs = (e) => {
@@ -53,16 +66,7 @@ const Cover = () => {
           <img src={banner} alt="" className="banner-img" />
 
           <div className="banner w-100">
-            {/* <div className="mb-5">
-              <h1
-                style={{
-                  color: "purple",
-                  fontWeight: "700",
-                }}
-              >
-                WELCOME! HERE IS WHAT WE ARE!
-              </h1>
-            </div> */}
+
             <div>
               <h2
                 style={{
@@ -119,8 +123,8 @@ const Cover = () => {
                   />
                   <Link to="/searchResult">
                     <button
-                      // onClick={handleFindJobs}
-                      type="submit"
+
+
                       className="search-btn p-3"
                     >
                       Find Jobs

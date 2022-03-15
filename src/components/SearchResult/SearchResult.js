@@ -11,15 +11,35 @@ const SearchResult = () => {
       .then((res) => res.json())
       .then((data) => setSearchJobs(data));
   }, []);
-  const { searchKey, searchLocation } = useAuth();
-  console.log("came from searchResult", searchKey, searchLocation);
-
+  const { searchKey, setSearchKey, searchLocation, setSearchLocation, resetSearchKey, setResetSearchKey, resetSearchLocation, setResetSearchLocation } = useAuth();
+  console.log("came from searchResult", searchKey, searchLocation, resetSearchKey, resetSearchLocation);
+  // let searchFieldOne = '';
+  // let searchFieldTwo = '';
+  // if (resetSearchKey == 1) {
+  //   searchFieldOne = searchKey;
+  //   setResetSearchKey(0)
+  // }
+  // if (resetSearchLocation == 1) {
+  //   searchFieldTwo = searchLocation;
+  //   setResetSearchLocation(0);
+  // }
+  const searchFieldOne = searchKey;
+  const searchFieldTwo = searchLocation;
+  console.log(searchFieldOne, searchFieldTwo)
   const result = searchJobs.filter(
     (jobs) =>
-      jobs.category.toLowerCase().includes(searchKey.toLowerCase()) &&
-      jobs.jobLocation.toLowerCase().includes(searchLocation.toLowerCase())
+      jobs.category.toLowerCase().includes(searchFieldOne.toLowerCase()) &&
+      jobs.jobLocation.toLowerCase().includes(searchFieldTwo.toLowerCase())
+
   );
   console.log(result);
+  const resetOne = () => {
+    setSearchKey('')
+  }
+    ;
+  const resetTwo = () => {
+    setSearchLocation('')
+  }
 
   return (
     <div>

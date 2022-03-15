@@ -79,22 +79,22 @@ const Apply = () => {
 
   return (
     <div className="bodyShadow">
-      <div class="container-fluid ">
-        <div id="myForms" class="row ">
-          <div id="card1" class="">
-            <div class="card-body">
+      <div className="container-fluid ">
+        <div id="myForms" className="row ">
+          <div id="card1" className="">
+            <div className="card-body">
 
               <form onSubmit={handleSubmit} action="" method="POST">
-                <div class="row applyform1">
+                <div className="row applyform1">
                   <h3
                     className="d-flex justify-content-center my-4"
                     style={{ color: "brown" }}
                   >
                     Personal Details
                   </h3>
-                  <div class="col col-md-6 form-data">
-                    <div class="form-group">
-                      <h6 id="helpId1" class=" d-flex justify-content-center">
+                  <div className="col col-md-6 form-data">
+                    <div className="form-group">
+                      <h6 id="helpId1" className=" d-flex justify-content-center">
                         Candidate's First Name
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
@@ -110,7 +110,7 @@ const Apply = () => {
                       />
                     </div>
 
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6
                         id="helpId4"
                         className="d-flex justify-content-center pt-3"
@@ -129,7 +129,7 @@ const Apply = () => {
                       />
                     </div>
 
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6
                         id="helpId6"
                         className="d-flex justify-content-center pt-3"
@@ -148,8 +148,8 @@ const Apply = () => {
                         required
                       />
                     </div>
-                    <div class="form-group pt-3">
-                      <h6 id="helpId" class=" d-flex justify-content-center">
+                    <div className="form-group pt-3">
+                      <h6 id="helpId" className=" d-flex justify-content-center">
                         Candidate's LinkedIn Profile
                         <sub style={{ color: "brown", fontSize: 14 }}>
                           (optional)
@@ -167,8 +167,8 @@ const Apply = () => {
                       />
                     </div>
 
-                    <div class="form-group pt-3">
-                      <h6 id="helpId" class=" d-flex justify-content-center">
+                    <div className="form-group pt-3">
+                      <h6 id="helpId" className=" d-flex justify-content-center">
                         Candidate's Resume
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
@@ -185,9 +185,9 @@ const Apply = () => {
                       )}
                     </div>
                   </div>
-                  <div class="col col-md-6 form-data">
-                    <div class="form-group">
-                      <h6 id="helpId1" class="d-flex justify-content-center">
+                  <div className="col col-md-6 form-data">
+                    <div className="form-group">
+                      <h6 id="helpId1" className="d-flex justify-content-center">
                         Candidate's Last Name
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
@@ -203,7 +203,7 @@ const Apply = () => {
                       />
                       <p required placeholder="Enter Name"></p>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6
                         id="helpId2"
                         className="d-flex justify-content-center"
@@ -222,7 +222,7 @@ const Apply = () => {
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6
                         id="helpId5"
                         className=" d-flex justify-content-center pt-3"
@@ -242,8 +242,8 @@ const Apply = () => {
                       />
                     </div>
 
-                    <div class="form-group pt-3">
-                      <h6 id="helpId" class=" d-flex justify-content-center">
+                    <div className="form-group pt-3">
+                      <h6 id="helpId" className=" d-flex justify-content-center">
                         Candidate's Portfolio
                         <sub style={{ color: "brown", fontSize: 14 }}>
                           (optional)
@@ -259,8 +259,8 @@ const Apply = () => {
                         placeholder="Enter your portfolio url"
                       />
                     </div>
-                    <div class="form-group pt-3">
-                      <h6 id="helpId" class=" d-flex justify-content-center">
+                    <div className="form-group pt-3">
+                      <h6 id="helpId" className=" d-flex justify-content-center">
                         Candidate's Cover Letter
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
