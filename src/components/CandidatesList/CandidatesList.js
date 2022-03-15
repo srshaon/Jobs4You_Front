@@ -12,6 +12,10 @@ import { useGetProfilesQuery } from "../../Redux-handler/ManageProfiles";
 
 const CandidatesList = () => {
   const { data: candidates } = useGetProfilesQuery();
+  let sortedList = [];
+                for (let i = (candidates.length - 1); i >= 0; i--) {
+                    sortedList.push(candidates[i]);
+                }
   const [pageNumber, setPageNumber] = useState(0);
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -42,7 +46,7 @@ const CandidatesList = () => {
             </tr>
           </thead>
           <tbody>
-            {candidates
+            {sortedList
               ?.slice(visitedPage, visitedPage + candidatePerPage)
               .map(({ _id, fname, pEmail, pContact }, index) => (
                 <tr>

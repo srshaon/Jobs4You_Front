@@ -37,6 +37,10 @@ import ProfileEdit from "./../ProfileForm/ProfileEdit";
 import { ImHome, ImStatsBars } from "react-icons/im";
 import { useHistory } from "react-router";
 import Skills from "../Skills/Skills";
+import AddJob from "../AddJob/AddJob";
+import ManageJobs from "../ManageJobs/ManageJobs"
+import EditCompany from "../CompanyProfile/EditCompany"
+import AllJobStatus from './../AllJobStatus/AllJobStatus';
 const Dashboard = () => {
   const history = useHistory();
   const { logOut, admin, user } = useAuth();
@@ -164,10 +168,20 @@ const Dashboard = () => {
                     </div>
                   </div>
                 )}
-                {admin === "company" && (
+                {(admin === "company") && (
                   <div>
                     <div>
                       <ul className="dashboard-list">
+                     
+                        <li
+                          onClick={navigateToHome}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                          <ImHome />
+                          </span>{" "}
+                          Home
+                        </li>
                         <li
                           onClick={() => setControl("companyProfile")}
                           className="li py-3 px-3"
@@ -178,13 +192,31 @@ const Dashboard = () => {
                           View Profile
                         </li>
                         <li
-                          onClick={() => setControl("companyProfile")}
+                          onClick={() => setControl("editCompany")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
                             <RiEdit2Fill />
                           </span>{" "}
-                          Companies
+                         Update Profile
+                        </li>
+                        <li
+                          onClick={() => setControl("postJob")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <SiWorkplace />
+                          </span>{" "}
+                          Post Job
+                        </li>
+                        <li
+                          onClick={() => setControl("manageJobs")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                          <ImStatsBars />
+                          </span>{" "}
+                          Manage Jobs
                         </li>
                         <li
                           onClick={() => setControl("candidates")}
@@ -197,7 +229,7 @@ const Dashboard = () => {
                         </li>
 
                         <li
-                          onClick={() => setControl("editProfile")}
+                          onClick={() => setControl("interveiw")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
@@ -279,20 +311,23 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="dashboard-second-container">
-          {control === "companyProfile" && <CompanyInfo info={profileInfo} />}
-          {control === "companies" && <CompanyProfile />}
           {control === "candiProfile" && (
             <CandidateDetails info={profileInfo} />
           )}
-          {control === "candidates" && <CandidatesList />}
           {control === "editCandidate" && <ProfileEdit info={profileInfo} />}
-          {/* {control === "companyProfile" && <CandidateDetails/>} */}
           {control === "createResume" && <PdfCreator />}
           {control === "login" && <LogIn></LogIn>}
           {control === "welcome" && <Welcome></Welcome>}
           {control === "upload" && <UploadViewResume />}
           {control === "myjobs" && <MyJobs />}
           {control === "skills" && <Skills />}
+           {/* recruiter dashboard */}
+           {control === "companyProfile" && <CompanyInfo info={profileInfo}/>}
+                    {control === "companies" && <CompanyProfile/>}
+                    {control === "postJob" && <AddJob/>}
+                    {control === "candidates" && <CandidatesList/>}
+                    {control === "manageJobs" && <ManageJobs/>}
+                    {control === "editCompany" && <EditCompany info={profileInfo}/>}
         </div>
       </div>
     </div>
