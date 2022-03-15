@@ -20,6 +20,7 @@ const FeaturedJobs = () => {
       </h2>
       <div className="container mt-4">
         {featuredJobs.slice(0, 4).map((job) => (
+
           <div className="featured-job-card row d-md-flex align-items-center justify-content-center w-75 mx-auto p-4 mt-3">
             <Col md={2}>
               <img src={job.image} alt="" className="w-75 text-center p-2" />

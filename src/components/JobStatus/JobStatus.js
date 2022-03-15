@@ -9,7 +9,7 @@ const JobStatus = ({ jobs }) => {
         <div className="category-bg row row-cols-lg-3 row-cols-md-3 row-cols-1 d-flex justify-content-center gx-5 gy-4">
           {jobs.map((status) => (
             <div>
-              <div class="box text-center p-2">
+              <div className="box text-center p-2">
                 <h3>
                   <Link
                     className="category-title"
