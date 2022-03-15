@@ -8,10 +8,9 @@ import useAuth from "../../hooks/useAuth";
 import "./Cover.css";
 
 const Cover = () => {
-  // const [searchKey, setSearchKey] = useState([]);
-  // const [searchLocation, setSearchLocation] = useState([]);
 
-  const { searchKey, setSearchKey, searchLocation, setSearchLocation } =
+
+  const { searchKey, setSearchKey, searchLocation, setSearchLocation, resetSearchKey, setResetSearchKey, resetSearchLocation, setResetSearchLocation } =
     useAuth();
 
   const handleSearchByKey = (e) => {
@@ -19,11 +18,9 @@ const Cover = () => {
     const searchText = e.target.value;
     console.log(searchText);
 
-    if (searchKey == "") {
-      setSearchKey("");
-    } else {
-      setSearchKey(searchText);
-    }
+
+    setSearchKey(searchText);
+
   };
 
   console.log(searchKey);
@@ -32,12 +29,9 @@ const Cover = () => {
     e.preventDefault();
     const searchText = e.target.value;
     console.log(searchText);
-    // setSearchLocation(searchText);
-    if (searchLocation == "") {
-      setSearchLocation("");
-    } else {
-      setSearchLocation(searchText);
-    }
+
+    setSearchLocation(searchText);
+
   };
 
   const handleFindJobs = (e) => {
@@ -53,16 +47,7 @@ const Cover = () => {
           <img src={banner} alt="" className="banner-img" />
 
           <div className="banner w-100">
-            {/* <div className="mb-5">
-              <h1
-                style={{
-                  color: "purple",
-                  fontWeight: "700",
-                }}
-              >
-                WELCOME! HERE IS WHAT WE ARE!
-              </h1>
-            </div> */}
+
             <div>
               <h2
                 style={{
@@ -119,8 +104,8 @@ const Cover = () => {
                   />
                   <Link to="/searchResult">
                     <button
-                      // onClick={handleFindJobs}
-                      type="submit"
+
+
                       className="search-btn p-3"
                     >
                       Find Jobs

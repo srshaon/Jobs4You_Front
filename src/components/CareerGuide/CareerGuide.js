@@ -169,11 +169,11 @@ const CareerGuide = () => {
 
                             </div>
                             <div id="guidecontainer">
-                                <div class="job-details">
+                                <div className="job-details">
                                     <h3>
                                         Tips Summary
                                     </h3>
-                                    <ul class="information">
+                                    <ul className="information">
                                         <li >
 
                                             Never Stop Learning
@@ -224,7 +224,7 @@ const CareerGuide = () => {
 
                                 </div>
 
-                                <div class="job-image">
+                                <div className="job-image">
 
                                     <h4 className='mt-4'>
 
@@ -234,7 +234,7 @@ const CareerGuide = () => {
                                     <img style={{ height: 370, width: 300 }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc1S5_SNb99MWnoNn_CprG9XQdVsGftuG1Gg&usqp=CAU" alt="" />
 
 
-                                    <div class="info">
+                                    <div className="info">
                                         <h2 > Job Sector</h2>
                                         <ul>
                                             <li>

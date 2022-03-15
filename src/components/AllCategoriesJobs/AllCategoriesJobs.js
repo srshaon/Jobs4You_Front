@@ -114,7 +114,7 @@ const AllCategoriesJobs = () => {
           {jobs.map((job) => (
             <div className="">
               <div>
-                <div class="filter-box">
+                <div className="filter-box">
                   <h4 className="text-center" style={{ color: "brown" }}>
                     {job.job}
                   </h4>
