@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import { useHistory, useParams,useLocation } from 'react-router-dom'
+import { useHistory, useParams,useLocation,Link } from 'react-router-dom'
 import { useGetProfileByIdQuery, useUpdateProfileMutation } from '../../Redux-handler/ManageProfiles';
 const ProfileEdit = ({info}) => {
     const location=useLocation()
@@ -61,7 +61,7 @@ history.push('/candidates')
                             <input className="px-3 form-control  " style={{ backgroundColor: 'transparent', color: 'blue', border: '2px solid black' }} type="submit" value="Update" />
                             </div>
                             
-                        </form>:<h3>Please complete your profile</h3> }
+                        </form>:<h3><Link to='/profileForm'>Please complete your profile</Link></h3> }
                         </div>
                         </>
         
