@@ -25,6 +25,7 @@ const Apply = () => {
   const [jobs, setJobs] = useState({});
   const { user } = useAuth()
 /// Testing
+////Testing2
   useEffect(() => {
 
     fetch(`http://localhost:5000/jobs/${jobId}`)
