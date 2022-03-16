@@ -24,7 +24,7 @@ const Apply = () => {
   const [portfolio, setPortfolio] = useState("");
   const [jobs, setJobs] = useState({});
   const { user } = useAuth()
-
+/// Testing
   useEffect(() => {
 
     fetch(`http://localhost:5000/jobs/${jobId}`)
