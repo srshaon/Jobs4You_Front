@@ -2,18 +2,20 @@ import { Button } from "bootstrap";
 import React, { useEffect, useState } from "react";
 import { Card, Col, Row, Table } from "react-bootstrap";
 import { BiEditAlt } from "react-icons/bi";
+import useAuth from "../../hooks/useAuth";
 import ManageJob from "../ManageJob/ManageJob";
 
 const ManageJobs = () => {
+  const { user } = useAuth();
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
     fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
       .then((res) => res.json())
       .then((data) => {
-        // const pendingJobs = data.filter(
-        //   (job) => job?.status?.toLowerCase() === "pending"
-        // );
-        setJobs(data);
+        const postedJobs = data.filter(
+          (job) => job?.email?.toLowerCase() == user.email
+        );
+        setJobs(postedJobs);
       });
   }, [jobs]);
 

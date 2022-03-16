@@ -30,23 +30,20 @@ const ProfileForm2 = (props) => {
   };
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/users/${user.email}`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-        setCondition(data.admin)
-
-
-      })
-  }, [user.email])
+        setCondition(data.admin);
+      });
+  }, [user.email]);
   console.log(role);
-  let loadFormCondition = ''
+  let loadFormCondition = "";
   if (role !== "") {
     loadFormCondition = role;
     console.log(role);
-  }
-  else {
+  } else {
     loadFormCondition = condition;
-    console.log(condition)
+    console.log(condition);
   }
   // if (role === '') {
   //   return <Spinner animation="border" variant="danger" />
@@ -62,17 +59,25 @@ const ProfileForm2 = (props) => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="profile-form-container">
                     <div className="profile-form-inputs">
-                      <div className="profile-form-input-pair d-flex justify-content-center">
+                      <div className="profile-form-input-pair justify-content-center">
+                        <label htmlFor="" className="m-2">
+                          Write about your company culture and core values (Max
+                          500 words).
+                        </label>
                         <textarea
                           rows={8}
                           className="profile-form2-bio-textarea"
-                          placeholder="About Company Culture"
+                          placeholder="Company Culture/Core Values..."
                           defaultValue=""
                           {...register("acc", { required: true })}
                         />
                       </div>
                       <br />
-                      <div className="profile-form-input-pair d-flex justify-content-center">
+                      <div className="profile-form-input-pair justify-content-center">
+                        <label htmlFor="" className="m-2">
+                          Where would you like to see your company in next 5
+                          years?
+                        </label>
                         <textarea
                           rows={5}
                           className="profile-form2-hobby-textarea"
@@ -82,11 +87,15 @@ const ProfileForm2 = (props) => {
                         />
                       </div>
                       <br />
-                      <div className="profile-form-input-pair d-flex justify-content-center">
+                      <div className="profile-form-input-pair justify-content-center">
+                        <label htmlFor="" className="m-2">
+                          Share the biggest achievement of your company that you
+                          celebrated.{" "}
+                        </label>
                         <textarea
                           rows={5}
                           className="profile-form2-hobby-textarea"
-                          placeholder="Achievements / Awards"
+                          placeholder="Achievements"
                           defaultValue=""
                           {...register("achievements", { required: true })}
                         />
