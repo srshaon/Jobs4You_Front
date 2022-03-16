@@ -8,7 +8,7 @@ import { useCreateProfileMutation } from "../../Redux-handler/ManageProfiles";
 import { useHistory } from 'react-router';
 import useAuth from './../../hooks/useAuth';
 const ProfileForm3 = (props) => {
-    const { user } = useAuth()
+    const { user,admin } = useAuth()
     const [createProfile] = useCreateProfileMutation()
     const { register, handleSubmit } = useForm();
     const { actions, state } = useStateMachine({ clearAction });
@@ -21,6 +21,13 @@ const ProfileForm3 = (props) => {
         console.log(data);
         console.log(state);
         console.log(actions);
+        if(admin==='seeker'){
+            state.data.fname = user?.displayName;
+            state.data.pEmail = user?.email;
+        }else{
+            state.data.cname = user?.displayName;
+            state.data.email = user?.email;
+        }
         state.data.loginEmail = user?.email;
         createProfile(state.data)
         actions.clearAction(data);
