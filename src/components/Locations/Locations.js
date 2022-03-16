@@ -6,7 +6,7 @@ const Locations = ({ jobs }) => {
   return (
     <div className="category-container">
       <div className="cardbg">
-        <div className="category-bg row row-cols-lg-3 row-cols-md-3 row-cols-1 gx-5 gy-4">
+        <div className="category-bg row row-cols-lg-3 row-cols-md-3 row-cols-1 align-items-center justify-content-center gx-5 gy-4">
           {jobs.map((location) => (
             <div>
               <div className="box text-center p-2">

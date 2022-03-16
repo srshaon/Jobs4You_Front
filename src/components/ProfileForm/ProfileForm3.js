@@ -6,7 +6,10 @@ import updateAction from "./updateAction";
 import clearAction from "./clearAction";
 import { useCreateProfileMutation } from "../../Redux-handler/ManageProfiles";
 import { useHistory } from 'react-router';
+import useAuth from './../../hooks/useAuth';
 const ProfileForm3 = (props) => {
+    const { user } = useAuth()
+    const [createProfile] = useCreateProfileMutation()
     const { register, handleSubmit } = useForm();
     const { actions, state } = useStateMachine({ clearAction });
     const onSubmit = (data) => {
@@ -18,6 +21,8 @@ const ProfileForm3 = (props) => {
         console.log(data);
         console.log(state);
         console.log(actions);
+        state.data.loginEmail = user?.email;
+        createProfile(state.data)
         actions.clearAction(data);
         props.history.push("./result");
         console.log(data);
@@ -29,7 +34,7 @@ const ProfileForm3 = (props) => {
     };
     return (
         <div className='profile-form-div' >
-            <div class="profile-form-container">
+            <div className="profile-form-container">
                 <form style={{ height: '300px', marginTop: '80px' }} onSubmit={handleSubmit(onSubmit)}>
                     <h4>Congratulations! </h4>
                     <h4>You have updated all the info.</h4>

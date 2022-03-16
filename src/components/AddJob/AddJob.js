@@ -1,14 +1,21 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
 import "./AddJob.css";
 
 const AddJob = () => {
+  const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     const requirements = data.additionalRequirements.split(/\r?\n/g);
-    const newData = { ...data, additionalRequirements: requirements };
+    const skills = data.skills.split(",");
+    const newData = {
+      ...data,
+      additionalRequirements: requirements,
+      skills: skills,
+    };
     console.log(newData);
     axios
       .post("https://afternoon-headland-45054.herokuapp.com/jobs", newData)
@@ -31,6 +38,12 @@ const AddJob = () => {
           <input
             {...register("company", { required: true, maxLength: 20 })}
             placeholder="Company name"
+            defaultValue={user.displayName}
+          />
+          <input
+            {...register("email", { required: true, maxLength: 20 })}
+            placeholder="Company email"
+            defaultValue={user.email}
           />
           <input
             {...register("job", { required: true, maxLength: 20 })}
@@ -45,21 +58,34 @@ const AddJob = () => {
             {...register("category", { required: true, maxLength: 20 })}
             placeholder="Category"
           />
-          {/* <textarea
-            rows={3}
-            {...register("description", { required: true, maxLength: 50 })}
-            placeholder="Description"
-          ></textarea> */}
-
+          <input
+            {...register("educationalRequirements", {
+              required: true,
+              maxLength: 20,
+            })}
+            placeholder="Education"
+          />
+          <input
+            {...register("skills", {
+              required: true,
+            })}
+            placeholder="Skills(Add skills using ',')"
+          />
           <textarea
-            rows={3}
+            rows={4}
             {...register("additionalRequirements", {
               required: true,
             })}
+            className="my-3 pt-2"
             placeholder="Additional req (use Enter key to add each point)"
           ></textarea>
 
-          <input type="number" {...register("vacancy")} placeholder="Vacancy" />
+          <input
+            className=""
+            type="number"
+            {...register("vacancy")}
+            placeholder="Vacancy"
+          />
           <input
             type="name"
             {...register("experienceRequirements")}

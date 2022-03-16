@@ -24,17 +24,18 @@
 }
 
 .footer-card {
-  background-color: #537890;
-  opacity: 0.7;
-  width: 85%;
-  position: relative;
-  top: -40px;
-  margin: 0 auto;
-  height: 160px;
-  border-radius: 50px 0;
+  background-color: #537890 !important;
+  opacity: 0.7 !important;
+  width: 85% !important;
+  position: relative !important;
+  top: -40px !important;
+  margin: 0 auto !important;
+  height: 160px !important;
+  border-radius: 50px 0 !important;
 }
 
 .footer-list a {
+  text-decoration: none;
   display: block;
   color: black;
   font-size: 16px;
@@ -43,8 +44,11 @@
 }
 
 .footer-list a:hover {
+  text-decoration: underline;
+  text-decoration-color: orangered;
   transform: translateX(10px);
 }
+
 footer h5 {
   color: black;
   font-size: 22px;
@@ -67,41 +71,6 @@ footer .copyright {
   font-size: 20px;
   font-weight: bolder;
 }
-
-/* .facebook-bg {
-  background: #105768;
-}
-.facebook-bg:hover {
-  background: #1195f5;
-}
-
-.instagram-bg {
-  background: radial-gradient(
-    circle at 30% 107%,
-    rgb(253, 244, 151) 0%,
-    rgb(253, 244, 151) 5%,
-    rgb(253, 89, 73) 45%,
-    rgb(214, 36, 159) 60%,
-    rgb(40, 90, 235) 90%
-  );
-}
-.instagram-bg:hover {
-  background: radial-gradient(
-    circle at 20% 97%,
-    rgb(253, 244, 151) 0%,
-    rgb(253, 244, 151) 5%,
-    rgb(253, 89, 73) 55%,
-    rgb(214, 36, 159) 70%,
-    rgb(40, 90, 235) 90%
-  );
-}
-
-.youtube-bg {
-  background: #ff0000a6;
-}
-.youtube-bg:hover {
-  background: #ff0000;
-} */
 
 .footer .waves {
   position: absolute;

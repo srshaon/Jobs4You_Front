@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { Typewriter } from "react-simple-typewriter";
 
 import banner from "../../assets/Images/banner_7.jpg";
+import useAuth from "../../hooks/useAuth";
 import "./Cover.css";
 
 const Cover = () => {
+  const { searchKey, setSearchKey, searchLocation, setSearchLocation } =
+    useAuth();
+
+  const handleSearchByKey = (e) => {
+    e.preventDefault();
+    const searchText = e.target.value;
+    setSearchKey(searchText);
+    console.log(searchText);
+  };
+
+  const handleSearchByLocation = (e) => {
+    e.preventDefault();
+    const searchText = e.target.value;
+    console.log(searchText);
+    setSearchLocation(searchText);
+  };
+
   return (
     <>
       <div className="banner-container overflow-hidden">
@@ -13,9 +32,6 @@ const Cover = () => {
           <img src={banner} alt="" className="banner-img" />
 
           <div className="banner w-100">
-            {/* <div className="">
-              <h2>Explore Our Multiple Jobs & Unlock Your Potential</h2>
-            </div> */}
             <div>
               <h2
                 style={{
@@ -56,20 +72,23 @@ const Cover = () => {
                     name=""
                     id=""
                     placeholder="Job title or keyword"
-                    className="search-field"
+                    className="search-field search-icon"
                     style={{ color: "orange" }}
+                    onChange={handleSearchByKey}
                   />
+
                   <input
                     type="text"
                     name=""
                     id=""
                     placeholder="Location (city or country)"
-                    className="search-field"
+                    className="search-field location-icon"
                     style={{ color: "orange" }}
+                    onChange={handleSearchByLocation}
                   />
-                  <button type="submit" className="search-btn p-3">
-                    Find Jobs
-                  </button>
+                  <Link to="/searchResult">
+                    <button className="search-btn p-3">Find Jobs</button>
+                  </Link>
                 </form>
               </div>
             </div>

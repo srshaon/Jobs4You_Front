@@ -7,7 +7,11 @@ const LatestJobs = () => {
         fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
             .then((res) => res.json())
             .then((data) => {
-                setJobs(data);
+                let sortedList = [];
+                for (let i = (data.length - 1); i >= 0; i--) {
+                    sortedList.push(data[i]);
+                }
+                setJobs(sortedList);
             });
     }, []);
     return (
