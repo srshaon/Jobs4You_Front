@@ -50,7 +50,9 @@ const JobDetails = () => {
             <Col md={3}>
               <div>
                 <Link to={`/chart/${jobs._id}`}>
-                  <Button className="apply-btn px-5">See if you are eligible</Button>
+                  <Button className="apply-btn px-5">
+                    See if you are eligible
+                  </Button>
                 </Link>
               </div>
             </Col>
@@ -83,7 +85,7 @@ const JobDetails = () => {
                 </p>
                 <p>
                   <b style={{ fontSize: 18 }}> Salary ➾</b>{" "}
-                  <span>৳ {jobs.salary}</span>
+                  <span>{jobs.salary}</span>
                 </p>
                 <div>
                   <b style={{ fontSize: 18 }}>Additional Requirements ➾</b>

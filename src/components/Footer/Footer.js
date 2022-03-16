@@ -17,6 +17,7 @@ const Footer = () => {
   const location = useLocation();
   return (
     <>
+      {/* {location.pathname !== "/dashboard" && ( */}
       <div style={{ backgroundColor: "#9c9c9c60" }}>
         <footer className="footer">
           <div className="container">
@@ -75,8 +76,8 @@ const Footer = () => {
                   <div className="footer-list mt-3">
                     <Link to="/about">About</Link>
                     <Link to="/faq">FAQs</Link>
-                    <Link to="/terms&conditions">Terms &#38; Conditions</Link>
-                    <Link to="/policy">Privacy Policy</Link>
+                    {/* <Link to="/terms&conditions">Terms &#38; Conditions</Link> */}
+                    {/* <Link to="/policy">Privacy Policy</Link> */}
                   </div>
                 </Col>
                 <Col md={3} className="">
@@ -85,9 +86,9 @@ const Footer = () => {
                     <span className="animate-border border-black"></span>
                   </div>
                   <div className="footer-list mt-3">
-                    <Link to="/services">Our Services</Link>
+                    {/* <Link to="/services">Our Services</Link>
                     <Link to="/clients">Clients</Link>
-                    <Link to="/blogs">Employers' Blog</Link>
+                    <Link to="/blogs">Employers' Blog</Link> */}
                     <Link to="/contact">Contact</Link>
                   </div>
                 </Col>
@@ -161,6 +162,7 @@ const Footer = () => {
           </div>
         </footer>
       </div>
+      {/* )} */}
     </>
   );
 };
