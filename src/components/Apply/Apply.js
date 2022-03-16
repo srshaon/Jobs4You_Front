@@ -24,7 +24,8 @@ const Apply = () => {
   const [portfolio, setPortfolio] = useState("");
   const [jobs, setJobs] = useState({});
   const { user } = useAuth()
-
+/// Testing
+////Testing2
   useEffect(() => {
 
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
