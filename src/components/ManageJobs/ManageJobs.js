@@ -55,24 +55,7 @@ const ManageJobs = () => {
             </thead>
             <tbody>
               {jobs?.map((job) => (
-                <tr>
-                  <td>
-                    <Link to={`/jobdetails/${job._id}`}>{job.job}</Link>
-                  </td>
-                  <td></td>
-                  <td>{job.applicationDeadline}</td>
-                  <td>{job.status}</td>
-                  <td>
-                    <span role="button" onClick={() => handleUpdate(job?._id)}>
-                      Update
-                    </span>
-                  </td>
-                  <td>
-                    <span role="button" onClick={() => handleExpire(job._id)}>
-                      Close
-                    </span>
-                  </td>
-                </tr>
+                <ManageJob key={job._id} job={job}></ManageJob>
               ))}
             </tbody>
           </Table>

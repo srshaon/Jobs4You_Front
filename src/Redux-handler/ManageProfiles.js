@@ -1,100 +1,102 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const profilesApi = createApi({
- 
- reducerPath: 'profilesApi',
- baseQuery: fetchBaseQuery({
-  baseUrl: 'https://afternoon-headland-45054.herokuapp.com/',
- }),
-
- tagTypes:["Profiles"],
- 
- endpoints: (builder) => ({
-
-  getProfiles: builder.query({
-   query: () => ({
-    url: 'allProfiles',
-    method: 'GET'
-   }),
-   providesTags:["Profiles"]
-   
+  reducerPath: "profilesApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "http://localhost:5000/",
   }),
-  getCompanies: builder.query({
-    query: () => ({
-      url: 'companyprofiles',
-      method: 'GET'
+
+  tagTypes: ["Profiles"],
+
+  endpoints: (builder) => ({
+    getProfiles: builder.query({
+      query: () => ({
+        url: "allProfiles",
+        method: "GET",
+      }),
+      providesTags: ["Profiles"],
     }),
-    providesTags: ["Profiles"]
+    getCompanies: builder.query({
+      query: () => ({
+        url: "companyprofiles",
+        method: "GET",
+      }),
+      providesTags: ["Profiles"],
+    }),
+    getProfileById: builder.query({
+      query: (id) => {
+        console.log("ID:", id);
+        return {
+          url: `profile/${id}`,
+          method: "GET",
+        };
+      },
+    }),
 
-  }),
-  getProfileById: builder.query({
-   query: (id) => {
-    console.log("ID:", id)
-    return {
-     url: `profile/${id}`,
-     method: 'GET'
-    }
-   },
-  }),
-
-   getCandidateByEmail: builder.query({
+    getCandidateByEmail: builder.query({
       query: (email) => {
         return {
           url: `individualCandidate/${email}`,
-          method: 'GET'
-        }
+          method: "GET",
+        };
       },
     }),
     getCompanyByEmail: builder.query({
       query: (email) => {
         return {
           url: `individualCompany/${email}`,
-          method: 'GET'
-        }
+          method: "GET",
+        };
       },
     }),
 
-  createProfile: builder.mutation({
-   query: (newPost) => {
-     console.log(newPost)
-    return {
-     url: `addProfile`,
-     method: 'POST',
-     body: newPost,
-     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-     }
-    }
-   },
-   invalidatesTags:[""]
-  }),
+    createProfile: builder.mutation({
+      query: (newPost) => {
+        console.log(newPost);
+        return {
+          url: `addProfile`,
+          method: "POST",
+          body: newPost,
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+        };
+      },
+      invalidatesTags: [""],
+    }),
 
-  updateProfile: builder.mutation({
-   query: ({_id, ...data }) => ({
-     url: `singleProfile/${_id}`,
-     method: 'PUT',
-     body: data,
-     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-     }
-    
-   }),
-   invalidatesTags:["Profiles"]
+    updateProfile: builder.mutation({
+      query: ({ _id, ...data }) => ({
+        url: `singleProfile/${_id}`,
+        method: "PUT",
+        body: data,
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }),
+      invalidatesTags: ["Profiles"],
+    }),
+    updateCompany: builder.mutation({
+      query: ({ _id, ...data }) => ({
+        url: `singleCompany/${_id}`,
+        method: "PUT",
+        body: data,
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      }),
+      invalidatesTags: ["Profiles"],
+    }),
   }),
-  updateCompany: builder.mutation({
-   query: ({_id, ...data }) => ({
-     url: `singleCompany/${_id}`,
-     method: 'PUT',
-     body: data,
-     headers: {
-      'Content-type': 'application/json; charset=UTF-8',
-     }
-    
-   }),
-   invalidatesTags:["Profiles"]
-  }),
- }),
+});
 
-})
-
-export const {useGetProfilesQuery,useGetProfileByIdQuery,useGetCompaniesQuery,useGetCandidateByEmailQuery,useGetCompanyByEmailQuery, useCreateProfileMutation,useUpdateProfileMutation,useUpdateCompanyMutation} = profilesApi
+export const {
+  useGetProfilesQuery,
+  useGetProfileByIdQuery,
+  useGetCompaniesQuery,
+  useGetCandidateByEmailQuery,
+  useGetCompanyByEmailQuery,
+  useCreateProfileMutation,
+  useUpdateProfileMutation,
+  useUpdateCompanyMutation,
+} = profilesApi;
