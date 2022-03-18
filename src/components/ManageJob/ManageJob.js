@@ -31,10 +31,11 @@ const ManageJob = ({ job, setJobs }) => {
     const requirements = data.additionalRequirements.split(/\r?\n/g);
     const newData = { ...data, additionalRequirements: requirements };
     console.log(newData);
-    // const updatedJob = { ...job, newData };
-    // console.log(updatedJob);
     axios
-      .put(`https://afternoon-headland-45054.herokuapp.com/jobs/${job._id}`, newData)
+      .put(
+        `https://afternoon-headland-45054.herokuapp.com/jobs/${job._id}`,
+        newData
+      )
       .then((res) => {
         if (res.data.modifiedCount) {
           alert("updated successfully");
@@ -48,14 +49,6 @@ const ManageJob = ({ job, setJobs }) => {
         <Card className="updatedjob-card w-75 p-5 mx-auto">
           <div>
             <div className="px-5 py-3">
-              {/* <div className="w-50 mx-auto d-md-flex align-items-center">
-                <img src={job.image} alt="" className="w-50 p-5" />
-                <h5>
-                  <span style={{ color: "brown", fontWeight: "700" }}>
-                    {job?.company}
-                  </span>
-                </h5>
-              </div> */}
               <h6>{job?.category}</h6>
               <h5 style={{ color: "brown" }}>{job?.job}</h5>
               <p>

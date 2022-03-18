@@ -84,7 +84,7 @@ const SearchResult = () => {
                 </div>
               ) : (
                 <div className="row d-md-flex align-items-center justify-content-center">
-                  {searchJobs.map((job) => (
+                  {searchJobs?.map((job) => (
                     <Link
                       className="job-list-link"
                       to={`/jobdetails/${job._id}`}
@@ -124,7 +124,10 @@ const SearchResult = () => {
                           <span className="ps-1">{job.salary}</span>
                         </Col>
                         <Col md={2}>
-                          closing: <br /> {job.applicationDeadline}
+                          <span style={{ fontWeight: "600", color: "brown" }}>
+                            closing:
+                          </span>{" "}
+                          <br /> {job.applicationDeadline}
                         </Col>
                       </article>
                     </Link>

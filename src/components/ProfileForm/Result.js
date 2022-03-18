@@ -30,7 +30,7 @@ const Result = (props) => {
     <>
       {/* <h2>Result:</h2> */}
       {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
-      <div className="profile-form-div">
+      <div className="profile-form-div py-5">
         <div className="profile-form-container">
           <form
             style={{ height: "300px", marginTop: "80px" }}
@@ -46,7 +46,7 @@ const Result = (props) => {
             </h4>
 
             <div className="profile-form-button-div d-flex justify-content-center">
-              <button className="profile-form-button" type="submit">
+              <button className="profile-form-button p-3 w-50" type="submit">
                 Back to Home
               </button>
             </div>
