@@ -288,7 +288,7 @@ const ProfileForm = (props) => {
                         Passport No
                       </label>
                       <input
-                        type={"number"}
+                        type={"text"}
                         className="profile-form-input"
                         defaultValue={""}
                         {...register("passport", { required: true })}

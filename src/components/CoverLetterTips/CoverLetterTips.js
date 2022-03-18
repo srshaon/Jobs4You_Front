@@ -233,7 +233,10 @@ const CoverLetter = () => {
 
                   <div className="job-image">
                     <h1 className="p-3">
-                      <IoIosArrowDropdownCircle />
+                      <IoIosArrowDropdownCircle
+                        className="heart"
+                        style={{ color: "brown" }}
+                      />
                     </h1>
                     <img
                       src={image}

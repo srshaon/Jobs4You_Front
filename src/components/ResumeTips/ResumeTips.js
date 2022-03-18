@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import resume from "../../assets/Images/resume_img.png";
+
 import "./ResumeTips.css";
 
 const ResumeTips = () => {
@@ -15,6 +16,7 @@ const ResumeTips = () => {
           alt=""
         />
       </div>
+
       <div className="container py-5">
         <div>
           {
@@ -235,7 +237,10 @@ const ResumeTips = () => {
 
                   <div className="job-image">
                     <h1 className="p-3">
-                      <IoIosArrowDropdownCircle />
+                      <IoIosArrowDropdownCircle
+                        className="heart"
+                        style={{ color: "brown" }}
+                      />
                     </h1>
                     <img
                       className="pb-4"
@@ -249,6 +254,15 @@ const ResumeTips = () => {
                         Suggested Links of Resume Template:
                       </h5>
                       <ul>
+                      <li>
+                          <a
+                            style={{ color: "white" }}
+                            target="blank"
+                            href="https://jobs4you-a95fe.web.app/create-resume"
+                          >
+                            Jobs4You Resume
+                          </a>
+                        </li>
                         <li>
                           <a
                             style={{ color: "white" }}
@@ -285,26 +299,11 @@ const ResumeTips = () => {
                             Create Resume
                           </a>
                         </li>
-                        <li>
-                          <a
-                            style={{ color: "white" }}
-                            target="blank"
-                            href="https://novoresume.com/career-blog/resume-examples"
-                          >
-                            Novoresume
-                          </a>
-                        </li>
+                        
                       </ul>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div>
-                <div
-                  style={{
-                    color: "brown",
-                  }}
-                ></div>
               </div>
             </div>
           }

@@ -1,0 +1,41 @@
+/* .update-form form input {
+  width: 75%;
+  line-height: 50px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 15px 0;
+  padding-left: 11px;
+  background: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+} */
+
+.update-form {
+  background-color: rgb(206, 205, 205);
+  padding: 55px 75px 40px 75px;
+  border-radius: 7px;
+}
+
+.update-form form input {
+  line-height: 30px;
+  background-color: #fcfcfc;
+  opacity: 0.6;
+  border: 1px solid grey;
+}
+
+/* .input-icon icon {
+  position: absolute;
+}
+.input-icon {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.icon {
+  padding: 10px;
+  min-width: 40px;
+}
+.update-btn {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 3px;
+} */

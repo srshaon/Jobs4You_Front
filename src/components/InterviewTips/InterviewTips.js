@@ -175,7 +175,10 @@ const InterviewTips = () => {
                   <div className="interviewimage">
                     <h5 className="mt-4">Interview Question Site</h5>
                     <h1 className="d-flex justify-content-center">
-                      <IoIosArrowDropdownCircle />
+                      <IoIosArrowDropdownCircle
+                        className="heart"
+                        style={{ color: "brown" }}
+                      />
                     </h1>
 
                     <img
