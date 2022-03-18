@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom'; 
 import useAuth from '../../hooks/useAuth';
-import { Spinner, Button } from 'react-bootstrap';
+import { Spinner, Button, Form } from 'react-bootstrap';
 import SinglePie from './SinglePie';
 import './Chart.css';
 
@@ -62,23 +62,42 @@ const Chart = () => {
     console.log('Agaiiiiiiin', data1, data2);
 
     return (
-        <div style={{width: '100%', height: '80vh', color: 'black'}}>
-            {
-                (gainedSkills?.length !== 0) &&
-                <SinglePie data1={data1} data2={data2} />
-                    
-            }
+        <div className="row" style={{width: '100%', minHeight: '80vh', color: 'black'}}>
+                {
+                    (gainedSkills?.length !== 0) &&
+                    <div className="col-6">
+                    <SinglePie data1={data1} data2={data2} />
+                    </div>
+                        
+                }
 
             {
                 (gainedSkills?.length !== 0) &&
-                <div className="d-flex justify-content-center"><Link to={`/apply/${_id}`}>
-                    <Button className="apply-btn px-5">Apply for job</Button>
-                </Link></div>
+                <div className="col-6 d-flex align-items-center">
+                    <div>
+                    {
+                        (((data2[0]?.value / (data2[0]?.value + data2[1]?.value)) * 100).toFixed(2) < 50) &&
+                        <div>
+                            <div className="mb-2">We encourage you to earn more skills.</div>
+                            <button style={{opacity: '0.7'}} className="apply-btn px-5 not-opened" disabled>Apply for job</button>
+                        </div>
+                    }    
+                    {
+                        (((data2[0]?.value / (data2[0]?.value + data2[1]?.value)) * 100).toFixed(2) > 50) &&
+                        <div>
+                            <div className="mb-2">Your skill matches finely to this job.</div>
+                            <Link to={`/apply/${_id}`}>
+                                <Button className="apply-btn px-5">Apply for job</Button>
+                            </Link>
+                        </div>
+                    }     
+                    </div>
+                </div>
             }
 
             {
-                (!((data1?.length === 0) || (data2?.length === 0)) && ((gainedSkills?.length === 0) && email)) &&
-                <div className="text-center my-5 py-5 smoothy"><p>You don't have any skills. Go Back to <Link to="/dashboard">Dashboard</Link></p></div>
+                ((gainedSkills?.length === 0) && email) &&
+                <div className="text-center my-5 py-5 chart-spinner smoothy"><p>You don't have any skills. Go Back to <Link to="/dashboard">Dashboard</Link></p></div>
             }
 
             {
