@@ -30,30 +30,27 @@ const ProfileForm2 = (props) => {
   };
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/users/${user.email}`)
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-        setCondition(data.admin)
-
-
-      })
-  }, [user.email])
+        setCondition(data.admin);
+      });
+  }, [user.email]);
   console.log(role);
-  let loadFormCondition = ''
+  let loadFormCondition = "";
   if (role !== "") {
     loadFormCondition = role;
     console.log(role);
-  }
-  else {
+  } else {
     loadFormCondition = condition;
-    console.log(condition)
+    console.log(condition);
   }
   // if (role === '') {
   //   return <Spinner animation="border" variant="danger" />
   // }
   console.log(loadFormCondition);
   return (
-    <div className="profile-form-div">
+    <div className="profile-form-div py-5">
       <div>
         {loadFormCondition === "company" && (
           <div>
@@ -62,17 +59,25 @@ const ProfileForm2 = (props) => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="profile-form-container">
                     <div className="profile-form-inputs">
-                      <div className="profile-form-input-pair d-flex justify-content-center">
+                      <div className="profile-form-input-pair justify-content-center">
+                        <label htmlFor="" className="m-2">
+                          Write about your company culture and core values (Max
+                          500 words).
+                        </label>
                         <textarea
                           rows={8}
                           className="profile-form2-bio-textarea"
-                          placeholder="About Company Culture"
+                          placeholder="Company Culture/Core Values..."
                           defaultValue=""
                           {...register("acc", { required: true })}
                         />
                       </div>
                       <br />
-                      <div className="profile-form-input-pair d-flex justify-content-center">
+                      <div className="profile-form-input-pair justify-content-center">
+                        <label htmlFor="" className="m-2">
+                          Where would you like to see your company in next 5
+                          years?
+                        </label>
                         <textarea
                           rows={5}
                           className="profile-form2-hobby-textarea"
@@ -82,11 +87,15 @@ const ProfileForm2 = (props) => {
                         />
                       </div>
                       <br />
-                      <div className="profile-form-input-pair d-flex justify-content-center">
+                      <div className="profile-form-input-pair justify-content-center">
+                        <label htmlFor="" className="m-2">
+                          Share the biggest achievement of your company that you
+                          celebrated.{" "}
+                        </label>
                         <textarea
                           rows={5}
                           className="profile-form2-hobby-textarea"
-                          placeholder="Achievements / Awards"
+                          placeholder="Achievements"
                           defaultValue=""
                           {...register("achievements", { required: true })}
                         />
@@ -113,56 +122,79 @@ const ProfileForm2 = (props) => {
               <div className="profile-form-container mt-3 mb-5">
                 <div className="profile-form-inputs">
                   <div className="profile-form-input-pair d-flex justify-content-center">
-                    <textarea
-                      rows={8}
-                      className="profile-form2-bio-textarea"
-                      placeholder="Your Bio"
-                      defaultValue=""
-                      {...register("bio", { required: true })}
-                    />
+                    <div>
+                      <label htmlFor="">
+                        Write about Yourself (Max 500 words)
+                      </label>
+                      <textarea
+                        rows={8}
+                        className="profile-form2-bio-textarea"
+                        placeholder="Your Bio"
+                        defaultValue=""
+                        {...register("bio", { required: true })}
+                      />
+                    </div>
                   </div>
                   <br />
                   <div className="profile-form-input-pair d-flex justify-content-center">
-                    <textarea
-                      rows={5}
-                      className="profile-form2-hobby-textarea"
-                      placeholder="Extra Curricular Activities / Hobbies"
-                      defaultValue=""
-                      {...register("hobbies", { required: true })}
-                    />
+                    <div>
+                      <label htmlFor="">
+                        Share your extra curricular activities and hobbies
+                      </label>
+                      <textarea
+                        rows={5}
+                        className="profile-form2-hobby-textarea"
+                        placeholder="Extra Curricular Activities / Hobbies"
+                        defaultValue=""
+                        {...register("hobbies", { required: true })}
+                      />
+                    </div>
                   </div>
                   <br />
                   <div className="profile-form-input-pair d-flex justify-content-center">
-                    <textarea
-                      rows={5}
-                      className="profile-form2-hobby-textarea"
-                      placeholder="Achievements / Awards"
-                      defaultValue=""
-                      {...register("achievements", { required: true })}
-                    />
+                    <div>
+                      <label htmlFor="">
+                        Share your achievements and awards
+                      </label>
+                      <textarea
+                        rows={5}
+                        className="profile-form2-hobby-textarea"
+                        placeholder="Achievements / Awards"
+                        defaultValue=""
+                        {...register("achievements", { required: true })}
+                      />
+                    </div>
                   </div>
                   <div className="profile-form-input-pair d-flex justify-content-center">
-                    <select
-                      className="profile-form-input"
-                      defaultValue={""}
-                      {...register("preference")}
-                    >
-                      <option value="full-time">Full-time</option>
-                      <option value="part-time">Part-time</option>
-                      <option value="remote">Remote</option>
-                    </select>
-                    {/* <input
-                      className="profile-form-input"
-                      placeholder="Job Preference"
-                      defaultValue={""}
-                      {...register("preference", { required: true })}
-                    /> */}
-                    <input
-                      className="profile-form-input"
-                      placeholder="Available For"
-                      defaultValue={""}
-                      {...register("available", { required: true })}
-                    />
+                    <div>
+                      <label className="ms-3" htmlFor="">
+                        Job Availability
+                      </label>{" "}
+                      <br />
+                      <select
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("preference")}
+                      >
+                        <option value="full-time">Full-time</option>
+                        <option value="part-time">Part-time</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="ms-3" htmlFor="">
+                        Preference
+                      </label>
+                      <select
+                        className="profile-form-input"
+                        defaultValue={""}
+                        {...register("available")}
+                      >
+                        <option value="On-site">On-site</option>
+                        <option value="Remote">Remote</option>
+                        <option value="Hybrid">Hybrid</option>
+                      </select>
+                    </div>
                   </div>
 
                   <div className="profile-form-button-div d-flex justify-content-center">

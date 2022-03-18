@@ -1,5 +1,20 @@
 .dashboard-sec {
   border-radius: 10px;
+  background-image: linear-gradient(
+    to right,
+    #537890,
+    #6b879d,
+    #8197a9,
+    #97a7b6,
+    #adb7c2,
+    #adb7c2,
+    #adb7c2,
+    #adb7c2,
+    #97a7b6,
+    #8197a9,
+    #6b879d,
+    #537890
+  );
 }
 
 .dashboard-details-div {
@@ -11,7 +26,7 @@
 } */
 
 .dashboard {
-  background-color: lavender !important;
+  /* background-color: lavender !important; */
   font-size: 15px;
   color: black;
 }
@@ -22,9 +37,16 @@
 }
 
 .dashboard-icons {
-  color: var(--color-primary) !important;
+  color: white !important;
   font-size: 20px;
   font-weight: 600;
+}
+
+.dashboard-content {
+  height: auto;
+  width: 96%;
+  border-radius: 10px;
+  /* background-color: var(--color-primary-dark); */
 }
 
 @media (max-width: 700px) {

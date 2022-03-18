@@ -8,36 +8,21 @@ import useAuth from "../../hooks/useAuth";
 import "./Cover.css";
 
 const Cover = () => {
-
-
-  const { searchKey, setSearchKey, searchLocation, setSearchLocation, resetSearchKey, setResetSearchKey, resetSearchLocation, setResetSearchLocation } =
+  const { searchKey, setSearchKey, searchLocation, setSearchLocation } =
     useAuth();
 
   const handleSearchByKey = (e) => {
     e.preventDefault();
     const searchText = e.target.value;
-    console.log(searchText);
-
-
     setSearchKey(searchText);
-
+    console.log(searchText);
   };
-
-  console.log(searchKey);
 
   const handleSearchByLocation = (e) => {
     e.preventDefault();
     const searchText = e.target.value;
     console.log(searchText);
-
     setSearchLocation(searchText);
-
-  };
-
-  const handleFindJobs = (e) => {
-    e.preventDefault();
-    console.log(searchKey);
-    console.log(searchLocation);
   };
 
   return (
@@ -47,7 +32,6 @@ const Cover = () => {
           <img src={banner} alt="" className="banner-img" />
 
           <div className="banner w-100">
-
             <div>
               <h2
                 style={{
@@ -103,13 +87,7 @@ const Cover = () => {
                     onChange={handleSearchByLocation}
                   />
                   <Link to="/searchResult">
-                    <button
-
-
-                      className="search-btn p-3"
-                    >
-                      Find Jobs
-                    </button>
+                    <button className="search-btn p-3">Find Jobs</button>
                   </Link>
                 </form>
               </div>

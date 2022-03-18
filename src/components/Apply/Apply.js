@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import useAuth from '../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router';
@@ -17,14 +17,18 @@ const Apply = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [dob, setDob] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState({});
   const [email, setEmail] = useState("");
   const [contactNo, setContact] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
   const [portfolio, setPortfolio] = useState("");
   const [jobs, setJobs] = useState({});
+  const [candidates,setCandidates] = useState([])
+  // const [singleCandidate, setSingleCandidate] = useState({})
+  
   const { user } = useAuth()
-
+/// Testing
+////Testing2
   useEffect(() => {
 
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
@@ -32,6 +36,56 @@ const Apply = () => {
       .then(data => setJobs(data))
 
   }, [])
+  // Candidate Fetch
+  useEffect(() => {
+
+    fetch(`https://afternoon-headland-45054.herokuapp.com/allprofiles`)
+      .then(res => res.json())
+      // .then(data => {
+      //   const temp= data.filter(candidate => {
+      //     if(candidate.pEmail === user.email){
+      //       console.log(candidate.pEmail, user.email)
+      //       return candidate
+      //     }
+      //   })
+      //   setSingleCandidate(temp[0]);
+      //   console.log(temp[0])
+         
+
+      // })
+      .then(data=> setCandidates(data))
+        
+      
+
+  }, [user?.email])
+  
+  
+  const singleCandidate = candidates.find(sc=>sc.pEmail=== user.email)
+  //console.log(singleCandidate?.fname)
+  //  AGE Calculate
+
+  const current = new Date();
+  //const Todaydate = `${current.getFullYear()}- ${current.getMonth()+1}-${current.getDate()}`;
+  const candidateDate = singleCandidate?.dob;
+  let today = new Date(),
+     //birthay has 'Dec 25 1998'
+     Cdob = new Date(candidateDate),
+     //difference in milliseconds
+     diff = today.getTime() - Cdob.getTime(),
+     //convert milliseconds into years
+     years = Math.floor(diff / 31556736000),
+     //1 day has 86400000 milliseconds
+     days_diff= Math.floor((diff % 31556736000) / 86400000),
+     //1 month has 30.4167 days
+     months = Math.floor(days_diff / 30.4167),
+     days = Math.floor(days_diff % 30.4167);
+     
+     
+    
+    //console.log(`${years} years ${months} months ${days} days`);
+  
+  // setAge(`${years} ${days}`)
+  // console.log(age?.years)
 
   // form submit
   const handleSubmit = (e) => {
@@ -40,17 +94,17 @@ const Apply = () => {
       return;
     }
     const formData = new FormData();
-    formData.append("job", jobs.job);
-    formData.append("company", jobs.company);
-    formData.append("jobLocation", jobs.jobLocation);
-    formData.append("employmentStatus", jobs.employmentStatus);
+    formData.append("job", jobs?.job);
+    formData.append("company", jobs?.company);
+    formData.append("jobLocation", jobs?.jobLocation);
+    formData.append("employmentStatus", jobs?.employmentStatus);
     formData.append("image", jobs.image)
-    formData.append("firstName", firstName);
-    formData.append("lastName", lastName);
-    formData.append("email", email);
-    formData.append("contactNo", contactNo);
-    formData.append("dob", dob);
-    formData.append("age", age);
+    formData.append("firstName", singleCandidate?.fname);
+    formData.append("lastName", singleCandidate?.lname);
+    formData.append("email", singleCandidate?.pEmail);
+    formData.append("contactNo", singleCandidate?.pContact);
+    formData.append("dob", singleCandidate?.dob);
+    formData.append("age", `${years} years `);
     formData.append("linkedIn", linkedIn);
     formData.append("portfolio", portfolio);
 
@@ -76,7 +130,13 @@ const Apply = () => {
   // console.log(coverLetterpdfFile);
   // console.log(firstName);
   // console.log(jobs.employmentStatus)
-
+  if(singleCandidate===undefined){
+    return  <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>
+   
+  }
+  
   return (
     <div className="bodyShadow">
       <div className="container-fluid ">
@@ -102,11 +162,11 @@ const Apply = () => {
                         className="sadiaInput"
                         onChange={(e) => setFirstName(e.target.value)}
                         type="text"
-                        name="name"
+                       
                         id="name"
                         aria-describedby="helpId1"
                         required
-                        placeholder="Enter your first name"
+                        value={singleCandidate?.fname}
                       />
                     </div>
 
@@ -121,7 +181,7 @@ const Apply = () => {
                       <input
                         className="sadiaInput"
                         onChange={(e) => setDob(e.target.value)}
-                        type="date"
+                        value={singleCandidate?.dob}
                         name="cdob"
                         id="cdob"
                         aria-describedby="helpId4"
@@ -144,7 +204,7 @@ const Apply = () => {
                         name="cemail"
                         id="cemail"
                         aria-describedby="helpId6"
-                        placeholder="Enter your e-mail"
+                        value={singleCandidate?.pEmail}
                         required
                       />
                     </div>
@@ -199,7 +259,7 @@ const Apply = () => {
                         id="cname"
                         aria-describedby="helpId1"
                         required
-                        placeholder="Enter your last name"
+                        value={singleCandidate?.lname}
                       />
                       <p required placeholder="Enter Name"></p>
                     </div>
@@ -213,12 +273,12 @@ const Apply = () => {
                       </h6>
                       <input
                         className="sadiaInput"
-                        onChange={(e) => setAge(e.target.value)}
-                        type="number"
+                        
+                        
                         name="cage"
                         id="cage"
                         aria-describedby="helpId2"
-                        placeholder="Enter your age"
+                        value={`${years} years`}
                         required
                       />
                     </div>
@@ -237,7 +297,7 @@ const Apply = () => {
                         name="mobile"
                         id="mobile"
                         aria-describedby="helpId5"
-                        placeholder="Enter your contact no"
+                        value={singleCandidate?.pContact}
                         required
                       />
                     </div>

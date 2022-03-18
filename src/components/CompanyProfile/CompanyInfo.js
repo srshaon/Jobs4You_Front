@@ -1,96 +1,150 @@
-import React from 'react';
-import { useGetCompaniesQuery,useGetProfilesQuery } from '../../Redux-handler/ManageProfiles';
-import { useParams } from 'react-router-dom';
-import useAuth from '../../hooks/useAuth';
-import Chart from '../Chart/Chart'
-import { CgProfile } from 'react-icons/cg';
-import {Button} from 'react-bootstrap'
-const CompanyInfo = ({info}) => {
-  const{user,admin}=useAuth()
-    const {id}=useParams()
-  const{data}=useGetProfilesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.pEmail==user?.loginEmail),})
+import React from "react";
+import { useGetCompaniesQuery } from "../../Redux-handler/ManageProfiles";
+import { useParams, useHistory } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { CgProfile } from "react-icons/cg";
+import { Button, Col } from "react-bootstrap";
+import "./CompanyInfo.css";
 
-})
-console.log(info)
-    return (
-      <section className='m-auto' style={{backgroundColor: "#eee"}}>
-      <div className="container py-5">
-        <div className="row">
-          <div className="col">
-            <nav aria-label="breadcrumb" className="bg-light rounded-3 p-3 mb-4">
-              <ol className="breadcrumb mb-0">
-                <li className="breadcrumb-item active" aria-current="page">{user?.displayName} Profile</li>
-              </ol>
-            </nav>
+import {
+  MdPeopleAlt,
+  MdOutlineEmail,
+  MdPlace,
+  MdFoundation,
+} from "react-icons/md";
+import { HiOutlinePhone } from "react-icons/hi";
+import { FaLink, FaBuilding } from "react-icons/fa";
+
+const CompanyInfo = ({ info }) => {
+  const history = useHistory();
+  const { user, admin } = useAuth();
+  //   const{data}=useGetCompaniesQuery(undefined,{selectFromResult:({data})=>({data:data?.find(el=>el.email==user?.loginEmail),})
+
+  // })
+  const navigateToForm = () => {
+    history.push("/profileForm");
+  };
+  console.log(info);
+
+  return (
+    <section>
+      <div className="container">
+        {/* <div className="card border-0">
+          <div className="card-body text-center">
+            <h5 className="my-3">{user?.displayName}</h5>
+            <p className="text-muted mb-2">{user?.email}</p>
+            <Button onClick={navigateToForm}>Complete Profile</Button>
           </div>
-        </div>
-    
-        <div className="row ">
-          {/* <div className="col-lg-4">
-            
-          </div> */}
-        <div className="col-lg-8">
-       <div className="card mb-4">
-              <div className="card-body text-center">
-                <span className='fs-1 text-primary'><CgProfile /></span>
-                <h5 className="my-3">{user?.displayName}</h5>
-                <p className="text-muted mb-1">{user?.email}</p>
-                <Button>Complete Profile</Button>
-              </div>
+        </div> */}
+
+        {info && (
+          <div>
+            <div className="row d-md-flex pt-3">
+              <Col md={8} className="">
+                <div className="d-md-flex justify-content-center">
+                  <div className="overview-card card p-4">
+                    <h5>
+                      Jobs Posted: <br />{" "}
+                      <span
+                        style={{
+                          color: "brown",
+                          fontSize: "30px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        38
+                      </span>
+                    </h5>
+                  </div>
+                  <div className="overview-card card p-4">
+                    <h5>
+                      Applications: <br />{" "}
+                      <span
+                        style={{
+                          color: "brown",
+                          fontSize: "30px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        750
+                      </span>
+                    </h5>
+                  </div>
+                  <div className="overview-card card p-4">
+                    <h5>
+                      Hired: <br />{" "}
+                      <span
+                        style={{
+                          color: "brown",
+                          fontSize: "30px",
+                          fontWeight: "600",
+                        }}
+                      >
+                        105
+                      </span>
+                    </h5>
+                  </div>
+                </div>
+              </Col>
+              <Col md={4} className="pt-3 mb-5">
+                <h4 className="text-center" style={{ color: "white" }}>
+                  Company Overview
+                  <hr />
+                </h4>
+                <div className="profile-card card p-3 mx-3">
+                  <div className="d-flex align-items-center mt-3 px-5">
+                    <FaBuilding className="overview-icon" />
+                    <p className="px-4 py-1">
+                      <span style={{ fontWeight: "600" }}>Founded:</span> <br />{" "}
+                      {info?.founded}{" "}
+                    </p>
+                  </div>
+                  <div className="d-flex align-items-center px-5">
+                    <MdFoundation className="overview-icon" />
+                    <p className="px-4 py-1">
+                      <span style={{ fontWeight: "600" }}>Industry:</span>{" "}
+                      <br /> {info?.industry}{" "}
+                    </p>
+                  </div>
+                  <div className="d-flex align-items-center px-5">
+                    <MdPeopleAlt className="overview-icon" />
+                    <p className="px-4 py-1">
+                      <span style={{ fontWeight: "600" }}>Employees:</span>{" "}
+                      <br /> {info?.noe}{" "}
+                    </p>
+                  </div>
+                  <div className="d-flex align-items-center px-5">
+                    <MdPlace className="overview-icon" />
+                    <p className="px-4 py-1">
+                      <span style={{ fontWeight: "600" }}>Country:</span> <br />{" "}
+                      {info?.country}{" "}
+                    </p>
+                  </div>
+                </div>
+              </Col>
             </div>
-            <div className="card mb-4 ms-1">
-              <div className="card-body">
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Full-Name</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">{info?.fname||info?.cname}</p>
-                  </div>
-                </div>
-                <hr/>
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Email</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">{info?.pEmail||info?.email}</p>
-                  </div>
-                </div>
-                <hr/>
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Phone</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">(097){info?.pContact||info?.ontact}</p>
-                  </div>
-                </div>
-                <hr/>
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Mobile</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">(098) {info?.pContact||info?.ontact}</p>
-                  </div>
-                </div>
-                <hr/>
-                <div className="row">
-                  <div className="col-sm-3">
-                    <p className="mb-0">Address</p>
-                  </div>
-                  <div className="col-sm-9">
-                    <p className="text-muted mb-0">{info?.address}</p>
-                  </div>
-                </div>
-              </div>
+            <hr />
+            <div className="pt-2 d-flex align-items-center justify-content-center ">
+              <p className="network-text me-5 text-white">
+                {" "}
+                <a href={info.website} rel="noopener noreferrer">
+                  <FaLink className="network-icon me-1" />
+                  website
+                </a>{" "}
+              </p>
+              <p className="network-text me-5 text-white">
+                <HiOutlinePhone className="network-icon me-1" />
+                {info?.contact}
+              </p>
+              <p className="network-text me-5 text-white">
+                <MdOutlineEmail className="network-icon me-1" /> {info?.email}
+              </p>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
-    );
+  );
 };
 
 export default CompanyInfo;

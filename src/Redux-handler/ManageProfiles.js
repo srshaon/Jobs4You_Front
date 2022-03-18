@@ -8,6 +8,7 @@ export const profilesApi = createApi({
  }),
 
  tagTypes:["Profiles"],
+ 
  endpoints: (builder) => ({
 
   getProfiles: builder.query({
@@ -80,8 +81,20 @@ export const profilesApi = createApi({
    }),
    invalidatesTags:["Profiles"]
   }),
+  updateCompany: builder.mutation({
+   query: ({_id, ...data }) => ({
+     url: `singleCompany/${_id}`,
+     method: 'PUT',
+     body: data,
+     headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+     }
+    
+   }),
+   invalidatesTags:["Profiles"]
+  }),
  }),
 
 })
 
-export const {useGetProfilesQuery,useGetProfileByIdQuery,useGetCompaniesQuery,useGetCandidateByEmailQuery,useGetCompanyByEmailQuery, useCreateProfileMutation,useUpdateProfileMutation} = profilesApi
+export const {useGetProfilesQuery,useGetProfileByIdQuery,useGetCompaniesQuery,useGetCandidateByEmailQuery,useGetCompanyByEmailQuery, useCreateProfileMutation,useUpdateProfileMutation,useUpdateCompanyMutation} = profilesApi
