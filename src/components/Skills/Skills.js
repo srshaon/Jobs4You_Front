@@ -70,6 +70,7 @@ const Skills = () => {
                 if (data?.acknowledged) {
                     setSkill('');
                     e.target.reset();
+                    setSkillArray(skills);
                 }
             });
     }
