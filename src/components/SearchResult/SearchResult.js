@@ -22,7 +22,7 @@ const SearchResult = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs`)
+    fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
       .then((res) => res.json())
       .then((data) => {
         var result = data.filter(
