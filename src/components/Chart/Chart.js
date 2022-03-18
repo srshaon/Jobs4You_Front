@@ -85,7 +85,7 @@ const Chart = () => {
                         </div>
                     }    
                     {
-                        (((data2[0]?.value / (data2[0]?.value + data2[1]?.value)) * 100).toFixed(2) > 50) &&
+                        (((data2[0]?.value / (data2[0]?.value + data2[1]?.value)) * 100).toFixed(2) >= 50) &&
                         <div>
                             <div className="mb-2">Your skill matches finely to this job.</div>
                             <Link to={`/apply/${_id}`}>
