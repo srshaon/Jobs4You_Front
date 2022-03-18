@@ -314,7 +314,7 @@ const ProfileForm = (props) => {
                       </label>
                       <input
                         className="profile-form-input"
-                        defaultValue={""}
+                        defaultValue={user.email}
                         {...register("pEmail", { required: true })}
                       />
                     </div>

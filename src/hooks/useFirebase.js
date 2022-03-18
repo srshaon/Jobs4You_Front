@@ -27,7 +27,7 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [show, setShow] = useState(true);
   const [backdrop, setBackdrop] = useState(false);
-  const [admin, setAdmin] = useState("seeker");
+  const [admin, setAdmin] = useState("");
   const [role, setRole] = useState("");
   const [searchKey, setSearchKey] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
@@ -37,11 +37,16 @@ const useFirebase = () => {
   // const [condition, setCondition] = useState("seeker");
 
   useEffect(() => {
+    console.log(user.email);
     fetch(`https://afternoon-headland-45054.herokuapp.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setAdmin(data.admin);
+        if (data.admin !== '') {
+          setRole(data.admin)
+        }
+        console.log(role);
         // setCondition(data.admin)
       });
   }, [user.email]);
@@ -51,7 +56,7 @@ const useFirebase = () => {
     setHistory(page);
   };
   const handleRegistration = (rf, role) => {
-    console.log(role);
+    // console.log(role);
     setRole(role);
     // e.preventDefault();
     if (password.length < 6) {
@@ -158,9 +163,9 @@ const useFirebase = () => {
       body: JSON.stringify(user),
     }).then();
   };
-  console.log(user);
-  console.log(role);
-  console.log(admin);
+  // console.log(user);
+  // console.log(role);
+  // console.log(admin);
   return {
     user,
     name,

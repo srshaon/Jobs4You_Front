@@ -127,7 +127,7 @@ const CompanyInfo = ({ info }) => {
             <div className="pt-2 d-flex align-items-center justify-content-center ">
               <p className="network-text me-5 text-white">
                 {" "}
-                <a href={info.website} rel="noopener noreferrer">
+                <a href={info?.website} rel="noopener noreferrer">
                   <FaLink className="network-icon me-1" />
                   website
                 </a>{" "}
