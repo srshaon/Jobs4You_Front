@@ -45,7 +45,9 @@ import AllJobStatus from "./../AllJobStatus/AllJobStatus";
 
 const Dashboard = () => {
   const history = useHistory();
-  const { logOut, admin, user } = useAuth();
+  const { logOut, admin, user, role, setRole } = useAuth();
+  console.log(user);
+  console.log('this is role:', role);
   const [control, setControl] = useState("welcome");
   console.log(admin);
   const { data: candidate } = useGetProfilesQuery(undefined, {
@@ -59,16 +61,16 @@ const Dashboard = () => {
     }),
   });
   let profileInfo;
-  if (admin === "seeker") {
+  if (role === "seeker") {
     profileInfo = candidate;
     // setControl("candiProfile");
-  } else if (admin === "company") {
+  } else if (role === "company") {
     profileInfo = company;
     // setControl("companyProfile");
   }
   console.log(profileInfo);
 
-  if (admin === "") {
+  if (role === "") {
     return <Spinner animation="border" variant="danger" />;
   }
   const navigateToHome = () => {
@@ -87,7 +89,7 @@ const Dashboard = () => {
               }}
             >
               <CDBSidebarContent className="dashboard py-5">
-                {admin === "seeker" && (
+                {role === "seeker" && (
                   <div>
                     <div className="dashboard-list">
                       <h4
@@ -183,7 +185,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 )}
-                {admin === "company" && (
+                {role === "company" && (
                   <div>
                     <div className="text-center pt-4">
                       <h4
@@ -274,7 +276,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 )}
-                {admin === "admin" && (
+                {role === "admin" && (
                   <div>
                     <div>
                       <ul className="dashboard-list">
