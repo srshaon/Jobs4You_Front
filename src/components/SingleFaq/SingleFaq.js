@@ -32,7 +32,7 @@ const SingleFaq = (props) => {
                     setIsDisliked(data?.isDisliked);
                 }
             });
-    }, [props.singleFaq]);
+    }, [props?.singleFaq]);
 
     const reactUpdate = async (doc, react) => {
         fetch(`https://afternoon-headland-45054.herokuapp.com/faq${react}/${email}`, {
