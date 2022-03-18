@@ -11,10 +11,10 @@ console.log(data)
         <section className='m-auto' style={{backgroundColor: "#eee"}}>
         <div className="container py-5">
           <div className="row">
-            <div className="col">
+            <div className="col-8">
               <nav aria-label="breadcrumb" className="bg-light rounded-3 p-3 mb-4">
                 <ol className="breadcrumb mb-0">
-                  <li className="breadcrumb-item active" aria-current="page">Company Profile</li>
+                  <li className="breadcrumb-item active" aria-current="page">My Profile</li>
                 </ol>
               </nav>
             </div>

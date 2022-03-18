@@ -8,6 +8,7 @@ export const profilesApi = createApi({
  }),
 
  tagTypes:["Profiles"],
+ 
  endpoints: (builder) => ({
 
   getProfiles: builder.query({
@@ -36,6 +37,23 @@ export const profilesApi = createApi({
    },
   }),
 
+   getCandidateByEmail: builder.query({
+      query: (email) => {
+        return {
+          url: `individualCandidate/${email}`,
+          method: 'GET'
+        }
+      },
+    }),
+    getCompanyByEmail: builder.query({
+      query: (email) => {
+        return {
+          url: `individualCompany/${email}`,
+          method: 'GET'
+        }
+      },
+    }),
+
   createProfile: builder.mutation({
    query: (newPost) => {
      console.log(newPost)
@@ -63,8 +81,20 @@ export const profilesApi = createApi({
    }),
    invalidatesTags:["Profiles"]
   }),
+  updateCompany: builder.mutation({
+   query: ({_id, ...data }) => ({
+     url: `singleCompany/${_id}`,
+     method: 'PUT',
+     body: data,
+     headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+     }
+    
+   }),
+   invalidatesTags:["Profiles"]
+  }),
  }),
 
 })
 
-export const {useGetProfilesQuery,useGetProfileByIdQuery,useGetCompaniesQuery, useCreateProfileMutation,useUpdateProfileMutation} = profilesApi
+export const {useGetProfilesQuery,useGetProfileByIdQuery,useGetCompaniesQuery,useGetCandidateByEmailQuery,useGetCompanyByEmailQuery, useCreateProfileMutation,useUpdateProfileMutation,useUpdateCompanyMutation} = profilesApi

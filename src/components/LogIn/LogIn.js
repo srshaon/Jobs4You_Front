@@ -24,7 +24,9 @@ const LogIn = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then(result => {
+        setRole('seeker');
         const user = result.user;
+        console.log(user);
         saveUser(user.email, user.displayName, role, 'PUT');
         setError('');
         history.push(redirect_Url);

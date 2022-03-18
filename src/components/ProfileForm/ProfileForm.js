@@ -9,6 +9,9 @@ import { Spinner } from "react-bootstrap";
 
 const ProfileForm = (props) => {
   const { role, setRole, user, setUser } = useAuth();
+  const [isDisabled, setIsDisabled] = useState(false);
+  console.log(user);
+  console.log(user.email, user.displayName);
   const { register, handleSubmit } = useForm();
   const [condition, setCondition] = useState("");
   const { actions, state } = useStateMachine({ updateAction });
@@ -20,24 +23,21 @@ const ProfileForm = (props) => {
     console.log(actions);
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
-      .then(res => res.json())
-      .then(data => {
+    fetch(`https://afternoon-headland-45054.herokuapp.com/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
         console.log(data);
-        setCondition(data.admin)
-
-
-      })
-  }, [user.email])
+        setCondition(data.admin);
+      });
+  }, [user.email]);
   console.log(role);
-  let loadFormCondition = ''
+  let loadFormCondition = "";
   if (role !== "") {
     loadFormCondition = role;
     console.log(role);
-  }
-  else {
+  } else {
     loadFormCondition = condition;
-    console.log(condition)
+    console.log(condition);
   }
   // if (role === '') {
   //   return <Spinner animation="border" variant="danger" />
@@ -52,91 +52,138 @@ const ProfileForm = (props) => {
             <div className="profile-form-div">
               <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                  <div class="profile-form-container">
-                    <h2>Company Profile</h2>
-                    <div class="profile-form-inputs">
+                  <div className="profile-form-container">
+                    <h2 style={{ color: "brown" }}>Company Profile</h2>
+                    <div className="profile-form-inputs">
                       <div className="profile-form-input-pair d-flex justify-content-center">
-                        <input
-                          className="profile-form-input"
-                          placeholder="Company Name"
-                          defaultValue={""}
-                          {...register("cname", { required: true })}
-                        />
-                        <input
-                          className="profile-form-input"
-                          placeholder="Founded On"
-                          defaultValue={""}
-                          {...register("founded", { required: true })}
-                        />
+                        <div>
+                          <label htmlFor="" className="ms-3">
+                            Company Name
+                          </label>
+                          <input
+                            className="profile-form-input"
+                            defaultValue={user.displayName}
+                            {...register("cname", { required: true })}
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="" className="ms-3">
+                            Founded
+                          </label>
+                          <input
+                            type={"date"}
+                            className="profile-form-input"
+                            defaultValue={""}
+                            {...register("founded", { required: true })}
+                          />
+                        </div>
                       </div>
 
                       <div className="profile-form-input-pair d-flex justify-content-center">
-                        <input
-                          className="profile-form-input"
-                          placeholder="Country Of Origin"
-                          defaultValue={""}
-                          {...register("country", { required: true })}
-                        />
-                        <input
-                          className="profile-form-input"
-                          placeholder="Industry"
-                          defaultValue={""}
-                          {...register("industry", { required: true })}
-                        />
+                        <div>
+                          <label htmlFor="" className="ms-3">
+                            Country of Origin
+                          </label>
+                          <input
+                            className="profile-form-input"
+                            defaultValue={""}
+                            {...register("country", { required: true })}
+                          />
+                        </div>
+
+                        <div>
+                          <label htmlFor="" className="ms-3">
+                            Industry
+                          </label>
+                          <input
+                            className="profile-form-input"
+                            defaultValue={""}
+                            {...register("industry", { required: true })}
+                          />
+                        </div>
                       </div>
                       <div className="profile-form-input-pair d-flex justify-content-center">
-                        <input
-                          className="profile-form-input"
-                          placeholder="Website"
-                          defaultValue={""}
-                          {...register("website", { required: true })}
-                        />
-                        <input
-                          className="profile-form-input"
-                          placeholder="Business License No."
-                          defaultValue={""}
-                          {...register("bln", { required: true })}
-                        />
+                        <div>
+                          <label htmlFor="" className="ms-3">
+                            Website Link
+                          </label>
+                          <input
+                            className="profile-form-input"
+                            defaultValue={""}
+                            {...register("website", { required: true })}
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="" className="ms-3">
+                            Business License No.
+                          </label>
+                          <input
+                            type={"number"}
+                            className="profile-form-input"
+                            defaultValue={""}
+                            {...register("bln", { required: true })}
+                          />
+                        </div>
                       </div>
                       <div className="profile-form-input-pair d-flex justify-content-center">
-                        <input
-                          className="profile-form-input"
-                          placeholder="Official Email"
-                          defaultValue={""}
-                          {...register("email", { required: true })}
-                        />
-                        <input
-                          type={"number"}
-                          className="profile-form-input"
-                          placeholder="Contact No."
-                          defaultValue={""}
-                          {...register("contact", { required: true })}
-                        />
+                        <div>
+                          <label htmlFor="" className="ms-3">
+                            Official Email
+                          </label>
+                          <input
+                            className="profile-form-input"
+                            defaultValue={user.email}
+                            {...register("email", { required: true })}
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="" className="ms-3">
+                            Contact No.
+                          </label>
+                          <input
+                            type={"number"}
+                            className="profile-form-input"
+                            defaultValue={""}
+                            {...register("contact", { required: true })}
+                          />
+                        </div>
                       </div>
 
                       <div className="profile-form-input-pair d-flex justify-content-center">
-                        <input
-                          className="profile-form-input"
-                          placeholder="Number Of Employees"
-                          defaultValue={""}
-                          {...register("noe", { required: true })}
-                        />
-                        <input
-                          className="profile-form-input"
-                          placeholder="Number of Branch/es"
-                          defaultValue={""}
-                          {...register("nob", { required: true })}
-                        />
+                        <div>
+                          <label htmlFor="" className="ms-3">
+                            Number of Employees
+                          </label>
+                          <input
+                            type={"number"}
+                            className="profile-form-input"
+                            defaultValue={""}
+                            {...register("noe", { min: 0, required: true })}
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="" className="ms-3">
+                            Number of Branch/es
+                          </label>
+                          <input
+                            type={"number"}
+                            className="profile-form-input"
+                            defaultValue={""}
+                            {...register("nob", { min: 0, required: true })}
+                          />
+                        </div>
                       </div>
 
                       <div className="profile-form-input-pair d-flex justify-content-center">
-                        <textarea
-                          rows={4}
-                          className="profile-form1-headquarter-textarea"
-                          placeholder="Headquarter"
-                          defaultValue=""
-                          {...register("headquarter", { required: true })}
-                        />
+                        <div>
+                          <label htmlFor="">Headquarter Address</label>
+                          <textarea
+                            rows={4}
+                            className="profile-form1-headquarter-textarea"
+                            defaultValue=""
+                            {...register("headquarter", { required: true })}
+                          />
+                        </div>
                       </div>
 
                       <div className="profile-form-button-div d-flex justify-content-center">
@@ -158,10 +205,10 @@ const ProfileForm = (props) => {
         {loadFormCondition === "seeker" && (
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div class="profile-form-container mt-3 mb-5">
+              <div className="profile-form-container mt-3 mb-5">
                 <h2 style={{ color: "brown" }}>User Profile</h2>
-                <div class="profile-form-inputs">
-                  <div className="profile-form-input-pair d-flex justify-content-center">
+                <div className="profile-form-inputs">
+                  <div className="profile-form-input-pair d-md-flex justify-content-center">
                     <div>
                       <label htmlFor="" className="ms-3">
                         First Name

@@ -14,7 +14,7 @@ const AllLocationJobs = () => {
   const { locationName } = useParams();
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/jobs")
+    fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -40,7 +40,7 @@ const AllLocationJobs = () => {
         <div className="row">
           <Col md={4}>
             <h4 className="p-3">Jobs by Filter</h4>
-            <div className="job-list-form px-3">
+            <div className="job-list-form">
               <form action="">
                 <input type="text" name="" id="" placeholder="Locations" />{" "}
                 <br />
@@ -63,11 +63,11 @@ const AllLocationJobs = () => {
                     className="job-list-article row align-items-center justify-content-center"
                     style={{ height: "170px", minHeight: "170px" }}
                   >
-                    <Col md={5} className="d-md-flex">
+                    <Col md={6} className="d-md-flex align-items-center">
                       <img
                         src={job.image}
                         alt=""
-                        className="p-3"
+                        className="w-25 p-4"
                         style={{ borderRadius: "100px" }}
                       />
                       <div className="ps-3">
@@ -89,11 +89,16 @@ const AllLocationJobs = () => {
                       </div>
                     </Col>
                     <Col md={2}>{job.employmentStatus}</Col>
-                    <Col md={3}>
+                    <Col md={2}>
                       <FcCurrencyExchange />
                       <span className="ps-1">{job.salary}</span>
                     </Col>
-                    <Col md={2}>closing: {job.applicationDeadline}</Col>
+                    <Col md={2}>
+                      <span style={{ fontWeight: "600", color: "brown" }}>
+                        closing:
+                      </span>{" "}
+                      {job.applicationDeadline}
+                    </Col>
                   </article>
                 </Link>
               ))}
@@ -102,71 +107,6 @@ const AllLocationJobs = () => {
         </div>
       </div>
     </div>
-    // <div className="main-container">
-    //   <div className="w-75 mx-auto d-flex justify-content-center row row-cols-lg-2 row-cols-md-2 row-cols-1 g-5">
-    //     {jobs.map((job) => (
-    //       <div className="">
-    //         <div class="">
-    //           <div class="filter-box">
-    //             <h4 className="text-center" style={{ color: "brown" }}>
-    //               {job.job}
-    //             </h4>
-    //             <div className="px-2 mt-3">
-    //               <p className="">
-    //                 <img
-    //                   style={{ width: 50, height: 50, borderRadius: "50%" }}
-    //                   src={job.image}
-    //                   alt=""
-    //                 />
-    //                 <span className="company ps-2">{job.company}</span>
-    //               </p>
-
-    //               <p className="ps-3">
-    //                 <ImLocation2 />
-    //                 <span className="company ps-2"></span>
-    //                 {job.jobLocation}
-    //               </p>
-    //               <p className="ps-3">
-    //                 <MdCastForEducation />
-    //                 <span className="company ps-2"></span>
-    //                 {job.educationalRequirements}
-    //               </p>
-    //               <p className="ps-3">
-    //                 <SiWorkplace />
-    //                 <span className="company ps-2"></span>
-    //                 {job.experienceRequirements}
-    //               </p>
-    //               <div className="d-flex justify-content-between">
-    //                 <div>
-    //                   <img
-    //                     src="https://assets.codepen.io/2301174/icon-supervisor.svg"
-    //                     alt=""
-    //                   />
-    //                 </div>
-    //                 <div className="">
-    //                   <Link
-    //                     style={{ textDecoration: "none" }}
-    //                     to={`/jobdetails/${job._id}`}
-    //                   >
-    //                     <span
-    //                       style={{
-    //                         color: "brown",
-    //                         fontSize: 23,
-    //                       }}
-    //                     >
-    //                       Details
-    //                       <AiOutlineArrowRight className="ps-1" />
-    //                     </span>
-    //                   </Link>
-    //                 </div>
-    //               </div>
-    //             </div>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     ))}
-    //   </div>
-    // </div>
   );
 };
 

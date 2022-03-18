@@ -10,7 +10,7 @@ const JobDetails = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs/${jobId}`)
+    fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, [jobId]);
@@ -50,7 +50,9 @@ const JobDetails = () => {
             <Col md={3}>
               <div>
                 <Link to={`/chart/${jobs._id}`}>
-                  <Button className="apply-btn px-5">See if you are eligible</Button>
+                  <Button className="apply-btn px-5">
+                    See if you are eligible
+                  </Button>
                 </Link>
               </div>
             </Col>
@@ -83,7 +85,7 @@ const JobDetails = () => {
                 </p>
                 <p>
                   <b style={{ fontSize: 18 }}> Salary ➾</b>{" "}
-                  <span>৳ {jobs.salary}</span>
+                  <span>{jobs.salary}</span>
                 </p>
                 <div>
                   <b style={{ fontSize: 18 }}>Additional Requirements ➾</b>
@@ -121,7 +123,7 @@ const JobDetails = () => {
                     </p>
                   </div>
 
-                  <div class="job-image">
+                  <div className="job-image">
                     <h1 className="p-3">
                       <IoIosArrowDropdownCircle />
                     </h1>
@@ -133,7 +135,7 @@ const JobDetails = () => {
                       alt=""
                     />
 
-                    <div class="info">
+                    <div className="info">
                       <h3 className="pt-5">Summary</h3>
                       <ul>
                         <li>

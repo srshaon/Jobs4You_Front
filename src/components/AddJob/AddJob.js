@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
 import "./AddJob.css";
 
 const AddJob = () => {
+  const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
@@ -15,12 +17,14 @@ const AddJob = () => {
       skills: skills,
     };
     console.log(newData);
-    axios.post("http://localhost:5000/jobs", newData).then((res) => {
-      if (res.data.insertedId) {
-        alert("added successfully");
-        reset();
-      }
-    });
+    axios
+      .post("https://afternoon-headland-45054.herokuapp.com/jobs", newData)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("added successfully");
+          reset();
+        }
+      });
   };
   return (
     <div className="add-job py-5">
@@ -34,6 +38,12 @@ const AddJob = () => {
           <input
             {...register("company", { required: true, maxLength: 20 })}
             placeholder="Company name"
+            defaultValue={user.displayName}
+          />
+          <input
+            {...register("email", { required: true, maxLength: 20 })}
+            placeholder="Company email"
+            defaultValue={user.email}
           />
           <input
             {...register("job", { required: true, maxLength: 20 })}

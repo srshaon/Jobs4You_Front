@@ -11,17 +11,18 @@
 } */
 
 .dashboard {
-  background-color: lavender !important;
+  /* background-color: lavender !important; */
   font-size: 15px;
   color: black;
 }
 
 .dashboard-list li {
+  cursor: pointer;
   list-style: none;
 }
 
 .dashboard-icons {
-  color: var(--color-primary) !important;
+  color: white !important;
   font-size: 20px;
   font-weight: 600;
 }

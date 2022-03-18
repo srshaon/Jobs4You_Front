@@ -52,6 +52,11 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import CompanyDetails from "./components/CompanyProfile/CompanyDetails";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
 import PrivateRoute from "./components/ProvateRoute/ProvateRoute";
+import SearchResult from "./components/SearchResult/SearchResult";
+import Freelancing from "./components/Freelancing/Freelancing";
+import Banking from "./components/Banking/Banking";
+import HR from "./components/HR/HR";
+import RMG from "./components/RMG/RMG";
 
 function App() {
   return (
@@ -161,6 +166,18 @@ function App() {
             <Route path="/success">
               <ApplySuccess></ApplySuccess>
             </Route>
+            <Route path="/freelancing">
+              <Freelancing></Freelancing>
+            </Route>
+            <Route path="/banking">
+              <Banking></Banking>
+            </Route>
+            <Route path="/hr">
+              <HR></HR>
+            </Route>
+            <Route path="/rmg">
+              <RMG></RMG>
+            </Route>
 
             {/* Razu's Route */}
             <Route path="/candidates/:candidateID">
@@ -178,7 +195,7 @@ function App() {
             <Route path="/create-resume">
               <PdfCreator></PdfCreator>
             </Route>
-            <Route path="/profileedit/:profileId">
+            <Route path="/profileedit">
               <ProfileEdit />
             </Route>
 
@@ -204,6 +221,9 @@ function App() {
             </Route>
             <Route path="/managejobs">
               <ManageJobs></ManageJobs>
+            </Route>
+            <Route path="/searchresult">
+              <SearchResult></SearchResult>
             </Route>
           </Switch>
           <Footer></Footer>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import useAuth from '../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router';
@@ -17,21 +17,75 @@ const Apply = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [dob, setDob] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState({});
   const [email, setEmail] = useState("");
   const [contactNo, setContact] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
   const [portfolio, setPortfolio] = useState("");
   const [jobs, setJobs] = useState({});
+  const [candidates,setCandidates] = useState([])
+  // const [singleCandidate, setSingleCandidate] = useState({})
+  
   const { user } = useAuth()
-
+/// Testing
+////Testing2
   useEffect(() => {
 
-    fetch(`http://localhost:5000/jobs/${jobId}`)
+    fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then(res => res.json())
       .then(data => setJobs(data))
 
   }, [])
+  // Candidate Fetch
+  useEffect(() => {
+
+    fetch(`https://afternoon-headland-45054.herokuapp.com/allprofiles`)
+      .then(res => res.json())
+      // .then(data => {
+      //   const temp= data.filter(candidate => {
+      //     if(candidate.pEmail === user.email){
+      //       console.log(candidate.pEmail, user.email)
+      //       return candidate
+      //     }
+      //   })
+      //   setSingleCandidate(temp[0]);
+      //   console.log(temp[0])
+         
+
+      // })
+      .then(data=> setCandidates(data))
+        
+      
+
+  }, [user?.email])
+  
+  
+  const singleCandidate = candidates.find(sc=>sc.pEmail=== user.email)
+  //console.log(singleCandidate?.fname)
+  //  AGE Calculate
+
+  const current = new Date();
+  //const Todaydate = `${current.getFullYear()}- ${current.getMonth()+1}-${current.getDate()}`;
+  const candidateDate = singleCandidate?.dob;
+  let today = new Date(),
+     //birthay has 'Dec 25 1998'
+     Cdob = new Date(candidateDate),
+     //difference in milliseconds
+     diff = today.getTime() - Cdob.getTime(),
+     //convert milliseconds into years
+     years = Math.floor(diff / 31556736000),
+     //1 day has 86400000 milliseconds
+     days_diff= Math.floor((diff % 31556736000) / 86400000),
+     //1 month has 30.4167 days
+     months = Math.floor(days_diff / 30.4167),
+     days = Math.floor(days_diff % 30.4167);
+     
+     
+    
+    //console.log(`${years} years ${months} months ${days} days`);
+  
+  // setAge(`${years} ${days}`)
+  // console.log(age?.years)
 
   // form submit
   const handleSubmit = (e) => {
@@ -40,24 +94,24 @@ const Apply = () => {
       return;
     }
     const formData = new FormData();
-    formData.append("job", jobs.job);
-    formData.append("company", jobs.company);
-    formData.append("jobLocation", jobs.jobLocation);
-    formData.append("employmentStatus", jobs.employmentStatus);
+    formData.append("job", jobs?.job);
+    formData.append("company", jobs?.company);
+    formData.append("jobLocation", jobs?.jobLocation);
+    formData.append("employmentStatus", jobs?.employmentStatus);
     formData.append("image", jobs.image)
-    formData.append("firstName", firstName);
-    formData.append("lastName", lastName);
-    formData.append("email", email);
-    formData.append("contactNo", contactNo);
-    formData.append("dob", dob);
-    formData.append("age", age);
+    formData.append("firstName", singleCandidate?.fname);
+    formData.append("lastName", singleCandidate?.lname);
+    formData.append("email", singleCandidate?.pEmail);
+    formData.append("contactNo", singleCandidate?.pContact);
+    formData.append("dob", singleCandidate?.dob);
+    formData.append("age", `${years} years `);
     formData.append("linkedIn", linkedIn);
     formData.append("portfolio", portfolio);
 
     formData.append("resumepdfFile", resumepdfFile);
     formData.append("coverLetterpdfFile", coverLetterpdfFile);
 
-    fetch("http://localhost:5000/applyList", {
+    fetch("https://afternoon-headland-45054.herokuapp.com/applyList", {
       method: "POST",
       body: formData,
     })
@@ -76,25 +130,31 @@ const Apply = () => {
   // console.log(coverLetterpdfFile);
   // console.log(firstName);
   // console.log(jobs.employmentStatus)
-
+  if(singleCandidate===undefined){
+    return  <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>
+   
+  }
+  
   return (
     <div className="bodyShadow">
-      <div class="container-fluid ">
-        <div id="myForms" class="row ">
-          <div id="card1" class="">
-            <div class="card-body">
+      <div className="container-fluid ">
+        <div id="myForms" className="row ">
+          <div id="card1" className="">
+            <div className="card-body">
 
               <form onSubmit={handleSubmit} action="" method="POST">
-                <div class="row applyform1">
+                <div className="row applyform1">
                   <h3
                     className="d-flex justify-content-center my-4"
                     style={{ color: "brown" }}
                   >
                     Personal Details
                   </h3>
-                  <div class="col col-md-6 form-data">
-                    <div class="form-group">
-                      <h6 id="helpId1" class=" d-flex justify-content-center">
+                  <div className="col col-md-6 form-data">
+                    <div className="form-group">
+                      <h6 id="helpId1" className=" d-flex justify-content-center">
                         Candidate's First Name
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
@@ -102,15 +162,15 @@ const Apply = () => {
                         className="sadiaInput"
                         onChange={(e) => setFirstName(e.target.value)}
                         type="text"
-                        name="name"
+                       
                         id="name"
                         aria-describedby="helpId1"
                         required
-                        placeholder="Enter your first name"
+                        value={singleCandidate?.fname}
                       />
                     </div>
 
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6
                         id="helpId4"
                         className="d-flex justify-content-center pt-3"
@@ -121,7 +181,7 @@ const Apply = () => {
                       <input
                         className="sadiaInput"
                         onChange={(e) => setDob(e.target.value)}
-                        type="date"
+                        value={singleCandidate?.dob}
                         name="cdob"
                         id="cdob"
                         aria-describedby="helpId4"
@@ -129,7 +189,7 @@ const Apply = () => {
                       />
                     </div>
 
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6
                         id="helpId6"
                         className="d-flex justify-content-center pt-3"
@@ -144,12 +204,12 @@ const Apply = () => {
                         name="cemail"
                         id="cemail"
                         aria-describedby="helpId6"
-                        placeholder="Enter your e-mail"
+                        value={singleCandidate?.pEmail}
                         required
                       />
                     </div>
-                    <div class="form-group pt-3">
-                      <h6 id="helpId" class=" d-flex justify-content-center">
+                    <div className="form-group pt-3">
+                      <h6 id="helpId" className=" d-flex justify-content-center">
                         Candidate's LinkedIn Profile
                         <sub style={{ color: "brown", fontSize: 14 }}>
                           (optional)
@@ -167,8 +227,8 @@ const Apply = () => {
                       />
                     </div>
 
-                    <div class="form-group pt-3">
-                      <h6 id="helpId" class=" d-flex justify-content-center">
+                    <div className="form-group pt-3">
+                      <h6 id="helpId" className=" d-flex justify-content-center">
                         Candidate's Resume
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
@@ -185,9 +245,9 @@ const Apply = () => {
                       )}
                     </div>
                   </div>
-                  <div class="col col-md-6 form-data">
-                    <div class="form-group">
-                      <h6 id="helpId1" class="d-flex justify-content-center">
+                  <div className="col col-md-6 form-data">
+                    <div className="form-group">
+                      <h6 id="helpId1" className="d-flex justify-content-center">
                         Candidate's Last Name
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
@@ -199,11 +259,11 @@ const Apply = () => {
                         id="cname"
                         aria-describedby="helpId1"
                         required
-                        placeholder="Enter your last name"
+                        value={singleCandidate?.lname}
                       />
                       <p required placeholder="Enter Name"></p>
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6
                         id="helpId2"
                         className="d-flex justify-content-center"
@@ -213,16 +273,16 @@ const Apply = () => {
                       </h6>
                       <input
                         className="sadiaInput"
-                        onChange={(e) => setAge(e.target.value)}
-                        type="number"
+                        
+                        
                         name="cage"
                         id="cage"
                         aria-describedby="helpId2"
-                        placeholder="Enter your age"
+                        value={`${years} years`}
                         required
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <h6
                         id="helpId5"
                         className=" d-flex justify-content-center pt-3"
@@ -237,13 +297,13 @@ const Apply = () => {
                         name="mobile"
                         id="mobile"
                         aria-describedby="helpId5"
-                        placeholder="Enter your contact no"
+                        value={singleCandidate?.pContact}
                         required
                       />
                     </div>
 
-                    <div class="form-group pt-3">
-                      <h6 id="helpId" class=" d-flex justify-content-center">
+                    <div className="form-group pt-3">
+                      <h6 id="helpId" className=" d-flex justify-content-center">
                         Candidate's Portfolio
                         <sub style={{ color: "brown", fontSize: 14 }}>
                           (optional)
@@ -259,8 +319,8 @@ const Apply = () => {
                         placeholder="Enter your portfolio url"
                       />
                     </div>
-                    <div class="form-group pt-3">
-                      <h6 id="helpId" class=" d-flex justify-content-center">
+                    <div className="form-group pt-3">
+                      <h6 id="helpId" className=" d-flex justify-content-center">
                         Candidate's Cover Letter
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
