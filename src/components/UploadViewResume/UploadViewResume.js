@@ -8,6 +8,7 @@ const UploadViewResume = () => {
   const [resumepdfFile, setResumePdfFile] = useState([]);
   const [resumeView, setResumeView] = useState([]);
   
+  
   useEffect(() => {
     fetch("https://afternoon-headland-45054.herokuapp.com/resume")
       .then((res) => res.json())
@@ -63,9 +64,11 @@ const UploadViewResume = () => {
             })
     }
 
-    //Update
+    
     
 }
+
+    
 if(resumeView.length==0){
   return  <Spinner animation="border" role="status">
   <span className="visually-hidden">Loading...</span>
@@ -92,27 +95,38 @@ if(resumeView.length==0){
            
 
           <div className="d-flex justify-content-center">
+           
+           
+                {
+                  (myResume.length===0) ?
+                  
+                    <Button  className="submit-btn p-2 text-white" type="submit">
+                   Upload
+                 </Button> :
+                 <Button disabled className="submit-btn p-2 text-white" type="submit">
+                   Upload
+                 </Button>
+                 
+                 }
+              
             
-            <Button className="submit-btn p-2 text-white" type="submit">
-              Upload
-            </Button>
+            
            
             <div>
            
             </div>
           </div>
         </form>
-        <div style={{width:300}} >
         
-        </div>
       </div>
       <div className="d-flex justify-content-center">
         {myResume.map((resume) => (
+          
           <div className="mb-5">
-            <Button  onClick={() => handleDelete(resume._id)}  className="submit-btn p-2 mb-3 text-white" type="submit">
+          <Button  onClick={() => handleDelete(resume._id)}  className="submit-btn p-2 mb-3 text-white" type="submit">
               Delete & Upload New
             </Button>
-            <embed
+             <embed
               className="mb-5 ps-4"
               style={{ width: "1000px", height: "500px" }}
               src={`data:application/pdf;base64,${resume.resume}`}
