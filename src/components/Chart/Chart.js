@@ -28,33 +28,35 @@ const Chart = () => {
             // console.log('this is isssss', email);
         }
 
-    }, [_id, email]);
+    }, [_id, email, gainedSkills]);
 
     useEffect(() => {
             if (postedSkills?.length > 0)
             {
-                let temp = [];
+                let temp1 = [];
+                let temp2 = [];
                 let tmp = [{name: 'acquired', value: 0}, {name: 'remaining', value: 0}];
                 let counter1 = 0;
                 let counter2 = 0;
 
                 postedSkills?.forEach(postedSkill => {
     
-                    temp.push({ name: postedSkill, value: 1 });
-    
                     let index = gainedSkills?.findIndex(gainedSkill => gainedSkill?.toLowerCase()?.includes(postedSkill?.toLowerCase()));
                     if (index !== -1) {
+                        temp1.push({ name: postedSkill, value: 1 });
                         counter1 = counter1 + 1;
                         tmp[0].value = counter1;
                         console.log(tmp);
                     }
 
                     else if (index === -1) {
+                        temp2.push({ name: postedSkill, value: 1 });
                         counter2 = counter2 + 1;
                         tmp[1].value = counter2;
                         console.log(tmp);
                     }
                 });
+                const temp = [...temp1, ...temp2];
                 setData1(temp);
                 setData2(tmp);
             }
@@ -83,7 +85,7 @@ const Chart = () => {
                         </div>
                     }    
                     {
-                        (((data2[0]?.value / (data2[0]?.value + data2[1]?.value)) * 100).toFixed(2) > 50) &&
+                        (((data2[0]?.value / (data2[0]?.value + data2[1]?.value)) * 100).toFixed(2) >= 50) &&
                         <div>
                             <div className="mb-2">Your skill matches finely to this job.</div>
                             <Link to={`/apply/${_id}`}>
