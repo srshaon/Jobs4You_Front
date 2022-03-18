@@ -254,6 +254,15 @@ const ResumeTips = () => {
                         Suggested Links of Resume Template:
                       </h5>
                       <ul>
+                      <li>
+                          <a
+                            style={{ color: "white" }}
+                            target="blank"
+                            href="https://jobs4you-a95fe.web.app/create-resume"
+                          >
+                            Jobs4You Resume
+                          </a>
+                        </li>
                         <li>
                           <a
                             style={{ color: "white" }}
@@ -290,15 +299,7 @@ const ResumeTips = () => {
                             Create Resume
                           </a>
                         </li>
-                        <li>
-                          <a
-                            style={{ color: "white" }}
-                            target="blank"
-                            href="https://novoresume.com/career-blog/resume-examples"
-                          >
-                            Novoresume
-                          </a>
-                        </li>
+                        
                       </ul>
                     </div>
                   </div>
