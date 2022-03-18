@@ -31,9 +31,8 @@ const useFirebase = () => {
   const [role, setRole] = useState("");
   const [searchKey, setSearchKey] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
-  const [resetSearchKey, setResetSearchKey] = useState('');
-  const [resetSearchLocation, setResetSearchLocation] = useState('');
-
+  const [resetSearchKey, setResetSearchKey] = useState("");
+  const [resetSearchLocation, setResetSearchLocation] = useState("");
 
   // const [condition, setCondition] = useState("seeker");
 
@@ -195,8 +194,10 @@ const useFirebase = () => {
     setSearchKey,
     searchLocation,
     setSearchLocation,
-    resetSearchKey, setResetSearchKey,
-    resetSearchLocation, setResetSearchLocation
+    resetSearchKey,
+    setResetSearchKey,
+    resetSearchLocation,
+    setResetSearchLocation,
   };
 };
 

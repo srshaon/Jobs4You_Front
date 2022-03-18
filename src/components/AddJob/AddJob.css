@@ -1,14 +1,65 @@
-.add-job {
-  background-color: #9c9c9c60;
+.profile-sec {
+  background: #faecec;
+  opacity: 0.7;
+  border-radius: 7px;
+}
+
+.add-job-btn {
+  width: 18%;
+  background-color: var(--color-primary-light);
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 600;
+}
+.add-job-btn:hover {
+  background-color: black;
+  color: brown;
+}
+
+.heart {
+  font-size: 30px;
+  color: orangered;
+  animation: beat 0.25s infinite alternate;
+  transform-origin: center;
+}
+
+/* Heart beat animation */
+@keyframes beat {
+  to {
+    transform: scale(1.4);
+  }
 }
 
 .jobpost-form {
-  width: 65%;
-  background-color: white;
-  opacity: 0.7;
+  background-color: rgb(206, 205, 205);
+  border-radius: 7px;
 }
 
-.add-job form {
+.add-job input {
+  line-height: 35px;
+  background: #fcfcfc;
+  opacity: 0.6;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.add-job select {
+  height: 53px;
+  background: #fcfcfc;
+  opacity: 0.6;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.add-job textarea {
+  background: #fcfcfc;
+  opacity: 0.6;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+/* .add-job form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -26,11 +77,11 @@ textarea {
   padding-left: 11px;
   background: transparent;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
+} */
 
 .submit-btn {
   width: 30% !important;
-  background-color: var(--color-primary) !important;
+  background-color: var(--color-primary-light) !important;
   border: none;
   color: white;
   font-weight: 600;

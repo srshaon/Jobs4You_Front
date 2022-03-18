@@ -11,26 +11,24 @@ import FinalResult from "./FinalResult";
 import Home from "../Home/Home";
 
 createStore({
-    data: {}
+  data: {},
 });
 
 const AccountForm = () => {
-    return (
-        <div>
-            <StateMachineProvider>
-
-
-                <Router>
-                    <Route path="/profileForm" component={ProfileForm} />
-                    <Route path="/profileForm2" component={ProfileForm2} />
-                    <Route path="/profileForm3" component={ProfileForm3} />
-                    <Route path="/result" component={Result} />
-                    <Route path="/finalResult" component={FinalResult} />
-                    <Route path="/home" component={Home} />
-                </Router>
-            </StateMachineProvider>
-        </div>
-    );
+  return (
+    <div>
+      <StateMachineProvider>
+        <Router>
+          <Route path="/profileForm" component={ProfileForm} />
+          <Route path="/profileForm2" component={ProfileForm2} />
+          <Route path="/profileForm3" component={ProfileForm3} />
+          <Route path="/result" component={Result} />
+          <Route path="/finalResult" component={FinalResult} />
+          <Route path="/home" component={Home} />
+        </Router>
+      </StateMachineProvider>
+    </div>
+  );
 };
 
 export default AccountForm;
