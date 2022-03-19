@@ -21,7 +21,7 @@ const SingleFaq = (props) => {
                     setIsLiked(data?.isLiked);
                 }
             });
-    });
+    }, [props?.singleFaq]);
 
     useEffect(() => {
         fetch(`https://afternoon-headland-45054.herokuapp.com/faqGetDisLikes?id=${_id}&email=${email}`)
@@ -32,7 +32,7 @@ const SingleFaq = (props) => {
                     setIsDisliked(data?.isDisliked);
                 }
             });
-    });
+    }, [props?.singleFaq]);
 
     const reactUpdate = async (doc, react) => {
         fetch(`https://afternoon-headland-45054.herokuapp.com/faq${react}/${email}`, {
