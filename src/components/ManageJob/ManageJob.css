@@ -2,3 +2,21 @@
   background: transparent;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
+
+.table-head {
+  background-color: var(--color-primary);
+  border: 1px solid #b4a3a3;
+}
+.table-body .table-tr {
+  background: #b3aeae;
+  /* border: 1px solid #b4a3a3; */
+}
+.table-body .table-tr:nth-child(odd) {
+  background: #eee;
+  opacity: 0.7;
+  /* border: 1px solid #b4a3a3; */
+}
+
+.table-body {
+  border: 1px solid #b4a3a3;
+}

@@ -23,15 +23,15 @@ const Apply = () => {
   const [linkedIn, setLinkedIn] = useState("");
   const [portfolio, setPortfolio] = useState("");
   const [jobs, setJobs] = useState({});
-  const [candidates,setCandidates] = useState([])
+  const [candidates, setCandidates] = useState([])
   // const [singleCandidate, setSingleCandidate] = useState({})
-  
+
   const { user } = useAuth()
-/// Testing
-////Testing2
+  /// Testing
+  ////Testing2
   useEffect(() => {
 
-    fetch(`http://localhost:5000/jobs/${jobId}`)
+    fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then(res => res.json())
       .then(data => setJobs(data))
 
@@ -39,7 +39,7 @@ const Apply = () => {
   // Candidate Fetch
   useEffect(() => {
 
-    fetch(`http://localhost:5000/allprofiles`)
+    fetch(`https://afternoon-headland-45054.herokuapp.com/allprofiles`)
       .then(res => res.json())
       // .then(data => {
       //   const temp= data.filter(candidate => {
@@ -50,17 +50,17 @@ const Apply = () => {
       //   })
       //   setSingleCandidate(temp[0]);
       //   console.log(temp[0])
-         
+
 
       // })
-      .then(data=> setCandidates(data))
-        
-      
+      .then(data => setCandidates(data))
+
+
 
   }, [user?.email])
-  
-  
-  const singleCandidate = candidates.find(sc=>sc.pEmail=== user.email)
+
+
+  const singleCandidate = candidates.find(sc => sc.pEmail === user.email)
   //console.log(singleCandidate?.fname)
   //  AGE Calculate
 
@@ -68,22 +68,22 @@ const Apply = () => {
   //const Todaydate = `${current.getFullYear()}- ${current.getMonth()+1}-${current.getDate()}`;
   const candidateDate = singleCandidate?.dob;
   let today = new Date(),
-     //birthay has 'Dec 25 1998'
-     Cdob = new Date(candidateDate),
-     //difference in milliseconds
-     diff = today.getTime() - Cdob.getTime(),
-     //convert milliseconds into years
-     years = Math.floor(diff / 31556736000),
-     //1 day has 86400000 milliseconds
-     days_diff= Math.floor((diff % 31556736000) / 86400000),
-     //1 month has 30.4167 days
-     months = Math.floor(days_diff / 30.4167),
-     days = Math.floor(days_diff % 30.4167);
-     
-     
-    
-    //console.log(`${years} years ${months} months ${days} days`);
-  
+    //birthay has 'Dec 25 1998'
+    Cdob = new Date(candidateDate),
+    //difference in milliseconds
+    diff = today.getTime() - Cdob.getTime(),
+    //convert milliseconds into years
+    years = Math.floor(diff / 31556736000),
+    //1 day has 86400000 milliseconds
+    days_diff = Math.floor((diff % 31556736000) / 86400000),
+    //1 month has 30.4167 days
+    months = Math.floor(days_diff / 30.4167),
+    days = Math.floor(days_diff % 30.4167);
+
+
+
+  //console.log(`${years} years ${months} months ${days} days`);
+
   // setAge(`${years} ${days}`)
   // console.log(age?.years)
 
@@ -94,14 +94,17 @@ const Apply = () => {
     if (!resumepdfFile && coverLetterpdfFile) {
       return;
     }
+    console.log(jobs?.applicationDeadline)
     const formData = new FormData();
     const jobID1 = jobs?._id
+
     console.log(jobID1)
     formData.append("jobId", jobID1);
     formData.append("job", jobs?.job);
     formData.append("company", jobs?.company);
     formData.append("jobLocation", jobs?.jobLocation);
     formData.append("employmentStatus", jobs?.employmentStatus);
+    formData.append("applicationDeadline", jobs?.applicationDeadline)
     formData.append("image", jobs.image)
     formData.append("firstName", singleCandidate?.fname);
     formData.append("lastName", singleCandidate?.lname);
@@ -115,7 +118,7 @@ const Apply = () => {
     formData.append("resumepdfFile", resumepdfFile);
     formData.append("coverLetterpdfFile", coverLetterpdfFile);
 
-    fetch("http://localhost:5000/applyList", {
+    fetch("https://afternoon-headland-45054.herokuapp.com/applyList", {
       method: "POST",
       body: formData,
     })
@@ -134,13 +137,13 @@ const Apply = () => {
   // console.log(coverLetterpdfFile);
   // console.log(firstName);
   // console.log(jobs.employmentStatus)
-  if(singleCandidate===undefined){
-    return  <Spinner animation="border" role="status">
-    <span className="visually-hidden">Loading...</span>
-  </Spinner>
-   
+  if (singleCandidate === undefined) {
+    return <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
+
   }
-  
+
   return (
     <div className="bodyShadow">
       <div className="container-fluid ">
@@ -156,7 +159,7 @@ const Apply = () => {
                   >
                     Personal Details
                   </h3>
-                 
+
                   <div className="col col-md-6 form-data">
                     <div className="form-group">
                       <h6 id="helpId1" className=" d-flex justify-content-center">
@@ -167,7 +170,7 @@ const Apply = () => {
                         className="sadiaInput"
                         onChange={(e) => setFirstName(e.target.value)}
                         type="text"
-                       
+
                         id="name"
                         aria-describedby="helpId1"
                         required
@@ -278,8 +281,8 @@ const Apply = () => {
                       </h6>
                       <input
                         className="sadiaInput"
-                        
-                        
+
+
                         name="cage"
                         id="cage"
                         aria-describedby="helpId2"

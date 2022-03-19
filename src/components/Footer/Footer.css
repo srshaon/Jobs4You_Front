@@ -168,4 +168,27 @@ footer .copyright {
   color: #06ff00;
   font-size: 27px;
   margin: 7px 0;
+} 
+@media (max-width:700px) {
+      
+  .footer-card {
+      height: 100% !important;
+      
+  }
+  .footer-icon-p {
+    font-size: 12px !important;
+  }
+  .footer-second-div{
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    
+  }
+  .subscribe-form-footer{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+  }
 }
+
