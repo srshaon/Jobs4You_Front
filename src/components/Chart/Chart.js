@@ -41,7 +41,7 @@ const Chart = () => {
 
                 postedSkills?.forEach(postedSkill => {
     
-                    let index = gainedSkills?.findIndex(gainedSkill => gainedSkill?.toLowerCase()?.includes(postedSkill?.toLowerCase()));
+                    let index = gainedSkills?.findIndex(gainedSkill => gainedSkill?.toLowerCase()?.trim()?.includes(postedSkill?.toLowerCase()?.trim()));
                     if (index !== -1) {
                         temp1.push({ name: postedSkill, value: 1 });
                         counter1 = counter1 + 1;

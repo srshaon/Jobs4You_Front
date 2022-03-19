@@ -42,10 +42,10 @@ const Skills = () => {
         e.preventDefault();
 
         const skills = [...skillArray];
-        let newSkills = skill.split(', ');
+        let newSkills = skill.split(',');
 
         const confirmedNewSkills = newSkills.filter(newskill => {
-            const i = skillArray.findIndex(singleSkill => singleSkill === newskill);
+            const i = skillArray.findIndex(singleSkill => singleSkill.toLowerCase().trim() === newskill.toLowerCase().trim());
 
             if (i === -1) {
                 return newskill; 
