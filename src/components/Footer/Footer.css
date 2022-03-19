@@ -169,3 +169,8 @@ footer .copyright {
   font-size: 27px;
   margin: 7px 0;
 }
+
+@media (max-width: 576px) {
+  .footer-card {
+  }
+}
