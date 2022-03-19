@@ -10,7 +10,7 @@ const UploadViewResume = () => {
   
   
   useEffect(() => {
-    fetch("http://localhost:5000/resume")
+    fetch("https://afternoon-headland-45054.herokuapp.com/resume")
       .then((res) => res.json())
       .then((data) => setResumeView(data));
   }, []);
@@ -27,7 +27,7 @@ const UploadViewResume = () => {
 
     formData.append("resumepdfFile", resumepdfFile);
 
-    fetch("http://localhost:5000/resume", {
+    fetch("https://afternoon-headland-45054.herokuapp.com/resume", {
       method: "POST",
       body: formData,
     })
@@ -35,7 +35,7 @@ const UploadViewResume = () => {
       .then((data) => {
         if (data.insertedId) {
           alert("successfully uplodated");
-          fetch('http://localhost:5000/resume')
+          fetch('https://afternoon-headland-45054.herokuapp.com/resume')
           .then(res => res.json())
           .then(data => setResumeView(data))
         }
