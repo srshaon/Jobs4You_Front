@@ -6,17 +6,24 @@ import { CgWorkAlt } from "react-icons/cg";
 import { TiLocation } from "react-icons/ti";
 import { FcCurrencyExchange } from "react-icons/fc";
 import "./ManageJob.css";
+import { Link } from "react-router-dom";
 
-const ManageJob = ({ job, setJobs }) => {
+const ManageJob = ({ job }) => {
+  const expiredDate = new Date(job.applicationDeadline);
+  const today = new Date();
+  console.log(expiredDate > today);
+
   const [show, setShow] = useState(false);
-  const handleState = (id) => {
-    const proceed = window.confirm("Are you sure that you want to update?");
+  const handleStatus = (id) => {
+    const proceed = window.confirm(
+      "Are you sure that you want to close the job?"
+    );
     if (proceed) {
-      const updatedJob = { ...job, status: "approved" };
+      const closedJob = { ...job, status: "closed" };
       const url = `https://afternoon-headland-45054.herokuapp.com/updateJob/${id}`;
-      axios.put(url, updatedJob).then((res) => {
+      axios.put(url, closedJob).then((res) => {
         if (res.data.modifiedCount) {
-          alert("updated successfully");
+          alert("closed successfully");
         }
       });
     }
@@ -29,10 +36,13 @@ const ManageJob = ({ job, setJobs }) => {
 
   const onSubmit = (data) => {
     const requirements = data.additionalRequirements.split(/\r?\n/g);
-    const newData = { ...data, additionalRequirements: requirements };
+    const skills = data.skills.split(",");
+    const newData = {
+      ...data,
+      additionalRequirements: requirements,
+      skills: skills,
+    };
     console.log(newData);
-    // const updatedJob = { ...job, newData };
-    // console.log(updatedJob);
     axios
       .put(`https://afternoon-headland-45054.herokuapp.com/jobs/${job._id}`, newData)
       .then((res) => {
@@ -44,90 +54,32 @@ const ManageJob = ({ job, setJobs }) => {
   };
   return (
     <>
-      <Col md={12}>
-        <Card className="updatedjob-card w-75 p-5 mx-auto">
-          <div>
-            <div className="px-5 py-3">
-              {/* <div className="w-50 mx-auto d-md-flex align-items-center">
-                <img src={job.image} alt="" className="w-50 p-5" />
-                <h5>
-                  <span style={{ color: "brown", fontWeight: "700" }}>
-                    {job?.company}
-                  </span>
-                </h5>
-              </div> */}
-              <h6>{job?.category}</h6>
-              <h5 style={{ color: "brown" }}>{job?.job}</h5>
-              <p>
-                <TiLocation /> {job?.jobLocation} -{job?.employmentStatus}
-              </p>
-              <h5 className="pt-3" style={{ fontWeight: "600" }}>
-                <u>Job Details</u>
-              </h5>
-              <p>
-                {" "}
-                <span style={{ color: "brown", fontWeight: "600" }}>
-                  Vacancy:{" "}
-                </span>
-                {job?.vacancy}
-              </p>
-              <p>
-                {" "}
-                <span style={{ color: "brown", fontWeight: "600" }}>
-                  Educational Requirements:{" "}
-                </span>
-                {job?.educationalRequirements}
-              </p>
-              <p>
-                {" "}
-                <span style={{ color: "brown", fontWeight: "600" }}>
-                  Job Responsibilities:
-                </span>{" "}
-                {job?.jobResponsibilities}
-              </p>
-              <p>
-                {" "}
-                <span style={{ color: "brown", fontWeight: "600" }}>
-                  {" "}
-                  Additional Requirements:
-                </span>
-              </p>
-              <ul className="ps-5 ms-2">
-                {job?.additionalRequirements.map((item) => (
-                  <li>{item}</li>
-                ))}
-              </ul>
-              <p>
-                {" "}
-                <span style={{ color: "brown", fontWeight: "600" }}>
-                  Salary:
-                </span>{" "}
-                ${job?.salary}
-              </p>
-            </div>
-            <div className="text-center">
-              {job?.status?.toLowerCase() === "pending" && (
-                <button
-                  className="submit-btn p-3"
-                  onClick={() => handleState(job?._id)}
-                >
-                  Pending
-                </button>
-              )}
-              {job?.status?.toLowerCase() === "approved" && (
-                <Button
-                  className="submit-btn p-3"
-                  variant="primary"
-                  onClick={handleShow}
-                >
-                  Update Job
-                </Button>
-              )}
-            </div>
-          </div>
-        </Card>
-      </Col>
-
+      <tr className="table-tr">
+        <td className="table-td">
+          <Link to={`/jobdetails/${job._id}`}>{job.job}</Link>
+        </td>
+        <td></td>
+        <td>{job.applicationDeadline}</td>
+        <td>{expiredDate < today ? "Expired" : job.status}</td>
+        <td>
+          {job.status === "approved" || job.status === "pending" ? (
+            <span role="button" onClick={handleShow}>
+              Update
+            </span>
+          ) : (
+            "-"
+          )}
+        </td>
+        <td>
+          {job.status !== "closed" && expiredDate > today ? (
+            <span role="button" onClick={() => handleStatus(job._id)}>
+              Close
+            </span>
+          ) : (
+            "-"
+          )}
+        </td>
+      </tr>
       <Modal
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
@@ -179,19 +131,25 @@ const ManageJob = ({ job, setJobs }) => {
                 defaultValue={job.vacancy}
               />
               <input
-                type="name"
+                type="text"
                 {...register("educationalRequirements")}
                 placeholder="Education Req"
                 defaultValue={job.educationalRequirements}
               />
               <input
-                type="name"
+                type="text"
                 {...register("experienceRequirements")}
                 placeholder="Experience Req"
                 defaultValue={job.experienceRequirements}
               />
               <input
-                type="name"
+                type="text"
+                {...register("skills")}
+                placeholder="Skills"
+                defaultValue={job.skills}
+              />
+              <input
+                type="text"
                 {...register("jobResponsibilities")}
                 placeholder="Job Responsibilities "
                 defaultValue={job.jobResponsibilities}

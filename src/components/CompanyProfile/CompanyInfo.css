@@ -1,0 +1,37 @@
+.overview-card {
+  width: 30%;
+  margin: 0 auto;
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 10px;
+}
+
+.profile-card {
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+
+.overview-icon {
+  font-size: 25px;
+  color: brown;
+}
+
+.network-text a {
+  text-decoration: none;
+  font-size: 17px;
+  color: white;
+}
+.network-text {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.network-icon {
+  font-size: 20px;
+  font-weight: 900;
+  color: brown;
+}

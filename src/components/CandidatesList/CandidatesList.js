@@ -13,9 +13,9 @@ import { useGetProfilesQuery } from "../../Redux-handler/ManageProfiles";
 const CandidatesList = () => {
   const { data: candidates } = useGetProfilesQuery();
   let sortedList = [];
-                for (let i = (candidates.length - 1); i >= 0; i--) {
-                    sortedList.push(candidates[i]);
-                }
+  for (let i = candidates.length - 1; i >= 0; i--) {
+    sortedList.push(candidates[i]);
+  }
   const [pageNumber, setPageNumber] = useState(0);
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
@@ -25,7 +25,7 @@ const CandidatesList = () => {
   const tableHead = ["Sl", "Name", "Email", "Phone", "Details", "Action"];
   return (
     <div className="theme2 my-5">
-      <div className="d-flex justify-content-center container mt-5">
+      {/* <div className="d-flex justify-content-center container mt-5">
         <InputGroup className="mb-3 mt-5 w-75">
           <FormControl
             // placeholder="Recipient's username"
@@ -35,7 +35,7 @@ const CandidatesList = () => {
             Search
           </InputGroup.Text>
         </InputGroup>
-      </div>
+      </div> */}
       <div className="container my-5 theme">
         <Table responsive striped bordered hover>
           <thead>
@@ -72,9 +72,7 @@ const CandidatesList = () => {
                   <td>
                     {" "}
                     <Link to={`/profileedit/${_id}`}>
-                      <span>
-                        Resume
-                      </span>
+                      <span>Resume</span>
                     </Link>
                   </td>
                 </tr>
