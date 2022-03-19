@@ -290,7 +290,7 @@ const ProfileForm = (props) => {
                         Passport No
                       </label>
                       <input
-                        type={"number"}
+                        type={"text"}
                         className="profile-form-input"
                         defaultValue={""}
                         {...register("passport", { required: true })}
@@ -318,7 +318,8 @@ const ProfileForm = (props) => {
                       readOnly
                         className="profile-form-input"
                         defaultValue={user.email}
-                        
+
+                        {...register("pEmail", { required: true })}
                       />
                     </div>
                     <div>

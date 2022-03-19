@@ -5,8 +5,8 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 import clearAction from "./clearAction";
 import { useCreateProfileMutation } from "../../Redux-handler/ManageProfiles";
-import { useHistory } from 'react-router';
-import useAuth from './../../hooks/useAuth';
+import { useHistory } from "react-router";
+import useAuth from "./../../hooks/useAuth";
 const ProfileForm3 = (props) => {
     const { user,admin } = useAuth()
     const [createProfile] = useCreateProfileMutation()
@@ -47,15 +47,16 @@ const ProfileForm3 = (props) => {
                     <h4>You have updated all the info.</h4>
                     <h4>Now please submit to save your info.</h4>
 
-                    <div className='profile-form-button-div d-flex justify-content-center' >
-                        <button className='profile-form-button' type="submit">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    );
+
+          <div className="profile-form-button-div d-flex justify-content-center">
+            <button className="profile-form-button p-3 w-50" type="submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 };
-
-
 
 export default ProfileForm3;

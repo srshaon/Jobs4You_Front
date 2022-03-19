@@ -12,10 +12,11 @@ import {
   MdOutlineCloudUpload,
   MdUpdate,
   MdCreateNewFolder,
+  MdPeopleAlt,
 } from "react-icons/md";
 import { SiWorkplace } from "react-icons/si";
-import { FcCalendar, FcManager } from "react-icons/fc";
-import { RiEdit2Fill, RiContactsLine } from "react-icons/ri";
+import { FcCalendar, FcManager, FcApproval } from "react-icons/fc";
+import { RiEdit2Fill, RiContactsLine, RiDashboardFill } from "react-icons/ri";
 import { CgCloseO } from "react-icons/cg";
 import { HiOutlineOfficeBuilding } from "react-icons/hi";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io";
@@ -41,9 +42,12 @@ import AddJob from "../AddJob/AddJob";
 import ManageJobs from "../ManageJobs/ManageJobs";
 import EditCompany from "../CompanyProfile/EditCompany";
 import AllJobStatus from "./../AllJobStatus/AllJobStatus";
+
 const Dashboard = () => {
   const history = useHistory();
-  const { logOut, admin, user } = useAuth();
+  const { logOut, admin, user, role, setRole } = useAuth();
+  console.log(user);
+  console.log('this is role:', role);
   const [control, setControl] = useState("welcome");
   console.log(admin);
   const { data: candidate } = useGetProfilesQuery(undefined, {
@@ -57,37 +61,49 @@ const Dashboard = () => {
     }),
   });
   let profileInfo;
-  if (admin === "seeker") {
+  if (role === "seeker") {
     profileInfo = candidate;
-  } else {
+    // setControl("candiProfile");
+  } else if (role === "company") {
     profileInfo = company;
+    // setControl("companyProfile");
   }
   console.log(profileInfo);
 
-  if (admin === "") {
+  if (role === "") {
     return <Spinner animation="border" variant="danger" />;
   }
   const navigateToHome = () => {
     history.push("/home");
   };
   return (
-    <div
-      className="card dashboard-sec pb-5"
-      // style={{ backgroundColor: "#9c9c9c60" }}
-    >
+    <div className="card dashboard-sec" style={{ overflow: "scroll initial" }}>
       <div className="dashboard-details-div">
         <div className="w-100">
-          <div className="h-100">
+          <div className="">
             <CDBSidebar
               className="w-100"
-              style={{ height: "80vh", background: "var(--color-primary)" }}
-
-              // backgroundColor="#333"
+              style={{
+                height: "100vh",
+                background: "var(--color-primary)",
+              }}
             >
               <CDBSidebarContent className="dashboard py-5">
-                {admin === "seeker" && (
+                {role === "seeker" && (
                   <div>
                     <div className="dashboard-list">
+                      <h4
+                        className="px-5 text-center"
+                        style={{
+                          fontWeight: "600",
+                          color: "white",
+                        }}
+                      >
+                        Job Seeker <br />{" "}
+                        <span style={{ fontSize: "18px" }}>Dashboard</span>
+                        <hr />
+                      </h4>
+
                       <li onClick={navigateToHome} className="li py-3 px-5">
                         <span className="dashboard-icons px-1">
                           <ImHome />
@@ -150,7 +166,7 @@ const Dashboard = () => {
                         My Jobs
                       </li>
 
-                      <li
+                      {/* <li
                         onClick={() => setControl("welcome")}
                         className="li py-3 px-5"
                       >
@@ -158,7 +174,7 @@ const Dashboard = () => {
                           <FcCalendar />
                         </span>{" "}
                         Upcoming Interviews
-                      </li>
+                      </li> */}
 
                       <li onClick={logOut} className="li px-5 py-3">
                         <span className="dashboard-icons px-1">
@@ -169,9 +185,23 @@ const Dashboard = () => {
                     </div>
                   </div>
                 )}
-                {admin === "company" && (
+                {role === "company" && (
                   <div>
-                    <div>
+                    <div className="text-center pt-4">
+                      <h4
+                        className="px-5 text-center"
+                        style={{
+                          fontWeight: "600",
+                          color: "white",
+                        }}
+                      >
+                        Employer <br />{" "}
+                        <span style={{ fontSize: "18px" }}>Dashboard</span>
+                        <hr />
+                      </h4>
+                    </div>
+
+                    <div className="pt-4">
                       <ul className="dashboard-list">
                         <li onClick={navigateToHome} className="li py-3 px-3">
                           <span className="dashboard-icons px-2">
@@ -212,7 +242,7 @@ const Dashboard = () => {
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-2">
-                            <ImStatsBars />
+                            <FcApproval />
                           </span>{" "}
                           Manage Jobs
                         </li>
@@ -222,7 +252,7 @@ const Dashboard = () => {
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-2">
-                            <SiWorkplace />
+                            <MdPeopleAlt />
                           </span>{" "}
                           Candidates
                         </li>
@@ -246,7 +276,7 @@ const Dashboard = () => {
                     </div>
                   </div>
                 )}
-                {admin === "admin" && (
+                {role === "admin" && (
                   <div>
                     <div>
                       <ul className="dashboard-list">
@@ -309,24 +339,43 @@ const Dashboard = () => {
             </CDBSidebar>
           </div>
         </div>
+
         <div className="dashboard-second-container">
-          {control === "candiProfile" && (
-            <CandidateDetails info={profileInfo} />
-          )}
-          {control === "editCandidate" && <ProfileEdit info={profileInfo} />}
-          {control === "createResume" && <PdfCreator />}
-          {control === "login" && <LogIn></LogIn>}
-          {control === "welcome" && <Welcome></Welcome>}
-          {control === "upload" && <UploadViewResume />}
-          {control === "myjobs" && <MyJobs />}
-          {control === "skills" && <Skills />}
-          {/* recruiter dashboard */}
-          {control === "companyProfile" && <CompanyInfo info={profileInfo} />}
-          {control === "companies" && <CompanyProfile />}
-          {control === "postJob" && <AddJob />}
-          {control === "candidates" && <CandidatesList />}
-          {control === "manageJobs" && <ManageJobs />}
-          {control === "editCompany" && <EditCompany info={profileInfo} />}
+          <div
+            className="welcome-dashboard d-md-flex align-items-center"
+            style={{ height: "18vh" }}
+          >
+            <img
+              src={user.photoURL}
+              alt=""
+              className="ms-5 me-3"
+              style={{ height: "13vh", borderRadius: "100px" }}
+            />
+            <h4 className="dashboard-title" style={{ color: "brown" }}>
+              {user.displayName}
+            </h4>
+          </div>
+          <hr className="m-0" />
+
+          <div className="dashboard-content mt-3 mx-auto">
+            {control === "candiProfile" && (
+              <CandidateDetails info={profileInfo} />
+            )}
+            {control === "editCandidate" && <ProfileEdit info={profileInfo} />}
+            {control === "createResume" && <PdfCreator />}
+            {control === "login" && <LogIn></LogIn>}
+            {control === "welcome" && <Welcome></Welcome>}
+            {control === "upload" && <UploadViewResume />}
+            {control === "myjobs" && <MyJobs />}
+            {control === "skills" && <Skills />}
+            {/* recruiter dashboard */}
+            {control === "companyProfile" && <CompanyInfo info={profileInfo} />}
+            {control === "companies" && <CompanyProfile />}
+            {control === "postJob" && <AddJob />}
+            {control === "candidates" && <CandidatesList />}
+            {control === "manageJobs" && <ManageJobs />}
+            {control === "editCompany" && <EditCompany info={profileInfo} />}
+          </div>
         </div>
       </div>
     </div>
