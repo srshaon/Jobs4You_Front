@@ -28,8 +28,8 @@ const Cover = () => {
   return (
     <>
       <div className="banner-container overflow-hidden">
-        <div>
-          <img src={banner} alt="" className="banner-img" />
+        <div >
+          <img src={banner} alt="" className="banner-img " />
 
           <div className="banner w-100">
             <div>
@@ -49,7 +49,7 @@ const Cover = () => {
                 />
               </h2>
               <div className="banner-form">
-                <form action="" className="d-md-flex justify-content-center">
+                <form action="" className="d-md-flex justify-content-center banner-form-input">
                   <input
                     type="text"
                     name=""
@@ -70,7 +70,7 @@ const Cover = () => {
                     onChange={handleSearchByLocation}
                   />
                   <Link to="/searchResult">
-                    <button className="search-btn p-3">Find Jobs</button>
+                    <button className="search-btn footer-search-btn p-3">Find Jobs</button>
                   </Link>
                 </form>
               </div>
