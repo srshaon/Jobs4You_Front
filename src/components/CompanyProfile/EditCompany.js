@@ -43,6 +43,7 @@ const EditCompany = ({ info }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("nupa");
     const { cname, country, email, contact, industry, nob, noe, website } =
       profileInfo;
     await updateProfile({
