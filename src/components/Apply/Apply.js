@@ -31,7 +31,7 @@ const Apply = () => {
 ////Testing2
   useEffect(() => {
 
-    fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
+    fetch(`http://localhost:5000/jobs/${jobId}`)
       .then(res => res.json())
       .then(data => setJobs(data))
 
@@ -39,7 +39,7 @@ const Apply = () => {
   // Candidate Fetch
   useEffect(() => {
 
-    fetch(`https://afternoon-headland-45054.herokuapp.com/allprofiles`)
+    fetch(`http://localhost:5000/allprofiles`)
       .then(res => res.json())
       // .then(data => {
       //   const temp= data.filter(candidate => {
@@ -88,12 +88,16 @@ const Apply = () => {
   // console.log(age?.years)
 
   // form submit
+  //console.log(jobs._id)
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!resumepdfFile && coverLetterpdfFile) {
       return;
     }
     const formData = new FormData();
+    const jobID1 = jobs?._id
+    console.log(jobID1)
+    formData.append("jobId", jobID1);
     formData.append("job", jobs?.job);
     formData.append("company", jobs?.company);
     formData.append("jobLocation", jobs?.jobLocation);
@@ -111,7 +115,7 @@ const Apply = () => {
     formData.append("resumepdfFile", resumepdfFile);
     formData.append("coverLetterpdfFile", coverLetterpdfFile);
 
-    fetch("https://afternoon-headland-45054.herokuapp.com/applyList", {
+    fetch("http://localhost:5000/applyList", {
       method: "POST",
       body: formData,
     })
@@ -152,6 +156,7 @@ const Apply = () => {
                   >
                     Personal Details
                   </h3>
+                 
                   <div className="col col-md-6 form-data">
                     <div className="form-group">
                       <h6 id="helpId1" className=" d-flex justify-content-center">
