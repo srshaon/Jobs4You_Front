@@ -28,26 +28,26 @@ const Cover = () => {
   return (
     <>
       <div className="banner-container overflow-hidden">
-        <div>
-          <img src={banner} alt="" className="banner-img" />
+        <div >
+          <img src={banner} alt="" className="banner-img " />
 
           <div className="banner w-100">
-            <div>
-              <h2
+            <div >
+              <h2 className="cover-banner-typing-text"
                 style={{
                   color: "#537890",
                   fontFamily: "Alegreya, sans-serif",
                   fontSize: "45px",
                   fontWeight: "bolder",
-                  letterSpacing: "1px",
+                  letterSpacing: "1px"
                 }}
               >
                 {/* Explore Our */}
-                <span
+                <span className="cover-banner-typing-text"
                   style={{
                     fontSize: "60px",
                     fontWeight: "900",
-                    color: "brown",
+                    color: "brown"
                   }}
                 >
                   <Typewriter
@@ -66,7 +66,7 @@ const Cover = () => {
                 </span>
               </h2>
               <div className="banner-form">
-                <form action="" className="d-md-flex justify-content-center">
+                <form action="" className="d-md-flex justify-content-center banner-form-input">
                   <input
                     type="text"
                     name=""
@@ -87,7 +87,7 @@ const Cover = () => {
                     onChange={handleSearchByLocation}
                   />
                   <Link to="/searchResult">
-                    <button className="search-btn p-3">Find Jobs</button>
+                    <button className="search-btn footer-search-btn p-3">Find Jobs</button>
                   </Link>
                 </form>
               </div>

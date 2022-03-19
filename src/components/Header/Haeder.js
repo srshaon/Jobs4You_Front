@@ -11,28 +11,28 @@ const Header = () => {
   return (
     <>
       {location.pathname !== "/dashboard" && (
-        <Navbar collapseOnSelect expand="lg" variant="dark" className="nav-bg ">
+        <Navbar collapseOnSelect expand="lg" variant="dark" className="nav-bg">
           <Container className="d-flex align-items-center justify-items-center">
             <Navbar.Brand
               to="/home"
-              className="text-white"
+              className="text-white navbar-brand-header"
               style={{
                 fontFamily: "Alegreya, sans-serif",
                 fontSize: "32px",
-                fontWeight: "500",
+                fontWeight: "500"
               }}
             >
-              <span
+              <span className='navbar-brand-header-character'
                 style={{
                   color: "white",
                   fontSize: "45px",
-                  fontWeight: "900",
+                  fontWeight: "900"
                 }}
               >
                 J
               </span>
               obs
-              <span
+              <span className='navbar-brand-header-number-character'
                 style={{
                   color: "orangered",
                   fontWeight: "900",
@@ -41,7 +41,7 @@ const Header = () => {
               >
                 4
               </span>
-              <span
+              <span className='navbar-brand-header-character'
                 style={{ color: "white", fontSize: "45px", fontWeight: "900" }}
               >
                 Y

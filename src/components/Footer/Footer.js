@@ -23,16 +23,16 @@ const Footer = () => {
             <div className="container">
               <div
                 className="card footer-card mb-3"
-                // style={{ border: "2px solid red" }}
+              // style={{ border: "2px solid red" }}
               >
                 <div className="card-body">
                   <Row className="m-4 align-items-center text-center">
-                    <Col>
+                    <Col >
                       <FaPhoneAlt className="footer-icon" />
-                      <p
+                      <p className="footer-icon-p"
                         style={{
                           color: "white",
-                          fontSize: "18px",
+                          fontSize: "18px"
                         }}
                       >
                         +0001111
@@ -40,22 +40,22 @@ const Footer = () => {
                     </Col>
                     <Col>
                       <FaAt className="footer-icon" />
-                      <p style={{ color: "white", fontSize: "18px" }}>
+                      <p className="footer-icon-p" style={{ color: "white", fontSize: "18px" }}>
                         jobs4you@email.com
                       </p>
                     </Col>
                     <Col>
                       <FaMapMarkerAlt className="footer-icon" />
-                      <p style={{ color: "white", fontSize: "18px" }}>
+                      <p className="footer-icon-p" style={{ color: "white", fontSize: "18px" }}>
                         California, USA
                       </p>
                     </Col>
                   </Row>
                 </div>
               </div>
-              <div>
-                <Row>
-                  <Col md={3}>
+              <div >
+                <Row >
+                  <Col className="footer-second-div" md={3}>
                     <div>
                       <h5>Exploring --</h5>
                       <span className="animate-border border-black"></span>
@@ -68,7 +68,7 @@ const Footer = () => {
                       data-aos-duration="2000"
                     />
                   </Col>
-                  <Col md={3} className="">
+                  <Col md={3} className="footer-second-div">
                     <div>
                       <h5>Information</h5>
                       <span className="animate-border border-black"></span>
@@ -80,7 +80,7 @@ const Footer = () => {
                       {/* <Link to="/policy">Privacy Policy</Link> */}
                     </div>
                   </Col>
-                  <Col md={3} className="">
+                  <Col md={3} className="footer-second-div">
                     <div>
                       <h5>Company</h5>
                       <span className="animate-border border-black"></span>
@@ -93,13 +93,13 @@ const Footer = () => {
                     </div>
                   </Col>
 
-                  <Col md={3} className="">
-                    <div>
-                      <h5>Subscribe</h5>
+                  <Col md={3} className="footer-second-div">
+                    <div >
+                      <h5 >Subscribe</h5>
                       <span className="animate-border border-black"></span>
                     </div>
-                    <div>
-                      <form action="" className="d-md-flex mt-4">
+                    <div >
+                      <form action="" className="d-md-flex mt-4 subscribe-form-footer">
                         <input
                           type="text"
                           name=""

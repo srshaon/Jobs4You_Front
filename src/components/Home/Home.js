@@ -18,7 +18,7 @@ import Footer from "../Footer/Footer";
 
 const Home = () => {
   return (
-    <div>
+    <div style={{ overflowX: 'hidden' }} className="home-container-nuzhat">
       {/* <Header></Header> */}
       <Cover></Cover>
       <main className="main-container">

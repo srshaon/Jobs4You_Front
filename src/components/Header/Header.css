@@ -58,3 +58,26 @@
   height: 38px;
   border-radius: 50%;
 }
+
+/* @media (max-width:700px) {
+  .nav-link, .signout-btn, .dropdown-item{
+    color: black !important;
+  }
+  .navbar-brand-header{
+    font-size: 25px !important;
+    font-weight: 100 !important;
+    height: 100% !important;
+    padding-top: -20px !important;
+  }
+  .navbar-brand-header-character{
+    font-size: 35px !important;
+    font-weight: 100 !important;
+    height: 100% !important;
+    
+  }
+  .navbar-brand-header-number-character{
+    font-size: 45px !important;
+    font-weight: 100 !important;
+    height: 100% !important;
+  }
+} */
