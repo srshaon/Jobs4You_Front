@@ -6,15 +6,16 @@ import { CgWorkAlt } from "react-icons/cg";
 import { TiLocation } from "react-icons/ti";
 import { FcCurrencyExchange } from "react-icons/fc";
 import "./ManageJob.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
-const ManageJob = ({ job, setJobs }) => {
+const ManageJob = ({ job }) => {
   const [show, setShow] = useState(false);
-  const handleState = (id) => {
+  const handleUpdate = (id) => {
     const proceed = window.confirm("Are you sure that you want to update?");
     if (proceed) {
-      const updatedJob = { ...job, status: "approved" };
-      const url = `https://afternoon-headland-45054.herokuapp.com/updateJob/${id}`;
-      axios.put(url, updatedJob).then((res) => {
+      // const updatedJob = { ...job, status: "approved" };
+      const url = `http://localhost:5000/jobs/${id}`;
+      axios.put(url).then((res) => {
         if (res.data.modifiedCount) {
           alert("updated successfully");
         }
@@ -29,13 +30,15 @@ const ManageJob = ({ job, setJobs }) => {
 
   const onSubmit = (data) => {
     const requirements = data.additionalRequirements.split(/\r?\n/g);
-    const newData = { ...data, additionalRequirements: requirements };
+    const skills = data.skills.split(",");
+    const newData = {
+      ...data,
+      additionalRequirements: requirements,
+      skills: skills,
+    };
     console.log(newData);
     axios
-      .put(
-        `https://afternoon-headland-45054.herokuapp.com/jobs/${job._id}`,
-        newData
-      )
+      .put(`http://localhost:5000/jobs/${job._id}`, newData)
       .then((res) => {
         if (res.data.modifiedCount) {
           alert("updated successfully");
@@ -45,7 +48,7 @@ const ManageJob = ({ job, setJobs }) => {
   };
   return (
     <>
-      <Col md={12}>
+      {/* <Col md={12}>
         <Card className="updatedjob-card w-75 p-5 mx-auto">
           <div>
             <div className="px-5 py-3">
@@ -119,8 +122,25 @@ const ManageJob = ({ job, setJobs }) => {
             </div>
           </div>
         </Card>
-      </Col>
-
+      </Col> */}
+      <tr>
+        <td>
+          <Link to={`/jobdetails/${job._id}`}>{job.job}</Link>
+        </td>
+        <td></td>
+        <td>{job.applicationDeadline}</td>
+        <td>{job.status}</td>
+        <td>
+          <span role="button" onClick={handleShow}>
+            Update
+          </span>
+        </td>
+        {/* <td>
+          <span role="button" onClick={() => handleExpire(job._id)}>
+            Close
+          </span>
+        </td> */}
+      </tr>
       <Modal
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
@@ -172,19 +192,25 @@ const ManageJob = ({ job, setJobs }) => {
                 defaultValue={job.vacancy}
               />
               <input
-                type="name"
+                type="text"
                 {...register("educationalRequirements")}
                 placeholder="Education Req"
                 defaultValue={job.educationalRequirements}
               />
               <input
-                type="name"
+                type="text"
                 {...register("experienceRequirements")}
                 placeholder="Experience Req"
                 defaultValue={job.experienceRequirements}
               />
               <input
-                type="name"
+                type="text"
+                {...register("skills")}
+                placeholder="Skills"
+                defaultValue={job.skills}
+              />
+              <input
+                type="text"
                 {...register("jobResponsibilities")}
                 placeholder="Job Responsibilities "
                 defaultValue={job.jobResponsibilities}
