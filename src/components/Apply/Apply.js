@@ -94,14 +94,17 @@ const Apply = () => {
     if (!resumepdfFile && coverLetterpdfFile) {
       return;
     }
+    console.log(jobs?.applicationDeadline)
     const formData = new FormData();
-    const jobID1 = jobs?._id
+   const jobID1 = jobs?._id
+   
     console.log(jobID1)
     formData.append("jobId", jobID1);
     formData.append("job", jobs?.job);
     formData.append("company", jobs?.company);
     formData.append("jobLocation", jobs?.jobLocation);
     formData.append("employmentStatus", jobs?.employmentStatus);
+    formData.append("applicationDeadline", jobs?.applicationDeadline)
     formData.append("image", jobs.image)
     formData.append("firstName", singleCandidate?.fname);
     formData.append("lastName", singleCandidate?.lname);

@@ -18,14 +18,7 @@ const ManageJobs = () => {
         );
         setJobs(postedJobs);
       });
-  }, []);
-
-  const handleUpdate = () => {
-    console.log("update");
-  };
-  const handleExpire = () => {
-    console.log("expired");
-  };
+  }, [jobs]);
 
   return (
     <div>
@@ -43,8 +36,8 @@ const ManageJobs = () => {
         </Row> */}
         <div className="mx-auto my-5 text-center">
           <Table>
-            <thead>
-              <tr>
+            <thead className="table-head">
+              <tr className="table-tr">
                 <th>Title</th>
                 <th>Date Posted</th>
                 <th>Closing Date</th>
@@ -53,7 +46,7 @@ const ManageJobs = () => {
                 <th>Listing Expires</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="table-body">
               {jobs?.map((job) => (
                 <ManageJob key={job._id} job={job}></ManageJob>
               ))}

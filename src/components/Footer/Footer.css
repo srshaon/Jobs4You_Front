@@ -168,9 +168,7 @@ footer .copyright {
   color: #06ff00;
   font-size: 27px;
   margin: 7px 0;
-}
-
- 
+} 
 @media (max-width:700px) {
       
   .footer-card {
@@ -193,4 +191,4 @@ footer .copyright {
     justify-content: center !important;
   }
 
-}
+

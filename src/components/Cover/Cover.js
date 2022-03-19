@@ -32,38 +32,21 @@ const Cover = () => {
           <img src={banner} alt="" className="banner-img " />
 
           <div className="banner w-100">
-            <div >
-              <h2 className="cover-banner-typing-text"
-                style={{
-                  color: "#537890",
-                  fontFamily: "Alegreya, sans-serif",
-                  fontSize: "45px",
-                  fontWeight: "bolder",
-                  letterSpacing: "1px"
-                }}
-              >
-                {/* Explore Our */}
-                <span className="cover-banner-typing-text"
-                  style={{
-                    fontSize: "60px",
-                    fontWeight: "900",
-                    color: "brown"
-                  }}
-                >
-                  <Typewriter
-                    words={[
-                      "2000+ jobs",
-                      "500+ companies &",
-                      "10k+ hiring stories",
-                    ]}
-                    loop={5}
-                    cursor
-                    cursorStyle="_"
-                    typeSpeed={70}
-                    deleteSpeed={50}
-                    delaySpeed={1000}
-                  />
-                </span>
+            <div>
+              <h2 className="banner-text">
+                <Typewriter
+                  words={[
+                    "2000+ jobs",
+                    "500+ companies &",
+                    "10k+ hiring stories",
+                  ]}
+                  loop={5}
+                  cursor
+                  cursorStyle="_"
+                  typeSpeed={70}
+                  deleteSpeed={50}
+                  delaySpeed={1000}
+                />
               </h2>
               <div className="banner-form">
                 <form action="" className="d-md-flex justify-content-center banner-form-input">

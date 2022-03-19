@@ -11,8 +11,8 @@ const Header = () => {
   return (
     <>
       {location.pathname !== "/dashboard" && (
-        <Navbar collapseOnSelect expand="lg" variant="dark" className="nav-bg">
-          <Container className="d-flex align-items-center justify-items-center">
+        <Navbar collapseOnSelect expand="lg" variant="dark" className="nav-bg ">
+          <Container className="header d-md-flex align-items-center justify-items-center">
             <Navbar.Brand
               to="/home"
               className="text-white navbar-brand-header"

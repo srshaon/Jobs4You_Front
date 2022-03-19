@@ -71,13 +71,16 @@
   font-size: 16px;
   font-weight: 500;
   background-color: var(--color-primary-dark) !important;
-  border: none;
+  border: none !important;
   border-radius: 7px;
 }
-/* @media (max-width:700px) {
-  .home-container-nuzhat{
-    
-    
-    height: 100%;
+
+@media (max-width: 576px) {
+  .explore-container {
+    height: auto;
+    padding: 15px;
   }
-} */
+  .explore-text {
+    text-align: center;
+  }
+}
