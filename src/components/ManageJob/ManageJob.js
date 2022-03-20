@@ -20,7 +20,7 @@ const ManageJob = ({ job }) => {
     );
     if (proceed) {
       const closedJob = { ...job, status: "closed" };
-      const url = `http://localhost:5000/updateJob/${id}`;
+      const url = `https://afternoon-headland-45054.herokuapp.com/updateJob/${id}`;
       axios.put(url, closedJob).then((res) => {
         if (res.data.modifiedCount) {
           alert("closed successfully");
@@ -44,7 +44,7 @@ const ManageJob = ({ job }) => {
     };
     console.log(newData);
     axios
-      .put(`http://localhost:5000/jobs/${job._id}`, newData)
+      .put(`https://afternoon-headland-45054.herokuapp.com/jobs/${job._id}`, newData)
       .then((res) => {
         if (res.data.modifiedCount) {
           alert("updated successfully");

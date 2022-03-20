@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { PieChart, Pie, Tooltip, ResponsiveContainer, LabelList, Label, Cell } from 'recharts';
 
 const MyJobs = () => {
   const [applyList, setApplyList] = useState([]);
@@ -36,7 +37,8 @@ const MyJobs = () => {
               <th>Company</th>
               <th>Location</th>
               <th>Job Type</th>
-              {/* <th>Resume</th> */}
+              <th>Skills</th>
+              <th>Application Closing</th>
             </tr>
           </thead>
           <tbody className="table-secondary">
@@ -46,7 +48,8 @@ const MyJobs = () => {
                 <td>{apply.company}</td>
                 <td>{apply.jobLocation}</td>
                 <td>{apply.employmentStatus}</td>
-                {/* <td>{apply.resume}</td> */}
+                <td>{apply.percentage}</td>
+                <td>{apply.applicationDeadline}</td>
               </tr>
             ))}
           </tbody>

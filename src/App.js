@@ -57,6 +57,7 @@ import Freelancing from "./components/Freelancing/Freelancing";
 import Banking from "./components/Banking/Banking";
 import HR from "./components/HR/HR";
 import RMG from "./components/RMG/RMG";
+import AllJobs from "./components/AllJobs/AllJobs";
 
 function App() {
   return (
@@ -83,6 +84,9 @@ function App() {
             </Route>
             <Route path="/allreviews">
               <AllReviews></AllReviews>
+            </Route>
+            <Route path="/alljobs">
+              <AllJobs></AllJobs>
             </Route>
             {/* <Route path="/profileform">
               <AccountForm></AccountForm>
@@ -154,7 +158,7 @@ function App() {
             <Route path="/interview">
               <InterviewTips></InterviewTips>
             </Route>
-            <Route path="/apply/:jobId">
+            <Route path="/apply">
               <Apply></Apply>
             </Route>
             <Route path="/uploadviewresume">
