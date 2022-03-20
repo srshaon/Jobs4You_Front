@@ -42,6 +42,8 @@ import AddJob from "../AddJob/AddJob";
 import ManageJobs from "../ManageJobs/ManageJobs";
 import EditCompany from "../CompanyProfile/EditCompany";
 import AllJobStatus from "./../AllJobStatus/AllJobStatus";
+import AccountForm from "../ProfileForm/AccountForm";
+
 
 const Dashboard = () => {
   const history = useHistory();
@@ -118,6 +120,15 @@ const Dashboard = () => {
                           <CgProfile />
                         </span>{" "}
                         My Profile
+                      </li>
+                      <li
+                        onClick={() => setControl("createProfile")}
+                        className="li py-3 px-5"
+                      >
+                        <span className="dashboard-icons px-1">
+                          <CgProfile />
+                        </span>{" "}
+                        Create Profile
                       </li>
 
                       <li
@@ -217,6 +228,15 @@ const Dashboard = () => {
                             <CgProfile />
                           </span>{" "}
                           View Profile
+                        </li>
+                        <li
+                          onClick={() => setControl("createProfile")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-2">
+                            <CgProfile />
+                          </span>{" "}
+                          Create Profile
                         </li>
                         <li
                           onClick={() => setControl("editCompany")}
@@ -346,7 +366,7 @@ const Dashboard = () => {
             style={{ height: "18vh" }}
           >
             <img
-              src={user.photoURL}
+              src={profileInfo?.img}
               alt=""
               className="ms-5 me-3"
               style={{ height: "13vh", borderRadius: "100px" }}
@@ -368,10 +388,11 @@ const Dashboard = () => {
             {control === "upload" && <UploadViewResume />}
             {control === "myjobs" && <MyJobs />}
             {control === "skills" && <Skills />}
+            {control === "createProfile" && <AccountForm/>}
             {/* recruiter dashboard */}
             {control === "companyProfile" && <CompanyInfo info={profileInfo} />}
             {control === "companies" && <CompanyProfile />}
-            {control === "postJob" && <AddJob />}
+            {control === "postJob" && <AddJob profileInfo={profileInfo} />}
             {control === "candidates" && <CandidatesList />}
             {control === "manageJobs" && <ManageJobs />}
             {control === "editCompany" && <EditCompany info={profileInfo} />}
