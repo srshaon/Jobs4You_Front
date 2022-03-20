@@ -5,7 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import "./Header.css";
 import { useLocation } from "react-router-dom";
 const Header = () => {
-  const { user, logOut } = useAuth();
+  const { admin, user, logOut } = useAuth();
   const location = useLocation();
 
   return (
@@ -80,17 +80,19 @@ const Header = () => {
                     </NavLink>
                   </NavDropdown>
                 </NavDropdown>
-                <NavDropdown title="EMPLOYER" id="collasible-nav-dropdown">
-                  <NavLink className="dropdown-item" to="/postJob">
-                    Post a Job
-                  </NavLink>
-                  <NavLink className="dropdown-item" to="/candidates">
-                    Browse Candidates
-                  </NavLink>
-                  <NavLink className="dropdown-item" to="/dashboard">
-                    Employer Dashboard
-                  </NavLink>
-                </NavDropdown>
+                {admin == "company" && (
+                  <NavDropdown title="EMPLOYER" id="collasible-nav-dropdown">
+                    <NavLink className="dropdown-item" to="/postJob">
+                      Post a Job
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/candidates">
+                      Browse Candidates
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/dashboard">
+                      Dashboard
+                    </NavLink>
+                  </NavDropdown>
+                )}
                 <NavLink className="nav-link" to="/about">
                   ABOUT US
                 </NavLink>
