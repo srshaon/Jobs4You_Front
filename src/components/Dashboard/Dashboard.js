@@ -361,7 +361,7 @@ const Dashboard = () => {
             {control === "candiProfile" && (
               <CandidateDetails info={profileInfo} />
             )}
-            {control === "editCandidate" && <ProfileEdit info={profileInfo} />}
+            {control === "editCandidate" && <ProfileEdit info={profileInfo} setControl={setControl}/>}
             {control === "createResume" && <PdfCreator />}
             {control === "login" && <LogIn></LogIn>}
             {control === "welcome" && <Welcome></Welcome>}

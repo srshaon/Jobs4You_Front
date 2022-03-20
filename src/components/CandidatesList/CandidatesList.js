@@ -13,7 +13,7 @@ import { useGetProfilesQuery } from "../../Redux-handler/ManageProfiles";
 const CandidatesList = () => {
   const { data: candidates } = useGetProfilesQuery();
   let sortedList = [];
-  for (let i = candidates.length - 1; i >= 0; i--) {
+  for (let i = candidates?.length - 1; i >= 0; i--) {
     sortedList.push(candidates[i]);
   }
   const [pageNumber, setPageNumber] = useState(0);

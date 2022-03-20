@@ -58,7 +58,7 @@ const AddJob = () => {
           Job Details
         </h4>
         <hr />
-        <form className="py-5 mb-4" onSubmit={handleSubmit(onSubmit)}>
+        <form disabled className="py-5 mb-4" onSubmit={handleSubmit(onSubmit)}>
           <div className="d-flex">
             <div className="w-100 mx-3">
               <label htmlFor="">Company name</label> <br />
@@ -74,6 +74,7 @@ const AddJob = () => {
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Location</label> <br />
               <input
+              disabled
                 className="w-100 p-2 mt-2"
                 type="name"
                 {...register("jobLocation")}
