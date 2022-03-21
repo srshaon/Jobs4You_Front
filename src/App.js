@@ -154,7 +154,7 @@ function App() {
             <Route path="/interview">
               <InterviewTips></InterviewTips>
             </Route>
-            <Route path="/apply/:jobId">
+            <Route path="/apply">
               <Apply></Apply>
             </Route>
             <Route path="/uploadviewresume">

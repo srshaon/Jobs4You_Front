@@ -65,13 +65,16 @@ const Chart = () => {
         <div style={{width: '100%', height: '80vh', color: 'black'}}>
             {
                 (gainedSkills?.length !== 0) &&
+               
                 <SinglePie data1={data1} data2={data2} />
+               
+                
                     
             }
 
             {
                 (gainedSkills?.length !== 0) &&
-                <div className="d-flex justify-content-center"><Link to={`/apply/${_id}`}>
+                <div className="d-flex justify-content-center"><Link to={`/apply/?jobId=${_id}&percentage=${`${((data2[0]?.value / (data2[0]?.value + data2[1]?.value)) * 100).toFixed(2)}%`}`}>
                     <Button className="apply-btn px-5">Apply for job</Button>
                 </Link></div>
             }

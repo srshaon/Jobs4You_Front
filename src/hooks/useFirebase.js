@@ -33,6 +33,7 @@ const useFirebase = () => {
   const [searchLocation, setSearchLocation] = useState("");
   const [resetSearchKey, setResetSearchKey] = useState('');
   const [resetSearchLocation, setResetSearchLocation] = useState('');
+  const [gainedSkills, setGainedSkills] = useState([]);
 
 
   // const [condition, setCondition] = useState("seeker");
@@ -196,7 +197,8 @@ const useFirebase = () => {
     searchLocation,
     setSearchLocation,
     resetSearchKey, setResetSearchKey,
-    resetSearchLocation, setResetSearchLocation
+    resetSearchLocation, setResetSearchLocation,
+    gainedSkills, setGainedSkills
   };
 };
 

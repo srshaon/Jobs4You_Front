@@ -3,10 +3,12 @@ import { Button, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import useAuth from '../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router';
+import queryString from 'query-string';
 import "./Apply.css";
 
 const Apply = () => {
-  const { jobId } = useParams();
+  const location = useLocation();
+  const { jobId, percentage } = queryString.parse(location.search);
   // const history = useHistory()
   // const location = useLocation()
   // const url = location.state?.from || "/myjobs"
@@ -24,6 +26,11 @@ const Apply = () => {
   const [portfolio, setPortfolio] = useState("");
   const [jobs, setJobs] = useState({});
   const [candidates,setCandidates] = useState([])
+  const [applyList, setApplyList] = useState([]);
+  
+
+ 
+  
   // const [singleCandidate, setSingleCandidate] = useState({})
   
   const { user } = useAuth()
@@ -31,7 +38,7 @@ const Apply = () => {
 ////Testing2
   useEffect(() => {
 
-    fetch(`http://localhost:5000/jobs/${jobId}`)
+    fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then(res => res.json())
       .then(data => setJobs(data))
 
@@ -39,7 +46,7 @@ const Apply = () => {
   // Candidate Fetch
   useEffect(() => {
 
-    fetch(`http://localhost:5000/allprofiles`)
+    fetch(`https://afternoon-headland-45054.herokuapp.com/allprofiles`)
       .then(res => res.json())
       // .then(data => {
       //   const temp= data.filter(candidate => {
@@ -105,6 +112,7 @@ const Apply = () => {
     formData.append("jobLocation", jobs?.jobLocation);
     formData.append("employmentStatus", jobs?.employmentStatus);
     formData.append("applicationDeadline", jobs?.applicationDeadline)
+    formData.append("percentage", percentage)
     formData.append("image", jobs.image)
     formData.append("firstName", singleCandidate?.fname);
     formData.append("lastName", singleCandidate?.lname);
@@ -118,7 +126,7 @@ const Apply = () => {
     formData.append("resumepdfFile", resumepdfFile);
     formData.append("coverLetterpdfFile", coverLetterpdfFile);
 
-    fetch("http://localhost:5000/applyList", {
+    fetch("https://afternoon-headland-45054.herokuapp.com/applyList", {
       method: "POST",
       body: formData,
     })
@@ -137,6 +145,7 @@ const Apply = () => {
   // console.log(coverLetterpdfFile);
   // console.log(firstName);
   // console.log(jobs.employmentStatus)
+ 
   if(singleCandidate===undefined){
     return  <Spinner animation="border" role="status">
     <span className="visually-hidden">Loading...</span>
@@ -144,15 +153,26 @@ const Apply = () => {
    
   }
   
+  
   return (
     <div className="bodyShadow">
+      
       <div className="container-fluid ">
         <div id="myForms" className="row ">
           <div id="card1" className="">
             <div className="card-body">
-
+              
+              
               <form onSubmit={handleSubmit} action="" method="POST">
                 <div className="row applyform1">
+                <input
+                   style={{ visibility: "hidden" }}
+                        className="sadiaInput"
+                       
+                        aria-describedby="helpId1"
+                        required
+                        value={percentage}
+                      />
                   <h3
                     className="d-flex justify-content-center my-4"
                     style={{ color: "brown" }}
@@ -161,6 +181,7 @@ const Apply = () => {
                   </h3>
                  
                   <div className="col col-md-6 form-data">
+                  
                     <div className="form-group">
                       <h6 id="helpId1" className=" d-flex justify-content-center">
                         Candidate's First Name
@@ -350,9 +371,14 @@ const Apply = () => {
                 </div>
 
                 <div className="d-flex justify-content-center pt-3 ">
-                  <Button className="submit-btn p-3 text-white" type="submit">
+                <Button className="submit-btn p-3 text-white" type="submit">
                     Submit
                   </Button>
+                   
+                    
+                 
+                  
+                  
                 </div>
               </form>
             </div>
