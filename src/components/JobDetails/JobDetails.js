@@ -9,6 +9,8 @@ const JobDetails = () => {
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
   const [applications, setApplication] = useState([]);
+  const [applyList, setApplyList] = useState([]);
+
 
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
@@ -28,6 +30,20 @@ const JobDetails = () => {
       })
   }, [jobId, applications?.length]);
   console.log(jobs?.additionalRequirements);
+  //Fetch applyList
+  {
+    useEffect(() => {
+
+      fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
+        .then(res => res.json())
+        .then(data => setApplyList(data))
+
+    }, [])
+    const applyListFilter = applyList?.find(apply => apply?.jobId === jobs?._id);
+    console.log(applyListFilter);
+  }
+
+
   if (jobs.length === 0) {
     return <Spinner animation="border" variant="danger" />;
   }
@@ -75,11 +91,20 @@ const JobDetails = () => {
             </Col>
             <Col md={3}>
               <div>
-                <Link to={`/chart/${jobs._id}`}>
-                  <Button className="apply-btn px-5">
-                    See if you are eligible
-                  </Button>
-                </Link>
+                {
+                  (applyList?.find(apply => apply?.length === 0) && jobs?.length === 0) &&
+                  <Spinner animation="border" variant="danger" />
+                }
+                {
+                  (applyList?.find(apply => apply?.jobId === jobs?._id)) ?
+                    <h4 style={{ color: "green" }}>Already Applied</h4> :
+                    <Link to={`/chart/${jobs._id}`}>
+                      <Button className="apply-btn px-5">
+                        See if you are eligible to apply?
+                      </Button>
+                    </Link>
+                }
+
               </div>
             </Col>
           </div>

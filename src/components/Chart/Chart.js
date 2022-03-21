@@ -86,7 +86,7 @@ const Chart = () => {
                             (((data2[0]?.value / (data2[0]?.value + data2[1]?.value)) * 100).toFixed(2) >= 50) &&
                             <div>
                                 <div className="mb-2">Your skill matches finely to this job.</div>
-                                <Link to={`/apply/${_id}`}>
+                                <Link to={`/apply/?jobId=${_id}&percentage=${(((data2[0]?.value / (data2[0]?.value + data2[1]?.value)) * 100).toFixed(2))}%`}>
                                     <Button className="apply-btn px-5">Apply for job</Button>
                                 </Link>
                             </div>
