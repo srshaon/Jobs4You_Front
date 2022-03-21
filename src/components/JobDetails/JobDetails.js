@@ -8,16 +8,37 @@ import { Link } from "react-router-dom";
 const JobDetails = () => {
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
+  const [applications, setApplication] = useState([]);
 
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then((res) => res.json())
-      .then((data) => setJobs(data));
-  }, [jobId]);
+      .then((data) => setJobs(data))
+      .then(() => {
+        fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
+          .then((res) => res.json())
+          .then(data => {
+            console.log(data);
+            const totalApplyLIst = data;
+            const individualApplyList = totalApplyLIst.filter(job => job.jobId == `${jobId}`)
+
+            setApplication(individualApplyList);
+            console.log(individualApplyList);
+          })
+      })
+  }, [jobId, applications?.length]);
   console.log(jobs?.additionalRequirements);
   if (jobs.length === 0) {
     return <Spinner animation="border" variant="danger" />;
   }
+  console.log(applications);
+  let applyCandidatesEmails = [];
+  if (applications.length > 0) {
+    applications.map(a => {
+      applyCandidatesEmails.push(a.email)
+    })
+  }
+  console.log(applyCandidatesEmails);
   return (
     <div className="job-detail-container pb-5">
       <div className="container pb-5">
@@ -37,7 +58,7 @@ const JobDetails = () => {
             <Col md={2}>
               <img src={jobs.image} alt="" className="w-75 text-center p-2" />
             </Col>
-            <Col md={7}>
+            <Col md={4}>
               {
                 <div>
                   <h5 className="" style={{ color: "brown" }}>
@@ -46,6 +67,11 @@ const JobDetails = () => {
                   <h5>{jobs.jobLocation}</h5>
                 </div>
               }
+            </Col>
+            <Col md={3}>
+              <div >
+                <span style={{ background: '#0d6efd', color: 'white', fontSize: '28px' }}>Total Application: {applications.length}</span>
+              </div>
             </Col>
             <Col md={3}>
               <div>
