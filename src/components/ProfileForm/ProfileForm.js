@@ -61,9 +61,10 @@ const ProfileForm = (props) => {
                             Company Name
                           </label>
                           <input
+                          readOnly
                             className="profile-form-input"
                             defaultValue={user.displayName}
-                            {...register("cname", { required: true })}
+                           
                           />
                         </div>
                         <div>
@@ -131,9 +132,10 @@ const ProfileForm = (props) => {
                             Official Email
                           </label>
                           <input
+                          readOnly
                             className="profile-form-input"
                             defaultValue={user.email}
-                            {...register("email", { required: true })}
+                            
                           />
                         </div>
                         <div>
@@ -214,10 +216,10 @@ const ProfileForm = (props) => {
                         First Name
                       </label>
                       <input
+                      reaadOnly
                         type="text"
                         className="profile-form-input"
-                        defaultValue={""}
-                        {...register("fname", { required: true })}
+                        defaultValue={user.displayName}
                       />
                     </div>
                     <div>
@@ -288,7 +290,7 @@ const ProfileForm = (props) => {
                         Passport No
                       </label>
                       <input
-                        type={"number"}
+                        type={"text"}
                         className="profile-form-input"
                         defaultValue={""}
                         {...register("passport", { required: true })}
@@ -313,8 +315,10 @@ const ProfileForm = (props) => {
                         Primary Email
                       </label>
                       <input
+                      readOnly
                         className="profile-form-input"
-                        defaultValue={""}
+                        defaultValue={user.email}
+
                         {...register("pEmail", { required: true })}
                       />
                     </div>

@@ -8,15 +8,15 @@ import { signInWithEmailAndPassword } from "@firebase/auth";
 const LogIn = () => {
   const history = useHistory();
   const {
-    user, logOut, googleSignIn, handleEmailChange, handlePasswordChange, email, password, handleNameChange, setName, handleRegistration, auth, saveUser, role, setRole
+    user, logOut, googleSignIn, handleEmailChange, handlePasswordChange, email, password, handleNameChange, setName, handleRegistration, auth, saveUser, role, setRole, admin, setAdmin
   } = useAuth();
 
   const [error, setError] = useState("");
   const [url, setUrl] = useState("");
   const location = useLocation();
   // console.log(location);
-  let redirect_Url = location.state?.from || '/profileform';
-  let redirect_Url2 = '/profileform';
+  let redirect_Url = location.state?.from || '/dashboard';
+  let redirect_Url2 = '/dashboard';
   const redirect = () => {
     history.push(redirect_Url2);
 
@@ -24,9 +24,10 @@ const LogIn = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then(result => {
+        console.log(role);
         setRole('seeker');
         const user = result.user;
-        console.log(user);
+        console.log(role);
         saveUser(user.email, user.displayName, role, 'PUT');
         setError('');
         history.push(redirect_Url);
@@ -76,8 +77,8 @@ const LogIn = () => {
 
   const userFormDisplay = () => {
     setRole('seeker');
-    redirect_Url = '/profileform';
-    console.log(role);
+    redirect_Url = '/dashboard';
+    // console.log(role);
     // console.log('hitted first form')
     document.getElementById('user-signup-form').style.visibility = 'visible'
     document.getElementById('user-signup-form').style.display = 'block'
@@ -90,8 +91,8 @@ const LogIn = () => {
   }
   const companyFormDisplay = () => {
     setRole('company');
-    redirect_Url = '/profileform';
-    console.log(role);
+    redirect_Url = '/dashboard';
+    // console.log(role);
     // console.log('hitted second form form')
     // document.getElementById('company-signup-form').style.visibility = 'visible'
     document.getElementById('user-signup-form').style.display = 'none'

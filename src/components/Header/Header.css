@@ -58,3 +58,9 @@
   height: 38px;
   border-radius: 50%;
 }
+
+@media (max-width: 576px) {
+  .nav-bg {
+    height: auto;
+  }
+}
