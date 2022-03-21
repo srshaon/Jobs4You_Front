@@ -4,14 +4,19 @@ import { withRouter } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 import useAuth from "../../hooks/useAuth";
+import useImageVideoUpload from './../../hooks/useImageVideoUpload';
 
 const ProfileForm2 = (props) => {
   const { role, setRole, user, setUser } = useAuth();
+  const [imgUrl,setImgUrl]=useState('')
+  const [uploading,setUploading]=useState(false)
   const [condition, setCondition] = useState("");
   // const [condition, setCondition] = useState("admin");
   const { register, handleSubmit } = useForm();
   const { actions, state } = useStateMachine({ updateAction });
+  const{handleFile}=useImageVideoUpload(setImgUrl,setUploading);
   const onSubmit = (data) => {
+    state.data.img=imgUrl
     console.log(data);
     actions.updateAction(data);
     const splitBio = data?.bio?.split(/\r?\n/g);
@@ -100,15 +105,29 @@ const ProfileForm2 = (props) => {
                           {...register("achievements", { required: true })}
                         />
                       </div>
+                      <div className="profile-form-input-pair d-flex justify-content-center">
+                    <div>
+                      <label htmlFor="">
+                        
+                      </label>
+                      <input
+              className="form-control mt-2"
+              type="file"
+              onChange={(e) => {
+                handleFile(e);
+              }}
+            />
+                    </div>
+                  </div>
 
-                      <div className="profile-form-button-div d-flex justify-content-center">
+                      {uploading?<p>Uploading.....</p>:<div className="profile-form-button-div d-flex justify-content-center">
                         <button
                           className="profile-form-button p-3"
                           type="submit"
                         >
                           Next
                         </button>
-                      </div>
+                      </div>}
                     </div>
                   </div>
                 </form>
@@ -196,12 +215,26 @@ const ProfileForm2 = (props) => {
                       </select>
                     </div>
                   </div>
+                  <div className="profile-form-input-pair d-flex justify-content-center">
+                    <div>
+                      <label htmlFor="">
+                        
+                      </label>
+                      <input
+              className="form-control mt-2"
+              type="file"
+              onChange={(e) => {
+                handleFile(e);
+              }}
+            />
+                    </div>
+                  </div>
 
-                  <div className="profile-form-button-div d-flex justify-content-center">
+                  {uploading?<p>Uploading.....</p>:<div className="profile-form-button-div d-flex justify-content-center">
                     <button className="profile-form-button p-3" type="submit">
                       Next
                     </button>
-                  </div>
+                  </div>}
                 </div>
               </div>
             </form>
@@ -211,5 +244,4 @@ const ProfileForm2 = (props) => {
     </div>
   );
 };
-
 export default ProfileForm2;

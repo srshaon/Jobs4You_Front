@@ -5,7 +5,7 @@ import {
   useGetProfileByIdQuery,
   useUpdateProfileMutation,
 } from "../../Redux-handler/ManageProfiles";
-const ProfileEdit = ({ info }) => {
+const ProfileEdit = ({ info,setControl }) => {
   const location = useLocation();
   console.log(location.pathname);
   const history = useHistory();
@@ -41,7 +41,8 @@ const ProfileEdit = ({ info }) => {
       address,
       lname,
     });
-    history.push("/candidates");
+    setControl('candiProfile')
+    history.push("/dashboard");
   };
 
   return (
