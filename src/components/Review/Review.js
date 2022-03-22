@@ -77,7 +77,7 @@ const Review = () => {
             />
 
             <br />
-            <input
+            {/* <input
               style={{ display: "none" }}
               type="number"
               min="0"
@@ -85,7 +85,7 @@ const Review = () => {
               placeholder="Rating(Out of 5)"
               defaultValue=""
               {...register("rating", { required: true })}
-            />
+            /> */}
             <br />
 
             {errors.rating && (

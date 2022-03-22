@@ -25,30 +25,6 @@
   background: transparent;
 }
 
-/* .contents {
-  text-align: justify !important;
-  padding: 15px 15px !important;
-  font-size: 15px !important;
-} */
-
-/* .cardbg {
-  border: none;
-  box-shadow: 3px 5px 5px 3px black;
-  background-color: #f0ffc2;
-  opacity: 0.8;
-  border-radius: 10px;
-} */
-
-/* .category-bg {
-  padding: 25px 0;
-  margin: 0 10px;
-} */
-
-/* .category-container {
-  width: 1200px;
-  margin: 0 auto;
-} */
-
 .category-title {
   text-decoration: none;
   color: black !important;
@@ -61,6 +37,7 @@
   display: inline-block;
   line-height: 2rem;
   color: #fcd000;
+
   background: var(--color-primary);
   text-align: center;
   /* margin-left: 8px; */

@@ -4,8 +4,10 @@ import { Link, withRouter } from "react-router-dom";
 import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 import clearAction from "./clearAction";
+import { useHistory } from "react-router-dom";
 
 const Result = (props) => {
+  const history=useHistory()
   const { register, handleSubmit } = useForm();
   const { actions, state } = useStateMachine({ clearAction });
   const onSubmit = (data) => {
@@ -18,7 +20,7 @@ const Result = (props) => {
     console.log(state);
     console.log(actions);
     actions.clearAction(data);
-    props.history.push("./home");
+    history.push("/dashboard");
     console.log(data);
     console.log(state.data);
     console.log(data);

@@ -33,15 +33,17 @@ const Filteredjobs = () => {
   };
 
   useEffect(() => {
-    axios.get("https://afternoon-headland-45054.herokuapp.com/jobs").then((res) => {
-      const approvedJobs = res.data.filter(
-        (job) => job?.status?.toLowerCase() === "approved"
-      );
+    axios
+      .get("https://afternoon-headland-45054.herokuapp.com/jobs")
+      .then((res) => {
+        const approvedJobs = res.data.filter(
+          (job) => job?.status?.toLowerCase() === "approved"
+        );
 
-      setCategories(filteredData(approvedJobs, "category"));
-      setLocations(filteredData(approvedJobs, "jobLocation"));
-      setStatus(filteredData(approvedJobs, "employmentStatus"));
-    });
+        setCategories(filteredData(approvedJobs, "category"));
+        setLocations(filteredData(approvedJobs, "jobLocation"));
+        setStatus(filteredData(approvedJobs, "employmentStatus"));
+      });
   }, []);
 
   if (control.length === 0) {
@@ -49,7 +51,7 @@ const Filteredjobs = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container" id="browsejobs">
       <div>
         <h2
           className="text-center"

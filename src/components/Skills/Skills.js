@@ -42,7 +42,31 @@ const Skills = () => {
         e.preventDefault();
 
         const skills = [...skillArray];
-        let newSkills = skill.split(',');
+        let uncheckedSkills = skill.split(',');
+        // [a, b, c]
+        const newSkills = [];
+        uncheckedSkills.forEach((unchecked, index) => {
+            for (let i = index + 1; i < uncheckedSkills.length; i++) {
+                if (index < uncheckedSkills.length) {
+                    if ((unchecked.toLocaleLowerCase().trim() === uncheckedSkills[i].toLocaleLowerCase().trim()) && unchecked !== '-1') {
+                        uncheckedSkills[i] = '-1';
+                        // newSkills.push(unchecked);
+                    }
+                    // else if (unchecked !== '-1') {
+                    //     newSkills.push(unchecked);
+                    // }
+                }
+                // else {
+                //     if (unchecked !== '-1') {
+                //         newSkills.push(unchecked);
+                //     }
+                // }
+            }
+            if (unchecked !== '-1') {
+                newSkills.push(unchecked);
+                console.log(newSkills, 'checked');
+            }
+        });
 
         const confirmedNewSkills = newSkills.filter(newskill => {
             const i = skillArray.findIndex(singleSkill => singleSkill.toLowerCase().trim() === newskill.toLowerCase().trim());

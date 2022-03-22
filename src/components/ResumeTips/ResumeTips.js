@@ -206,51 +206,46 @@ const ResumeTips = () => {
                 </p>
               </div>
 
-              <div className="mt-5 pt-2">
+              <div className="my-5 py-5">
                 <div id="container" className="d-flex align-items-center">
-                  <div className="job-details text-center w-75 mx-auto">
+                  <div className="job-details w-75 mx-auto">
                     <h5
                       className=""
                       style={{ color: "brown", fontWeight: "600" }}
                     >
                       SUMMARY
                     </h5>
-                    <ul className="resume-information text-start">
+                    <ul className="resume-information text-start text-white">
                       <li>Include your contact information.</li>
                       <li>Tailor your resume to the role.</li>
                       <li>Describe your experience in detail.</li>
-                      <li>
-                        Summarize your experience in a 'Key Skills' section.
-                      </li>
-                      <li>
-                        Design your resume using a template that fits the tone
-                        of your industry.
-                      </li>
-                      <li>Incorporate keywords from the job description.</li>
-                      <li>
-                        Proofread for grammar, brevity, and specific action
-                        verbs.
-                      </li>
+                      <li>Mention your 'Key Skills'.</li>
+                      <li>Match keywords from the job details.</li>
+                      <li>Proofread for grammar</li>
                       <li>Convert your resume to a PDF file.</li>
                     </ul>
                   </div>
 
                   <div className="job-image">
-                    <h1 className="p-3">
+                    <h5
+                      className="p-3"
+                      style={{ color: "brown", fontWeight: "600" }}
+                    >
+                      Learn more <br />
                       <IoIosArrowDropdownCircle
-                        className="heart"
+                        className="heart mt-2"
                         style={{ color: "brown" }}
                       />
-                    </h1>
+                    </h5>
                     <img
-                      className="pb-4"
-                      style={{ width: "100%", height: "40vh" }}
+                      className=""
+                      style={{ width: "100%", height: "30vh" }}
                       src={resume}
                       alt=""
                     />
 
                     <div className="info">
-                      <h5 className="p-3">
+                      <h5 className="p-4">
                         Suggested Links of Resume Template:
                       </h5>
                       <ul>
@@ -298,7 +293,6 @@ const ResumeTips = () => {
                             Create Resume
                           </a>
                         </li>
-                        
                       </ul>
                     </div>
                   </div>
