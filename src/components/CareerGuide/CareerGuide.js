@@ -187,25 +187,25 @@ const CareerGuide = () => {
                       <h5 className="p-3">Job Sector</h5>
                       <ul>
                         <li>
-                          <Link style={{ color: "white" }}>Freelancing</Link>
+                          <Link to='/freelancing' style={{ color: "white" }}>Freelancing</Link>
                         </li>
                         <li>
-                          <Link style={{ color: "white" }}>RMG</Link>
+                          <Link to='/rmg' style={{ color: "white" }}>RMG</Link>
                         </li>
                         <li>
-                          <Link style={{ color: "white" }}>Banking</Link>
+                          <Link to='banking' style={{ color: "white" }}>Banking</Link>
                         </li>
                         <li>
-                          <Link style={{ color: "white" }}>
+                          <Link to='hr' style={{ color: "white" }}>
                             Human Resource Management
                           </Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <Link style={{ color: "white" }}>Government Job</Link>
                         </li>
                         <li>
                           <Link style={{ color: "white" }}>Career In NGO</Link>
-                        </li>
+                        </li> */}
                       </ul>
                     </div>
                   </div>
