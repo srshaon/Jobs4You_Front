@@ -33,6 +33,7 @@ const useFirebase = () => {
   const [searchLocation, setSearchLocation] = useState("");
   const [resetSearchKey, setResetSearchKey] = useState("");
   const [resetSearchLocation, setResetSearchLocation] = useState("");
+  const [control, setControl] = useState("welcome");
 
   // const [condition, setCondition] = useState("seeker");
 
@@ -129,6 +130,7 @@ const useFirebase = () => {
         // Sign-out successful.
         setUser({});
         setError("");
+        setRole('');
       })
       .catch((error) => {
         // An error happened.
@@ -203,6 +205,7 @@ const useFirebase = () => {
     setResetSearchKey,
     resetSearchLocation,
     setResetSearchLocation,
+    control, setControl
   };
 };
 

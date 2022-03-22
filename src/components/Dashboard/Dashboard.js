@@ -43,13 +43,14 @@ import ManageJobs from "../ManageJobs/ManageJobs";
 import EditCompany from "../CompanyProfile/EditCompany";
 import AllJobStatus from "./../AllJobStatus/AllJobStatus";
 import AccountForm from "../ProfileForm/AccountForm";
+import AllJobs from "../AllJobs/AllJobs";
 
 const Dashboard = () => {
   const history = useHistory();
-  const { logOut, admin, user, role, setRole } = useAuth();
+  const { logOut, admin, user, role, setRole, control, setControl } = useAuth();
   console.log(user);
   console.log("this is role:", role);
-  const [control, setControl] = useState("welcome");
+  // const [control, setControl] = useState("welcome");
   console.log(admin);
   const { data: candidate } = useGetProfilesQuery(undefined, {
     selectFromResult: ({ data }) => ({
@@ -407,6 +408,7 @@ const Dashboard = () => {
             {control === "candidates" && <CandidatesList />}
             {control === "manageJobs" && <ManageJobs />}
             {control === "editCompany" && <EditCompany info={profileInfo} />}
+            {control === `/alljobs/:jobId` && <AllJobs></AllJobs>}
           </div>
         </div>
       </div>
