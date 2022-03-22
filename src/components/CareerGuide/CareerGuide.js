@@ -147,16 +147,16 @@ const CareerGuide = () => {
                 </p>
               </div>
 
-              <div className="my-5">
+              <div className="my-5 py-5">
                 <div id="container" className="d-flex align-items-center">
                   <div className="job-details text-center mx-auto">
                     <h5
                       className="my-3"
                       style={{ color: "brown", fontWeight: "600" }}
                     >
-                      SUMMARY
+                      <u>SUMMARY</u>
                     </h5>
-                    <ul className="resume-information text-start">
+                    <ul className="resume-information text-start text-white">
                       <li>Never Stop Learning</li>
                       <li>Work On Goals</li>
                       <li>Value Your Network</li>
@@ -170,21 +170,26 @@ const CareerGuide = () => {
                   </div>
 
                   <div className="job-image">
-                    <h1 className="p-3">
+                    <h5
+                      className="p-3"
+                      style={{ color: "brown", fontWeight: "600" }}
+                    >
+                      {" "}
+                      Learn More <br />
                       <IoIosArrowDropdownCircle
-                        className="heart"
+                        className="heart mt-2"
                         style={{ color: "brown" }}
                       />
-                    </h1>
+                    </h5>
                     <img
-                      className=""
+                      className="p-2"
                       style={{ width: "100%", height: "35vh" }}
                       src={career}
                       alt=""
                     />
 
                     <div className="info">
-                      <h5 className="p-3">Job Sector</h5>
+                      <h5 className="p-4">Suggested Links of Job Sectors</h5>
                       <ul>
                         <li>
                           <Link style={{ color: "white" }}>Freelancing</Link>

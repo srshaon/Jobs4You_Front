@@ -4,8 +4,9 @@ import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import "./Header.css";
 import { useLocation } from "react-router-dom";
+import image from "../../assets/Images/no_img_2.png";
 const Header = () => {
-  const { admin, user, logOut } = useAuth();
+  const { admin, user, logOut, role } = useAuth();
   const location = useLocation();
 
   return (
@@ -19,20 +20,22 @@ const Header = () => {
               style={{
                 fontFamily: "Alegreya, sans-serif",
                 fontSize: "32px",
-                fontWeight: "500"
+                fontWeight: "500",
               }}
             >
-              <span className='navbar-brand-header-character'
+              <span
+                className="navbar-brand-header-character"
                 style={{
                   color: "white",
                   fontSize: "45px",
-                  fontWeight: "900"
+                  fontWeight: "900",
                 }}
               >
                 J
               </span>
               obs
-              <span className='navbar-brand-header-number-character'
+              <span
+                className="navbar-brand-header-number-character"
                 style={{
                   color: "orangered",
                   fontWeight: "900",
@@ -41,7 +44,8 @@ const Header = () => {
               >
                 4
               </span>
-              <span className='navbar-brand-header-character'
+              <span
+                className="navbar-brand-header-character"
                 style={{ color: "white", fontSize: "45px", fontWeight: "900" }}
               >
                 Y
@@ -52,56 +56,70 @@ const Header = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ms-auto d-flex align-items-center justify-content-center">
                 <NavLink className="nav-link" to="/home">
-                  HOME
+                  HOME/BROWSE JOBS
                 </NavLink>
-                <NavDropdown title="JOB SEEKER" id="collasible-nav-dropdown">
-                  <NavLink className="dropdown-item" to="/browseJob">
-                    Browse Jobs
-                  </NavLink>
-                  <NavLink className="dropdown-item" to="/companies">
-                    Browse Companies
-                  </NavLink>
-                  <NavDropdown
-                    drop={"end"}
-                    title="Career Advice"
-                    id="collasible-nav-dropdown"
-                  >
-                    <NavLink className="dropdown-item" to="/careerguide">
-                      Career Guide
+
+                {admin === "seeker" && (
+                  <>
+                    <NavDropdown
+                      title="JOB SEEKER"
+                      id="collasible-nav-dropdown"
+                    >
+                      <NavLink className="dropdown-item" to="/companies">
+                        Browse Companies
+                      </NavLink>
+                      <NavLink className="dropdown-item" to="/dashboard">
+                        Dashboard
+                      </NavLink>
+                    </NavDropdown>
+                    <NavLink className="nav-link" to="/uploadviewresume">
+                      UPLOAD RESUME
                     </NavLink>
-                    <NavLink className="dropdown-item" to="/resumetips">
-                      Resume Tips
-                    </NavLink>
-                    <NavLink className="dropdown-item" to="/coverletter">
-                      Cover Letter
-                    </NavLink>
-                    <NavLink className="dropdown-item" to="/interview">
-                      Interview Tips
-                    </NavLink>
-                  </NavDropdown>
-                </NavDropdown>
-                {admin == "company" && (
-                  <NavDropdown title="EMPLOYER" id="collasible-nav-dropdown">
-                    <NavLink className="dropdown-item" to="/postJob">
-                      Post a Job
-                    </NavLink>
-                    <NavLink className="dropdown-item" to="/candidates">
-                      Browse Candidates
-                    </NavLink>
-                    <NavLink className="dropdown-item" to="/dashboard">
-                      Dashboard
-                    </NavLink>
-                  </NavDropdown>
+                  </>
                 )}
-                <NavLink className="nav-link" to="/about">
-                  ABOUT US
-                </NavLink>
+                {admin === "company" && (
+                  <>
+                    <NavDropdown title="EMPLOYER" id="collasible-nav-dropdown">
+                      <NavLink className="nav-link" to="/postJob">
+                        Post a Job
+                      </NavLink>
+                      <NavLink className="dropdown-item" to="/candidates">
+                        Browse Candidates
+                      </NavLink>
+                      <NavLink className="dropdown-item" to="/dashboard">
+                        Dashboard
+                      </NavLink>
+                    </NavDropdown>
+                  </>
+                )}
+                <NavDropdown
+                  // drop={"end"}
+                  title="CAREER ADVICE"
+                  id="collasible-nav-dropdown"
+                >
+                  <NavLink className="dropdown-item" to="/careerguide">
+                    Career Guide
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/resumetips">
+                    Resume Tips
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/coverletter">
+                    Cover Letter Tips
+                  </NavLink>
+                  <NavLink className="dropdown-item" to="/interview">
+                    Interview Tips
+                  </NavLink>
+                </NavDropdown>
                 {user?.email && (
                   <Navbar.Brand className="header-text">
-                    <span className="me-2" style={{ fontSize: "15px" }}>
+                    <span className="mx-3" style={{ fontSize: "15px" }}>
                       {user.displayName}
                     </span>
-                    <img src={user.photoURL} alt="" className="profile-img" />
+                    {user.photoURL ? (
+                      <img src={user.photoURL} alt="" className="profile-img" />
+                    ) : (
+                      <img src={image} alt="" className="no-img" />
+                    )}
                   </Navbar.Brand>
                 )}
                 {user?.email ? (
@@ -113,21 +131,6 @@ const Header = () => {
                     SIGN IN
                   </NavLink>
                 )}
-                {/* {user?.email ? (
-              <NavDropdown
-                title={user.displayName}
-                id="collasible-nav-dropdown"
-                className="header-text"
-              >
-                <button className=" signout-btn" onClick={logOut}>
-                  SIGN OUT
-                </button>
-              </NavDropdown>
-            ) : (
-              <NavLink className="nav-link" to="/login">
-                SIGN IN
-              </NavLink>
-            )} */}
               </Nav>
             </Navbar.Collapse>
           </Container>

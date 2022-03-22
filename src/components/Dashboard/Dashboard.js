@@ -44,12 +44,11 @@ import EditCompany from "../CompanyProfile/EditCompany";
 import AllJobStatus from "./../AllJobStatus/AllJobStatus";
 import AccountForm from "../ProfileForm/AccountForm";
 
-
 const Dashboard = () => {
   const history = useHistory();
   const { logOut, admin, user, role, setRole } = useAuth();
   console.log(user);
-  console.log('this is role:', role);
+  console.log("this is role:", role);
   const [control, setControl] = useState("welcome");
   console.log(admin);
   const { data: candidate } = useGetProfilesQuery(undefined, {
@@ -113,6 +112,15 @@ const Dashboard = () => {
                         Home
                       </li>
                       <li
+                        onClick={() => setControl("createProfile")}
+                        className="li py-3 px-5"
+                      >
+                        <span className="dashboard-icons px-1">
+                          <MdCreateNewFolder />
+                        </span>{" "}
+                        Create Profile
+                      </li>
+                      <li
                         onClick={() => setControl("candiProfile")}
                         className="li py-3 px-5"
                       >
@@ -120,15 +128,6 @@ const Dashboard = () => {
                           <CgProfile />
                         </span>{" "}
                         My Profile
-                      </li>
-                      <li
-                        onClick={() => setControl("createProfile")}
-                        className="li py-3 px-5"
-                      >
-                        <span className="dashboard-icons px-1">
-                          <CgProfile />
-                        </span>{" "}
-                        Create Profile
                       </li>
 
                       <li
@@ -221,15 +220,6 @@ const Dashboard = () => {
                           Home
                         </li>
                         <li
-                          onClick={() => setControl("companyProfile")}
-                          className="li py-3 px-3"
-                        >
-                          <span className="dashboard-icons px-2">
-                            <CgProfile />
-                          </span>{" "}
-                          View Profile
-                        </li>
-                        <li
                           onClick={() => setControl("createProfile")}
                           className="li py-3 px-3"
                         >
@@ -238,6 +228,16 @@ const Dashboard = () => {
                           </span>{" "}
                           Create Profile
                         </li>
+                        <li
+                          onClick={() => setControl("companyProfile")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-2">
+                            <CgProfile />
+                          </span>{" "}
+                          View Profile
+                        </li>
+
                         <li
                           onClick={() => setControl("editCompany")}
                           className="li py-3 px-3"
@@ -365,12 +365,21 @@ const Dashboard = () => {
             className="welcome-dashboard d-md-flex align-items-center"
             style={{ height: "18vh" }}
           >
-            <img
-              src={profileInfo?.img}
-              alt=""
-              className="ms-5 me-3"
-              style={{ height: "13vh", borderRadius: "100px" }}
-            />
+            {user.photoURL ? (
+              <img
+                src={user.photoURL}
+                alt=""
+                className="ms-5 me-3"
+                style={{ height: "13vh", borderRadius: "100px" }}
+              />
+            ) : (
+              <img
+                src={profileInfo?.img}
+                alt=""
+                className="ms-5 me-3"
+                style={{ height: "13vh", borderRadius: "100px" }}
+              />
+            )}
             <h4 className="dashboard-title" style={{ color: "brown" }}>
               {user.displayName}
             </h4>
@@ -381,14 +390,16 @@ const Dashboard = () => {
             {control === "candiProfile" && (
               <CandidateDetails info={profileInfo} />
             )}
-            {control === "editCandidate" && <ProfileEdit info={profileInfo} setControl={setControl}/>}
+            {control === "editCandidate" && (
+              <ProfileEdit info={profileInfo} setControl={setControl} />
+            )}
             {control === "createResume" && <PdfCreator />}
             {control === "login" && <LogIn></LogIn>}
             {control === "welcome" && <Welcome></Welcome>}
             {control === "upload" && <UploadViewResume />}
             {control === "myjobs" && <MyJobs />}
             {control === "skills" && <Skills />}
-            {control === "createProfile" && <AccountForm/>}
+            {control === "createProfile" && <AccountForm />}
             {/* recruiter dashboard */}
             {control === "companyProfile" && <CompanyInfo info={profileInfo} />}
             {control === "companies" && <CompanyProfile />}

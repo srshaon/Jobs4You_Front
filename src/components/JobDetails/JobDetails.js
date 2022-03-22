@@ -9,7 +9,6 @@ const JobDetails = () => {
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
   const [applyList, setApplyList] = useState([]);
-  
 
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
@@ -18,17 +17,18 @@ const JobDetails = () => {
   }, [jobId]);
   console.log(jobs?.additionalRequirements);
   //Fetch applyList
-  { useEffect(() => {
+  {
+    useEffect(() => {
+      fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
+        .then((res) => res.json())
+        .then((data) => setApplyList(data));
+    }, []);
+    const applyListFilter = applyList?.find(
+      (apply) => apply?.jobId === jobs?._id
+    );
+    console.log(applyListFilter);
+  }
 
-    fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
-        .then(res => res.json())
-        .then(data => setApplyList(data))
-
-}, [])
-const applyListFilter = applyList?.find(apply => apply?.jobId === jobs?._id);
-console.log(applyListFilter);}
- 
-  
   if (jobs.length === 0) {
     return <Spinner animation="border" variant="danger" />;
   }
@@ -49,7 +49,12 @@ console.log(applyListFilter);}
           }
           <div className="job-detail-card row d-flex align-items-center justify-content-center p-5 mt-4">
             <Col md={2}>
-              <img src={jobs.image} alt="" className="w-75 text-center p-2" />
+              <img
+                src={jobs.image}
+                alt=""
+                className="w-75 text-center p-2"
+                style={{ borderRadius: "150px" }}
+              />
             </Col>
             <Col md={7}>
               {
@@ -63,20 +68,22 @@ console.log(applyListFilter);}
             </Col>
             <Col md={3}>
               <div>
-                {
-                  (applyList?.find(apply => apply?.length ===0) && jobs?.length===0) &&
-                  <Spinner animation="border" variant="danger" />
-                }
-                {
-                    (applyList?.find(apply => apply?.jobId === jobs?._id))?
-                    <h4 style={{color:"green"}}>Already Applied</h4>:
-                    <Link to={`/chart/${jobs._id}`}>
-                      <Button className="apply-btn px-5">
-                        See if you are eligible to apply?
-                      </Button>
-                </Link>
-                }
-                
+                {applyList?.find((apply) => apply?.length === 0) &&
+                  jobs?.length === 0 && (
+                    <Spinner animation="border" variant="danger" />
+                  )}
+                {applyList?.find((apply) => apply?.jobId === jobs?._id) ? (
+                  <h4 style={{ color: "green" }}>Already applied</h4>
+                ) : (
+                  <Link to={`/chart/${jobs._id}`}>
+                    <Button
+                      className="border-0 px-5 py-2"
+                      style={{ background: "purple" }}
+                    >
+                      Find out if you are <br /> eligible to apply...
+                    </Button>
+                  </Link>
+                )}
               </div>
             </Col>
           </div>
@@ -124,7 +131,7 @@ console.log(applyListFilter);}
                 <div id="container" className="d-flex align-items-center">
                   <div className="job-details text-center ">
                     <h4
-                      className=""
+                      className="pt-2"
                       style={{ color: "brown", fontWeight: "600" }}
                     >
                       JOB DESCRIPTION
@@ -137,23 +144,21 @@ console.log(applyListFilter);}
                         opacity: "0.8",
                       }}
                     >
-                      Product managers lead cross functional projects to
-                      generate vision and create iterative plans for execution
-                      and helps other team to execute the proposed vision. End
-                      results of these visions are developing new technology
-                      product, features or developing a new process which drives
-                      growth or operational excellence.
+                      {jobs.description}
                     </p>
                   </div>
 
                   <div className="job-image">
                     <h1 className="p-3">
-                      <IoIosArrowDropdownCircle />
+                      <IoIosArrowDropdownCircle className="heart" />
                     </h1>
                     <img
                       className="pb-4"
-                      style={{ width: "100%", height: "40vh", opacity: "0.8" }}
-                      // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqsdgy6Er7YJgjPfgpC3Toi_hMJPtednU_6g&usqp=CAU"
+                      style={{
+                        width: "100%",
+                        height: "40vh",
+                        opacity: "0.8",
+                      }}
                       src={image}
                       alt=""
                     />
@@ -182,7 +187,7 @@ console.log(applyListFilter);}
                           {jobs.jobLocation}
                         </li>
                         <li>
-                          <strong>Salary: ৳ </strong>
+                          <strong>Salary: </strong>
                           {jobs.salary}
                         </li>
                         <li>

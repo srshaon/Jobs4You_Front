@@ -209,16 +209,16 @@ const CoverLetter = () => {
                 </p>
               </div>
 
-              <div className="mt-5 pt-2">
+              <div className="my-5 py-5">
                 <div id="container" className="d-flex align-items-center">
-                  <div className="job-details text-center w-75 mx-auto">
+                  <div className="job-details w-75 mx-auto">
                     <h5
-                      className=""
+                      className="my-3"
                       style={{ color: "brown", fontWeight: "600" }}
                     >
-                      SUMMARY
+                      <u>SUMMARY</u>
                     </h5>
-                    <ul className="resume-information text-start">
+                    <ul className="resume-information text-start text-white">
                       <li>What the Experts Say</li>
                       <li>Do your research first</li>
                       <li>Focus it on the future</li>
@@ -232,22 +232,26 @@ const CoverLetter = () => {
                   </div>
 
                   <div className="job-image">
-                    <h1 className="p-3">
+                    <h5
+                      className="p-3"
+                      style={{ color: "brown", fontWeight: "600" }}
+                    >
+                      Learn more <br />
                       <IoIosArrowDropdownCircle
-                        className="heart"
+                        className="heart mt-2"
                         style={{ color: "brown" }}
                       />
-                    </h1>
+                    </h5>
                     <img
                       src={image}
                       alt=""
-                      className="w-100 py-4"
-                      style={{ height: "35vh" }}
+                      className="w-100"
+                      style={{ height: "30vh" }}
                     />
 
                     <div className="info">
-                      <h3 className="p-3">Links</h3>
-                      <ul className="ps-4">
+                      <h3 className="py-3">Links</h3>
+                      <ul className="">
                         <li>
                           <a
                             style={{ color: "white" }}

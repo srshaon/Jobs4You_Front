@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -7,28 +7,27 @@ import useAuth from "../../hooks/useAuth";
 import "./AddJob.css";
 
 import { HiPlusCircle } from "react-icons/hi";
-import useImageVideoUpload from './../../hooks/useImageVideoUpload';
+import useImageVideoUpload from "./../../hooks/useImageVideoUpload";
 
-const AddJob = ({profileInfo}) => {
+const AddJob = ({ profileInfo }) => {
   const history = useHistory();
   const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
-  const[uploading,setUploading]=useState(false)
-  const[imgUrl,setImgUrl]=useState(false)
-  const{handleFile}=useImageVideoUpload(setImgUrl,setUploading);
-  const [inputDisabled,setInputDisabled]=useState(true);
+  const [uploading, setUploading] = useState(false);
+  const [imgUrl, setImgUrl] = useState(false);
+  const { handleFile } = useImageVideoUpload(setImgUrl, setUploading);
+  const [inputDisabled, setInputDisabled] = useState(true);
 
-  useEffect(()=>{
-    if(profileInfo){
-      setInputDisabled(false)
+  useEffect(() => {
+    if (profileInfo) {
+      setInputDisabled(false);
     }
-  },[profileInfo])
-  
+  }, [profileInfo]);
 
   const onSubmit = (data) => {
     const requirements = data.additionalRequirements.split(/\r?\n/g);
     const skills = data.skills.split(",");
-    data.image=imgUrl;
+    data.image = imgUrl;
     const newData = {
       ...data,
       additionalRequirements: requirements,
@@ -48,7 +47,7 @@ const AddJob = ({profileInfo}) => {
   const navigateToForm = () => {
     history.push("/profileForm");
   };
-console.log(profileInfo?.length)
+  console.log(profileInfo?.length);
 
   return (
     <div className="add-job">
@@ -56,7 +55,7 @@ console.log(profileInfo?.length)
         className="p-3"
         style={{ backgroundColor: "var(--color-primary-dark)", color: "white" }}
       >
-        Post A Job
+        Post a Job
       </h4>
       <div className="profile-sec my-4 p-5 text-center">
         <h4 className="mb-4" style={{ color: "brown" }}>
@@ -72,14 +71,21 @@ console.log(profileInfo?.length)
           Job Details
         </h4>
         <hr />
-        <form disabled className="py-5 mb-4" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          disabled
+          className="disable-form py-5 mb-4"
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <div className="d-flex">
             <div className="w-100 mx-3">
               <label htmlFor="">Company name</label> <br />
               <input
-              
                 className="w-100 p-2 mt-2"
-                {...register("company", { required: true, maxLength: 20,disabled:inputDisabled})}
+                {...register("company", {
+                  required: true,
+                  maxLength: 20,
+                  disabled: inputDisabled,
+                })}
                 defaultValue={user.displayName}
               />
             </div>
@@ -91,15 +97,18 @@ console.log(profileInfo?.length)
               <input
                 className="w-100 p-2 mt-2"
                 type="name"
-                {...register("jobLocation",{disabled:inputDisabled})}
+                {...register("jobLocation", { disabled: inputDisabled })}
               />
             </div>
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Email</label> <br />
               <input
-              
                 className="w-100 p-2 mt-2"
-                {...register("email", { required: true, maxLength: 20 ,disabled:inputDisabled})}
+                {...register("email", {
+                  required: true,
+                  maxLength: 20,
+                  disabled: inputDisabled,
+                })}
                 defaultValue={user.email}
               />
             </div>
@@ -109,17 +118,23 @@ console.log(profileInfo?.length)
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Job Title</label> <br />
               <input
-              
                 className="w-100 p-2 mt-2"
-                {...register("job", { required: true, maxLength: 20,disabled:inputDisabled })}
+                {...register("job", {
+                  required: true,
+                  maxLength: 20,
+                  disabled: inputDisabled,
+                })}
               />
             </div>
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Category</label> <br />
               <input
-              
                 className="w-100 p-2 mt-2"
-                {...register("category", { required: true, maxLength: 20 ,disabled:inputDisabled})}
+                {...register("category", {
+                  required: true,
+                  maxLength: 20,
+                  disabled: inputDisabled,
+                })}
               />
             </div>
           </div>
@@ -128,9 +143,8 @@ console.log(profileInfo?.length)
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Job Type</label> <br />
               <select
-              
                 className="w-100 p-2 mt-2"
-                {...register("employmentStatus",{disabled:inputDisabled})}
+                {...register("employmentStatus", { disabled: inputDisabled })}
               >
                 <option value="Full-time">Full-time</option>
                 <option value="Part-time">Part-time</option>
@@ -140,10 +154,9 @@ console.log(profileInfo?.length)
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Vacancy</label> <br />
               <input
-              
                 className="w-100 p-2 mt-2"
                 type="number"
-                {...register("vacancy",{disabled:inputDisabled})}
+                {...register("vacancy", { disabled: inputDisabled })}
                 placeholder="Vacancy"
               />
             </div>
@@ -153,20 +166,20 @@ console.log(profileInfo?.length)
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Education</label> <br />
               <input
-              
                 className="w-100 p-2 mt-2"
                 {...register("educationalRequirements", {
-                  required: true,disabled:inputDisabled
+                  required: true,
+                  disabled: inputDisabled,
                 })}
               />
             </div>
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Skills</label> <br />
               <input
-              
                 className="w-100 p-2 mt-2"
                 {...register("skills", {
-                  required: true,disabled:inputDisabled
+                  required: true,
+                  disabled: inputDisabled,
                 })}
                 placeholder="add skills using ','"
               />
@@ -177,19 +190,21 @@ console.log(profileInfo?.length)
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Job Responsibility</label> <br />
               <input
-              
                 className="w-100 p-2 mt-2"
                 type="name"
-                {...register("jobResponsibilities",{disabled:inputDisabled})}
+                {...register("jobResponsibilities", {
+                  disabled: inputDisabled,
+                })}
               />
             </div>
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Experience</label> <br />
               <input
-              
                 className="w-100 p-2 mt-2"
                 type="name"
-                {...register("experienceRequirements",{disabled:inputDisabled})}
+                {...register("experienceRequirements", {
+                  disabled: inputDisabled,
+                })}
               />
             </div>
           </div>
@@ -197,10 +212,10 @@ console.log(profileInfo?.length)
           <div className="mt-3 mx-3">
             <label htmlFor="">Additional requirements</label>
             <textarea
-            
               rows={4}
               {...register("additionalRequirements", {
-                required: true,disabled:inputDisabled
+                required: true,
+                disabled: inputDisabled,
               })}
               className="w-100 p-2 mt-2"
               placeholder="separate each point using Enter key"
@@ -211,19 +226,19 @@ console.log(profileInfo?.length)
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Salary</label>
               <input
-              
                 className="w-100 p-2 mt-2"
                 type="number"
-                {...register("salary",{disabled:inputDisabled})}
+                {...register("salary", { disabled: inputDisabled })}
               />
             </div>
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Application Closing Date</label>
               <input
-              
                 className="w-100 p-2 mt-2"
                 type={"date"}
-                {...register("applicationDeadline",{disabled:inputDisabled})}
+                {...register("applicationDeadline", {
+                  disabled: inputDisabled,
+                })}
               />
             </div>
           </div>
@@ -239,7 +254,7 @@ console.log(profileInfo?.length)
           <div className="mt-3 mx-3">
             <label htmlFor="">Company Logo</label>
             <input
-            disabled={inputDisabled}
+              disabled={inputDisabled}
               className="form-control mt-2"
               type="file"
               onChange={(e) => {
@@ -248,21 +263,24 @@ console.log(profileInfo?.length)
             />
           </div>
 
-
-         {uploading?<p>Uploading.....</p>:<div className="w-100 my-3 text-center">
-            <input
-            disabled={inputDisabled}
-              className="update-btn py-2 px-3 mt-4 w-25"
-              style={{
-                backgroundColor: "var(--color-primary-light)",
-                border: "none",
-                color: "white",
-                fontSize: "18px",
-                fontWeight: "600",
-              }}
-              type="submit"
-            />
-          </div>}
+          {uploading ? (
+            <p>Uploading.....</p>
+          ) : (
+            <div className="w-100 my-3 text-center">
+              <input
+                disabled={inputDisabled}
+                className="update-btn py-2 mt-4 w-25"
+                style={{
+                  backgroundColor: "purple",
+                  border: "none",
+                  color: "white",
+                  fontSize: "18px",
+                  fontWeight: "600",
+                }}
+                type="submit"
+              />
+            </div>
+          )}
         </form>
       </div>
     </div>
