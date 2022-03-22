@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
@@ -7,15 +7,29 @@ import useAuth from "../../hooks/useAuth";
 import "./AddJob.css";
 
 import { HiPlusCircle } from "react-icons/hi";
+import useImageVideoUpload from "./../../hooks/useImageVideoUpload";
 
-const AddJob = () => {
+const AddJob = ({ profileInfo }) => {
   const history = useHistory();
   const { user } = useAuth();
   const { register, handleSubmit, reset } = useForm();
+  const [uploading, setUploading] = useState(false);
+  const [imgUrl, setImgUrl] = useState(false);
+  const { handleFile } = useImageVideoUpload(setImgUrl, setUploading);
+  const [inputDisabled, setInputDisabled] = useState(true);
+  const [disabledForm, setDisabledForm] = useState("blue");
+
+  useEffect(() => {
+    if (profileInfo) {
+      setInputDisabled(false);
+      setDisabledForm("skyblue");
+    }
+  }, [profileInfo]);
 
   const onSubmit = (data) => {
     const requirements = data.additionalRequirements.split(/\r?\n/g);
     const skills = data.skills.split(",");
+    data.image = imgUrl;
     const newData = {
       ...data,
       additionalRequirements: requirements,
@@ -35,6 +49,7 @@ const AddJob = () => {
   const navigateToForm = () => {
     history.push("/profileForm");
   };
+  console.log(profileInfo?.length);
 
   return (
     <div className="add-job">
@@ -42,7 +57,7 @@ const AddJob = () => {
         className="p-3"
         style={{ backgroundColor: "var(--color-primary-dark)", color: "white" }}
       >
-        Post A Job
+        Post a Job
       </h4>
       <div className="profile-sec my-4 p-5 text-center">
         <h4 className="mb-4" style={{ color: "brown" }}>
@@ -58,13 +73,22 @@ const AddJob = () => {
           Job Details
         </h4>
         <hr />
-        <form className="py-5 mb-4" onSubmit={handleSubmit(onSubmit)}>
+        <form
+          disabled
+          className="disable-form py-4 mb-4"
+          style={{ background: disabledForm }}
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <div className="d-flex">
             <div className="w-100 mx-3">
               <label htmlFor="">Company name</label> <br />
               <input
                 className="w-100 p-2 mt-2"
-                {...register("company", { required: true, maxLength: 20 })}
+                {...register("company", {
+                  required: true,
+                  maxLength: 20,
+                  disabled: inputDisabled,
+                })}
                 defaultValue={user.displayName}
               />
             </div>
@@ -76,14 +100,18 @@ const AddJob = () => {
               <input
                 className="w-100 p-2 mt-2"
                 type="name"
-                {...register("jobLocation")}
+                {...register("jobLocation", { disabled: inputDisabled })}
               />
             </div>
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Email</label> <br />
               <input
                 className="w-100 p-2 mt-2"
-                {...register("email", { required: true, maxLength: 20 })}
+                {...register("email", {
+                  required: true,
+                  maxLength: 20,
+                  disabled: inputDisabled,
+                })}
                 defaultValue={user.email}
               />
             </div>
@@ -94,16 +122,37 @@ const AddJob = () => {
               <label htmlFor="">Job Title</label> <br />
               <input
                 className="w-100 p-2 mt-2"
-                {...register("job", { required: true, maxLength: 20 })}
+                {...register("job", {
+                  required: true,
+                  maxLength: 20,
+                  disabled: inputDisabled,
+                })}
               />
             </div>
             <div className="w-100 mx-3 add-job">
               <label htmlFor="">Category</label> <br />
               <input
                 className="w-100 p-2 mt-2"
-                {...register("category", { required: true, maxLength: 20 })}
+                {...register("category", {
+                  required: true,
+                  maxLength: 20,
+                  disabled: inputDisabled,
+                })}
               />
             </div>
+          </div>
+
+          <div className="mt-3 mx-3">
+            <label htmlFor="">Job Description</label>
+            <textarea
+              rows={4}
+              {...register("description", {
+                required: true,
+                disabled: inputDisabled,
+              })}
+              className="w-100 p-2 mt-2"
+              placeholder="short details..."
+            ></textarea>
           </div>
 
           <div className="d-md-flex justify-content-center align-items-center mt-3">
@@ -111,7 +160,7 @@ const AddJob = () => {
               <label htmlFor="">Job Type</label> <br />
               <select
                 className="w-100 p-2 mt-2"
-                {...register("employmentStatus")}
+                {...register("employmentStatus", { disabled: inputDisabled })}
               >
                 <option value="Full-time">Full-time</option>
                 <option value="Part-time">Part-time</option>
@@ -123,7 +172,7 @@ const AddJob = () => {
               <input
                 className="w-100 p-2 mt-2"
                 type="number"
-                {...register("vacancy")}
+                {...register("vacancy", { disabled: inputDisabled })}
                 placeholder="Vacancy"
               />
             </div>
@@ -136,6 +185,7 @@ const AddJob = () => {
                 className="w-100 p-2 mt-2"
                 {...register("educationalRequirements", {
                   required: true,
+                  disabled: inputDisabled,
                 })}
               />
             </div>
@@ -145,6 +195,7 @@ const AddJob = () => {
                 className="w-100 p-2 mt-2"
                 {...register("skills", {
                   required: true,
+                  disabled: inputDisabled,
                 })}
                 placeholder="add skills using ','"
               />
@@ -157,7 +208,9 @@ const AddJob = () => {
               <input
                 className="w-100 p-2 mt-2"
                 type="name"
-                {...register("jobResponsibilities")}
+                {...register("jobResponsibilities", {
+                  disabled: inputDisabled,
+                })}
               />
             </div>
             <div className="w-100 mx-3 add-job">
@@ -165,7 +218,9 @@ const AddJob = () => {
               <input
                 className="w-100 p-2 mt-2"
                 type="name"
-                {...register("experienceRequirements")}
+                {...register("experienceRequirements", {
+                  disabled: inputDisabled,
+                })}
               />
             </div>
           </div>
@@ -176,6 +231,7 @@ const AddJob = () => {
               rows={4}
               {...register("additionalRequirements", {
                 required: true,
+                disabled: inputDisabled,
               })}
               className="w-100 p-2 mt-2"
               placeholder="separate each point using Enter key"
@@ -188,41 +244,78 @@ const AddJob = () => {
               <input
                 className="w-100 p-2 mt-2"
                 type="number"
-                {...register("salary")}
+                {...register("salary", { disabled: inputDisabled })}
               />
             </div>
             <div className="w-100 mx-3 add-job">
-              <label htmlFor="">Application Closing Date</label>
+              <label htmlFor="">Closing Date</label>
               <input
                 className="w-100 p-2 mt-2"
                 type={"date"}
-                {...register("applicationDeadline")}
+                {...register("applicationDeadline", {
+                  disabled: inputDisabled,
+                })}
               />
             </div>
           </div>
 
-          <div className="mt-3 mx-3">
-            <label htmlFor="">Company Logo</label>
+          {/* <div className="mt-3 mx-3">
+            <label htmlFor="">Company Logo</label> <br />
             <input
               className="w-100 p-2 mt-2"
-              defaultValue="https://i.ibb.co/XDxGxmT/qhc-logo.jpg"
-              {...register("image", { required: true })}
+              type="file"
+              onChange={(e) => {
+                handleFile(e);
+              }}
+              {...register("image", {
+                required: true,
+                disabled: inputDisabled,
+              })}
             />
+          </div> */}
+
+          <div className="mt-3 mx-3">
+            <label htmlFor="">Company Logo</label>
+            <div className="logo-field w-100 p-2 mt-2 d-flex align-items-center">
+              <label className="logo-label">
+                <div className="logo-upload"></div>
+                <input
+                  type="file"
+                  name=""
+                  id=""
+                  className="logo-input"
+                  onChange={(e) => {
+                    handleFile(e);
+                  }}
+                  {...register("image", {
+                    required: true,
+                    disabled: inputDisabled,
+                  })}
+                />
+                <div className="logo-btn p-3">Browse</div>
+              </label>
+              <small className="logo-details">Maximum file size: 100 MB.</small>
+            </div>
           </div>
 
-          <div className="w-100 my-3 text-center">
-            <input
-              className="update-btn py-2 px-3 mt-4 w-25"
-              style={{
-                backgroundColor: "var(--color-primary-light)",
-                border: "none",
-                color: "white",
-                fontSize: "18px",
-                fontWeight: "600",
-              }}
-              type="submit"
-            />
-          </div>
+          {uploading ? (
+            <p>Uploading.....</p>
+          ) : (
+            <div className="w-100 my-3 text-center">
+              <input
+                disabled={inputDisabled}
+                className="update-btn py-2 mt-4 w-25"
+                style={{
+                  backgroundColor: "purple",
+                  border: "none",
+                  color: "white",
+                  fontSize: "18px",
+                  fontWeight: "600",
+                }}
+                type="submit"
+              />
+            </div>
+          )}
         </form>
       </div>
     </div>

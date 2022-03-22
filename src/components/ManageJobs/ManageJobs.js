@@ -44,6 +44,8 @@ const ManageJobs = () => {
                 <th>Status</th>
                 <th>Action</th>
                 <th>Listing Expires</th>
+                <th>No. Of Application</th>
+                <th>Details</th>
               </tr>
             </thead>
             <tbody className="table-body">

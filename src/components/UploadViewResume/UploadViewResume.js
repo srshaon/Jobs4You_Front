@@ -7,8 +7,7 @@ import useAuth from "../../hooks/useAuth";
 const UploadViewResume = () => {
   const [resumepdfFile, setResumePdfFile] = useState([]);
   const [resumeView, setResumeView] = useState([]);
-  
-  
+
   useEffect(() => {
     fetch("https://afternoon-headland-45054.herokuapp.com/resume")
       .then((res) => res.json())
@@ -34,50 +33,48 @@ const UploadViewResume = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          alert("successfully uplodated");
-          fetch('https://afternoon-headland-45054.herokuapp.com/resume')
-          .then(res => res.json())
-          .then(data => setResumeView(data))
+          alert("successfully uploaded");
+          fetch("https://afternoon-headland-45054.herokuapp.com/resume")
+            .then((res) => res.json())
+            .then((data) => setResumeView(data));
         }
         e.target.reset();
       });
   };
-  const myResume = resumeView.filter(resume => (resume.email === user.email))
+  const myResume = resumeView.filter((resume) => resume.email === user.email);
   // console.log(myResume)
 
   // Delete Resume
   const handleDelete = (id) => {
     console.log(id);
-    const proceed = window.confirm('are you sure?');
+    const proceed = window.confirm("Are you sure that you want to delete?");
     if (proceed) {
-        const url = `https://afternoon-headland-45054.herokuapp.com/resume/${id}`;
-        fetch(url, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    alert('deleted successfully')
-                    const remaining = resumeView.filter(resume => resume._id !== id);
-                    setResumeView(remaining);
-                }
-            })
+      const url = `https://afternoon-headland-45054.herokuapp.com/resume/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            alert("deleted successfully");
+            const remaining = resumeView.filter((resume) => resume._id !== id);
+            setResumeView(remaining);
+          }
+        });
     }
+  };
 
-    
-    
-}
-
-    
-if(resumeView.length==0){
-  return  <Spinner animation="border" role="status">
-  <span className="visually-hidden">Loading...</span>
-</Spinner>
-}
+  if (resumeView.length == 0) {
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  }
 
   return (
     <div>
-      <div className="d-flex justify-content-center mb-5 pt-3 ">
+      <div className="d-flex justify-content-center">
         <form onSubmit={handleSubmit} action="" method="POST">
           <input
             style={{ visibility: "hidden" }}
@@ -92,43 +89,52 @@ if(resumeView.length==0){
             type="file"
             required
           />
-           
 
           <div className="d-flex justify-content-center">
-           
-           
-                {
-                  (myResume.length===0) ?
-                  
-                    <Button  className="submit-btn p-2 text-white" type="submit">
-                   Upload
-                 </Button> :
-                 <Button disabled className="submit-btn p-2 text-white" type="submit">
-                   Upload
-                 </Button>
-                 
-                 }
-              
-            
-            
-           
-            <div>
-           
-            </div>
+            {myResume.length === 0 ? (
+              <Button
+                className="text-white w-50 p-3"
+                type="submit"
+                style={{
+                  backgroundColor: "purple",
+                  border: "none",
+                  borderRadius: "7px",
+                }}
+              >
+                Upload Resume
+              </Button>
+            ) : (
+              <Button
+                disabled
+                className="submit-btn p-3 text-white border-0 w-50 "
+                style={{
+                  border: "none",
+                  borderRadius: "7px",
+                }}
+                type="submit"
+              >
+                Upload Resume
+              </Button>
+            )}
+
+            <div></div>
           </div>
         </form>
-        
       </div>
       <div className="d-flex justify-content-center">
         {myResume.map((resume) => (
-          
-          <div className="mb-5">
-          <Button  onClick={() => handleDelete(resume._id)}  className="submit-btn p-2 mb-3 text-white" type="submit">
+          <div className="py-5 mb-5 text-center">
+            <Button
+              onClick={() => handleDelete(resume._id)}
+              className="my-4 text-white border-0 p-3 w-25"
+              style={{ backgroundColor: "purple" }}
+              type="submit"
+            >
               Delete & Upload New
             </Button>
-             <embed
-              className="mb-5 ps-4"
-              style={{ width: "1000px", height: "500px" }}
+            <embed
+              className=""
+              style={{ width: "1000px", height: "100vh" }}
               src={`data:application/pdf;base64,${resume.resume}`}
             />
           </div>

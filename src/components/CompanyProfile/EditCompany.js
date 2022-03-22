@@ -179,7 +179,7 @@ const EditCompany = ({ info }) => {
                 <input
                   className="form-control update-btn py-2 px-3"
                   style={{
-                    backgroundColor: "var(--color-primary-light)",
+                    backgroundColor: "purple",
                     border: "none",
                     color: "white",
                     fontSize: "18px",

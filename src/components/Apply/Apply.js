@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button, Spinner } from "react-bootstrap";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import useAuth from '../../hooks/useAuth';
-import { useHistory, useLocation } from 'react-router';
-import queryString from 'query-string';
+import useAuth from "../../hooks/useAuth";
+import { useHistory, useLocation } from "react-router";
+import queryString from "query-string";
 import "./Apply.css";
 
 const Apply = () => {
@@ -25,44 +25,25 @@ const Apply = () => {
   const [linkedIn, setLinkedIn] = useState("");
   const [portfolio, setPortfolio] = useState("");
   const [jobs, setJobs] = useState({});
-  const [candidates, setCandidates] = useState([])
+  const [candidates, setCandidates] = useState([]);
   // const [singleCandidate, setSingleCandidate] = useState({})
 
-  const { user } = useAuth()
+  const { user } = useAuth();
   /// Testing
   ////Testing2
   useEffect(() => {
-
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
-      .then(res => res.json())
-      .then(data => setJobs(data))
-
-  }, [])
+      .then((res) => res.json())
+      .then((data) => setJobs(data));
+  }, []);
   // Candidate Fetch
   useEffect(() => {
-
     fetch(`https://afternoon-headland-45054.herokuapp.com/allprofiles`)
-      .then(res => res.json())
-      // .then(data => {
-      //   const temp= data.filter(candidate => {
-      //     if(candidate.pEmail === user.email){
-      //       console.log(candidate.pEmail, user.email)
-      //       return candidate
-      //     }
-      //   })
-      //   setSingleCandidate(temp[0]);
-      //   console.log(temp[0])
+      .then((res) => res.json())
+      .then((data) => setCandidates(data));
+  }, [user?.email]);
 
-
-      // })
-      .then(data => setCandidates(data))
-
-
-
-  }, [user?.email])
-
-
-  const singleCandidate = candidates.find(sc => sc.pEmail === user.email)
+  const singleCandidate = candidates.find((sc) => sc.pEmail === user.email);
   //console.log(singleCandidate?.fname)
   //  AGE Calculate
 
@@ -82,8 +63,6 @@ const Apply = () => {
     months = Math.floor(days_diff / 30.4167),
     days = Math.floor(days_diff % 30.4167);
 
-
-
   //console.log(`${years} years ${months} months ${days} days`);
 
   // setAge(`${years} ${days}`)
@@ -96,19 +75,19 @@ const Apply = () => {
     if (!resumepdfFile && coverLetterpdfFile) {
       return;
     }
-    console.log(jobs?.applicationDeadline)
+    console.log(jobs?.applicationDeadline);
     const formData = new FormData();
-    const jobID1 = jobs?._id
+    const jobID1 = jobs?._id;
 
-    console.log(jobID1)
+    console.log(jobID1);
     formData.append("jobId", jobID1);
     formData.append("job", jobs?.job);
     formData.append("company", jobs?.company);
     formData.append("jobLocation", jobs?.jobLocation);
     formData.append("employmentStatus", jobs?.employmentStatus);
-    formData.append("applicationDeadline", jobs?.applicationDeadline)
-    formData.append("percentage", percentage)
-    formData.append("image", jobs.image)
+    formData.append("applicationDeadline", jobs?.applicationDeadline);
+    formData.append("percentage", percentage);
+    formData.append("image", jobs.image);
     formData.append("firstName", singleCandidate?.fname);
     formData.append("lastName", singleCandidate?.lname);
     formData.append("email", singleCandidate?.pEmail);
@@ -131,41 +110,36 @@ const Apply = () => {
           alert("successfully applied");
           e.target.reset();
         }
-
       });
     // history.push(url)
-
   };
   // console.log(resumepdfFile);
   // console.log(coverLetterpdfFile);
   // console.log(firstName);
   // console.log(jobs.employmentStatus)
   if (singleCandidate === undefined) {
-    return <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>
-
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
   }
 
   return (
     <div className="bodyShadow">
-      
       <div className="container-fluid ">
         <div id="myForms" className="row ">
           <div id="card1" className="">
             <div className="card-body">
-              
-              
               <form onSubmit={handleSubmit} action="" method="POST">
                 <div className="row applyform1">
-                <input
-                   style={{ visibility: "hidden" }}
-                        className="sadiaInput"
-                       
-                        aria-describedby="helpId1"
-                        required
-                        value={percentage}
-                      />
+                  <input
+                    style={{ visibility: "hidden" }}
+                    className="sadiaInput"
+                    aria-describedby="helpId1"
+                    required
+                    value={percentage}
+                  />
                   <h3
                     className="d-flex justify-content-center my-4"
                     style={{ color: "brown" }}
@@ -174,9 +148,11 @@ const Apply = () => {
                   </h3>
 
                   <div className="col col-md-6 form-data">
-                  
                     <div className="form-group">
-                      <h6 id="helpId1" className=" d-flex justify-content-center">
+                      <h6
+                        id="helpId1"
+                        className=" d-flex justify-content-center"
+                      >
                         Candidate's First Name
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
@@ -184,7 +160,6 @@ const Apply = () => {
                         className="sadiaInput"
                         onChange={(e) => setFirstName(e.target.value)}
                         type="text"
-
                         id="name"
                         aria-describedby="helpId1"
                         required
@@ -231,7 +206,10 @@ const Apply = () => {
                       />
                     </div>
                     <div className="form-group pt-3">
-                      <h6 id="helpId" className=" d-flex justify-content-center">
+                      <h6
+                        id="helpId"
+                        className=" d-flex justify-content-center"
+                      >
                         Candidate's LinkedIn Profile
                         <sub style={{ color: "brown", fontSize: 14 }}>
                           (optional)
@@ -250,7 +228,10 @@ const Apply = () => {
                     </div>
 
                     <div className="form-group pt-3">
-                      <h6 id="helpId" className=" d-flex justify-content-center">
+                      <h6
+                        id="helpId"
+                        className=" d-flex justify-content-center"
+                      >
                         Candidate's Resume
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
@@ -269,7 +250,10 @@ const Apply = () => {
                   </div>
                   <div className="col col-md-6 form-data">
                     <div className="form-group">
-                      <h6 id="helpId1" className="d-flex justify-content-center">
+                      <h6
+                        id="helpId1"
+                        className="d-flex justify-content-center"
+                      >
                         Candidate's Last Name
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
@@ -295,8 +279,6 @@ const Apply = () => {
                       </h6>
                       <input
                         className="sadiaInput"
-
-
                         name="cage"
                         id="cage"
                         aria-describedby="helpId2"
@@ -325,7 +307,10 @@ const Apply = () => {
                     </div>
 
                     <div className="form-group pt-3">
-                      <h6 id="helpId" className=" d-flex justify-content-center">
+                      <h6
+                        id="helpId"
+                        className=" d-flex justify-content-center"
+                      >
                         Candidate's Portfolio
                         <sub style={{ color: "brown", fontSize: 14 }}>
                           (optional)
@@ -342,7 +327,10 @@ const Apply = () => {
                       />
                     </div>
                     <div className="form-group pt-3">
-                      <h6 id="helpId" className=" d-flex justify-content-center">
+                      <h6
+                        id="helpId"
+                        className=" d-flex justify-content-center"
+                      >
                         Candidate's Cover Letter
                         <sub style={{ color: "brown", fontSize: 25 }}>*</sub>
                       </h6>
@@ -364,14 +352,9 @@ const Apply = () => {
                 </div>
 
                 <div className="d-flex justify-content-center pt-3 ">
-                <Button className="submit-btn p-3 text-white" type="submit">
+                  <Button className="submit-btn p-3 text-white" type="submit">
                     Submit
                   </Button>
-                   
-                    
-                 
-                  
-                  
                 </div>
               </form>
             </div>
