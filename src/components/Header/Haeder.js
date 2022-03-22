@@ -59,7 +59,7 @@ const Header = () => {
                   HOME/BROWSE JOBS
                 </NavLink>
 
-                {admin === "seeker" && (
+                {role === "seeker" && (
                   <>
                     <NavDropdown
                       title="JOB SEEKER"
@@ -77,7 +77,7 @@ const Header = () => {
                     </NavLink>
                   </>
                 )}
-                {admin === "company" && (
+                {role === "company" && (
                   <>
                     <NavDropdown title="EMPLOYER" id="collasible-nav-dropdown">
                       <NavLink className="nav-link" to="/postJob">
