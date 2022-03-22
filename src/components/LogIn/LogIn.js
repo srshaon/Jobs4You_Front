@@ -111,7 +111,7 @@ const LogIn = () => {
   // console.log(role);
 
   return (
-    <div className="o">
+    <div className="o login-bg">
       <div className="main">
         <input type="checkbox" id="chk" aria-hidden="true" />
 
