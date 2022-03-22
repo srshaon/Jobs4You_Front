@@ -255,13 +255,12 @@ const ResumeTips = () => {
                       </h5>
                       <ul>
                       <li>
-                          <a
+                          <Link to='/create-resume'
                             style={{ color: "white" }}
-                            target="blank"
-                            href="https://jobs4you-a95fe.web.app/create-resume"
+                              href="https://jobs4you-a95fe.web.app/create-resume"
                           >
                             Jobs4You Resume
-                          </a>
+                          </Link>
                         </li>
                         <li>
                           <a
