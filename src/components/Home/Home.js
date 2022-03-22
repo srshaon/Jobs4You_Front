@@ -15,8 +15,10 @@ import image from "../../assets/Images/banner3.png";
 import Companies from "../Companies/Companies";
 import FeaturedJobs from "../FeaturedJobs/FeaturedJobs";
 import Footer from "../Footer/Footer";
-
+import useAuth from "../../hooks/useAuth";
 const Home = () => {
+  const { user, role, admin } = useAuth();
+  console.log('from home:: this is user:', user, 'this is role:', role, 'this is admin:', admin)
   return (
     <div style={{ overflowX: 'hidden' }} className="home-container-nuzhat">
       {/* <Header></Header> */}

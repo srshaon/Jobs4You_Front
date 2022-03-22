@@ -5,13 +5,13 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import image from "../../assets/Images/job-search.jpg";
 import { Button, Col, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import  useAuth from '../../hooks/useAuth'
+import useAuth from '../../hooks/useAuth'
 const JobDetails = () => {
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
   const [applications, setApplication] = useState([]);
   const [applyList, setApplyList] = useState([]);
-  const {user}= useAuth()
+  const { user } = useAuth()
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then((res) => res.json())
@@ -29,7 +29,7 @@ const JobDetails = () => {
           })
       })
   }, [jobId, applications?.length]);
-  console.log(jobs?.additionalRequirements);
+  // console.log(jobs?.additionalRequirements);
   //Fetch applyList
   {
     useEffect(() => {
@@ -41,7 +41,7 @@ const JobDetails = () => {
     const applyListFilter = applyList?.find(
       (apply) => apply?.jobId === jobs?._id
     );
-    console.log(applyListFilter);
+    // console.log(applyListFilter);
   }
   if (jobs.length === 0) {
     return <Spinner animation="border" variant="danger" />;
@@ -101,8 +101,8 @@ const JobDetails = () => {
                 }
                 {
 
-                    (applyList?.find(apply => apply?.jobId === jobs?._id && user.email===apply?.email))?
-                    <h4 style={{color:"green"}}>Already Applied</h4>:
+                  (applyList?.find(apply => apply?.jobId === jobs?._id && user.email === apply?.email)) ?
+                    <h4 style={{ color: "green" }}>Already Applied</h4> :
                     <Link to={`/chart/${jobs._id}`}>
                       <Button className="apply-btn px-5">
                         See if you are eligible to apply?
@@ -186,14 +186,14 @@ const JobDetails = () => {
                       }}
                       src={image}
                       alt=""
-                      className="w-100 py-4"
-                      style={{ height: "35vh" }}
+                    // className="w-100 py-4"
+                    // style={{ height: "35vh" }}
                     />
 
                     <div className="info">
                       <h3 className="pt-5">Summary</h3>
                       <ul>
-                       
+
                         <li>
                           <strong>Vacancy : </strong>
                           {jobs.vacancy}

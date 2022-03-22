@@ -117,7 +117,7 @@ const LogIn = () => {
 
         <div className="login">
           <form onSubmit={handleEmailLogin}>
-            <label className="login-label" for="chk" aria-hidden="true">
+            <label className="login-label" htmlFor="chk" aria-hidden="true">
               Login{" "}
             </label>
 
@@ -141,7 +141,7 @@ const LogIn = () => {
             <input className="login-button" type="submit" value="Login" />
           </form>
           {/* <form>
-                        <label for="chk" aria-hidden="true">Sign up</label>
+                        <label htmlFor="chk" aria-hidden="true">Sign up</label>
                         <input type="text" name="txt" placeholder="User name" required="" />
                         <input type="email" name="email" placeholder="Email" required="" />
                         <input type="password" name="pswd" placeholder="Password" required="" />
@@ -175,7 +175,7 @@ const LogIn = () => {
           </div>
 
           <form onSubmit={handleEmailRegistration}>
-            <label className="signup-label" for="chk" aria-hidden="true">
+            <label className="signup-label" htmlFor="chk" aria-hidden="true">
               Sign Up
             </label>
 
