@@ -367,7 +367,7 @@ const Dashboard = () => {
           >
             {user.photoURL ? (
               <img
-                src={user.photoURL}
+                src={user?.photoURL}
                 alt=""
                 className="ms-5 me-3"
                 style={{ height: "13vh", borderRadius: "100px" }}
