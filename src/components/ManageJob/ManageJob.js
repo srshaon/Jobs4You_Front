@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Modal } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { CgWorkAlt } from "react-icons/cg";
@@ -9,6 +9,19 @@ import "./ManageJob.css";
 import { Link } from "react-router-dom";
 
 const ManageJob = ({ job }) => {
+  const [applications, setApplication] = useState([]);
+  useEffect(() => {
+    fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
+      .then((res) => res.json())
+      .then(data => {
+        console.log(data);
+        const totalApplyLIst = data;
+        const individualApplyList = totalApplyLIst.filter(j => j.jobId == `${job._id}`)
+
+        setApplication(individualApplyList);
+        console.log(individualApplyList);
+      })
+  }, [job._id, applications?.length]);
   const expiredDate = new Date(job.applicationDeadline);
   const today = new Date();
   console.log(expiredDate > today);
@@ -52,6 +65,7 @@ const ManageJob = ({ job }) => {
       })
       .catch((error) => console.log(error));
   };
+
   return (
     <>
       <tr className="table-tr">
@@ -78,6 +92,9 @@ const ManageJob = ({ job }) => {
           ) : (
             "-"
           )}
+        </td>
+        <td>
+          <span style={{ background: '#0d6efd', color: 'white' }}>Total Application: {applications.length}</span>
         </td>
       </tr>
       <Modal

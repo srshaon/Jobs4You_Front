@@ -9,17 +9,31 @@ import  useAuth from '../../hooks/useAuth'
 const JobDetails = () => {
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
+  const [applications, setApplication] = useState([]);
   const [applyList, setApplyList] = useState([]);
   const {user}= useAuth()
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then((res) => res.json())
-      .then((data) => setJobs(data));
-  }, [jobId]);
+      .then((data) => setJobs(data))
+      .then(() => {
+        fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
+          .then((res) => res.json())
+          .then(data => {
+            console.log(data);
+            const totalApplyLIst = data;
+            const individualApplyList = totalApplyLIst.filter(job => job.jobId == `${jobId}`)
+
+            setApplication(individualApplyList);
+            console.log(individualApplyList);
+          })
+      })
+  }, [jobId, applications?.length]);
   console.log(jobs?.additionalRequirements);
   //Fetch applyList
   {
     useEffect(() => {
+
       fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
         .then((res) => res.json())
         .then((data) => setApplyList(data));
@@ -29,10 +43,17 @@ const JobDetails = () => {
     );
     console.log(applyListFilter);
   }
-
   if (jobs.length === 0) {
     return <Spinner animation="border" variant="danger" />;
   }
+  console.log(applications);
+  let applyCandidatesEmails = [];
+  if (applications.length > 0) {
+    applications.map(a => {
+      applyCandidatesEmails.push(a.email)
+    })
+  }
+  console.log(applyCandidatesEmails);
   return (
     <div className="job-detail-container pb-5">
       <div className="container pb-5">
@@ -57,7 +78,7 @@ const JobDetails = () => {
                 style={{ borderRadius: "150px" }}
               />
             </Col>
-            <Col md={7}>
+            <Col md={4}>
               {
                 <div>
                   <h5 className="" style={{ color: "brown" }}>
@@ -68,19 +89,25 @@ const JobDetails = () => {
               }
             </Col>
             <Col md={3}>
+              <div >
+                <span style={{ background: '#0d6efd', color: 'white', fontSize: '28px' }}>Total Application: {applications.length}</span>
+              </div>
+            </Col>
+            <Col md={3}>
               <div>
                 {
-                  (applyList?.find(apply => apply?.length ===0) && jobs?.length===0) &&
+                  (applyList?.find(apply => apply?.length === 0) && jobs?.length === 0) &&
                   <Spinner animation="border" variant="danger" />
                 }
                 {
+
                     (applyList?.find(apply => apply?.jobId === jobs?._id && user.email===apply?.email))?
                     <h4 style={{color:"green"}}>Already Applied</h4>:
                     <Link to={`/chart/${jobs._id}`}>
                       <Button className="apply-btn px-5">
                         See if you are eligible to apply?
                       </Button>
-                </Link>
+                    </Link>
                 }
               </div>
             </Col>
