@@ -145,51 +145,47 @@ const InterviewTips = () => {
                 </p>
               </div>
 
-              <div className="mt-5 pt-2">
+              <div className="my-5 py-5">
                 <div id="container" className="d-flex align-items-center">
-                  <div className="job-details text-center w-75 mx-auto">
+                  <div className="text-center w-75 mx-auto">
                     <h5
                       className=""
                       style={{ color: "brown", fontWeight: "600" }}
                     >
-                      SUMMARY
+                      <u>SUMMARY</u>
                     </h5>
-                    <ul className="resume-information text-start">
+                    <ul className="resume-information text-start text-white">
                       <li>Be on time</li>
-                      <li>
-                        Have some questions of your own prepared in advance.
-                      </li>
+                      <li>Ask questions at the end.</li>
                       <li>Bring several copies of your resume.</li>
-                      <li>
-                        Greet the interviewer with a handshake and a smile.
-                      </li>
+                      <li>Greet the interviewer with a smile.</li>
                       <li>Listen carefully to the interviewer.</li>
                       <li>Be prepared for personal questions.</li>
-                      <li>
-                        No interview is complete until you follow up with a
-                        thank-you note.
-                      </li>
+                      <li>Follow up with a thank-you note.</li>
                     </ul>
                   </div>
 
-                  <div className="interviewimage">
-                    <h5 className="mt-4">Interview Question Site</h5>
-                    <h1 className="d-flex justify-content-center">
+                  <div className="job-image">
+                    <h5
+                      className="p-3"
+                      style={{ color: "brown", fontWeight: "600" }}
+                    >
+                      Learn more <br />
                       <IoIosArrowDropdownCircle
-                        className="heart"
+                        className="heart mt-3"
                         style={{ color: "brown" }}
                       />
-                    </h1>
+                    </h5>
 
                     <img
-                      className="w-100 py-3"
-                      style={{ height: "40vh", opacity: "0.8" }}
+                      className="w-100"
+                      style={{ height: "35vh", opacity: "0.8" }}
                       src={image}
                       alt=""
                     />
 
                     <div className="info">
-                      <h2 className="p-3">Links</h2>
+                      <h5 className="p-4">Interview Preparation Links</h5>
                       <ul>
                         <li>
                           <a

@@ -5,7 +5,7 @@ import {
   useGetProfileByIdQuery,
   useUpdateProfileMutation,
 } from "../../Redux-handler/ManageProfiles";
-const ProfileEdit = ({ info,setControl }) => {
+const ProfileEdit = ({ info, setControl }) => {
   const location = useLocation();
   console.log(location.pathname);
   const history = useHistory();
@@ -41,7 +41,7 @@ const ProfileEdit = ({ info,setControl }) => {
       address,
       lname,
     });
-    setControl('candiProfile')
+    setControl("candiProfile");
     history.push("/dashboard");
   };
 
@@ -132,10 +132,10 @@ const ProfileEdit = ({ info,setControl }) => {
                 <input
                   className="form-control update-btn py-2 px-3"
                   style={{
-                    backgroundColor: "var(--color-primary-light)",
+                    backgroundColor: "purple",
                     border: "none",
                     color: "white",
-                    fontSize: "18px",
+                    fontSize: "20px",
                     fontWeight: "600",
                   }}
                   type="submit"

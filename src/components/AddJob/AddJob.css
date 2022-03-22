@@ -81,7 +81,7 @@ textarea {
 
 .submit-btn {
   width: 30% !important;
-  background-color: var(--color-primary-light) !important;
+  background-color: purple !important;
   border: none;
   color: white;
   font-weight: 600;
