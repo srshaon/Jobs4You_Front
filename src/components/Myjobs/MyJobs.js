@@ -3,7 +3,7 @@ import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { PieChart, Pie, Tooltip, ResponsiveContainer, LabelList, Label, Cell } from 'recharts';
-
+import { Spinner } from "react-bootstrap";
 const MyJobs = () => {
   const [applyList, setApplyList] = useState([]);
   const { user } = useAuth();
@@ -17,7 +17,12 @@ const MyJobs = () => {
   const applyCollection = applyList.filter(
     (applies) => applies.email == user.email
   );
-  console.log(applyCollection);
+  //console.log(applyCollection);
+  if (applyCollection.length === 0) {
+    return <Spinner animation="border" variant="danger" />;
+  }
+    
+  
   return (
     <div className="">
       <h4
@@ -49,7 +54,7 @@ const MyJobs = () => {
                 <td>{apply.jobLocation}</td>
                 <td>{apply.employmentStatus}</td>
                 <td>{apply.percentage}</td>
-                <td>{apply.applicationDeadline}</td>
+                <td>{apply.jobApplicationDeadline}</td>
               </tr>
             ))}
           </tbody>
