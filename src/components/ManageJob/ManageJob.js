@@ -7,8 +7,11 @@ import { TiLocation } from "react-icons/ti";
 import { FcCurrencyExchange } from "react-icons/fc";
 import "./ManageJob.css";
 import { Link } from "react-router-dom";
+import AllJobs from "../AllJobs/AllJobs";
+import useAuth from "../../hooks/useAuth";
 
 const ManageJob = ({ job }) => {
+  const { control, setControl } = useAuth();
   const [applications, setApplication] = useState([]);
   useEffect(() => {
     fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
@@ -22,9 +25,19 @@ const ManageJob = ({ job }) => {
         console.log(individualApplyList);
       })
   }, [job._id, applications?.length]);
+
+  // console.log(applications);
+  let applyCandidatesEmails = [];
+  if (applications.length > 0) {
+    applications.map(a => {
+      applyCandidatesEmails.push(a.email)
+    })
+  }
+  console.log(applyCandidatesEmails);
+
   const expiredDate = new Date(job.applicationDeadline);
   const today = new Date();
-  console.log(expiredDate > today);
+  // console.log(expiredDate > today);
 
   const [show, setShow] = useState(false);
   const handleStatus = (id) => {
@@ -45,7 +58,7 @@ const ManageJob = ({ job }) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const { control, register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
     const requirements = data.additionalRequirements.split(/\r?\n/g);
@@ -55,7 +68,7 @@ const ManageJob = ({ job }) => {
       additionalRequirements: requirements,
       skills: skills,
     };
-    console.log(newData);
+    // console.log(newData);
     axios
       .put(`https://afternoon-headland-45054.herokuapp.com/jobs/${job._id}`, newData)
       .then((res) => {
@@ -65,7 +78,11 @@ const ManageJob = ({ job }) => {
       })
       .catch((error) => console.log(error));
   };
-
+  const handleControl = () => {
+    console.log('clicked');
+    setControl(`/alljobs/${job._id}`)
+    console.log(control);
+  }
   return (
     <>
       <tr className="table-tr">
@@ -95,6 +112,21 @@ const ManageJob = ({ job }) => {
         </td>
         <td>
           <span style={{ background: '#0d6efd', color: 'white' }}>Total Application: {applications.length}</span>
+        </td>
+        <td>
+          <Link to={`/alljobs/${job._id}`}>
+            <Button className="apply-btn px-5">
+              applied candidates list
+            </Button>
+          </Link>
+
+          <Button onClick={handleControl} className="apply-btn px-5">
+            ABC
+          </Button>
+
+          {/* {applyCandidatesEmails?.map((email) => (
+            <AllJobs email={email}></AllJobs>
+          ))} */}
         </td>
       </tr>
       <Modal

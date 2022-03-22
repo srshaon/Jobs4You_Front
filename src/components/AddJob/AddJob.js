@@ -17,10 +17,12 @@ const AddJob = ({ profileInfo }) => {
   const [imgUrl, setImgUrl] = useState(false);
   const { handleFile } = useImageVideoUpload(setImgUrl, setUploading);
   const [inputDisabled, setInputDisabled] = useState(true);
+  const [disabledForm, setDisabledForm] = useState("blue");
 
   useEffect(() => {
     if (profileInfo) {
       setInputDisabled(false);
+      setDisabledForm("skyblue");
     }
   }, [profileInfo]);
 
@@ -73,7 +75,8 @@ const AddJob = ({ profileInfo }) => {
         <hr />
         <form
           disabled
-          className="disable-form py-5 mb-4"
+          className="disable-form py-4 mb-4"
+          style={{ background: disabledForm }}
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="d-flex">
@@ -137,6 +140,19 @@ const AddJob = ({ profileInfo }) => {
                 })}
               />
             </div>
+          </div>
+
+          <div className="mt-3 mx-3">
+            <label htmlFor="">Job Description</label>
+            <textarea
+              rows={4}
+              {...register("description", {
+                required: true,
+                disabled: inputDisabled,
+              })}
+              className="w-100 p-2 mt-2"
+              placeholder="short details..."
+            ></textarea>
           </div>
 
           <div className="d-md-flex justify-content-center align-items-center mt-3">
@@ -232,7 +248,7 @@ const AddJob = ({ profileInfo }) => {
               />
             </div>
             <div className="w-100 mx-3 add-job">
-              <label htmlFor="">Application Closing Date</label>
+              <label htmlFor="">Closing Date</label>
               <input
                 className="w-100 p-2 mt-2"
                 type={"date"}
@@ -244,23 +260,42 @@ const AddJob = ({ profileInfo }) => {
           </div>
 
           {/* <div className="mt-3 mx-3">
-            <label htmlFor="">Company Logo</label>
+            <label htmlFor="">Company Logo</label> <br />
             <input
               className="w-100 p-2 mt-2"
-              defaultValue="https://i.ibb.co/XDxGxmT/qhc-logo.jpg"
-              {...register("image", { required: true })}
-            />
-          </div> */}
-          <div className="mt-3 mx-3">
-            <label htmlFor="">Company Logo</label>
-            <input
-              disabled={inputDisabled}
-              className="form-control mt-2"
               type="file"
               onChange={(e) => {
                 handleFile(e);
               }}
+              {...register("image", {
+                required: true,
+                disabled: inputDisabled,
+              })}
             />
+          </div> */}
+
+          <div className="mt-3 mx-3">
+            <label htmlFor="">Company Logo</label>
+            <div className="logo-field w-100 p-2 mt-2 d-flex align-items-center">
+              <label className="logo-label">
+                <div className="logo-upload"></div>
+                <input
+                  type="file"
+                  name=""
+                  id=""
+                  className="logo-input"
+                  onChange={(e) => {
+                    handleFile(e);
+                  }}
+                  {...register("image", {
+                    required: true,
+                    disabled: inputDisabled,
+                  })}
+                />
+                <div className="logo-btn p-3">Browse</div>
+              </label>
+              <small className="logo-details">Maximum file size: 100 MB.</small>
+            </div>
           </div>
 
           {uploading ? (
