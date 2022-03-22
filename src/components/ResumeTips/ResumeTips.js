@@ -220,7 +220,6 @@ const ResumeTips = () => {
                       <li>Tailor your resume to the role.</li>
                       <li>Describe your experience in detail.</li>
                       <li>Mention your 'Key Skills'.</li>
-
                       <li>Match keywords from the job details.</li>
                       <li>Proofread for grammar</li>
                       <li>Convert your resume to a PDF file.</li>
