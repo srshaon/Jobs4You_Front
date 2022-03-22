@@ -23,16 +23,17 @@ const Footer = () => {
             <div className="container">
               <div
                 className="card footer-card mb-3"
-              // style={{ border: "2px solid red" }}
+                // style={{ border: "2px solid red" }}
               >
                 <div className="card-body">
                   <Row className="m-4 align-items-center text-center">
-                    <Col >
+                    <Col>
                       <FaPhoneAlt className="footer-icon" />
-                      <p className="footer-icon-p"
+                      <p
+                        className="footer-icon-p"
                         style={{
                           color: "white",
-                          fontSize: "18px"
+                          fontSize: "18px",
                         }}
                       >
                         +0001111
@@ -40,21 +41,27 @@ const Footer = () => {
                     </Col>
                     <Col>
                       <FaAt className="footer-icon" />
-                      <p className="footer-icon-p" style={{ color: "white", fontSize: "18px" }}>
+                      <p
+                        className="footer-icon-p"
+                        style={{ color: "white", fontSize: "18px" }}
+                      >
                         jobs4you@email.com
                       </p>
                     </Col>
                     <Col>
                       <FaMapMarkerAlt className="footer-icon" />
-                      <p className="footer-icon-p" style={{ color: "white", fontSize: "18px" }}>
+                      <p
+                        className="footer-icon-p"
+                        style={{ color: "white", fontSize: "18px" }}
+                      >
                         California, USA
                       </p>
                     </Col>
                   </Row>
                 </div>
               </div>
-              <div >
-                <Row >
+              <div>
+                <Row>
                   <Col className="footer-second-div" md={3}>
                     <div>
                       <h5>Exploring --</h5>
@@ -94,12 +101,15 @@ const Footer = () => {
                   </Col>
 
                   <Col md={3} className="footer-second-div">
-                    <div >
-                      <h5 >Subscribe</h5>
+                    <div>
+                      <h5>Subscribe</h5>
                       <span className="animate-border border-black"></span>
                     </div>
-                    <div >
-                      <form action="" className="d-md-flex mt-4 subscribe-form-footer">
+                    <div>
+                      <form
+                        action=""
+                        className="d-md-flex mt-4 subscribe-form-footer"
+                      >
                         <input
                           type="text"
                           name=""
@@ -160,7 +170,12 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-          </footer>
+            
+
+             <a className="fixed-bottom d-flex flex-row-reverse me-3"href="#">
+             <img style={{width:"60px"}} src='https://www.animatedimages.org/data/media/111/animated-arrow-image-0142.gif' alt='Go to top'/>
+             </a>
+        </footer>
         </div>
       )}
     </>

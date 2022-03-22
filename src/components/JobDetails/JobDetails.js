@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import "./JobDetails.css";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import image from "../../assets/Images/job-search.jpg";
 import { Button, Col, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import  useAuth from '../../hooks/useAuth'
 const JobDetails = () => {
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
   const [applications, setApplication] = useState([]);
   const [applyList, setApplyList] = useState([]);
-
-
+  const {user}= useAuth()
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then((res) => res.json())
@@ -35,15 +35,14 @@ const JobDetails = () => {
     useEffect(() => {
 
       fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
-        .then(res => res.json())
-        .then(data => setApplyList(data))
-
-    }, [])
-    const applyListFilter = applyList?.find(apply => apply?.jobId === jobs?._id);
+        .then((res) => res.json())
+        .then((data) => setApplyList(data));
+    }, []);
+    const applyListFilter = applyList?.find(
+      (apply) => apply?.jobId === jobs?._id
+    );
     console.log(applyListFilter);
   }
-
-
   if (jobs.length === 0) {
     return <Spinner animation="border" variant="danger" />;
   }
@@ -72,7 +71,12 @@ const JobDetails = () => {
           }
           <div className="job-detail-card row d-flex align-items-center justify-content-center p-5 mt-4">
             <Col md={2}>
-              <img src={jobs.image} alt="" className="w-75 text-center p-2" />
+              <img
+                src={jobs.image}
+                alt=""
+                className="w-75 text-center p-2"
+                style={{ borderRadius: "150px" }}
+              />
             </Col>
             <Col md={4}>
               {
@@ -96,15 +100,15 @@ const JobDetails = () => {
                   <Spinner animation="border" variant="danger" />
                 }
                 {
-                  (applyList?.find(apply => apply?.jobId === jobs?._id)) ?
-                    <h4 style={{ color: "green" }}>Already Applied</h4> :
+
+                    (applyList?.find(apply => apply?.jobId === jobs?._id && user.email===apply?.email))?
+                    <h4 style={{color:"green"}}>Already Applied</h4>:
                     <Link to={`/chart/${jobs._id}`}>
                       <Button className="apply-btn px-5">
                         See if you are eligible to apply?
                       </Button>
                     </Link>
                 }
-
               </div>
             </Col>
           </div>
@@ -152,7 +156,7 @@ const JobDetails = () => {
                 <div id="container" className="d-flex align-items-center">
                   <div className="job-details text-center ">
                     <h4
-                      className=""
+                      className="pt-2"
                       style={{ color: "brown", fontWeight: "600" }}
                     >
                       JOB DESCRIPTION
@@ -165,34 +169,31 @@ const JobDetails = () => {
                         opacity: "0.8",
                       }}
                     >
-                      Product managers lead cross functional projects to
-                      generate vision and create iterative plans for execution
-                      and helps other team to execute the proposed vision. End
-                      results of these visions are developing new technology
-                      product, features or developing a new process which drives
-                      growth or operational excellence.
+                      {jobs.description}
                     </p>
                   </div>
 
                   <div className="job-image">
                     <h1 className="p-3">
-                      <IoIosArrowDropdownCircle />
+                      <IoIosArrowDropdownCircle className="heart" />
                     </h1>
                     <img
                       className="pb-4"
-                      style={{ width: "100%", height: "40vh", opacity: "0.8" }}
-                      // src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqsdgy6Er7YJgjPfgpC3Toi_hMJPtednU_6g&usqp=CAU"
+                      style={{
+                        width: "100%",
+                        height: "40vh",
+                        opacity: "0.8",
+                      }}
                       src={image}
                       alt=""
+                      className="w-100 py-4"
+                      style={{ height: "35vh" }}
                     />
 
                     <div className="info">
                       <h3 className="pt-5">Summary</h3>
                       <ul>
-                        <li>
-                          <strong>Published On : </strong>
-                          {jobs.publishedOn}{" "}
-                        </li>
+                       
                         <li>
                           <strong>Vacancy : </strong>
                           {jobs.vacancy}
@@ -210,12 +211,12 @@ const JobDetails = () => {
                           {jobs.jobLocation}
                         </li>
                         <li>
-                          <strong>Salary: ৳ </strong>
+                          <strong>Salary: </strong>
                           {jobs.salary}
                         </li>
                         <li>
                           <strong>Application Deadline: </strong>
-                          {jobs.aplicationDeadline}
+                          {jobs.applicationDeadline}
                         </li>
                       </ul>
                     </div>
