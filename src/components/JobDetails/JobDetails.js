@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import "./JobDetails.css";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 import image from "../../assets/Images/job-search.jpg";
 import { Button, Col, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import  useAuth from '../../hooks/useAuth'
 const JobDetails = () => {
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
   const [applyList, setApplyList] = useState([]);
-
+  const {user}= useAuth()
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then((res) => res.json())
@@ -68,22 +69,19 @@ const JobDetails = () => {
             </Col>
             <Col md={3}>
               <div>
-                {applyList?.find((apply) => apply?.length === 0) &&
-                  jobs?.length === 0 && (
-                    <Spinner animation="border" variant="danger" />
-                  )}
-                {applyList?.find((apply) => apply?.jobId === jobs?._id) ? (
-                  <h4 style={{ color: "green" }}>Already applied</h4>
-                ) : (
-                  <Link to={`/chart/${jobs._id}`}>
-                    <Button
-                      className="border-0 px-5 py-2"
-                      style={{ background: "purple" }}
-                    >
-                      Find out if you are <br /> eligible to apply...
-                    </Button>
-                  </Link>
-                )}
+                {
+                  (applyList?.find(apply => apply?.length ===0) && jobs?.length===0) &&
+                  <Spinner animation="border" variant="danger" />
+                }
+                {
+                    (applyList?.find(apply => apply?.jobId === jobs?._id && user.email===apply?.email))?
+                    <h4 style={{color:"green"}}>Already Applied</h4>:
+                    <Link to={`/chart/${jobs._id}`}>
+                      <Button className="apply-btn px-5">
+                        See if you are eligible to apply?
+                      </Button>
+                </Link>
+                }
               </div>
             </Col>
           </div>
@@ -161,15 +159,14 @@ const JobDetails = () => {
                       }}
                       src={image}
                       alt=""
+                      className="w-100 py-4"
+                      style={{ height: "35vh" }}
                     />
 
                     <div className="info">
                       <h3 className="pt-5">Summary</h3>
                       <ul>
-                        <li>
-                          <strong>Published On : </strong>
-                          {jobs.publishedOn}{" "}
-                        </li>
+                       
                         <li>
                           <strong>Vacancy : </strong>
                           {jobs.vacancy}
@@ -192,7 +189,7 @@ const JobDetails = () => {
                         </li>
                         <li>
                           <strong>Application Deadline: </strong>
-                          {jobs.aplicationDeadline}
+                          {jobs.applicationDeadline}
                         </li>
                       </ul>
                     </div>
