@@ -59,6 +59,9 @@ import HR from "./components/HR/HR";
 import RMG from "./components/RMG/RMG";
 import AllJobs from "./components/AllJobs/AllJobs";
 import NotFound from "./components/NotFound/NotFound";
+import ApplyCandidateList from "./components/ApplyCandidateList/ApplyCandidateList";
+import PendingJobs from "./components/PendingJobs/PendingJobs";
+import AllCompanies from "./components/AllCompanies/AllCompanies";
 
 function App() {
   return (
@@ -86,8 +89,17 @@ function App() {
             <Route path="/allreviews">
               <AllReviews></AllReviews>
             </Route>
-            <Route path="/alljobs/:jobId">
+            <Route path="/alljobs">
               <AllJobs></AllJobs>
+            </Route>
+            <Route path="/pendingjobs">
+              <PendingJobs></PendingJobs>
+            </Route>
+            <Route path="/allcompanies">
+              <AllCompanies></AllCompanies>
+            </Route>
+            <Route path="/applycandidateslist/:jobId">
+              <ApplyCandidateList></ApplyCandidateList>
             </Route>
             {/* <Route path="/profileform">
               <AccountForm></AccountForm>
