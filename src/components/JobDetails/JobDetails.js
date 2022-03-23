@@ -5,13 +5,13 @@ import { IoIosArrowDropdownCircle } from "react-icons/io";
 import image from "../../assets/Images/job-search.jpg";
 import { Button, Col, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import useAuth from '../../hooks/useAuth'
+import useAuth from "../../hooks/useAuth";
 const JobDetails = () => {
   const { jobId } = useParams();
   const [jobs, setJobs] = useState([]);
   const [applications, setApplication] = useState([]);
   const [applyList, setApplyList] = useState([]);
-  const { user } = useAuth()
+  const { user } = useAuth();
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
       .then((res) => res.json())
@@ -19,21 +19,22 @@ const JobDetails = () => {
       .then(() => {
         fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
           .then((res) => res.json())
-          .then(data => {
+          .then((data) => {
             console.log(data);
             const totalApplyLIst = data;
-            const individualApplyList = totalApplyLIst.filter(job => job.jobId == `${jobId}`)
+            const individualApplyList = totalApplyLIst.filter(
+              (job) => job.jobId == `${jobId}`
+            );
 
             setApplication(individualApplyList);
             console.log(individualApplyList);
-          })
-      })
+          });
+      });
   }, [jobId, applications?.length]);
   // console.log(jobs?.additionalRequirements);
   //Fetch applyList
   {
     useEffect(() => {
-
       fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
         .then((res) => res.json())
         .then((data) => setApplyList(data));
@@ -49,27 +50,43 @@ const JobDetails = () => {
   console.log(applications);
   let applyCandidatesEmails = [];
   if (applications.length > 0) {
-    applications.map(a => {
-      applyCandidatesEmails.push(a.email)
-    })
+    applications.map((a) => {
+      applyCandidatesEmails.push(a.email);
+    });
   }
   console.log(applyCandidatesEmails);
   return (
-    <div className="job-detail-container pb-5">
+    <div className="job-detail-container pt-4 pb-5">
       <div className="container pb-5">
         <div className="py-5">
-          {
-            <div className="job-detail-title">
-              <h5>{jobs.category}</h5>
-              <h4 style={{ color: "brown" }}>
-                {jobs.job}{" "}
-                <span className="job-detail-btn p-2 ms-2">
-                  {jobs.employmentStatus}
-                </span>
-              </h4>
-            </div>
-          }
-          <div className="job-detail-card row d-flex align-items-center justify-content-center p-5 mt-4">
+          <div className="job-detail-title row d-md-flex align-items-center">
+            <Col md={7}>
+              <div>
+                <h5>{jobs.category}</h5>
+                <h4 style={{ color: "brown" }}>
+                  {jobs.job}{" "}
+                  <span className="job-detail-btn py-3 px-2 ms-1">
+                    {jobs.employmentStatus}
+                  </span>
+                </h4>
+              </div>
+            </Col>
+            <Col md={5}>
+              <div className="text-center">
+                <h5>Number of Applications:</h5>
+                <h4
+                  style={{
+                    fontSize: "25px",
+                    color: "brown",
+                    fontWeight: "500",
+                  }}
+                >
+                  {applications.length}
+                </h4>
+              </div>
+            </Col>
+          </div>
+          <div className="job-detail-card row d-flex align-items-center justify-content-center p-5 mt-3">
             <Col md={2}>
               <img
                 src={jobs.image}
@@ -78,7 +95,7 @@ const JobDetails = () => {
                 style={{ borderRadius: "150px" }}
               />
             </Col>
-            <Col md={4}>
+            <Col md={6}>
               {
                 <div>
                   <h5 className="" style={{ color: "brown" }}>
@@ -88,27 +105,40 @@ const JobDetails = () => {
                 </div>
               }
             </Col>
-            <Col md={3}>
-              <div >
-                <span style={{ background: '#0d6efd', color: 'white', fontSize: '28px' }}>Total Application: {applications.length}</span>
-              </div>
-            </Col>
-            <Col md={3}>
+            {/* <Col md={3}>
               <div>
-                {
-                  (applyList?.find(apply => apply?.length === 0) && jobs?.length === 0) &&
-                  <Spinner animation="border" variant="danger" />
-                }
-                {
-
-                  (applyList?.find(apply => apply?.jobId === jobs?._id && user.email === apply?.email)) ?
-                    <h4 style={{ color: "green" }}>Already Applied</h4> :
-                    <Link to={`/chart/${jobs._id}`}>
-                      <Button className="apply-btn px-5">
-                        See if you are eligible to apply?
-                      </Button>
-                    </Link>
-                }
+                <span
+                  style={{
+                    background: "#0d6efd",
+                    color: "white",
+                    fontSize: "28px",
+                  }}
+                >
+                  Total Application: {applications.length}
+                </span>
+              </div>
+            </Col> */}
+            <Col md={4}>
+              <div className="text-center">
+                {applyList?.find((apply) => apply?.length === 0) &&
+                  jobs?.length === 0 && (
+                    <Spinner animation="border" variant="danger" />
+                  )}
+                {applyList?.find(
+                  (apply) =>
+                    apply?.jobId === jobs?._id && user.email === apply?.email
+                ) ? (
+                  <h4 style={{ color: "green" }}>Already applied</h4>
+                ) : (
+                  <Link to={`/chart/${jobs._id}`}>
+                    <Button
+                      className="p-3 border-0"
+                      style={{ background: "purple" }}
+                    >
+                      Find out if you are eligible to apply?
+                    </Button>
+                  </Link>
+                )}
               </div>
             </Col>
           </div>
@@ -186,14 +216,13 @@ const JobDetails = () => {
                       }}
                       src={image}
                       alt=""
-                    // className="w-100 py-4"
-                    // style={{ height: "35vh" }}
+                      // className="w-100 py-4"
+                      // style={{ height: "35vh" }}
                     />
 
                     <div className="info">
                       <h3 className="pt-5">Summary</h3>
                       <ul>
-
                         <li>
                           <strong>Vacancy : </strong>
                           {jobs.vacancy}

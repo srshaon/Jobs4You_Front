@@ -12,29 +12,34 @@ import useAuth from "../../hooks/useAuth";
 import { AiFillEye } from "react-icons/ai";
 
 const ManageJob = ({ job }) => {
-  const { control, setControl } = useAuth();
+  console.log(job.additionalRequirements.join("\r\n"));
+  const { control, setControl, user } = useAuth();
   const [applications, setApplication] = useState([]);
+
   useEffect(() => {
     fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
       .then((res) => res.json())
-      .then(data => {
+      .then((data) => {
         console.log(data);
         const totalApplyLIst = data;
-        const individualApplyList = totalApplyLIst.filter(j => j.jobId == `${job._id}`)
+        const individualApplyList = totalApplyLIst.filter(
+          (j) => j.jobId == `${job._id}`
+        );
 
         setApplication(individualApplyList);
+
         console.log(individualApplyList);
-      })
+      });
   }, [job._id, applications?.length]);
 
   // console.log(applications);
   let applyCandidatesEmails = [];
   if (applications.length > 0) {
-    applications.map(a => {
-      applyCandidatesEmails.push(a.email)
-    })
+    applications.map((a) => {
+      applyCandidatesEmails.push(a.email);
+    });
   }
-  console.log(applyCandidatesEmails);
+  // console.log(applyCandidatesEmails);
 
   const expiredDate = new Date(job.applicationDeadline);
   const today = new Date();
@@ -71,7 +76,10 @@ const ManageJob = ({ job }) => {
     };
     // console.log(newData);
     axios
-      .put(`https://afternoon-headland-45054.herokuapp.com/jobs/${job._id}`, newData)
+      .put(
+        `https://afternoon-headland-45054.herokuapp.com/jobs/${job._id}`,
+        newData
+      )
       .then((res) => {
         if (res.data.modifiedCount) {
           alert("updated successfully");
@@ -80,8 +88,8 @@ const ManageJob = ({ job }) => {
       .catch((error) => console.log(error));
   };
   const handleControl = () => {
-    console.log('clicked');
-    setControl(`/alljobs/${job._id}`)
+    console.log("clicked");
+    setControl(`/alljobs/${job._id}`);
     console.log(control);
   }
   const something = () => {
@@ -95,7 +103,23 @@ const ManageJob = ({ job }) => {
         </td>
         <td></td>
         <td>{job.applicationDeadline}</td>
-        <td>{expiredDate < today ? "Expired" : job.status}</td>
+        <td>
+          {expiredDate < today ? (
+            <span style={{ color: "red" }}>Expired</span>
+          ) : (
+            <span>
+              {job.status === "approved" && (
+                <span style={{ color: "green" }}>approved</span>
+              )}
+              {job.status === "pending" && (
+                <span style={{ color: "brown" }}>pending</span>
+              )}
+              {job.status === "closed" && (
+                <span style={{ color: "orangered" }}>closed</span>
+              )}
+            </span>
+          )}
+        </td>
         <td>
           {job.status === "approved" || job.status === "pending" ? (
             <span role="button" onClick={handleShow}>
@@ -141,89 +165,235 @@ const ManageJob = ({ job }) => {
         show={show}
         onHide={handleClose}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Update field of job details</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className="add-job py-5 w-100">
-            <form className="py-3" onSubmit={handleSubmit(onSubmit)}>
-              <input
-                {...register("company", { required: true })}
-                placeholder="Company name"
-                defaultValue={job.company}
-              />
-              <input
-                {...register("job", { required: true })}
-                placeholder="Job Title"
-                defaultValue={job.job}
-              />
-              <input
-                type="name"
-                {...register("jobLocation")}
-                placeholder="Location"
-                defaultValue={job.jobLocation}
-              />
-              <input
-                {...register("category", { required: true })}
-                placeholder="Category"
-                defaultValue={job.category}
-              />
+        <div>
+          <Modal.Header closeButton>
+            <Modal.Title style={{ color: "purple" }}>
+              Update Form of Posted Job
+            </Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form className=" py-4 mb-4" onSubmit={handleSubmit(onSubmit)}>
+              <div className="d-flex">
+                <div className="w-100 mx-3">
+                  <label htmlFor="">Company name</label> <br />
+                  <input
+                    className="w-100 p-2 mt-2"
+                    {...register("company", {
+                      required: true,
+                      maxLength: 20,
+                    })}
+                    defaultValue={user.displayName}
+                  />
+                </div>
+              </div>
 
-              <textarea
-                rows={4}
-                {...register("additionalRequirements", {
-                  required: true,
-                })}
-                placeholder="additional req"
-                defaultValue={job.additionalRequirements}
-              ></textarea>
+              <div className="d-md-flex justify-content-center align-items-center mt-3">
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Location</label> <br />
+                  <input
+                    className="w-100 p-2 mt-2"
+                    type="name"
+                    {...register("jobLocation")}
+                    defaultValue={job.jobLocation}
+                  />
+                </div>
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Email</label> <br />
+                  <input
+                    className="w-100 p-2 mt-2"
+                    {...register("email", {
+                      required: true,
+                      maxLength: 20,
+                    })}
+                    defaultValue={user.email}
+                  />
+                </div>
+              </div>
 
-              <input
-                type="number"
-                {...register("vacancy")}
-                placeholder="vacancy"
-                defaultValue={job.vacancy}
-              />
-              <input
-                type="text"
-                {...register("educationalRequirements")}
-                placeholder="Education Req"
-                defaultValue={job.educationalRequirements}
-              />
-              <input
-                type="text"
-                {...register("experienceRequirements")}
-                placeholder="Experience Req"
-                defaultValue={job.experienceRequirements}
-              />
-              <input
-                type="text"
-                {...register("skills")}
-                placeholder="Skills"
-                defaultValue={job.skills}
-              />
-              <input
-                type="text"
-                {...register("jobResponsibilities")}
-                placeholder="Job Responsibilities "
-                defaultValue={job.jobResponsibilities}
-              />
+              <div className="d-md-flex justify-content-center align-items-center mt-3">
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Job Title</label> <br />
+                  <input
+                    className="w-100 p-2 mt-2"
+                    {...register("job", {
+                      required: true,
+                      maxLength: 20,
+                    })}
+                    defaultValue={job.job}
+                  />
+                </div>
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Category</label> <br />
+                  <input
+                    className="w-100 p-2 mt-2"
+                    {...register("category", {
+                      required: true,
+                      maxLength: 20,
+                    })}
+                    defaultValue={job.category}
+                  />
+                </div>
+              </div>
 
-              <input
-                type="number"
-                {...register("salary")}
-                placeholder="Salary $"
-                defaultValue={job.salary}
-              />
-              <input className="submit-btn p-2" type="submit" />
+              <div className="mt-3 mx-3">
+                <label htmlFor="">Job Description</label>
+                <textarea
+                  rows={4}
+                  {...register("description")}
+                  className="w-100 p-2 mt-2"
+                  placeholder="short details..."
+                  defaultValue={job.description}
+                ></textarea>
+              </div>
+
+              <div className="d-md-flex justify-content-center align-items-center mt-3">
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Job Type</label> <br />
+                  <select
+                    className="w-100 p-2 mt-2"
+                    {...register("employmentStatus")}
+                  >
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                    <option value="Remote">Remote</option>
+                  </select>
+                </div>
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Vacancy</label> <br />
+                  <input
+                    className="w-100 p-2 mt-2"
+                    type="number"
+                    {...register("vacancy")}
+                    defaultValue={job.vacancy}
+                  />
+                </div>
+              </div>
+
+              <div className="d-md-flex justify-content-center align-items-center mt-3">
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Education</label> <br />
+                  <input
+                    className="w-100 p-2 mt-2"
+                    {...register("educationalRequirements")}
+                    defaultValue={job.educationalRequirements}
+                  />
+                </div>
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Skills</label> <br />
+                  <input
+                    className="w-100 p-2 mt-2"
+                    {...register("skills")}
+                    placeholder="add skills using ','"
+                    defaultValue={job.skills}
+                  />
+                </div>
+              </div>
+
+              <div className="d-md-flex justify-content-center align-items-center mt-3">
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Job Responsibility</label> <br />
+                  <input
+                    className="w-100 p-2 mt-2"
+                    type="name"
+                    {...register("jobResponsibilities")}
+                    defaultValue={job.jobResponsibilities}
+                  />
+                </div>
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Experience</label> <br />
+                  <input
+                    className="w-100 p-2 mt-2"
+                    type="name"
+                    {...register("experienceRequirements")}
+                    defaultValue={job.experienceRequirements}
+                  />
+                </div>
+              </div>
+
+              <div className="mt-3 mx-3">
+                <label htmlFor="">Additional requirements</label>
+                <textarea
+                  rows={4}
+                  {...register("additionalRequirements")}
+                  defaultValue={job.additionalRequirements.join("\r\n")}
+                  className="w-100 p-2 mt-2"
+                  placeholder="separate each point using Enter key"
+                ></textarea>
+              </div>
+
+              <div className="d-flex justify-content-center align-items-center mt-3">
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Salary</label>
+                  <input
+                    className="w-100 p-2 mt-2"
+                    {...register("salary")}
+                    defaultValue={job.salary}
+                  />
+                </div>
+                <div className="w-100 mx-3 add-job">
+                  <label htmlFor="">Closing Date</label>
+                  <input
+                    className="w-100 p-2 mt-2"
+                    type={"date"}
+                    {...register("applicationDeadline")}
+                    defaultValue={job.applicationDeadline}
+                  />
+                </div>
+              </div>
+
+              {/* <div className="mt-3 mx-3">
+              <label htmlFor="">Company Logo</label>
+              <div className="logo-field w-100 p-2 mt-2 d-flex align-items-center">
+                <label className="logo-label">
+                  <div className="logo-upload"></div>
+                  <input
+                    type="file"
+                    name=""
+                    id=""
+                    className="logo-input"
+                    onChange={(e) => {
+                      handleFile(e);
+                    }}
+                    {...register("image", {
+                      required: true,
+                     
+                    })}
+                  />
+                  <div className="logo-btn p-3">Browse</div>
+                </label>
+                <small className="logo-details">
+                  Maximum file size: 100 MB.
+                </small>
+              </div>
+            </div> */}
+
+              <div className="w-100 my-3 text-center">
+                <input
+                  className="update-btn py-2 mt-4 w-25"
+                  style={{
+                    backgroundColor: "purple",
+                    border: "none",
+                    color: "white",
+                    fontSize: "18px",
+                    fontWeight: "600",
+                    borderRadius: "7px",
+                  }}
+                  type="submit"
+                />
+              </div>
             </form>
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              className="border-0"
+              style={{ background: "var(--color-primary-light)" }}
+              variant="secondary"
+              onClick={handleClose}
+            >
+              Close
+            </Button>
+          </Modal.Footer>
+        </div>
       </Modal>
     </>
   );
