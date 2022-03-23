@@ -9,6 +9,7 @@ import "./ManageJob.css";
 import { Link } from "react-router-dom";
 import AllJobs from "../AllJobs/AllJobs";
 import useAuth from "../../hooks/useAuth";
+import { AiFillEye } from "react-icons/ai";
 
 const ManageJob = ({ job }) => {
   console.log(job.additionalRequirements.join("\r\n"));
@@ -90,7 +91,10 @@ const ManageJob = ({ job }) => {
     console.log("clicked");
     setControl(`/alljobs/${job._id}`);
     console.log(control);
-  };
+  }
+  const something = () => {
+
+  }
   return (
     <>
       <tr className="table-tr">
@@ -135,18 +139,19 @@ const ManageJob = ({ job }) => {
           )}
         </td>
         <td>
-          <span style={{ background: "#0d6efd", color: "white" }}>
-            Total Application: {applications.length}
-          </span>
+          <span style={{ fontWeight: 'bolder' }}> {applications.length}</span>
         </td>
         <td>
-          <Link to={`/alljobs/${job._id}`}>
-            <Button className="apply-btn px-5">applied candidates list</Button>
+          <Link to={`/applycandidateslist/${job._id}`}>
+            <span>
+              <AiFillEye />
+            </span>
           </Link>
+          {/* <Button onClick={something} className="apply-btn px-5">
+            abc
+          </Button> */}
 
-          <Button onClick={handleControl} className="apply-btn px-5">
-            ABC
-          </Button>
+
 
           {/* {applyCandidatesEmails?.map((email) => (
             <AllJobs email={email}></AllJobs>

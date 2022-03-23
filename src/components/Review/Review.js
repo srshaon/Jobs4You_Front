@@ -86,11 +86,11 @@ const Review = () => {
               defaultValue=""
               {...register("rating", { required: true })}
             /> */}
-            <br />
+            {/* <br />
 
             {errors.rating && (
               <span className="error">This field is required</span>
-            )}
+            )} */}
             <div>
               Rating:{" "}
               {[...Array(5)].map((star, i) => {
