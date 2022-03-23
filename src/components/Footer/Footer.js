@@ -172,10 +172,15 @@ const Footer = () => {
             </div>
             
 
-             <a className="fixed-bottom d-flex flex-row-reverse me-3"href="#">
+             
+        </footer>
+        
+             
+             <a style={{marginLeft:"100%"}}  className="fixed-bottom d-flex flex-row-reverse me-3"href="#">
              <img style={{width:"60px"}} src='https://www.animatedimages.org/data/media/111/animated-arrow-image-0142.gif' alt='Go to top'/>
              </a>
-        </footer>
+            
+             
         </div>
       )}
     </>
