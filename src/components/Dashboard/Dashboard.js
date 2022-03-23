@@ -220,7 +220,7 @@ const Dashboard = () => {
                           </span>{" "}
                           Home
                         </li>
-                        <li
+                        {!profileInfo &&<li
                           onClick={() => setControl("createProfile")}
                           className="li py-3 px-3"
                         >
@@ -228,7 +228,7 @@ const Dashboard = () => {
                             <CgProfile />
                           </span>{" "}
                           Create Profile
-                        </li>
+                        </li>}
                         <li
                           onClick={() => setControl("companyProfile")}
                           className="li py-3 px-3"
@@ -400,7 +400,7 @@ const Dashboard = () => {
             {control === "upload" && <UploadViewResume />}
             {control === "myjobs" && <MyJobs />}
             {control === "skills" && <Skills />}
-            {control === "createProfile" && <AccountForm />}
+            {control === "createProfile" && <EditCompany/>}
             {/* recruiter dashboard */}
             {control === "companyProfile" && <CompanyInfo info={profileInfo} />}
             {control === "companies" && <CompanyProfile />}

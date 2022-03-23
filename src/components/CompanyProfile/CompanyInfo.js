@@ -139,6 +139,11 @@ const CompanyInfo = ({ info }) => {
               <p className="network-text me-5 text-white">
                 <MdOutlineEmail className="network-icon me-1" /> {info?.email}
               </p>
+              
+                  <video width={250} height={200} controls>
+              <source src={info?.videoUrl}></source>
+            </video>
+                  
             </div>
           </div>
         )}
