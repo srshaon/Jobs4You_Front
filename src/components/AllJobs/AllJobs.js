@@ -58,10 +58,10 @@ const AllJobs = () => {
     return (
 
         <div className='abc'>
-            Jobs Count:: {allJobs?.length}
+            {/* Jobs Count:: {allJobs?.length} */}
             <h2> Apply Count:: {allApplyList?.length}</h2>
             {
-                allApplyCandi?.map(a =>
+                allApplyList?.map(a =>
                     <div>
                         <h3>{a.dob}</h3>
 

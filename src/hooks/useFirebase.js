@@ -34,6 +34,9 @@ const useFirebase = () => {
   const [resetSearchKey, setResetSearchKey] = useState("");
   const [resetSearchLocation, setResetSearchLocation] = useState("");
   const [control, setControl] = useState("welcome");
+  const [feauturedJobVisibility, setFeauturedJobVisibility] = useState("visible");
+  const [feauturedJobDisplay, setFeauturedJobDisplay] = useState("block");
+
 
   // const [condition, setCondition] = useState("seeker");
 
@@ -205,7 +208,8 @@ const useFirebase = () => {
     setResetSearchKey,
     resetSearchLocation,
     setResetSearchLocation,
-    control, setControl
+    control, setControl,
+    feauturedJobVisibility, setFeauturedJobVisibility, feauturedJobDisplay, setFeauturedJobDisplay
   };
 };
 
