@@ -10,6 +10,10 @@
   /* background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); */
   /* copy gradient  */
   background-color: #9c9c9c60;
+  /* background-image: url("../../assets/Images/login_bg.jpg"); */
+  background-position: center;
+  background-size: cover;
+  opacity: 0.9;
 }
 .main {
   width: 350px;

@@ -58,6 +58,7 @@ import Banking from "./components/Banking/Banking";
 import HR from "./components/HR/HR";
 import RMG from "./components/RMG/RMG";
 import AllJobs from "./components/AllJobs/AllJobs";
+import NotFound from "./components/NotFound/NotFound";
 
 function App() {
   return (
@@ -85,7 +86,7 @@ function App() {
             <Route path="/allreviews">
               <AllReviews></AllReviews>
             </Route>
-            <Route path="/alljobs">
+            <Route path="/alljobs/:jobId">
               <AllJobs></AllJobs>
             </Route>
             {/* <Route path="/profileform">
@@ -228,6 +229,11 @@ function App() {
             </Route>
             <Route path="/searchresult">
               <SearchResult></SearchResult>
+            </Route>
+
+            {/* -------has to be last Route--------- */}
+            <Route path="*">
+              <NotFound></NotFound>
             </Route>
           </Switch>
           <Footer></Footer>

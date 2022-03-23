@@ -81,7 +81,7 @@ textarea {
 
 .submit-btn {
   width: 30% !important;
-  background-color: var(--color-primary-light) !important;
+  background-color: purple !important;
   border: none;
   color: white;
   font-weight: 600;
@@ -91,6 +91,37 @@ textarea {
 .submit-btn:hover {
   background-color: brown !important;
   color: black;
+}
+
+.logo-field {
+  background: #fcfcfc;
+  opacity: 0.6;
+  border: 1px solid grey;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.logo-label {
+  font-size: 16px;
+  line-height: 28px;
+  color: #333;
+  font-weight: 500;
+}
+
+.logo-input {
+  display: none;
+}
+
+.logo-btn {
+  margin-right: 18px;
+  background-color: #eee;
+  color: #555;
+  border-radius: 5px;
+}
+
+.logo-details {
+  font-size: 16px;
+  position: relative;
 }
 
 @media (max-width: 576px) {

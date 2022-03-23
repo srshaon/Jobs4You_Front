@@ -67,7 +67,7 @@ const AllJobStatus = () => {
                       <img
                         src={job.image}
                         alt=""
-                        className="w-25 p-4"
+                        className="w-25 p-3"
                         style={{ borderRadius: "100px" }}
                       />
                       <div className="ps-3">
