@@ -20,3 +20,14 @@
 .table-body {
   border: 1px solid #b4a3a3;
 }
+
+.update-form-postJob {
+  background-image: linear-gradient(
+    to right,
+    #8197a9,
+    #97a7b6,
+    #8197a9,
+    #6b879d,
+    #537890
+  );
+}

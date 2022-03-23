@@ -47,9 +47,9 @@ const AllCategoriesJobs = () => {
       <div className="container py-5">
         <div className="row">
           <Col md={4}>
-            <h4 className="p-3">Jobs by Filter</h4>
+            {/* <h4 className="p-3">Jobs by Filter</h4> */}
             <div className="job-list-form">
-              <form action="">
+              {/* <form action="">
                 <input type="text" name="" id="" placeholder="Locations" />{" "}
                 <br />
                 <input
@@ -60,7 +60,7 @@ const AllCategoriesJobs = () => {
                 />{" "}
                 <br />
                 <input type="text" name="" id="" placeholder="Category" />
-              </form>
+              </form> */}
             </div>
           </Col>
           <Col md={8}>
