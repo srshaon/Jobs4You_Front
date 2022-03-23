@@ -118,7 +118,7 @@ const ManageJob = ({ job }) => {
           <span style={{ fontWeight: 'bolder' }}> {applications.length}</span>
         </td>
         <td>
-          <Link to={`/alljobs/${job._id}`}>
+          <Link to={`/applycandidateslist/${job._id}`}>
             <span>
               <AiFillEye />
             </span>
