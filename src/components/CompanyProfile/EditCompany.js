@@ -3,9 +3,10 @@ import { useHistory, useParams, useLocation } from "react-router-dom";
 import { useUpdateCompanyMutation } from "../../Redux-handler/ManageProfiles";
 import { Link } from "react-router-dom";
 import "./EditCompany.css";
-import { Col } from "react-bootstrap";
+import { Col,Button } from "react-bootstrap";
 
 import { TiArrowForward } from "react-icons/ti";
+import { HiPlusCircle } from 'react-icons/hi';
 
 const EditCompany = ({ info }) => {
   const history = useHistory();
@@ -37,6 +38,9 @@ const EditCompany = ({ info }) => {
       });
     }
   }, [info]);
+  const navigateToForm=()=>{
+    history.push('/profileForm')
+  }
 
   const handleChange = (e) =>
     setProfileInfo({ ...profileInfo, [e.target.name]: e.target.value });
@@ -192,9 +196,14 @@ const EditCompany = ({ info }) => {
             </form>
           </div>
         ) : (
-          <h3>
-            <Link to="/profileForm">Please complete your profile</Link>
-          </h3>
+          <div className="profile-sec my-4 p-5 text-center">
+        <h4 className="mb-4" style={{ color: "brown" }}>
+          Company Profile Form
+        </h4>
+        <Button className="add-job-btn py-3" onClick={navigateToForm}>
+          <HiPlusCircle className="heart pe-1" /> Submit
+        </Button>
+      </div>
         )}
       </div>
     </>

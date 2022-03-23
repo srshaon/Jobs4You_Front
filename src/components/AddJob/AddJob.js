@@ -59,14 +59,14 @@ const AddJob = ({ profileInfo }) => {
       >
         Post a Job
       </h4>
-      <div className="profile-sec my-4 p-5 text-center">
+      {inputDisabled&&<div className="profile-sec my-4 p-5 text-center">
         <h4 className="mb-4" style={{ color: "brown" }}>
           Company Profile Form
         </h4>
         <Button className="add-job-btn py-3" onClick={navigateToForm}>
           <HiPlusCircle className="heart pe-1" /> Submit
         </Button>
-      </div>
+      </div>}
 
       <div className="container jobpost-form">
         <h4 className="px-5 mx-5 pt-5" style={{ color: "brown" }}>
@@ -299,7 +299,7 @@ const AddJob = ({ profileInfo }) => {
           </div>
 
           {uploading ? (
-            <p>Uploading.....</p>
+            <h4 className='text-center text-danger'>Uploading please wait.....</h4>
           ) : (
             <div className="w-100 my-3 text-center">
               <input

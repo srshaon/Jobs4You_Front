@@ -32,6 +32,26 @@ export const profilesApi = createApi({
         };
       },
     }),
+    deleteCandidateById: builder.mutation({
+      query: (id) => {
+        console.log("ID:", id);
+        return {
+          url: `deleteCandidate/${id}`,
+          method: "Delete",
+        };
+      },
+      invalidatesTags: ["Profiles"],
+    }),
+    deleteCompanyById: builder.mutation({
+      query: (id) => {
+        console.log("ID:", id);
+        return {
+          url: `deleteCompany/${id}`,
+          method: "Delete",
+        };
+      },
+      invalidatesTags: ["Profiles"],
+    }),
 
     getCandidateByEmail: builder.query({
       query: (email) => {
@@ -99,4 +119,6 @@ export const {
   useCreateProfileMutation,
   useUpdateProfileMutation,
   useUpdateCompanyMutation,
+  useDeleteCandidateByIdMutation,
+  useDeleteCompanyByIdMutation
 } = profilesApi;
