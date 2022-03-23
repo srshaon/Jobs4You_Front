@@ -21,6 +21,7 @@ const MyJobs = () => {
   if (applyCollection.length === 0) {
     return <Spinner animation="border" variant="danger" />;
   }
+ 
     
   
   return (
@@ -54,7 +55,8 @@ const MyJobs = () => {
                 <td>{apply.jobLocation}</td>
                 <td>{apply.employmentStatus}</td>
                 <td>{apply.percentage}</td>
-                <td>{apply.jobApplicationDeadline}</td>
+                {/* <td>{apply.jobApplicationDeadline}</td> */}
+                <td>{ moment(`${apply.jobApplicationDeadline}`).format("MMM Do YY")}</td>
               </tr>
             ))}
           </tbody>
