@@ -51,7 +51,7 @@ const MyJobs = () => {
               <th>Location</th>
               <th>Job Type</th>
               <th>Skills (%)</th>
-              <th>Application Closing</th>
+              {/* <th>Application Closing</th> */}
             </tr>
           </thead>
           <tbody className="table-secondary">
@@ -62,12 +62,12 @@ const MyJobs = () => {
                 <td>{apply.jobLocation}</td>
                 <td>{apply.employmentStatus}</td>
                 <td>{apply.percentage}</td>
-                <td>
+                {/* <td>
                   {format(
-                    new Date(apply.jobApplicationDeadline),
+                    new Date(apply?.applicationDeadline),
                     "MMMM Do, YYYY"
                   )}
-                </td>
+                </td> */}
               </tr>
             ))}
           </tbody>
