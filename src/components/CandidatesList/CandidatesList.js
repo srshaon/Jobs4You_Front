@@ -7,14 +7,14 @@ import ModalMessage from "./../ModalMessage/ModalMessage";
 import Pagination from "./../Pagination/Pagination";
 
 import { AiTwotoneEdit } from "react-icons/ai";
-import { AiFillEye,AiOutlineDelete } from "react-icons/ai";
+import { AiFillEye, AiOutlineDelete } from "react-icons/ai";
 import { useDeleteCandidateByIdMutation, useGetProfilesQuery } from "../../Redux-handler/ManageProfiles";
 import useAuth from "../../hooks/useAuth";
 
 const CandidatesList = () => {
-  const{user}=useAuth()
-  const[deleteCandidate,{isSuccess}]=useDeleteCandidateByIdMutation()
-  
+  const { user } = useAuth()
+  const [deleteCandidate, { isSuccess }] = useDeleteCandidateByIdMutation()
+
   const { data: candidates } = useGetProfilesQuery();
   let sortedList = [];
   for (let i = candidates?.length - 1; i >= 0; i--) {
@@ -25,12 +25,15 @@ const CandidatesList = () => {
   const candidatePerPage = 10;
   const visitedPage = pageNumber * candidatePerPage;
   const pageCount = Math.ceil(candidates?.length / candidatePerPage);
-  const tableHead = ["Sl", "Name", "Email", "Phone", "Details", "Action"];
-  useEffect(()=>{
-    if(isSuccess){
+  let tableHead = ["Sl", "Name", "Email", "Phone", "Details", "Action"];
+  if (user.role == 'admin') {
+    tableHead = ["Sl", "Name", "Email", "Phone", "Details", "Action"];
+  }
+  useEffect(() => {
+    if (isSuccess) {
       setShow(true)
     }
-  },[isSuccess])
+  }, [isSuccess])
   return (
     <div className="theme2 my-5">
       <ModalMessage show={show} setShow={setShow} message={'Deleted Successfully'} />
@@ -80,9 +83,9 @@ const CandidatesList = () => {
                   </td>
                   <td>
                     {" "}
-                    <span onClick={()=>deleteCandidate(_id)}>
-                        <AiOutlineDelete/>
-                      </span>
+                    <span onClick={() => deleteCandidate(_id)}>
+                      <AiOutlineDelete />
+                    </span>
                   </td>
                 </tr>
               ))}

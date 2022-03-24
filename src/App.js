@@ -51,7 +51,7 @@ import ApplySuccess from "./components/ApplySuccess/ApplySuccess";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CompanyDetails from "./components/CompanyProfile/CompanyDetails";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
-import PrivateRoute from "./components/ProvateRoute/ProvateRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import SearchResult from "./components/SearchResult/SearchResult";
 import Freelancing from "./components/Freelancing/Freelancing";
 import Banking from "./components/Banking/Banking";
@@ -62,6 +62,8 @@ import NotFound from "./components/NotFound/NotFound";
 import ApplyCandidateList from "./components/ApplyCandidateList/ApplyCandidateList";
 import PendingJobs from "./components/PendingJobs/PendingJobs";
 import AllCompanies from "./components/AllCompanies/AllCompanies";
+import LineChart from "./components/LineChart/LineChart";
+import MakeAdmin from "./components/MakeAdmin/MakeAdmin";
 
 function App() {
   return (
@@ -83,24 +85,24 @@ function App() {
             <Route path="/register">
               <Register></Register>
             </Route>
-            <Route path="/review">
+            <PrivateRoute path="/review">
               <Review></Review>
-            </Route>
+            </PrivateRoute>
             <Route path="/allreviews">
               <AllReviews></AllReviews>
             </Route>
             <Route path="/alljobs">
               <AllJobs></AllJobs>
             </Route>
-            <Route path="/pendingjobs">
+            <PrivateRoute path="/pendingjobs">
               <PendingJobs></PendingJobs>
-            </Route>
+            </PrivateRoute>
             <Route path="/allcompanies">
               <AllCompanies></AllCompanies>
             </Route>
-            <Route path="/applycandidateslist/:jobId">
+            <PrivateRoute path="/applycandidateslist/:jobId">
               <ApplyCandidateList></ApplyCandidateList>
-            </Route>
+            </PrivateRoute>
             {/* <Route path="/profileform">
               <AccountForm></AccountForm>
             </Route> */}
@@ -127,12 +129,12 @@ function App() {
             <Route path="/chat">
               <Chat></Chat>
             </Route>
-            <Route path="/chart/:_id">
+            <PrivateRoute path="/chart/:_id">
               <Chart></Chart>
-            </Route>
-            <Route path="/skills">
+            </PrivateRoute>
+            <PrivateRoute path="/skills">
               <Skills></Skills>
-            </Route>
+            </PrivateRoute>
 
             {/* Sadia's Route */}
             <Route path="/categories">
@@ -171,18 +173,18 @@ function App() {
             <Route path="/interview">
               <InterviewTips></InterviewTips>
             </Route>
-            <Route path="/apply">
+            <PrivateRoute path="/apply">
               <Apply></Apply>
-            </Route>
-            <Route path="/uploadviewresume">
+            </PrivateRoute>
+            <PrivateRoute path="/uploadviewresume">
               <UploadViewResume></UploadViewResume>
-            </Route>
-            <Route path="/myjobs">
+            </PrivateRoute>
+            <PrivateRoute path="/myjobs">
               <MyJobs></MyJobs>
-            </Route>
-            <Route path="/success">
+            </PrivateRoute>
+            <PrivateRoute path="/success">
               <ApplySuccess></ApplySuccess>
-            </Route>
+            </PrivateRoute>
             <Route path="/freelancing">
               <Freelancing></Freelancing>
             </Route>
@@ -195,33 +197,36 @@ function App() {
             <Route path="/rmg">
               <RMG></RMG>
             </Route>
+            <PrivateRoute path="/linechart">
+              <LineChart></LineChart>
+            </PrivateRoute>
 
             {/* Razu's Route */}
-            <Route path="/candidates/:candidateID">
+            <PrivateRoute path="/candidates/:candidateID">
               <SingleCandidate></SingleCandidate>
-            </Route>
-            <Route path="/candidates">
+            </PrivateRoute>
+            <PrivateRoute path="/candidates">
               <CandidatesList></CandidatesList>
-            </Route>
+            </PrivateRoute>
             <Route path="/latestjobs">
               <LatestJobs></LatestJobs>
             </Route>
-            <Route path="/add-govjob">
+            <PrivateRoute path="/add-govjob">
               <AddGovJob></AddGovJob>
-            </Route>
-            <Route path="/create-resume">
+            </PrivateRoute>
+            <PrivateRoute path="/create-resume">
               <PdfCreator></PdfCreator>
-            </Route>
-            <Route path="/profileedit">
+            </PrivateRoute>
+            <PrivateRoute path="/profileedit">
               <ProfileEdit />
-            </Route>
+            </PrivateRoute>
 
             <Route path="/allgovjobs">
               <AllGovJobs />
             </Route>
-            <Route path="/edit/:jobId">
+            <PrivateRoute path="/edit/:jobId">
               <EditGovJob />
-            </Route>
+            </PrivateRoute>
             <Route path="/allcompanies">
               <CompanyProfile></CompanyProfile>
             </Route>
@@ -230,15 +235,15 @@ function App() {
             </Route>
 
             {/* Nuzhat's Route  */}
-            <Route path="/postJob">
+            <PrivateRoute path="/postJob">
               <AddJob></AddJob>
-            </Route>
+            </PrivateRoute>
             <Route path="/about">
               <About></About>
             </Route>
-            <Route path="/managejobs">
+            <PrivateRoute path="/managejobs">
               <ManageJobs></ManageJobs>
-            </Route>
+            </PrivateRoute>
             <Route path="/searchresult">
               <SearchResult></SearchResult>
             </Route>

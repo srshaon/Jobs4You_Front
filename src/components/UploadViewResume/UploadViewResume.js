@@ -4,7 +4,9 @@ import { Button, Spinner } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
+
 const UploadViewResume = () => {
+  
   const [resumepdfFile, setResumePdfFile] = useState([]);
   const [resumeView, setResumeView] = useState([]);
 
@@ -140,6 +142,8 @@ const UploadViewResume = () => {
           </div>
         ))}
       </div>
+      
+   
     </div>
   );
 };
