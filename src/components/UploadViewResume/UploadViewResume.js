@@ -4,7 +4,9 @@ import { Button, Spinner } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
+
 const UploadViewResume = () => {
+  
   const [resumepdfFile, setResumePdfFile] = useState([]);
   const [resumeView, setResumeView] = useState([]);
 
@@ -73,7 +75,7 @@ const UploadViewResume = () => {
   }
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden py-5 mb-5">
       <div className="d-flex justify-content-center">
         <form onSubmit={handleSubmit} action="" method="POST">
           <input
@@ -140,6 +142,8 @@ const UploadViewResume = () => {
           </div>
         ))}
       </div>
+      
+   
     </div>
   );
 };
