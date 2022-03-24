@@ -1,3 +1,11 @@
+.job-list-form {
+  background-image: url("../../assets/Images/jobs4you.png");
+  background-position: left;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 30vh;
+}
+
 .job-list-form input {
   width: 75%;
   border: none;

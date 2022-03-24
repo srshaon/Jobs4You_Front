@@ -17,12 +17,12 @@ const AddJob = ({ profileInfo }) => {
   const [imgUrl, setImgUrl] = useState(false);
   const { handleFile } = useImageVideoUpload(setImgUrl, setUploading);
   const [inputDisabled, setInputDisabled] = useState(true);
-  const [disabledForm, setDisabledForm] = useState("blue");
+  // const [disabledForm, setDisabledForm] = useState("blue");
 
   useEffect(() => {
     if (profileInfo) {
       setInputDisabled(false);
-      setDisabledForm("skyblue");
+      // setDisabledForm("skyblue");
     }
   }, [profileInfo]);
 
@@ -59,14 +59,14 @@ const AddJob = ({ profileInfo }) => {
       >
         Post a Job
       </h4>
-      <div className="profile-sec my-4 p-5 text-center">
+      {inputDisabled&&<div className="profile-sec my-4 p-5 text-center">
         <h4 className="mb-4" style={{ color: "brown" }}>
           Company Profile Form
         </h4>
         <Button className="add-job-btn py-3" onClick={navigateToForm}>
           <HiPlusCircle className="heart pe-1" /> Submit
         </Button>
-      </div>
+      </div>}
 
       <div className="container jobpost-form">
         <h4 className="px-5 mx-5 pt-5" style={{ color: "brown" }}>
@@ -76,7 +76,8 @@ const AddJob = ({ profileInfo }) => {
         <form
           disabled
           className="disable-form py-4 mb-4"
-          style={{ background: disabledForm }}
+          // style={{ background: disabledForm }}
+
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="d-flex">
@@ -299,7 +300,7 @@ const AddJob = ({ profileInfo }) => {
           </div>
 
           {uploading ? (
-            <p>Uploading.....</p>
+            <h4 className='text-center text-danger'>Uploading please wait.....</h4>
           ) : (
             <div className="w-100 my-3 text-center">
               <input

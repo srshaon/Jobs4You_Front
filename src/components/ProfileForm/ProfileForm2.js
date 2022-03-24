@@ -9,14 +9,16 @@ import useImageVideoUpload from './../../hooks/useImageVideoUpload';
 const ProfileForm2 = (props) => {
   const { role, setRole, user, setUser } = useAuth();
   const [imgUrl,setImgUrl]=useState('')
+  const [videoUrl,setVideoUrl]=useState('')
   const [uploading,setUploading]=useState(false)
   const [condition, setCondition] = useState("");
   // const [condition, setCondition] = useState("admin");
   const { register, handleSubmit } = useForm();
   const { actions, state } = useStateMachine({ updateAction });
-  const{handleFile}=useImageVideoUpload(setImgUrl,setUploading);
+  const{handleFile,uploadVideo}=useImageVideoUpload(setImgUrl,setUploading,setVideoUrl);
   const onSubmit = (data) => {
-    state.data.img=imgUrl
+    state.data.img=imgUrl;
+    state.data.videoUrl=videoUrl;
     console.log(data);
     actions.updateAction(data);
     const splitBio = data?.bio?.split(/\r?\n/g);
@@ -107,7 +109,7 @@ const ProfileForm2 = (props) => {
                       </div>
                       <div className="profile-form-input-pair d-flex justify-content-center">
                     <div>
-                      <label htmlFor="">
+                      <label htmlFor="Upload Logo">
                         
                       </label>
                       <input
@@ -119,8 +121,22 @@ const ProfileForm2 = (props) => {
             />
                     </div>
                   </div>
+                      <div className="profile-form-input-pair d-flex justify-content-center">
+                    <div>
+                      <label htmlFor="">
+                      Upload Video
+                      </label>
+                      <input
+              className="form-control mt-2"
+              type="file"
+              onChange={(e) => {
+                uploadVideo(e);
+              }}
+            />
+                    </div>
+                  </div>
 
-                      {uploading?<p>Uploading.....</p>:<div className="profile-form-button-div d-flex justify-content-center">
+                      {uploading?<h4 className='text-center text-danger mt-2'>Uploading please wait.....</h4>:<div className="profile-form-button-div d-flex justify-content-center">
                         <button
                           className="profile-form-button p-3"
                           type="submit"
@@ -229,8 +245,22 @@ const ProfileForm2 = (props) => {
             />
                     </div>
                   </div>
+                  <div className="profile-form-input-pair d-flex justify-content-center">
+                    <div>
+                      <label htmlFor="">
+                       Upload video resume 
+                      </label>
+                      <input
+              className="form-control mt-2"
+              type="file"
+              onChange={(e) => {
+                uploadVideo(e);
+              }}
+            />
+                    </div>
+                  </div>
 
-                  {uploading?<p>Uploading.....</p>:<div className="profile-form-button-div d-flex justify-content-center">
+                  {uploading?<h4 className='text-center text-danger mt-2'>Uploading please wait.....</h4>:<div className="profile-form-button-div d-flex justify-content-center">
                     <button className="profile-form-button p-3" type="submit">
                       Next
                     </button>

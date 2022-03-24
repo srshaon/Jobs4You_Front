@@ -1,14 +1,16 @@
-import './AllJobs.css';
-
+import './ApplyCandidateList.css';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
-const AllJobs = () => {
+
+const ApplyCandidateList = () => {
     const { jobId } = useParams();
     const [allJobs, setAllJobs] = useState([]);
     const [allApplyList, setAllApplyList] = useState([]);
     const [allApplyCandi, setAllApplyCandi] = useState([]);
     const [appliedCandidates, setAppliedCandidates] = useState([]);
+
+
     let x = 'sportsfi2017@gmail.com';
     useEffect(() => {
         fetch(`http://localhost:5000/usersDetails/${x}`)
@@ -70,6 +72,8 @@ const AllJobs = () => {
             }
         </div>
     );
+
+
 };
 
-export default AllJobs;
+export default ApplyCandidateList;
