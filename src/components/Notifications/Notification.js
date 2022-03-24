@@ -24,7 +24,7 @@ const Notification = ({ notification }) => {
             })
         }
         history.replace(`/${notification.link}`);
-        setControl("myjobs");
+        setControl(notification.portion);
     };
     return (
         <div id={notification?._id} style={{display: 'block', minWidth: '20vw'}} onClick={handleClick} className={notification?.isClicked? "common-not white-not text-dark border px-2 py-3" : "common-not gray-not text-light border px-2 py-3"}>
