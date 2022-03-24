@@ -50,7 +50,7 @@ const Skills = () => {
         if (index < uncheckedSkills.length) {
           if (
             unchecked.toLocaleLowerCase().trim() ===
-              uncheckedSkills[i].toLocaleLowerCase().trim() &&
+            uncheckedSkills[i].toLocaleLowerCase().trim() &&
             unchecked !== "-1"
           ) {
             uncheckedSkills[i] = "-1";
@@ -125,7 +125,7 @@ const Skills = () => {
                 }}
                 onChange={handleInput}
               />
-              <input
+              {/* <input
                 className="ms-2 p-2 border-0"
                 style={{
                   background: "purple",
@@ -135,16 +135,19 @@ const Skills = () => {
                 }}
                 type="button"
                 value="Submit"
-              />
-              {/* <button
-                className="py-2 px-3 text-light"
+              /> */}
+              <button
+                className="ms-2 p-2 border-0"
                 style={{
                   background: "purple",
-                  border: "1px solid purple",
+                  borderRadius: "7px",
+                  color: "white",
+                  fontWeight: "600",
+
                 }}
               >
                 Submit
-              </button> */}
+              </button>
             </div>
           }
         </form>
