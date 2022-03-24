@@ -73,7 +73,7 @@ const UploadViewResume = () => {
   }
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <div className="d-flex justify-content-center">
         <form onSubmit={handleSubmit} action="" method="POST">
           <input
@@ -133,7 +133,7 @@ const UploadViewResume = () => {
               Delete & Upload New
             </Button>
             <embed
-              className=""
+              className=" ms-3 me-3"
               style={{ width: "1000px", height: "100vh" }}
               src={`data:application/pdf;base64,${resume.resume}`}
             />

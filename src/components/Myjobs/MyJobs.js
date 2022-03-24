@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { PieChart, Pie, Tooltip, ResponsiveContainer, LabelList, Label, Cell } from 'recharts';
 import { Spinner } from "react-bootstrap";
+import { format } from 'fecha';
 const MyJobs = () => {
   const [applyList, setApplyList] = useState([]);
   const { user } = useAuth();
@@ -55,8 +56,8 @@ const MyJobs = () => {
                 <td>{apply.jobLocation}</td>
                 <td>{apply.employmentStatus}</td>
                 <td>{apply.percentage}</td>
-                {/* <td>{apply.jobApplicationDeadline}</td> */}
-                <td>{ moment(`${apply.jobApplicationDeadline}`).format("MMM Do YY")}</td>
+               
+                <td>{format(new Date(apply.jobApplicationDeadline), 'MMMM Do, YYYY') }</td>
               </tr>
             ))}
           </tbody>
