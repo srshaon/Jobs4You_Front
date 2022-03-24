@@ -44,6 +44,9 @@ import EditCompany from "../CompanyProfile/EditCompany";
 import AllJobStatus from "./../AllJobStatus/AllJobStatus";
 import AccountForm from "../ProfileForm/AccountForm";
 import AllJobs from "../AllJobs/AllJobs";
+import MakeAdmin from "../MakeAdmin/MakeAdmin";
+import PendingJobs from "../PendingJobs/PendingJobs";
+import AddGovJob from "../AddGovJob/AddGovJob";
 
 const Dashboard = () => {
   const history = useHistory();
@@ -220,7 +223,7 @@ const Dashboard = () => {
                           </span>{" "}
                           Home
                         </li>
-                        {!profileInfo &&<li
+                        {!profileInfo && <li
                           onClick={() => setControl("createProfile")}
                           className="li py-3 px-3"
                         >
@@ -302,7 +305,7 @@ const Dashboard = () => {
                     <div>
                       <ul className="dashboard-list">
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl('makeadmin')}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
@@ -311,7 +314,7 @@ const Dashboard = () => {
                           Make Admin
                         </li>
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl("candidates")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
@@ -320,7 +323,7 @@ const Dashboard = () => {
                           Candidate List
                         </li>
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl("companies")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
@@ -338,7 +341,16 @@ const Dashboard = () => {
                           Manage Jobs
                         </li>
                         <li
-                          onClick={() => setControl("welcome")}
+                          onClick={() => setControl("pendingjobs")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <MdUpdate />
+                          </span>
+                          Pending Jobs
+                        </li>
+                        <li
+                          onClick={() => setControl("addgovtjob")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
@@ -361,7 +373,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className="dashboard-second-container">
+        <div style={{ border: '2px solid blue' }} className="dashboard-second-container">
           <div
             className="welcome-dashboard d-md-flex align-items-center"
             style={{ height: "18vh" }}
@@ -400,7 +412,7 @@ const Dashboard = () => {
             {control === "upload" && <UploadViewResume />}
             {control === "myjobs" && <MyJobs />}
             {control === "skills" && <Skills />}
-            {control === "createProfile" && <EditCompany/>}
+            {control === "createProfile" && <EditCompany />}
             {/* recruiter dashboard */}
             {control === "companyProfile" && <CompanyInfo info={profileInfo} />}
             {control === "companies" && <CompanyProfile />}
@@ -408,7 +420,12 @@ const Dashboard = () => {
             {control === "candidates" && <CandidatesList />}
             {control === "manageJobs" && <ManageJobs />}
             {control === "editCompany" && <EditCompany info={profileInfo} />}
-            {control === `/alljobs/:jobId` && <AllJobs></AllJobs>}
+            {control === `alljobs/:jobId` && <AllJobs></AllJobs>}
+            {control === 'makeadmin' && <MakeAdmin />}
+            {control === 'pendingjobs' && <PendingJobs />}
+            {control === 'addgovtjob' && <AddGovJob />}
+            {/* {control === 'addgovtjob' && <AddGovJob />} */}
+
           </div>
         </div>
       </div>
