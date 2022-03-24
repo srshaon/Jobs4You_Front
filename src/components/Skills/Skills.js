@@ -143,6 +143,7 @@ const Skills = () => {
                   borderRadius: "7px",
                   color: "white",
                   fontWeight: "600",
+
                 }}
               >
                 Submit
