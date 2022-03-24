@@ -27,7 +27,7 @@ const MakeAdmin = () => {
     };
     return (
         <div className="make-admin-container">
-            <img src={'https://i.ibb.co/G5gJssj/welcome-board-sign-with-text-office-198568-398-1.jpg'} alt="" className="w-100 img-fluid" />
+            {/* <img src={'https://i.ibb.co/G5gJssj/welcome-board-sign-with-text-office-198568-398-1.jpg'} alt="" className="w-100 img-fluid" /> */}
             <h5 style={{ backgroundColor: 'black', color: 'white', padding: '6px' }}>Enter An Email To Make Him/Her An Admin</h5>
             <div className="py-5" >
 
