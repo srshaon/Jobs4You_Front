@@ -50,7 +50,7 @@ const Skills = () => {
         if (index < uncheckedSkills.length) {
           if (
             unchecked.toLocaleLowerCase().trim() ===
-              uncheckedSkills[i].toLocaleLowerCase().trim() &&
+            uncheckedSkills[i].toLocaleLowerCase().trim() &&
             unchecked !== "-1"
           ) {
             uncheckedSkills[i] = "-1";
@@ -142,7 +142,8 @@ const Skills = () => {
                   background: "purple",
                   borderRadius: "7px",
                   color: "white",
-                  fontWeight: "600"
+                  fontWeight: "600",
+
                 }}
               >
                 Submit

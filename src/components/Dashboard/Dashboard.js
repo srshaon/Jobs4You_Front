@@ -424,6 +424,8 @@ const Dashboard = () => {
             {control === 'makeadmin' && <MakeAdmin />}
             {control === 'pendingjobs' && <PendingJobs />}
             {control === 'addgovtjob' && <AddGovJob />}
+            {/* {control === 'addgovtjob' && <AddGovJob />} */}
+
           </div>
         </div>
       </div>

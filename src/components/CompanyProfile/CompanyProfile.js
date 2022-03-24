@@ -26,9 +26,9 @@ const CompanyProfile = () => {
           ></Spinner>
         </div>
       )}
-      <div className="d-flex justify-content-center mt-5">
+      {/* <div className="d-flex justify-content-center mt-5">
         <Categoryselector companies={companies} setCategory={setCategory} />
-      </div>
+      </div> */}
 
       <div className="d-flex justify-content-center mb-4">
         <Row xs={1} md={2} className="mb-5 container g-4">
