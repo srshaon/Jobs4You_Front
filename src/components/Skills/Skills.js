@@ -111,16 +111,27 @@ const Skills = () => {
       style={{ minHeight: "70vh", marginTop: "50px" }}
     >
       <div style={{ width: "50%" }}>
-        <h2 className="text-center">Add your skills</h2>
+        <h3 className="text-center">Add your skills</h3>
         <p className="text-center mb-5">(Separate with ' ,')</p>
         <form onSubmit={handleSubmit}>
           {
             <div className="text-center py-4">
-              <input className="py-2 px-3" onChange={handleInput} />
               <input
+                className="w-50 p-2"
+                style={{
+                  background: "#fcfcfc",
+                  opacity: "0.6",
+                  border: "1px solid grey",
+                }}
+                onChange={handleInput}
+              />
+              <input
+                className="ms-2 p-2 border-0"
                 style={{
                   background: "purple",
-                  border: "1px solid purple",
+                  borderRadius: "7px",
+                  color: "white",
+                  fontWeight: "600",
                 }}
                 type="button"
                 value="Submit"

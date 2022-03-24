@@ -75,7 +75,7 @@ const UploadViewResume = () => {
   }
 
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden py-5 mb-5">
       <div className="d-flex justify-content-center">
         <form onSubmit={handleSubmit} action="" method="POST">
           <input

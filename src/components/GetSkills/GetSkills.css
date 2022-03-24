@@ -1,16 +1,17 @@
 .cancel-button {
-    background: white;
+  background: rgb(207, 205, 205);
+  border: none;
 }
 
 .cancel-button:hover {
-    background: red;
-    color: white;
-    transition: all 1s;
+  background: orangered;
+  color: white;
+  transition: all 1s;
 }
 
 .cross-sign {
-    display: inline-block;
-    position: relative;
-    top: -20px;
-    left: -17px;
+  display: inline-block;
+  position: relative;
+  top: -20px;
+  left: -17px;
 }

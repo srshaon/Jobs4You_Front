@@ -67,7 +67,7 @@ const ProfileEdit = ({ info, setControl }) => {
                     required
                     onChange={handleChange}
                     className="form-control px-3"
-                    value={profileInfo.fname}
+                    defaultValue={profileInfo.fname}
                     type="text"
                     name="fname"
                   />
@@ -99,7 +99,7 @@ const ProfileEdit = ({ info, setControl }) => {
                   <input
                     required
                     onChange={handleChange}
-                    className="form-control  px-3"
+                    className="form-control px-3"
                     value={profileInfo.lname}
                     type="text"
                     name="lname"
@@ -130,13 +130,14 @@ const ProfileEdit = ({ info, setControl }) => {
               </div>
               <div className="mt-5 w-25 mx-auto input-icon">
                 <input
-                  className="form-control update-btn py-2 px-3"
+                  className="form-control py-2 px-3"
                   style={{
                     backgroundColor: "purple",
                     border: "none",
                     color: "white",
                     fontSize: "20px",
                     fontWeight: "600",
+                    transition: "all 1s",
                   }}
                   type="submit"
                   value="Update"

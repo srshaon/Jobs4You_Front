@@ -168,10 +168,15 @@ const JobDetails = () => {
                   <b style={{ fontSize: 18 }}>Experience Requirements ➾</b>{" "}
                   <span>{jobs.experienceRequirements}</span>
                 </p>
-                <p>
-                  <b style={{ fontSize: 18 }}> Salary ➾</b>{" "}
-                  <span>{jobs.salary}</span>
-                </p>
+
+                <div>
+                  <b style={{ fontSize: 18 }}>Skills Required ➾</b>
+                  <ul>
+                    {jobs?.skills.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </div>
                 <div>
                   <b style={{ fontSize: 18 }}>Additional Requirements ➾</b>
                   <ul>
@@ -180,6 +185,10 @@ const JobDetails = () => {
                     ))}
                   </ul>
                 </div>
+                <p>
+                  <b style={{ fontSize: 18 }}> Salary ➾</b>{" "}
+                  <span>{jobs.salary}</span>
+                </p>
               </div>
 
               <div className="d-md-flex align-items-center">
@@ -239,13 +248,14 @@ const JobDetails = () => {
                           <strong>Job Location: </strong>
                           {jobs.jobLocation}
                         </li>
-                        <li>
-                          <strong>Salary: </strong>
-                          {jobs.salary}
-                        </li>
+
                         <li>
                           <strong>Application Deadline: </strong>
                           {jobs.applicationDeadline}
+                        </li>
+                        <li>
+                          <strong>Salary: </strong>
+                          {jobs.salary}
                         </li>
                       </ul>
                     </div>

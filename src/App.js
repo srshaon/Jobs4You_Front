@@ -51,7 +51,7 @@ import ApplySuccess from "./components/ApplySuccess/ApplySuccess";
 import Dashboard from "./components/Dashboard/Dashboard";
 import CompanyDetails from "./components/CompanyProfile/CompanyDetails";
 import CompanyProfile from "./components/CompanyProfile/CompanyProfile";
-import PrivateRoute from "./components/ProvateRoute/ProvateRoute";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import SearchResult from "./components/SearchResult/SearchResult";
 import Freelancing from "./components/Freelancing/Freelancing";
 import Banking from "./components/Banking/Banking";
@@ -63,6 +63,7 @@ import ApplyCandidateList from "./components/ApplyCandidateList/ApplyCandidateLi
 import PendingJobs from "./components/PendingJobs/PendingJobs";
 import AllCompanies from "./components/AllCompanies/AllCompanies";
 import LineChart from "./components/LineChart/LineChart";
+import MakeAdmin from "./components/MakeAdmin/MakeAdmin";
 
 function App() {
   return (
@@ -245,6 +246,9 @@ function App() {
             </PrivateRoute>
             <Route path="/searchresult">
               <SearchResult></SearchResult>
+            </Route>
+            <Route path="/pendingJobs">
+              <PendingJobs></PendingJobs>
             </Route>
 
             {/* -------has to be last Route--------- */}

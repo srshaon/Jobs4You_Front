@@ -47,8 +47,8 @@ const GetSkills = ({ skillArray, setSkillArray, skill }) => {
       style={{ borderLeft: "1px solid black", width: "40%" }}
       className="mx-5 px-4"
     >
-      <h2 className="mb-4">Your Skills</h2>
-      <div className="d-flex flex-wrap">
+      <h3 className="text-center">Show All Skills</h3>
+      <div className="d-flex flex-wrap py-5">
         {getSkills?.length > 0 &&
           getSkills?.map((getSkill, index) => {
             return (
@@ -56,7 +56,7 @@ const GetSkills = ({ skillArray, setSkillArray, skill }) => {
                 <button
                   key={index}
                   id={index}
-                  style={{ border: "1px solid rgba(0, 0, 0, 0.4)" }}
+                  // style={{ border: "1px solid rgba(0, 0, 0, 0.4)" }}
                   onClick={handleDelete}
                   className="mx-2 my-2 py-2 px-3 cancel-button"
                 >
