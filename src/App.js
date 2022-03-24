@@ -242,6 +242,9 @@ function App() {
             <Route path="/searchresult">
               <SearchResult></SearchResult>
             </Route>
+            <Route path="/pendingJobs">
+              <PendingJobs></PendingJobs>
+            </Route>
 
             {/* -------has to be last Route--------- */}
             <Route path="*">
