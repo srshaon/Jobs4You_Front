@@ -101,7 +101,7 @@ const ManageJob = ({ job }) => {
         <td className="table-td">
           <Link to={`/jobdetails/${job._id}`}>{job.job}</Link>
         </td>
-        <td></td>
+        <td>{job?.applicationPosted}</td>
         <td>{job.applicationDeadline}</td>
         <td>
           {expiredDate < today ? (
