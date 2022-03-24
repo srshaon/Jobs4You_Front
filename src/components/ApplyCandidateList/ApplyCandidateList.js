@@ -91,7 +91,13 @@ const ApplyCandidateList = () => {
                 <td data-column="Job Title">{candidate.email}</td>
                 <td data-column="Twitter">{candidate.contactNo}</td>
                 <td data-column="Twitter">{candidate.percentage}</td>
-                <td data-column="Twitter">{candidate.percentage}</td>
+                <td data-column="Twitter">
+                <a download
+              className=" ms-3 me-3"
+              
+              href={candidate.resume}
+            />
+                </td>
               </tr>
             ))}
           </tbody>

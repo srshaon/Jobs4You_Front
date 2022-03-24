@@ -23,11 +23,11 @@ const MyJobs = () => {
       .then((data) => setApplyList(data));
   }, []);
   console.log(applyList);
-  const applyCollection = applyList.filter(
-    (applies) => applies.email == user.email
+  const applyCollection = applyList?.filter(
+    (applies) => applies?.email ===user?.email
   );
-  //console.log(applyCollection);
-  if (applyCollection.length === 0) {
+  console.log(applyCollection);
+  if (applyCollection?.length === 0) {
     return <Spinner animation="border" variant="danger" />;
   }
 
@@ -40,7 +40,7 @@ const MyJobs = () => {
         List of Applied Jobs
       </h4>
       <h5 className="overview-card py-5 text-center">
-        Total Jobs Applied: <span style={{}}>{applyCollection.length}</span>
+        Total Jobs Applied: <span style={{}}>{applyCollection?.length}</span>
       </h5>
       <div className="container my-5 mx-auto">
         <Table responsive table-striped bordered hover>
@@ -51,23 +51,23 @@ const MyJobs = () => {
               <th>Location</th>
               <th>Job Type</th>
               <th>Skills (%)</th>
-              {/* <th>Application Closing</th> */}
+              <th>Application Closing</th>
             </tr>
           </thead>
           <tbody className="table-secondary">
             {applyCollection.map((apply) => (
               <tr>
-                <td>{apply.job}</td>
-                <td>{apply.company}</td>
-                <td>{apply.jobLocation}</td>
-                <td>{apply.employmentStatus}</td>
-                <td>{apply.percentage}</td>
-                {/* <td>
+                <td>{apply?.job}</td>
+                <td>{apply?.company}</td>
+                <td>{apply?.jobLocation}</td>
+                <td>{apply?.employmentStatus}</td>
+                <td>{apply?.percentage}</td>
+                <td>
                   {format(
-                    new Date(apply?.applicationDeadline),
+                    new Date(apply?.jobApplicationDeadline),
                     "MMMM Do, YYYY"
                   )}
-                </td> */}
+                </td>
               </tr>
             ))}
           </tbody>
