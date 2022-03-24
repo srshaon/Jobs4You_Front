@@ -8,7 +8,12 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import useAuth from "../../hooks/useAuth";
 
 const FeaturedJobs = () => {
-  const { feauturedJobVisibility, setFeauturedJobVisibility, feauturedJobDisplay, setFeauturedJobDisplay } = useAuth();
+  const {
+    feauturedJobVisibility,
+    setFeauturedJobVisibility,
+    feauturedJobDisplay,
+    setFeauturedJobDisplay,
+  } = useAuth();
   const [featuredJobs, setFeaturedJobs] = useState([]);
 
   useEffect(() => {
@@ -36,13 +41,16 @@ const FeaturedJobs = () => {
             <Col md={8}>
               {
                 <div>
-                  <Link className="job-list-link ttt" to={`/jobdetails/${job._id}`}>
+                  <Link
+                    className="job-list-link ttt"
+                    to={`/jobdetails/${job._id}`}
+                  >
                     {" "}
                     <h5 className="" style={{ color: "brown" }}>
                       {job.job}
                     </h5>
                   </Link>
-                  <p className='ttt'>
+                  <p className="ttt">
                     <span>
                       <CgWorkAlt />
                     </span>{" "}

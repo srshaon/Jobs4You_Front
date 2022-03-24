@@ -6,10 +6,14 @@ import { useStateMachine } from "little-state-machine";
 import updateAction from "./updateAction";
 import useAuth from "../../hooks/useAuth";
 import { Spinner } from "react-bootstrap";
+import useImageVideoUpload from "./../../hooks/useImageVideoUpload";
 
 const ProfileForm = (props) => {
   const { role, setRole, user, setUser } = useAuth();
+  const [imgUrl, setImgUrl] = useState("");
+  const [uploading, setUploading] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false);
+  const { handleFile } = useImageVideoUpload(setImgUrl, setUploading);
   console.log(user);
   console.log(user.email, user.displayName);
   const { register, handleSubmit } = useForm();
@@ -61,10 +65,9 @@ const ProfileForm = (props) => {
                             Company Name
                           </label>
                           <input
-                          readOnly
+                            readOnly
                             className="profile-form-input"
                             defaultValue={user.displayName}
-                           
                           />
                         </div>
                         <div>
@@ -132,10 +135,9 @@ const ProfileForm = (props) => {
                             Official Email
                           </label>
                           <input
-                          readOnly
+                            readOnly
                             className="profile-form-input"
                             defaultValue={user.email}
-                            
                           />
                         </div>
                         <div>
@@ -210,16 +212,31 @@ const ProfileForm = (props) => {
               <div className="profile-form-container mt-3 mb-5">
                 <h2 style={{ color: "brown" }}>User Profile</h2>
                 <div className="profile-form-inputs">
+                  <div className="my-3">
+                    <div className="">
+                      <label htmlFor="" className="ms-5">
+                        Upload Image
+                      </label>
+                      <input
+                        className="w-75 mt-2 ms-5 py-3 px-5 form-control user-image-field"
+                        type="file"
+                        onChange={(e) => {
+                          handleFile(e);
+                        }}
+                      />
+                    </div>
+                  </div>
                   <div className="profile-form-input-pair d-md-flex justify-content-center">
                     <div>
                       <label htmlFor="" className="ms-3">
                         First Name
                       </label>
                       <input
-                      reaadOnly
                         type="text"
                         className="profile-form-input"
-                        defaultValue={user.displayName}
+                        defaultValue={""}
+                        {...register("fname", { required: true })}
+                        // defaultValue={user.displayName}
                       />
                     </div>
                     <div>
@@ -315,10 +332,9 @@ const ProfileForm = (props) => {
                         Primary Email
                       </label>
                       <input
-                      readOnly
+                        readOnly
                         className="profile-form-input"
                         defaultValue={user.email}
-
                         {...register("pEmail", { required: true })}
                       />
                     </div>
