@@ -70,8 +70,8 @@ const ProfileForm2 = (props) => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="profile-form-container">
                     <div className="profile-form-inputs">
-                      <div className="profile-form-input-pair justify-content-center">
-                        <label htmlFor="" className="m-2">
+                      <div className="profile-form-input-pair">
+                        {/* <label htmlFor="" className="m-2">
                           Write about your company culture and core values (Max
                           500 words).
                         </label>
@@ -81,7 +81,22 @@ const ProfileForm2 = (props) => {
                           placeholder="Company Culture/Core Values..."
                           defaultValue=""
                           {...register("acc", { required: true })}
-                        />
+                        /> */}
+
+                        <div>
+                          <label htmlFor="" className="m-2">
+                            Please share with us about your company culture and
+                            core values.
+                          </label>
+                          <input
+                            className="form-control video-field p-5"
+                            placeholder="A link to a video about your company culture"
+                            type="file"
+                            onChange={(e) => {
+                              uploadVideo(e);
+                            }}
+                          />
+                        </div>
                       </div>
                       <br />
                       <div className="profile-form-input-pair justify-content-center">
@@ -110,30 +125,6 @@ const ProfileForm2 = (props) => {
                           defaultValue=""
                           {...register("achievements", { required: true })}
                         />
-                      </div>
-                      <div className="profile-form-input-pair d-flex justify-content-center">
-                        <div>
-                          <label htmlFor="Upload Logo"></label>
-                          <input
-                            className="form-control mt-2"
-                            type="file"
-                            onChange={(e) => {
-                              handleFile(e);
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <div className="profile-form-input-pair d-flex justify-content-center">
-                        <div>
-                          <label htmlFor="">Upload Video</label>
-                          <input
-                            className="form-control mt-2"
-                            type="file"
-                            onChange={(e) => {
-                              uploadVideo(e);
-                            }}
-                          />
-                        </div>
                       </div>
 
                       {uploading ? (

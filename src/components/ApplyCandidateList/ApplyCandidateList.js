@@ -68,6 +68,9 @@ const ApplyCandidateList = () => {
         </div>
       </div>
       <div>
+        <h3 className="text-center pt-5">
+          No of Applicants: {allApplyList.length}{" "}
+        </h3>
         <table className="w-75 mx-auto pb-5">
           <thead>
             <tr>

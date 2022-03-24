@@ -138,3 +138,13 @@
   background-color: #ecf0f3 !important;
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }
+
+.video-field {
+  background: #ecf0f3;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+.company-logo {
+  background: #ecf0f3;
+  box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
