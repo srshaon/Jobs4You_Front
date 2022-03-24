@@ -23,11 +23,11 @@ const MyJobs = () => {
       .then((data) => setApplyList(data));
   }, []);
   console.log(applyList);
-  const applyCollection = applyList.filter(
-    (applies) => applies.email == user.email
+  const applyCollection = applyList?.filter(
+    (applies) => applies?.email ===user?.email
   );
-  //console.log(applyCollection);
-  if (applyCollection.length === 0) {
+  console.log(applyCollection);
+  if (applyCollection?.length === 0) {
     return <Spinner animation="border" variant="danger" />;
   }
 
