@@ -36,8 +36,8 @@ const AllReviews = () => {
       <h2 className="text-center" style={{ color: "brown" }}>
         What Our Clients Say
       </h2>
-      <h4 className="text-center" style={{ opacity: "0.6" }}>
-        Check honest reviews from our clients!
+      <h4 className="text-center pb-2" style={{ opacity: "0.6" }}>
+        Check valuable reviews from our clients!
       </h4>
       <Slider {...settings}>
         {reviews?.map((review) => (
@@ -55,7 +55,9 @@ const AllReviews = () => {
                   alt=""
                 />
               </div>
-              <h6>Name: {review.name}</h6>
+              <h5 style={{ color: "brown", fontWeight: "700" }}>
+                {review.name}
+              </h5>
               <div>
                 {[...Array(5)].map((star, i) => {
                   const a = i + 1;
@@ -76,10 +78,13 @@ const AllReviews = () => {
                   );
                 })}
               </div>
-              <h6 style={{ fontSize: "20px" }}>
+              <p
+                className="text-center"
+                style={{ fontSize: "16px", minHeight: "10vh" }}
+              >
                 <i className="fa-solid fa-quote-left"></i> {review.review}{" "}
                 <i className="fa-solid fa-quote-right"></i>
-              </h6>
+              </p>
             </div>
           </div>
         ))}

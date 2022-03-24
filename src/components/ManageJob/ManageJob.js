@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import AllJobs from "../AllJobs/AllJobs";
 import useAuth from "../../hooks/useAuth";
 import { AiFillEye } from "react-icons/ai";
+import { TiLockClosed } from "react-icons/ti";
 
 const ManageJob = ({ job }) => {
   console.log(job.additionalRequirements.join("\r\n"));
@@ -91,14 +92,12 @@ const ManageJob = ({ job }) => {
     console.log("clicked");
     setControl(`/alljobs/${job._id}`);
     console.log(control);
-  }
-  const something = () => {
-
-  }
+  };
+  const something = () => {};
   return (
     <>
       <tr className="table-tr">
-        <td className="table-td">
+        <td className="table-td ">
           <Link to={`/jobdetails/${job._id}`}>{job.job}</Link>
         </td>
         <td>{job?.applicationPosted}</td>
@@ -109,39 +108,59 @@ const ManageJob = ({ job }) => {
           ) : (
             <span>
               {job.status === "approved" && (
-                <span style={{ color: "green" }}>approved</span>
+                <span style={{ color: "green", fontWeight: "600" }}>
+                  approved
+                </span>
               )}
               {job.status === "pending" && (
-                <span style={{ color: "brown" }}>pending</span>
+                <span style={{ color: "brown", fontWeight: "600" }}>
+                  pending
+                </span>
               )}
               {job.status === "closed" && (
-                <span style={{ color: "orangered" }}>closed</span>
+                <span style={{ color: "orangered", fontWeight: "600" }}>
+                  closed
+                </span>
               )}
             </span>
           )}
         </td>
         <td>
           {job.status === "approved" || job.status === "pending" ? (
-            <span role="button" onClick={handleShow}>
+            <span
+              className="p-2 border-0"
+              style={{
+                background: "purple",
+                color: "white",
+                fontWeight: "700",
+                borderRadius: "7px",
+              }}
+              role="button"
+              onClick={handleShow}
+            >
               Update
             </span>
           ) : (
             "-"
           )}
         </td>
-        <td>
+        <td className="text-center">
           {job.status !== "closed" && expiredDate > today ? (
-            <span role="button" onClick={() => handleStatus(job._id)}>
-              Close
+            <span
+              style={{ color: "black", fontWeight: "700" }}
+              role="button"
+              onClick={() => handleStatus(job._id)}
+            >
+              <TiLockClosed />
             </span>
           ) : (
             "-"
           )}
         </td>
-        <td>
-          <span style={{ fontWeight: 'bolder' }}> {applications.length}</span>
+        <td className="text-center">
+          <span style={{ fontWeight: "bolder" }}> {applications.length}</span>
         </td>
-        <td>
+        <td className="text-center">
           <Link to={`/applycandidateslist/${job._id}`}>
             <span>
               <AiFillEye />
@@ -150,8 +169,6 @@ const ManageJob = ({ job }) => {
           {/* <Button onClick={something} className="apply-btn px-5">
             abc
           </Button> */}
-
-
 
           {/* {applyCandidatesEmails?.map((email) => (
             <AllJobs email={email}></AllJobs>

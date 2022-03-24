@@ -190,6 +190,21 @@ const ProfileForm = (props) => {
                         </div>
                       </div>
 
+                      <div className="profile-form-input-pair  mt-2 mx-4">
+                        <div>
+                          <label className="ms-1" htmlFor="Company Logo">
+                            Company Logo
+                          </label>
+                          <input
+                            className="company-logo form-control p-4 ms-1"
+                            type="file"
+                            onChange={(e) => {
+                              handleFile(e);
+                            }}
+                          />
+                        </div>
+                      </div>
+
                       <div className="profile-form-button-div d-flex justify-content-center">
                         <button
                           className="profile-form-button p-3"
