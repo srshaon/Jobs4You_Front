@@ -27,16 +27,30 @@ const PendingJobs = () => {
         .then((data) => {
           if (data.modifiedCount > 0) {
             alert("approved successfully");
+            fetch('http://localhost:5000/jobs')
+              .then(res => res.json())
+              .then(data => {
+                const pendingJobs = data.filter((job) => job?.status === "pending");
+                console.log(pendingJobs);
+                setPendingJobs(pendingJobs);
+              })
           }
         });
     }
   };
-
+  if (pendingJobs.length === 0) {
+    return (
+      <div>
+        <h2>No Pending Jobs At The Moment</h2>
+      </div>
+    )
+  }
   return (
     <div className="py-5 text-center">
       {pendingJobs.map((pJobs) => (
         <>
           <li>{pJobs.job}</li>
+          <h2>{pJobs.status}</h2>
           <p>
             {pJobs.status === "pending" && (
               <button onClick={() => handlePendingJob(pJobs._id)}>
