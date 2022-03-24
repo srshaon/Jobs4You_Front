@@ -57,6 +57,7 @@ const Filteredjobs = () => {
           className="text-center"
           style={{
             color: "brown",
+            fontWeight: "500",
           }}
         >
           Find the right career for you

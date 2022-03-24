@@ -74,7 +74,33 @@
   border: none !important;
   border-radius: 7px;
 }
+.ooooo {
+  display: inline !important;
 
+  justify-content: center;
+  background-color: transparent;
+  /* border: 1px solid rgb(177, 177, 177); */
+}
+.ttt {
+  text-align: start;
+}
+.latest-job-button {
+  border: none;
+  border-left: 2px solid rgba(0, 0, 0, 0.705);
+}
+.feature-job-button {
+  border: none;
+  border-right: 2px solid rgba(0, 0, 0, 0.705);
+}
+.feature-job-button:focus {
+  border: 2px solid rgba(59, 59, 59, 0.616);
+  background-color: skyblue !important;
+}
+
+.latest-job-button:focus {
+  border: 2px solid rgba(59, 59, 59, 0.616);
+  background-color: skyblue !important;
+}
 @media (max-width: 576px) {
   .explore-container {
     height: auto;

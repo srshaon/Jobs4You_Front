@@ -16,16 +16,129 @@ import Companies from "../Companies/Companies";
 import FeaturedJobs from "../FeaturedJobs/FeaturedJobs";
 import Footer from "../Footer/Footer";
 import useAuth from "../../hooks/useAuth";
+import LatestJobs from "../LatestJobs/LatestJobs";
+import AllReviews from "../AllReviews/AllReviews";
 const Home = () => {
-  const { user, role, admin } = useAuth();
-  console.log('from home:: this is user:', user, 'this is role:', role, 'this is admin:', admin)
+  const {
+    user,
+    role,
+    admin,
+    feauturedJobVisibility,
+    setFeauturedJobVisibility,
+    feauturedJobDisplay,
+    setFeauturedJobDisplay,
+  } = useAuth();
+  console.log(
+    "from home:: this is user:",
+    user,
+    "this is role:",
+    role,
+    "this is admin:",
+    admin
+  );
+  const something = () => {
+    // console.log('clicked')
+    // const filteredJob = document.getElementById('featurejobs');
+    document.getElementById("featurejobs").style.display = "block";
+    document.getElementById("featurejobs").style.visibility = "visible";
+    document.getElementById("latestjobs").style.display = "none";
+    document.getElementById("latestjobs").style.visibility = "hidden";
+    // console.log(filteredJob);
+    // setFeauturedJobVisibility('hidden');
+    // setFeauturedJobDisplay('none');
+  };
+
+  const something2 = () => {
+    // console.log('clicked')
+    // const filteredJob = document.getElementById('latestjobs');
+    document.getElementById("featurejobs").style.display = "none";
+    document.getElementById("featurejobs").style.visibility = "hidden";
+    document.getElementById("latestjobs").style.display = "block";
+    document.getElementById("latestjobs").style.visibility = "visible";
+    // console.log(filteredJob);
+    // setFeauturedJobVisibility('visible');
+    // setFeauturedJobDisplay('block');
+  };
+  window.onload = function () {
+    console.log("clicked");
+    document.getElementById("feature-job-button").click();
+  };
   return (
-    <div style={{ overflowX: 'hidden' }} className="home-container-nuzhat">
+    <div style={{ overflowX: "hidden" }} className="home-container-nuzhat">
       {/* <Header></Header> */}
       <Cover></Cover>
       <main className="main-container">
         <Filteredjobs></Filteredjobs>
-        <FeaturedJobs></FeaturedJobs>
+        <div
+          className="ooooo d-flex justify-content-center"
+          style={{
+            margin: "0px",
+            padding: "0px",
+            backgroundColor: "transparent",
+            display: "inline",
+          }}
+        >
+          <button
+            id="feature-job-button"
+            className="feature-job-button py-1"
+            onClick={something}
+            autoFocus
+            style={{
+              margin: "0px",
+              padding: "0px",
+              backgroundColor: "transparent",
+              display: "inline",
+              marginRight: "1px",
+              outline: "none",
+            }}
+          >
+            <h3
+              className="text-center px-2"
+              style={{ color: "brown", display: "inline" }}
+            >
+              Featured Jobs
+            </h3>
+            {/* <FeaturedJobs className='feature-jobs'></FeaturedJobs> */}
+          </button>
+          <button
+            className="latest-job-button py-1"
+            onClick={something2}
+            style={{
+              margin: "0px",
+              padding: "0px",
+              backgroundColor: "transparent",
+              display: "inline",
+              outline: "none",
+              marginLeft: "1px",
+            }}
+          >
+            <h3
+              className="text-center px-2"
+              style={{ color: "brown", display: "inline" }}
+            >
+              Latest Jobs
+            </h3>
+            {/* <FeaturedJobs className='feature-jobs'></FeaturedJobs> */}
+          </button>
+          {/* <button>
+            <LatestJobs className='latest-jobs'></LatestJobs>
+          </button> */}
+        </div>
+        <div
+          className="my-2"
+          style={{ display: "block", visibility: "visible" }}
+          id="featurejobs"
+        >
+          <FeaturedJobs className="feature-jobs"></FeaturedJobs>
+        </div>
+        <div
+          className="my-2"
+          style={{ display: "none", visibility: "hidden" }}
+          id="latestjobs"
+        >
+          <LatestJobs className="latest-jobs"></LatestJobs>
+        </div>
+
         <div className="explore-bg">
           <div className="container">
             <div className="explore-container row align-items-center d-md-flex">
@@ -85,6 +198,7 @@ const Home = () => {
             </Col>
           </div>
         </div>
+        <AllReviews></AllReviews>
       </main>
     </div>
   );

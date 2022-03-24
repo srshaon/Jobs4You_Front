@@ -7,10 +7,14 @@ import ModalMessage from "./../ModalMessage/ModalMessage";
 import Pagination from "./../Pagination/Pagination";
 
 import { AiTwotoneEdit } from "react-icons/ai";
-import { AiFillEye } from "react-icons/ai";
-import { useGetProfilesQuery } from "../../Redux-handler/ManageProfiles";
+import { AiFillEye,AiOutlineDelete } from "react-icons/ai";
+import { useDeleteCandidateByIdMutation, useGetProfilesQuery } from "../../Redux-handler/ManageProfiles";
+import useAuth from "../../hooks/useAuth";
 
 const CandidatesList = () => {
+  const{user}=useAuth()
+  const[deleteCandidate,{isSuccess}]=useDeleteCandidateByIdMutation()
+  
   const { data: candidates } = useGetProfilesQuery();
   let sortedList = [];
   for (let i = candidates?.length - 1; i >= 0; i--) {
@@ -18,13 +22,18 @@ const CandidatesList = () => {
   }
   const [pageNumber, setPageNumber] = useState(0);
   const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
   const candidatePerPage = 10;
   const visitedPage = pageNumber * candidatePerPage;
   const pageCount = Math.ceil(candidates?.length / candidatePerPage);
   const tableHead = ["Sl", "Name", "Email", "Phone", "Details", "Action"];
+  useEffect(()=>{
+    if(isSuccess){
+      setShow(true)
+    }
+  },[isSuccess])
   return (
     <div className="theme2 my-5">
+      <ModalMessage show={show} setShow={setShow} message={'Deleted Successfully'} />
       {/* <div className="d-flex justify-content-center container mt-5">
         <InputGroup className="mb-3 mt-5 w-75">
           <FormControl
@@ -71,9 +80,9 @@ const CandidatesList = () => {
                   </td>
                   <td>
                     {" "}
-                    <Link to={`/profileedit/${_id}`}>
-                      <span>Resume</span>
-                    </Link>
+                    <span onClick={()=>deleteCandidate(_id)}>
+                        <AiOutlineDelete/>
+                      </span>
                   </td>
                 </tr>
               ))}
