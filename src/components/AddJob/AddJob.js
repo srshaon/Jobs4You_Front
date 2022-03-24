@@ -17,12 +17,12 @@ const AddJob = ({ profileInfo }) => {
   const [imgUrl, setImgUrl] = useState(false);
   const { handleFile } = useImageVideoUpload(setImgUrl, setUploading);
   const [inputDisabled, setInputDisabled] = useState(true);
-  const [disabledForm, setDisabledForm] = useState("blue");
+  // const [disabledForm, setDisabledForm] = useState("blue");
 
   useEffect(() => {
     if (profileInfo) {
       setInputDisabled(false);
-      setDisabledForm("skyblue");
+      // setDisabledForm("skyblue");
     }
   }, [profileInfo]);
 
@@ -76,7 +76,8 @@ const AddJob = ({ profileInfo }) => {
         <form
           disabled
           className="disable-form py-4 mb-4"
-          style={{ background: disabledForm }}
+          // style={{ background: disabledForm }}
+
           onSubmit={handleSubmit(onSubmit)}
         >
           <div className="d-flex">
