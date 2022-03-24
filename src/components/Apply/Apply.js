@@ -107,6 +107,25 @@ const Apply = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
+          fetch('https://afternoon-headland-45054.herokuapp.com/notifications', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: user?.email, message: `You applied at ${jobs?.company} as ${jobs?.job}`, link: 'dashboard' })
+          })
+          .then(res => res.json())
+          .then(data => console.log(data));
+
+          fetch('https://afternoon-headland-45054.herokuapp.com/notifications', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: jobs?.email, message: `${user?.displayName} has applied in your company as ${jobs?.job}`, link: 'dashboard' })
+          })
+          .then(res => res.json())
+          .then(data => console.log(data)); 
           alert("successfully applied");
           e.target.reset();
         }
