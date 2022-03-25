@@ -4,7 +4,7 @@ import { MdDoubleArrow } from "react-icons/md";
 import "./Categories.css";
 
 const Categories = ({ jobs }) => {
-  console.log(jobs);
+  // console.log(jobs);
   return (
     <div className="">
       <div className="cardbg">

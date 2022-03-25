@@ -230,8 +230,7 @@ const Dashboard = () => {
                             <ImHome />
                           </span>{" "}
                           Home
-                        </li>
-                       
+                        </li>                       
                         {profileInfo?<li
                           onClick={() => setControl("companyProfile")}
                           className="li py-3 px-3"
@@ -311,6 +310,19 @@ const Dashboard = () => {
                 )}
                 {role === "admin" && (
                   <div>
+                    <div className="text-center pt-4">
+                      <h4
+                        className="px-5 text-center"
+                        style={{
+                          fontWeight: "600",
+                          color: "white",
+                        }}
+                      >
+                        Admin <br />{" "}
+                        <span style={{ fontSize: "18px" }}>Dashboard</span>
+                        <hr />
+                      </h4>
+                    </div>
                     <div>
                       <ul className="dashboard-list">
                       <li onClick={navigateToHome} className="li py-3 px-5">
@@ -320,7 +332,7 @@ const Dashboard = () => {
                         Home
                       </li>
                         <li
-                          onClick={() => setControl('makeadmin')}
+                          onClick={() => setControl("makeadmin")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
@@ -388,7 +400,10 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div style={{ border: '2px solid blue' }} className="dashboard-second-container">
+        <div
+          style={{ border: "2px solid blue" }}
+          className="dashboard-second-container"
+        >
           <div
             className="welcome-dashboard d-md-flex align-items-center"
             style={{ height: "18vh" }}
@@ -437,11 +452,10 @@ const Dashboard = () => {
             {control === "manageJobs" && <ManageJobs />}
             {control === "editCompany" && <EditCompany info={profileInfo} />}
             {control === `alljobs/:jobId` && <AllJobs></AllJobs>}
-            {control === 'makeadmin' && <MakeAdmin />}
-            {control === 'pendingjobs' && <PendingJobs />}
-            {control === 'addgovtjob' && <AddGovJob />}
+            {control === "makeadmin" && <MakeAdmin />}
+            {control === "pendingjobs" && <PendingJobs />}
+            {control === "addgovtjob" && <AddGovJob />}
             {/* {control === 'addgovtjob' && <AddGovJob />} */}
-
           </div>
         </div>
       </div>

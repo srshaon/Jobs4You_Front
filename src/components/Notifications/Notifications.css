@@ -1,0 +1,33 @@
+.common-not:hover {
+    cursor: pointer;
+}
+
+.gray-not {
+    background: rgb(63, 63, 63);
+}
+
+.white-not {
+    background: white;
+}
+
+.noti-bell {
+    font-size: 1.5em;
+}
+
+/* .customized-noti:hover {
+    transition: color 0.5s;
+} */
+
+.counter-style {
+    display: inline-block;
+    position: relative;
+    background: red;
+    font-size: 0.8em;
+    padding: 1.4px 6.7px;
+    border-radius: 50%;
+    color: white;
+    left: -35px;
+    margin-right: -27px;
+    top: -6px;
+    z-index: 999999;
+}
