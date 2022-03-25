@@ -1,0 +1,8 @@
+.company-bg {
+  background-color: var(--color-primary-dark);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 60vh;
+  opacity: 0.5;
+}

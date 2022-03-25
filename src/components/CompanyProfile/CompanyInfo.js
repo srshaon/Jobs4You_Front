@@ -14,6 +14,7 @@ import {
 } from "react-icons/md";
 import { HiOutlinePhone } from "react-icons/hi";
 import { FaLink, FaBuilding } from "react-icons/fa";
+import LineChart from "../LineChart/LineChart";
 
 const CompanyInfo = ({ info }) => {
   const history = useHistory();
@@ -40,7 +41,7 @@ const CompanyInfo = ({ info }) => {
         {info && (
           <div>
             <div className="row d-md-flex pt-3">
-              <Col md={8} className="">
+              <Col md={8} className="text-center">
                 <div className="d-md-flex justify-content-center">
                   <div className="overview-card card p-4">
                     <h5>
@@ -85,7 +86,11 @@ const CompanyInfo = ({ info }) => {
                     </h5>
                   </div>
                 </div>
+                <div className="mt-4 d-flex justify-content-center">
+                  <LineChart></LineChart>
+                </div>
               </Col>
+
               <Col md={4} className="pt-3 mb-5">
                 <h4 className="text-center" style={{ color: "white" }}>
                   Company Overview
