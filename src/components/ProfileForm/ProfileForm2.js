@@ -21,7 +21,6 @@ const ProfileForm2 = (props) => {
     setVideoUrl
   );
   const onSubmit = (data) => {
-    state.data.img = imgUrl;
     state.data.videoUrl = videoUrl;
     console.log(data);
     actions.updateAction(data);
@@ -111,18 +110,7 @@ const ProfileForm2 = (props) => {
                           {...register("achievements", { required: true })}
                         />
                       </div>
-                      <div className="profile-form-input-pair d-flex justify-content-center">
-                        <div>
-                          <label htmlFor="Upload Logo"></label>
-                          <input
-                            className="form-control mt-2"
-                            type="file"
-                            onChange={(e) => {
-                              handleFile(e);
-                            }}
-                          />
-                        </div>
-                      </div>
+                      
                       <div className="profile-form-input-pair d-flex justify-content-center">
                         <div>
                           <label htmlFor="">Upload Video</label>

@@ -12,7 +12,8 @@ import { useDeleteCandidateByIdMutation, useGetProfilesQuery } from "../../Redux
 import useAuth from "../../hooks/useAuth";
 
 const CandidatesList = () => {
-  const { user } = useAuth()
+  const { user,role } = useAuth()
+  console.log(role)
   const [deleteCandidate, { isSuccess }] = useDeleteCandidateByIdMutation()
 
   const { data: candidates } = useGetProfilesQuery();
@@ -25,8 +26,8 @@ const CandidatesList = () => {
   const candidatePerPage = 10;
   const visitedPage = pageNumber * candidatePerPage;
   const pageCount = Math.ceil(candidates?.length / candidatePerPage);
-  let tableHead = ["Sl", "Name", "Email", "Phone", "Details", "Action"];
-  if (user.role == 'admin') {
+  let tableHead = ["Sl", "Name", "Email", "Phone", "Details"];
+  if (!user.role ==='company') {
     tableHead = ["Sl", "Name", "Email", "Phone", "Details", "Action"];
   }
   useEffect(() => {
@@ -60,15 +61,16 @@ const CandidatesList = () => {
           <tbody>
             {sortedList
               ?.slice(visitedPage, visitedPage + candidatePerPage)
-              .map(({ _id, fname, pEmail, pContact }, index) => (
+              .map(({ _id, fname, pEmail, pContact,img}, index) => (
                 <tr>
                   <td>{index + 1}</td>
                   <td>
-                    <img
+                  {img?<img className="custom-img me-2" src={img} alt="" srcset="" />
+                    :<img
                       className="custom-img me-2"
                       src="https://th.bing.com/th/id/OIP.c2GTibztP9NW0_ITWQ2qwwHaGo?pid=ImgDet&rs=1"
                       alt=""
-                    />{" "}
+                    />}{" "}
                     {fname}
                   </td>
                   <td>{pEmail}</td>
@@ -81,12 +83,12 @@ const CandidatesList = () => {
                       </span>
                     </Link>
                   </td>
-                  <td>
+                  {(!role==='company')&&<td>
                     {" "}
                     <span onClick={() => deleteCandidate(_id)}>
                       <AiOutlineDelete />
                     </span>
-                  </td>
+                  </td>}
                 </tr>
               ))}
           </tbody>
