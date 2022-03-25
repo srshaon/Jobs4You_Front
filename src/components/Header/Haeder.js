@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
@@ -6,10 +6,14 @@ import "./Header.css";
 import { useLocation } from "react-router-dom";
 import image from "../../assets/Images/no_img_2.png";
 import Notifications from "../Notifications/Notifications";
+import { HashLink, NavHashLink } from "react-router-hash-link";
 const Header = () => {
+
   const { admin, user, logOut, role } = useAuth();
   const location = useLocation();
+  const [click, setClick] = useState(false);
 
+  const handleClick = () => setClick(!click);
   return (
     <>
       {location.pathname !== "/dashboard" && (
@@ -57,8 +61,18 @@ const Header = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="ms-auto d-flex align-items-center justify-content-center">
                 <NavLink className="nav-link" to="/home">
-                  HOME/BROWSE JOBS
+                  HOME
                 </NavLink>
+                <NavHashLink
+                  as={HashLink}
+                  to="/home#browsejobs"
+                  activeClassName="active"
+                  className="nav-link"
+                  onClick={handleClick}
+                >
+                  BROWSE JOBS
+
+                </NavHashLink>
 
                 {role === "seeker" && (
                   <>
