@@ -125,22 +125,6 @@ const ProfileForm2 = (props) => {
                           {...register("achievements", { required: true })}
                         />
                       </div>
-<<<<<<< HEAD
-                      
-                      <div className="profile-form-input-pair d-flex justify-content-center">
-                        <div>
-                          <label htmlFor="">Upload Video</label>
-                          <input
-                            className="form-control mt-2"
-                            type="file"
-                            onChange={(e) => {
-                              uploadVideo(e);
-                            }}
-                          />
-                        </div>
-                      </div>
-=======
->>>>>>> d587e06905dfa2fe66c38a6d84042b9b4d40689a
 
                       {uploading ? (
                         <h4 className="text-center text-danger mt-2">
