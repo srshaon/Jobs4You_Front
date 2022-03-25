@@ -1,0 +1,7 @@
+.resume-sec {
+  background-image: url("../../assets/Images/resume_bg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 55vh;
+}

@@ -29,13 +29,14 @@ const Chat = () => {
         setName(name);
         setRoom(room);
 
-        socket = io(ENDPOINT, {
-            reconnectionAttempts: 'infinity'
-            // withCredentials: true,
-            // extraHeaders: {
-            //     "accept-header": "approved"
-            // }
-        });
+        socket = io(ENDPOINT);
+        
+        // {
+        // reconnectionAttempts: 'infinity',
+        // withCredentials: true,
+        // extraHeaders: {
+        //     "accept-header": "approved"
+        // }
         // console.log(socket);
 
         socket.emit('join', { name, room }, (error) => {

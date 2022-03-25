@@ -36,6 +36,8 @@ const useFirebase = () => {
   const [control, setControl] = useState("welcome");
   const [feauturedJobVisibility, setFeauturedJobVisibility] = useState("visible");
   const [feauturedJobDisplay, setFeauturedJobDisplay] = useState("block");
+  const [notifications, setNotifications] = useState([]);
+  const [counter, setCounter] = useState(0);
 
 
   // const [condition, setCondition] = useState("seeker");
@@ -134,6 +136,7 @@ const useFirebase = () => {
         setUser({});
         setError("");
         setRole('');
+        setControl('welcome');
       })
       .catch((error) => {
         // An error happened.
@@ -158,6 +161,22 @@ const useFirebase = () => {
       setIsLoading(false);
     });
   });
+
+  useEffect(() => {
+    fetch(`https://afternoon-headland-45054.herokuapp.com/notifications/${user?.email}`)
+    .then(res => res.json())
+    .then(data => {
+      let count = 0;
+      setNotifications(data);
+      for (const i of data) {
+        if (!i.isClicked) {
+          count++;
+        }
+      }
+      setCounter(count);
+    });
+  });
+  
   const saveUser = (email, displayName, role, method) => {
     const user = { email, displayName, role };
     fetch("https://afternoon-headland-45054.herokuapp.com/users", {
@@ -209,7 +228,10 @@ const useFirebase = () => {
     resetSearchLocation,
     setResetSearchLocation,
     control, setControl,
-    feauturedJobVisibility, setFeauturedJobVisibility, feauturedJobDisplay, setFeauturedJobDisplay
+    feauturedJobVisibility, setFeauturedJobVisibility, feauturedJobDisplay, setFeauturedJobDisplay,
+    notifications,
+    setNotifications,
+    counter
   };
 };
 

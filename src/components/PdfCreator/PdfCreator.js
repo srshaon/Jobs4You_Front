@@ -3,6 +3,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import ModalMessage from "./../ModalMessage/ModalMessage";
 import { saveAs } from "file-saver";
+import "./PdfCreator.css";
 
 const PdfCreator = () => {
   const [downloading, setDownloading] = useState(false);
@@ -81,72 +82,108 @@ const PdfCreator = () => {
         setShow={setShow}
         message={"Resume Downloaded"}
       />
-      <div className="my-5 d-flex justify-content-center row mx-auto">
-        <div className="p-4 rounded col-lg-6 col-sm-10 shadow">
-          <h2 className="text-center text-primary mb-4">Create a Resume</h2>
-          <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="">
+        <h4
+          className="p-3 text-white"
+          style={{ backgroundColor: "var(--color-primary-dark)" }}
+        >
+          Create Your Resume
+        </h4>
+        <div className="resume-form rounded w-75 mx-auto mt-5">
+          <form className="p-5 jobpost-form" onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="">Your Name</label>
             <input
-              className="form-control mt-2"
+              className="form-control"
               type="text"
-              placeholder="Name"
               {...register("name", { required: true })}
             />
+
+            <label className="mt-3" htmlFor="">
+              Your email
+            </label>
             <input
-              className="form-control mt-2"
+              className="form-control"
               type="text"
-              placeholder="Email"
+              placeholder="alpha@example.com"
               {...register("email", { required: true })}
             />
+
+            <label className="mt-3" htmlFor="">
+              Location
+            </label>
             <input
-              className="form-control mt-2"
+              className="form-control"
               type="text"
-              placeholder="Location"
+              placeholder="e.g. 'Dhaka', 'Jessore'"
               {...register("location", { required: true })}
             />
+
+            <label className="mt-3" htmlFor="">
+              Education
+            </label>
             <input
-              className="form-control mt-2"
+              className="form-control"
               type="text"
-              placeholder="Last Education Status"
+              placeholder="Highest Education Level"
               {...register("education", { required: true })}
             />
+            <label className="mt-3" htmlFor="">
+              Institute
+            </label>
             <input
-              className="form-control mt-2"
+              className="form-control"
               type="text"
-              placeholder="Institute"
               {...register("institute", { required: true })}
             />
+
+            <label className="mt-3" htmlFor="">
+              Experience
+            </label>
             <input
-              className="form-control mt-2"
+              className="form-control"
               type="number"
-              placeholder="Experience year (optional)"
+              placeholder="1-2 Years (optional)"
               {...register("expYear")}
             />
+            <label className="mt-3" htmlFor="">
+              Company Name
+            </label>
             <input
-              className="form-control mt-2"
+              className="form-control"
               type="text"
-              placeholder="Company name (optional)"
+              placeholder="(optional)"
               {...register("company")}
             />
+            <label className="mt-3" htmlFor="">
+              Designation
+            </label>
             <input
-              className="form-control mt-2"
+              className="form-control"
               type="text"
-              placeholder="Designation (optional)"
+              placeholder="e.g.Web Developer(optional)"
               {...register("designation")}
             />
+            <label className="mt-3" htmlFor="">
+              Skills
+            </label>
             <input
-              className="form-control mt-2"
+              className="form-control "
               type="text"
-              placeholder="skills"
               {...register("skills", { required: true })}
             />
+            <label className="mt-3" htmlFor="">
+              Languages
+            </label>
             <input
-              className="form-control mt-2"
+              className="form-control"
               type="text"
-              placeholder="Languages"
               {...register("languages", { required: true })}
             />
+            <label className="mt-3" htmlFor="">
+              Photo
+            </label>
             <input
-              className="form-control mt-2"
+              className="form-control"
               type="file"
               {...productImageRegister}
               onChange={(e) => {
@@ -159,7 +196,12 @@ const PdfCreator = () => {
               <p>Uploading....</p>
             ) : (
               <input
-                className="form-control mt-3 p-3 submit-btn mx-auto"
+                className="form-control w-25 mt-4 mx-auto text-white border-0 p-2"
+                style={{
+                  fontWeight: "700",
+                  fontSize: "18px",
+                  background: "purple",
+                }}
                 type="Submit"
               />
             )}

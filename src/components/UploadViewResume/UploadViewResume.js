@@ -4,9 +4,7 @@ import { Button, Spinner } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import useAuth from "../../hooks/useAuth";
 
-
 const UploadViewResume = () => {
-  
   const [resumepdfFile, setResumePdfFile] = useState([]);
   const [resumeView, setResumeView] = useState([]);
 
@@ -75,75 +73,79 @@ const UploadViewResume = () => {
   }
 
   return (
-    <div className="overflow-hidden py-5 mb-5">
-      <div className="d-flex justify-content-center">
-        <form onSubmit={handleSubmit} action="" method="POST">
-          <input
-            style={{ visibility: "hidden" }}
-            className="sadiaInput"
-            value={user.email}
-            aria-describedby="helpId6"
-          />
-
-          <input
-            className="sadiaInput"
-            onChange={(e) => setResumePdfFile(e.target.files[0])}
-            type="file"
-            required
-          />
-
-          <div className="d-flex justify-content-center">
-            {myResume.length === 0 ? (
-              <Button
-                className="text-white w-50 p-3"
-                type="submit"
-                style={{
-                  backgroundColor: "purple",
-                  border: "none",
-                  borderRadius: "7px",
-                }}
-              >
-                Upload Resume
-              </Button>
-            ) : (
-              <Button
-                disabled
-                className="submit-btn p-3 text-white border-0 w-50 "
-                style={{
-                  border: "none",
-                  borderRadius: "7px",
-                }}
-                type="submit"
-              >
-                Upload Resume
-              </Button>
-            )}
-
-            <div></div>
-          </div>
-        </form>
-      </div>
-      <div className="d-flex justify-content-center">
-        {myResume.map((resume) => (
-          <div className="py-5 mb-5 text-center">
-            <Button
-              onClick={() => handleDelete(resume._id)}
-              className="my-4 text-white border-0 p-3 w-25"
-              style={{ backgroundColor: "purple" }}
-              type="submit"
-            >
-              Delete & Upload New
-            </Button>
-            <embed
-              className=" ms-3 me-3"
-              style={{ width: "1000px", height: "100vh" }}
-              src={`data:application/pdf;base64,${resume.resume}`}
+    <div
+      className="overflow-hidden pb-5"
+      style={{ height: "100vh", backgroundColor: "#9c9c9c60" }}
+    >
+      <div className="resume-sec"></div>
+      <div>
+        <div className="d-flex justify-content-center">
+          <form onSubmit={handleSubmit} action="" method="POST">
+            <input
+              style={{ visibility: "hidden" }}
+              className="sadiaInput"
+              value={user.email}
+              aria-describedby="helpId6"
             />
-          </div>
-        ))}
+
+            <input
+              className="sadiaInput"
+              onChange={(e) => setResumePdfFile(e.target.files[0])}
+              type="file"
+              required
+            />
+
+            <div className="d-flex justify-content-center">
+              {myResume.length === 0 ? (
+                <Button
+                  className="text-white w-50 p-3"
+                  type="submit"
+                  style={{
+                    backgroundColor: "purple",
+                    border: "none",
+                    borderRadius: "7px",
+                  }}
+                >
+                  Upload Resume
+                </Button>
+              ) : (
+                <Button
+                  disabled
+                  className="submit-btn p-3 text-white border-0 w-50 "
+                  style={{
+                    border: "none",
+                    borderRadius: "7px",
+                  }}
+                  type="submit"
+                >
+                  Upload Resume
+                </Button>
+              )}
+
+              <div></div>
+            </div>
+          </form>
+        </div>
+        <div className="d-flex justify-content-center">
+          {myResume.map((resume) => (
+            <div className="py-5 mb-5 text-center">
+              <Button
+                onClick={() => handleDelete(resume._id)}
+                className="my-4 text-white border-0 p-3 w-25"
+                style={{ backgroundColor: "purple" }}
+                type="submit"
+              >
+                Delete & Upload New
+              </Button>
+              <embed
+                className=" ms-3 me-3"
+                style={{ width: "1000px", height: "100vh" }}
+                src={`data:application/pdf;base64,${resume.resume}`}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-      
-   
     </div>
   );
 };

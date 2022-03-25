@@ -14,15 +14,15 @@ const SinglePie = ({ data1, data2 }) => {
   return (
     <div className="text-center" style={{ height: "60vh" }}>
       <ResponsiveContainer width="100%" height="100%">
-        <PieChart width={200} height={400}>
+        <PieChart width={200} height={200}>
           <Pie
             dataKey="value"
             isAnimationActive={true}
             data={data1}
-            cx="50%"
-            cy={180}
-            innerRadius={40}
-            outerRadius={100}
+            cx="60%"
+            cy="50%"
+            innerRadius={60}
+            outerRadius={120}
             fill="#8884d8"
           >
             <LabelList
@@ -39,10 +39,10 @@ const SinglePie = ({ data1, data2 }) => {
           <Pie
             data={data2}
             dataKey="value"
-            cx="50%"
-            cy={180}
-            innerRadius={110}
-            outerRadius={135}
+            cx="60%"
+            cy="50%"
+            innerRadius={130}
+            outerRadius={155}
             fill="#82ca9d"
             label
           >

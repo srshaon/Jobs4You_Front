@@ -20,11 +20,14 @@ const ProfileForm = (props) => {
   const [condition, setCondition] = useState("");
   const { actions, state } = useStateMachine({ updateAction });
   const onSubmit = (data) => {
+    data.img = imgUrl;
     actions.updateAction(data);
     props.history.push("./ProfileForm2");
     console.log(data);
     console.log(state);
     console.log(actions);
+    if(role==='company'){
+state.data.cname=user.displayName}
   };
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/users/${user.email}`)
@@ -79,6 +82,18 @@ const ProfileForm = (props) => {
                             className="profile-form-input"
                             defaultValue={""}
                             {...register("founded", { required: true })}
+                          />
+                        </div>
+                      </div>
+                      <div className="profile-form-input-pair d-flex justify-content-center">
+                        <div>
+                          <label htmlFor="Upload Logo"></label>
+                          <input
+                            className="form-control mt-2"
+                            type="file"
+                            onChange={(e) => {
+                              handleFile(e);
+                            }}
                           />
                         </div>
                       </div>
@@ -190,6 +205,21 @@ const ProfileForm = (props) => {
                         </div>
                       </div>
 
+                      <div className="profile-form-input-pair  mt-2 mx-4">
+                        <div>
+                          <label className="ms-1" htmlFor="Company Logo">
+                            Company Logo
+                          </label>
+                          <input
+                            className="company-logo form-control p-4 ms-1"
+                            type="file"
+                            onChange={(e) => {
+                              handleFile(e);
+                            }}
+                          />
+                        </div>
+                      </div>
+
                       <div className="profile-form-button-div d-flex justify-content-center">
                         <button
                           className="profile-form-button p-3"
@@ -236,7 +266,7 @@ const ProfileForm = (props) => {
                         className="profile-form-input"
                         defaultValue={""}
                         {...register("fname", { required: true })}
-                        // defaultValue={user.displayName}
+                        
                       />
                     </div>
                     <div>
