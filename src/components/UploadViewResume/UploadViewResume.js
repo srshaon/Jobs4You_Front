@@ -139,7 +139,7 @@ const UploadViewResume = () => {
               </Button>
               <embed
                 className=" ms-3 me-3"
-                style={{ width: "1000px", height: "100vh" }}
+                style={{ width: "1000px" }}
                 src={`data:application/pdf;base64,${resume.resume}`}
               />
             </div>
