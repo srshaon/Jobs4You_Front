@@ -87,19 +87,6 @@ state.data.cname=user.displayName}
                       </div>
                       <div className="profile-form-input-pair d-flex justify-content-center">
                         <div>
-                          <label htmlFor="Upload Logo"></label>
-                          <input
-                            className="form-control mt-2"
-                            type="file"
-                            onChange={(e) => {
-                              handleFile(e);
-                            }}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="profile-form-input-pair d-flex justify-content-center">
-                        <div>
                           <label htmlFor="" className="ms-3">
                             Country of Origin
                           </label>

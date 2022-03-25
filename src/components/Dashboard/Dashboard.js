@@ -313,6 +313,12 @@ const Dashboard = () => {
                   <div>
                     <div>
                       <ul className="dashboard-list">
+                      <li onClick={navigateToHome} className="li py-3 px-5">
+                        <span className="dashboard-icons px-1">
+                          <ImHome />
+                        </span>{" "}
+                        Home
+                      </li>
                         <li
                           onClick={() => setControl('makeadmin')}
                           className="li py-3 px-3"
