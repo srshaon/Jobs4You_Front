@@ -30,3 +30,21 @@
   ); */
   padding: 65px;
 }
+
+.message-anim {
+  opacity: 0;
+  animation: 8s 5s infinite;
+  animation-name: animate;
+}
+
+@keyframes animate {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0;
+  }
+}

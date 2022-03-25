@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import "./Header.css";
 import { useLocation } from "react-router-dom";
 import image from "../../assets/Images/no_img_2.png";
+import Notifications from "../Notifications/Notifications";
 const Header = () => {
   const { admin, user, logOut, role } = useAuth();
   const location = useLocation();
@@ -75,6 +76,7 @@ const Header = () => {
                     <NavLink className="nav-link" to="/uploadviewresume">
                       UPLOAD RESUME
                     </NavLink>
+                    <Notifications />
                   </>
                 )}
                 {role === "company" && (
@@ -90,6 +92,7 @@ const Header = () => {
                         Dashboard
                       </NavLink>
                     </NavDropdown>
+                    <Notifications />
                   </>
                 )}
                 <NavDropdown
