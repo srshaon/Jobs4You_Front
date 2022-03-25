@@ -1,6 +1,6 @@
 import "./Dashboard.css";
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import { Spinner } from "react-bootstrap";
 import useAuth from "../../hooks/useAuth";
@@ -51,6 +51,7 @@ import AddGovJob from "../AddGovJob/AddGovJob";
 const Dashboard = () => {
   const history = useHistory();
   const { logOut, admin, user, role, setRole, control, setControl } = useAuth();
+  
   console.log(user);
   console.log("this is role:", role);
   // const [control, setControl] = useState("welcome");
@@ -74,6 +75,11 @@ const Dashboard = () => {
     // setControl("companyProfile");
   }
   console.log(profileInfo);
+  useEffect(()=>{
+    if(profileInfo){
+    setControl('welcome')
+    }
+      },[profileInfo])
 
   if (role === "") {
     return <Spinner animation="border" variant="danger" />;
@@ -116,16 +122,8 @@ const Dashboard = () => {
                         </span>{" "}
                         Home
                       </li>
-                      <li
-                        onClick={() => setControl("createProfile")}
-                        className="li py-3 px-5"
-                      >
-                        <span className="dashboard-icons px-1">
-                          <MdCreateNewFolder />
-                        </span>{" "}
-                        Create Profile
-                      </li>
-                      <li
+                      
+                     { profileInfo?<li
                         onClick={() => setControl("candiProfile")}
                         className="li py-3 px-5"
                       >
@@ -134,6 +132,15 @@ const Dashboard = () => {
                         </span>{" "}
                         My Profile
                       </li>
+                      :<li
+                        onClick={() => setControl("createCandidate")}
+                        className="li py-3 px-5"
+                      >
+                        <span className="dashboard-icons px-1">
+                          <MdCreateNewFolder />
+                        </span>{" "}
+                        Create Profile
+                      </li>}
 
                       <li
                         onClick={() => setControl("editCandidate")}
@@ -224,16 +231,8 @@ const Dashboard = () => {
                           </span>{" "}
                           Home
                         </li>
-                        {!profileInfo && <li
-                          onClick={() => setControl("createProfile")}
-                          className="li py-3 px-3"
-                        >
-                          <span className="dashboard-icons px-2">
-                            <CgProfile />
-                          </span>{" "}
-                          Create Profile
-                        </li>}
-                        <li
+                       
+                        {profileInfo?<li
                           onClick={() => setControl("companyProfile")}
                           className="li py-3 px-3"
                         >
@@ -242,6 +241,15 @@ const Dashboard = () => {
                           </span>{" "}
                           View Profile
                         </li>
+                        :<li
+                          onClick={() => setControl("createCompany")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-2">
+                            <CgProfile />
+                          </span>{" "}
+                          Create Profile
+                        </li>}
 
                         <li
                           onClick={() => setControl("editCompany")}
@@ -413,7 +421,8 @@ const Dashboard = () => {
             {control === "upload" && <UploadViewResume />}
             {control === "myjobs" && <MyJobs />}
             {control === "skills" && <Skills />}
-            {control === "createProfile" && <EditCompany />}
+            {control === "createCandidate" && <ProfileEdit/> }
+            {control === "createCompany" && <EditCompany />}
             {/* recruiter dashboard */}
             {control === "companyProfile" && <CompanyInfo info={profileInfo} />}
             {control === "companies" && <CompanyProfile />}

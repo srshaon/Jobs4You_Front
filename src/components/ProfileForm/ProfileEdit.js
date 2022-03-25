@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Col } from "react-bootstrap";
+import { Col,Button } from "react-bootstrap";
 import { useHistory, useParams, useLocation, Link } from "react-router-dom";
+import { TiArrowForward } from "react-icons/ti";
+import { HiPlusCircle } from 'react-icons/hi';
 import {
   useGetProfileByIdQuery,
   useUpdateProfileMutation,
@@ -44,7 +46,9 @@ const ProfileEdit = ({ info, setControl }) => {
     setControl("candiProfile");
     history.push("/dashboard");
   };
-
+  const navigateToForm=()=>{
+    history.push('/profileForm')
+  }
   return (
     <>
       <div className="d-flex justify-content-center mt-4 ">
@@ -146,9 +150,14 @@ const ProfileEdit = ({ info, setControl }) => {
             </form>
           </div>
         ) : (
-          <h3>
-            <Link to="/profileForm">Please complete your profile</Link>
-          </h3>
+          <div className="profile-sec my-4 p-5 text-center">
+        <h4 className="mb-4" style={{ color: "brown" }}>
+         Candidate  Profile Form
+        </h4>
+        <Button className="add-job-btn py-3" onClick={navigateToForm}>
+          <HiPlusCircle className="heart pe-1" /> Submit
+        </Button>
+      </div>
         )}
       </div>
     </>
