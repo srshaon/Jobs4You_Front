@@ -7,11 +7,11 @@
 2 info using node@v16.14.0
 3 timing npm:load:whichnode Completed in 0ms
 4 timing config:load:defaults Completed in 1ms
-5 timing config:load:file:C:\Users\nupa_\AppData\Roaming\npm\node_modules\npm\npmrc Completed in 2ms
+5 timing config:load:file:C:\Users\nupa_\AppData\Roaming\npm\node_modules\npm\npmrc Completed in 3ms
 6 timing config:load:builtin Completed in 3ms
 7 timing config:load:cli Completed in 1ms
-8 timing config:load:env Completed in 0ms
-9 timing config:load:file:C:\WebDev_Batch04\End_Game\Final_Team_Project\Jobs4You_Front\.npmrc Completed in 0ms
+8 timing config:load:env Completed in 1ms
+9 timing config:load:file:C:\WebDev_Batch04\End_Game\Final_Team_Project\Jobs4You_Front\.npmrc Completed in 1ms
 10 timing config:load:project Completed in 4ms
 11 timing config:load:file:C:\Users\nupa_\.npmrc Completed in 0ms
 12 timing config:load:user Completed in 0ms
@@ -20,19 +20,19 @@
 15 timing config:load:validate Completed in 0ms
 16 timing config:load:credentials Completed in 1ms
 17 timing config:load:setEnvs Completed in 0ms
-18 timing config:load Completed in 12ms
+18 timing config:load Completed in 13ms
 19 timing npm:load:configload Completed in 13ms
 20 timing npm:load:setTitle Completed in 0ms
 21 timing config:load:flatten Completed in 2ms
 22 timing npm:load:display Completed in 3ms
-23 verbose logfile C:\WebDev_Batch04\End_Game\Final_Team_Project\Jobs4You_Front\tmpnodejsnpm-cache\_logs\2022-03-24T07_02_10_852Z-debug-0.log
-24 timing npm:load:logFile Completed in 12ms
+23 verbose logfile C:\WebDev_Batch04\End_Game\Final_Team_Project\Jobs4You_Front\tmpnodejsnpm-cache\_logs\2022-03-25T08_03_52_510Z-debug-0.log
+24 timing npm:load:logFile Completed in 14ms
 25 timing npm:load:timers Completed in 0ms
 26 timing npm:load:configScope Completed in 0ms
-27 timing npm:load Completed in 28ms
+27 timing npm:load Completed in 30ms
 28 silly logfile start cleaning logs, removing 2 files
-29 timing command:run-script Completed in 252824ms
-30 timing command:start Completed in 252828ms
-31 verbose exit 3221225786
-32 timing npm Completed in 253013ms
-33 verbose code 3221225786
+29 timing command:run-script Completed in 19646ms
+30 timing command:start Completed in 19650ms
+31 verbose exit 134
+32 timing npm Completed in 19829ms
+33 verbose code 134

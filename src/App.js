@@ -61,7 +61,7 @@ import AllJobs from "./components/AllJobs/AllJobs";
 import NotFound from "./components/NotFound/NotFound";
 import ApplyCandidateList from "./components/ApplyCandidateList/ApplyCandidateList";
 import PendingJobs from "./components/PendingJobs/PendingJobs";
-import AllCompanies from "./components/AllCompanies/AllCompanies";
+// import AllCompanies from "./components/AllCompanies/AllCompanies";
 import LineChart from "./components/LineChart/LineChart";
 import MakeAdmin from "./components/MakeAdmin/MakeAdmin";
 
@@ -97,9 +97,9 @@ function App() {
             <PrivateRoute path="/pendingjobs">
               <PendingJobs></PendingJobs>
             </PrivateRoute>
-            <Route path="/allcompanies">
+            {/* <Route path="/allcompanies">
               <AllCompanies></AllCompanies>
-            </Route>
+            </Route> */}
             <PrivateRoute path="/applycandidateslist/:jobId">
               <ApplyCandidateList></ApplyCandidateList>
             </PrivateRoute>

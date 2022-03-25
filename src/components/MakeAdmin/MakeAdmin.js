@@ -3,7 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { Typewriter } from "react-simple-typewriter";
-import image from "../../assets/Images/admin_bg.jpg";
+import image from "../../assets/Images/admin_panel.jpg";
 
 const MakeAdmin = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -31,7 +31,7 @@ const MakeAdmin = () => {
         <img src={image} alt="" className="admin-bg" />
         <div className="admin-banner">
           <h5
-            className="admin-banner-text"
+            className="admin-banner-text mt-5"
             // style={{ backgroundColor: "black", color: "white", padding: "6px" }}
           >
             Enter an Email To Make Him/Her an Admin
