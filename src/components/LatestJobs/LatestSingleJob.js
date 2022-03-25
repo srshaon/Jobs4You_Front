@@ -10,7 +10,7 @@ import { TiLocation } from "react-icons/ti";
 import { FcCurrencyExchange } from "react-icons/fc";
 
 const LatestSingleJob = ({ job }) => {
-  console.log(job);
+  // console.log(job);
   return (
     <div className="">
       <div className="container ">

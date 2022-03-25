@@ -13,7 +13,7 @@ const ApplyCandidateList = () => {
 
   let x = "sportsfi2017@gmail.com";
   useEffect(() => {
-    fetch(`http://localhost:5000/usersDetails/${x}`)
+    fetch(`https://afternoon-headland-45054.herokuapp.com/usersDetails/${x}`)
       .then((res) => res.json())
       .then((data) => {
         // xyz = [...data]
@@ -40,7 +40,7 @@ const ApplyCandidateList = () => {
         let result = [];
         setAllApplyList(pqr);
         pqr.map((x) => {
-          fetch(`http://localhost:5000/usersDetails/${x.email}`)
+          fetch(`https://afternoon-headland-45054.herokuapp.com/usersDetails/${x.email}`)
             .then((res) => res.json())
             .then((data) => {
               // xyz = [...data]
@@ -94,13 +94,13 @@ const ApplyCandidateList = () => {
                 <td data-column="Twitter">{candidate.contactNo}</td>
                 <td data-column="Twitter">{candidate.percentage}</td>
                 <td data-column="Twitter">
-                <Base64Downloader
-                  base64={`data:application/pdf;base64,${candidate.resume}`}
-                  downloadName="pdfDownload"
-                  className="my-class-name ps-5 pe-5"
-                  style={{ color: 'white', backgroundColor:"purple" }}>
-                  <p>  <span style={{fontSize:"25px"}}><BsFileEarmarkArrowDownFill/> </span>Download </p>
-                </Base64Downloader>
+                  <Base64Downloader
+                    base64={`data:application/pdf;base64,${candidate.resume}`}
+                    downloadName="pdfDownload"
+                    className="my-class-name ps-5 pe-5"
+                    style={{ color: 'white', backgroundColor: "purple" }}>
+                    <p>  <span style={{ fontSize: "25px" }}><BsFileEarmarkArrowDownFill /> </span>Download </p>
+                  </Base64Downloader>
                 </td>
               </tr>
             ))}

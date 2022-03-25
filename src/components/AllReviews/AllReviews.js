@@ -26,7 +26,7 @@ const AllReviews = () => {
         setReviews(data);
       });
   }, []);
-  console.log(reviews);
+  // console.log(reviews);
 
   if (reviews.length === 0) {
     return <Spinner animation="border" variant="danger" />;
