@@ -71,7 +71,7 @@ const AddJob = ({ profileInfo }) => {
         </div>
       )}
 
-      <div className="container jobpost-form">
+      <div className="container jobpost-form mt-4">
         <h4 className="px-5 mx-5 pt-5" style={{ color: "brown" }}>
           Job Details
         </h4>
@@ -263,7 +263,7 @@ const AddJob = ({ profileInfo }) => {
             </div>
           </div>
 
-          {/* <div className="mt-3 mx-3">
+          <div className="mt-3 mx-3">
             <label htmlFor="">Company Logo</label> <br />
             <input
               className="w-100 p-2 mt-2"
@@ -276,30 +276,6 @@ const AddJob = ({ profileInfo }) => {
                 disabled: inputDisabled,
               })}
             />
-          </div> */}
-
-          <div className="mt-3 mx-3">
-            <label htmlFor="">Company Logo</label>
-            <div className="logo-field w-100 p-2 mt-2 d-flex align-items-center">
-              <label className="logo-label">
-                <div className="logo-upload"></div>
-                <input
-                  type="file"
-                  name=""
-                  id=""
-                  className="logo-input"
-                  onChange={(e) => {
-                    handleFile(e);
-                  }}
-                  {...register("image", {
-                    required: true,
-                    disabled: inputDisabled,
-                  })}
-                />
-                <div className="logo-btn p-3">Browse</div>
-              </label>
-              <small className="logo-details">Maximum file size: 100 MB.</small>
-            </div>
           </div>
 
           {uploading ? (

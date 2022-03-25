@@ -69,8 +69,8 @@ const ProfileForm2 = (props) => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                   <div className="profile-form-container">
                     <div className="profile-form-inputs">
-                      <div className="profile-form-input-pair justify-content-center">
-                        <label htmlFor="" className="m-2">
+                      <div className="profile-form-input-pair">
+                        {/* <label htmlFor="" className="m-2">
                           Write about your company culture and core values (Max
                           500 words).
                         </label>
@@ -80,7 +80,22 @@ const ProfileForm2 = (props) => {
                           placeholder="Company Culture/Core Values..."
                           defaultValue=""
                           {...register("acc", { required: true })}
-                        />
+                        /> */}
+
+                        <div>
+                          <label htmlFor="" className="m-2">
+                            Please share with us about your company culture and
+                            core values.
+                          </label>
+                          <input
+                            className="form-control video-field p-5"
+                            placeholder="A link to a video about your company culture"
+                            type="file"
+                            onChange={(e) => {
+                              uploadVideo(e);
+                            }}
+                          />
+                        </div>
                       </div>
                       <br />
                       <div className="profile-form-input-pair justify-content-center">
@@ -110,6 +125,7 @@ const ProfileForm2 = (props) => {
                           {...register("achievements", { required: true })}
                         />
                       </div>
+<<<<<<< HEAD
                       
                       <div className="profile-form-input-pair d-flex justify-content-center">
                         <div>
@@ -123,6 +139,8 @@ const ProfileForm2 = (props) => {
                           />
                         </div>
                       </div>
+=======
+>>>>>>> d587e06905dfa2fe66c38a6d84042b9b4d40689a
 
                       {uploading ? (
                         <h4 className="text-center text-danger mt-2">

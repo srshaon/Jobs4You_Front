@@ -87,7 +87,7 @@ const Dashboard = () => {
   const navigateToHome = () => {
     history.push("/home");
   };
-  
+  console.log(control);
   return (
     <div className="card dashboard-sec" style={{ overflow: "scroll initial" }}>
       <div className="dashboard-details-div">

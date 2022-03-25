@@ -134,6 +134,7 @@ const useFirebase = () => {
         setUser({});
         setError("");
         setRole('');
+        setControl('welcome');
       })
       .catch((error) => {
         // An error happened.

@@ -7,25 +7,25 @@ import clearAction from "./clearAction";
 import { useHistory } from "react-router-dom";
 
 const Result = (props) => {
-  const history=useHistory()
+  const history = useHistory();
   const { register, handleSubmit } = useForm();
   const { actions, state } = useStateMachine({ clearAction });
   const onSubmit = (data) => {
+    history.push("/home");
     // const splitBio2 = state.data.bio.split(/\r?\n/g);
     // const newData2 = { ...state.data, bio: splitBio2 };
     // console.log(newData2);
-    console.log(data);
-    console.log(state.data);
-    console.log(data);
-    console.log(state);
-    console.log(actions);
-    actions.clearAction(data);
-    history.push("/dashboard");
-    console.log(data);
-    console.log(state.data);
-    console.log(data);
-    console.log(state);
-    console.log(actions);
+    // console.log(data);
+    // console.log(state.data);
+    // console.log(data);
+    // console.log(state);
+    // console.log(actions);
+    // actions.clearAction(data);
+    // console.log(data);
+    // console.log(state.data);
+    // console.log(data);
+    // console.log(state);
+    // console.log(actions);
     // actions();
   };
   return (

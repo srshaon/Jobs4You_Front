@@ -2,6 +2,8 @@ import "./ApplyCandidateList.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import image from "../../assets/Images/candidate_1.jpg";
+import Base64Downloader from 'common-base64-downloader-react';
+import { BsFileEarmarkArrowDownFill } from "react-icons/bs";
 const ApplyCandidateList = () => {
   const { jobId } = useParams();
   const [allJobs, setAllJobs] = useState([]);
@@ -68,6 +70,9 @@ const ApplyCandidateList = () => {
         </div>
       </div>
       <div>
+        <h3 className="text-center pt-5">
+          No of Applicants: {allApplyList.length}{" "}
+        </h3>
         <table className="w-75 mx-auto pb-5">
           <thead>
             <tr>
@@ -92,11 +97,13 @@ const ApplyCandidateList = () => {
                 <td data-column="Twitter">{candidate.contactNo}</td>
                 <td data-column="Twitter">{candidate.percentage}</td>
                 <td data-column="Twitter">
-                <a download
-              className=" ms-3 me-3"
-              
-              href={candidate.resume}
-            />
+                <Base64Downloader
+                  base64={`data:application/pdf;base64,${candidate.resume}`}
+                  downloadName="pdfDownload"
+                  className="my-class-name ps-5 pe-5"
+                  style={{ color: 'white', backgroundColor:"purple" }}>
+                  <p>  <span style={{fontSize:"25px"}}><BsFileEarmarkArrowDownFill/> </span>Download </p>
+                </Base64Downloader>
                 </td>
               </tr>
             ))}

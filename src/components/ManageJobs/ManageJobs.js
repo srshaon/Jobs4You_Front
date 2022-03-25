@@ -35,20 +35,20 @@ const ManageJobs = () => {
           ))}
         </Row> */}
         <div className="mx-auto my-5 text-center">
-          <Table>
-            <thead className="table-head">
-              <tr className="table-tr">
+          <Table style={{ border: "1px solid red" }}>
+            <thead className="table-head ">
+              <tr className="table-tr text-center">
                 <th>Title</th>
                 <th>Date Posted</th>
                 <th>Closing Date</th>
                 <th>Status</th>
                 <th>Action</th>
-                <th>Listing Expires</th>
-                <th>No. Of Application</th>
-                <th>Details</th>
+                <th>Close</th>
+                <th># Applications</th>
+                <th>Applied Candidates</th>
               </tr>
             </thead>
-            <tbody className="table-body">
+            <tbody className="table-body text-center">
               {jobs?.map((job) => (
                 <ManageJob key={job._id} job={job}></ManageJob>
               ))}
