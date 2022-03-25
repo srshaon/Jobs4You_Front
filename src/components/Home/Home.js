@@ -28,14 +28,14 @@ const Home = () => {
     feauturedJobDisplay,
     setFeauturedJobDisplay,
   } = useAuth();
-  console.log(
-    "from home:: this is user:",
-    user,
-    "this is role:",
-    role,
-    "this is admin:",
-    admin
-  );
+  // console.log(
+  //   "from home:: this is user:",
+  //   user,
+  //   "this is role:",
+  //   role,
+  //   "this is admin:",
+  //   admin
+  // );
   const something = () => {
     // console.log('clicked')
     // const filteredJob = document.getElementById('featurejobs');

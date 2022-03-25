@@ -8,6 +8,7 @@ import "./Apply.css";
 
 const Apply = () => {
   const location = useLocation();
+  const history = useHistory();
   const { jobId, percentage } = queryString.parse(location.search);
   // const history = useHistory()
   // const location = useLocation()
@@ -28,7 +29,7 @@ const Apply = () => {
   const [candidates, setCandidates] = useState([]);
   // const [singleCandidate, setSingleCandidate] = useState({})
 
-  const { user } = useAuth();
+  const { user, setControl } = useAuth();
   /// Testing
   ////Testing2
   useEffect(() => {
@@ -70,6 +71,12 @@ const Apply = () => {
 
   // form submit
   //console.log(jobs._id)
+
+  const handleReplace = (e) => {
+    history.replace('/dashboard');
+    setControl("editCandidate")
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!resumepdfFile && coverLetterpdfFile) {
@@ -107,6 +114,25 @@ const Apply = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
+          fetch('https://afternoon-headland-45054.herokuapp.com/notifications', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: user?.email, message: `You applied at ${jobs?.company} as ${jobs?.job}`, link: 'dashboard', portion: 'myjobs' })
+          })
+          .then(res => res.json())
+          .then(data => console.log(data));
+
+          fetch('https://afternoon-headland-45054.herokuapp.com/notifications', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: jobs?.email, message: `${user?.displayName} has applied in your company as ${jobs?.job}`, link: 'dashboard', portion: 'candidates' })
+          })
+          .then(res => res.json())
+          .then(data => console.log(data)); 
           alert("successfully applied");
           e.target.reset();
         }
@@ -119,9 +145,14 @@ const Apply = () => {
   // console.log(jobs.employmentStatus)
   if (singleCandidate === undefined) {
     return (
-      <Spinner animation="border" role="status">
-        <span className="visually-hidden">Loading...</span>
-      </Spinner>
+      <div style={{minHeight: '70vh'}} className="d-flex justify-content-center align-items-center text-center">
+        <div>
+          <p className="message-anim">You didn't complete your profile. Please complete it <button style={{background: 'white', border: 'none', color: 'blue'}} onClick={handleReplace}>here</button></p>
+          <Spinner animation="border" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
+        </div>
+      </div>
     );
   }
 

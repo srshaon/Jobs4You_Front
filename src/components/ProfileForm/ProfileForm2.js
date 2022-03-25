@@ -21,7 +21,6 @@ const ProfileForm2 = (props) => {
     setVideoUrl
   );
   const onSubmit = (data) => {
-    state.data.img = imgUrl;
     state.data.videoUrl = videoUrl;
     console.log(data);
     actions.updateAction(data);
