@@ -75,7 +75,7 @@ const UploadViewResume = () => {
   return (
     <div
       className="overflow-hidden pb-5"
-      style={{ height: "100vh", backgroundColor: "#9c9c9c60" }}
+      style={{ backgroundColor: "#9c9c9c60" }}
     >
       <div className="resume-sec"></div>
       <div>
@@ -139,7 +139,7 @@ const UploadViewResume = () => {
               </Button>
               <embed
                 className=" ms-3 me-3"
-                style={{ width: "1000px" }}
+                style={{ width: "1000px", height: "100vh" }}
                 src={`data:application/pdf;base64,${resume.resume}`}
               />
             </div>
