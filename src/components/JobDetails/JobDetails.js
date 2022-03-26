@@ -11,6 +11,7 @@ const JobDetails = () => {
   const [jobs, setJobs] = useState([]);
   const [applications, setApplication] = useState([]);
   const [applyList, setApplyList] = useState([]);
+  const [message, setMessage] = useState("Already Applied")
   const { user } = useAuth();
   useEffect(() => {
     fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
@@ -39,9 +40,9 @@ const JobDetails = () => {
         .then((res) => res.json())
         .then((data) => setApplyList(data));
     }, []);
-    const applyListFilter = applyList?.find(
-      (apply) => apply?.jobId === jobs?._id
-    );
+    // const applyListFilter = applyList?.find(
+    //   (apply) => apply?.jobId === jobs?._id
+    // );
     // console.log(applyListFilter);
   }
   if (jobs.length === 0) {
@@ -81,7 +82,7 @@ const JobDetails = () => {
                     fontWeight: "500",
                   }}
                 >
-                  {applications.length}
+                  {applications?.length}
                 </h4>
               </div>
             </Col>
