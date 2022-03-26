@@ -140,6 +140,9 @@ function App() {
             <Route path="/categories">
               <Categories></Categories>
             </Route>
+            <PrivateRoute path="/applysuccess">
+              <ApplySuccess></ApplySuccess>
+            </PrivateRoute>
             <Route path="/categoryjobs/:categoryName">
               <AllCategoriesJobs></AllCategoriesJobs>
             </Route>
