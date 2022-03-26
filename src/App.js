@@ -135,14 +135,11 @@ function App() {
             <PrivateRoute path="/skills">
               <Skills></Skills>
             </PrivateRoute>
-
             {/* Sadia's Route */}
             <Route path="/categories">
               <Categories></Categories>
             </Route>
-            <PrivateRoute path="/applysuccess">
-              <ApplySuccess></ApplySuccess>
-            </PrivateRoute>
+            
             <Route path="/categoryjobs/:categoryName">
               <AllCategoriesJobs></AllCategoriesJobs>
             </Route>
