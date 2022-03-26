@@ -164,13 +164,13 @@ const Apply = () => {
             <div className="card-body">
               <form onSubmit={handleSubmit} action="" method="POST">
                 <div className="row applyform1">
-                  <input
-                    style={{ visibility: "hidden" }}
+                  {/* <input
+                    
                     className="sadiaInput"
                     aria-describedby="helpId1"
                     required
                     value={percentage}
-                  />
+                  /> */}
                   <h3
                     className="d-flex justify-content-center my-4"
                     style={{ color: "brown" }}
@@ -194,7 +194,7 @@ const Apply = () => {
                         id="name"
                         aria-describedby="helpId1"
                         required
-                        value={singleCandidate?.cname}
+                        value={singleCandidate?.fname}
                       />
                     </div>
 
