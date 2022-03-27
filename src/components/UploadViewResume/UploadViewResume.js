@@ -75,7 +75,7 @@ const UploadViewResume = () => {
   return (
     <div
       className="overflow-hidden pb-5"
-      style={{ height: "100vh", backgroundColor: "#9c9c9c60" }}
+      style={{ backgroundColor: "#9c9c9c60" }}
     >
       <div className="resume-sec"></div>
       <div>

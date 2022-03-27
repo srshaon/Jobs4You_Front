@@ -12,7 +12,7 @@ const Apply = () => {
   const { jobId, percentage } = queryString.parse(location.search);
   // const history = useHistory()
   // const location = useLocation()
-  // const url = location.state?.from || "/myjobs"
+  const url = location.state?.from || "/success"
   // for onchange event
   const [resumepdfFile, setResumePdfFile] = useState(null);
   const [coverLetterpdfFile, setCoverLetterPdfFile] = useState(null);
@@ -137,7 +137,7 @@ const Apply = () => {
           e.target.reset();
         }
       });
-    // history.push(url)
+     history.push(url)
   };
   // console.log(resumepdfFile);
   // console.log(coverLetterpdfFile);
@@ -164,13 +164,13 @@ const Apply = () => {
             <div className="card-body">
               <form onSubmit={handleSubmit} action="" method="POST">
                 <div className="row applyform1">
-                  <input
-                    style={{ visibility: "hidden" }}
+                  {/* <input
+                    
                     className="sadiaInput"
                     aria-describedby="helpId1"
                     required
                     value={percentage}
-                  />
+                  /> */}
                   <h3
                     className="d-flex justify-content-center my-4"
                     style={{ color: "brown" }}
