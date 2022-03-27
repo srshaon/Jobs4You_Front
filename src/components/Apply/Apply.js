@@ -194,7 +194,7 @@ const Apply = () => {
                         id="name"
                         aria-describedby="helpId1"
                         required
-                        value={singleCandidate?.cname}
+                        value={singleCandidate?.fname}
                       />
                     </div>
 

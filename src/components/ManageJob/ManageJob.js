@@ -13,6 +13,7 @@ import { AiFillEye } from "react-icons/ai";
 import { TiLockClosed } from "react-icons/ti";
 
 const ManageJob = ({ job }) => {
+  console.log('from manage',job)
   console.log(job.additionalRequirements.join("\r\n"));
   const { control, setControl, user } = useAuth();
   const [applications, setApplication] = useState([]);

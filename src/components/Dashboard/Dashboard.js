@@ -51,11 +51,6 @@ import AddGovJob from "../AddGovJob/AddGovJob";
 const Dashboard = () => {
   const history = useHistory();
   const { logOut, admin, user, role, setRole, control, setControl } = useAuth();
-  
-  console.log(user);
-  console.log("this is role:", role);
-  // const [control, setControl] = useState("welcome");
-  console.log(admin);
   const { data: candidate } = useGetProfilesQuery(undefined, {
     selectFromResult: ({ data }) => ({
       data: data?.find((el) => el.loginEmail == user?.email),
@@ -69,12 +64,10 @@ const Dashboard = () => {
   let profileInfo;
   if (role === "seeker") {
     profileInfo = candidate;
-    // setControl("candiProfile");
   } else if (role === "company") {
     profileInfo = company;
-    // setControl("companyProfile");
   }
-  console.log(profileInfo);
+
   useEffect(()=>{
     if(profileInfo){
     setControl('welcome')
@@ -87,7 +80,7 @@ const Dashboard = () => {
   const navigateToHome = () => {
     history.push("/home");
   };
-  console.log(control);
+ 
   return (
     <div className="card dashboard-sec" style={{ overflow: "scroll initial" }}>
       <div className="dashboard-details-div">

@@ -175,7 +175,7 @@ const useFirebase = () => {
       }
       setCounter(count);
     });
-  });
+  },[]);
   
   const saveUser = (email, displayName, role, method) => {
     const user = { email, displayName, role };

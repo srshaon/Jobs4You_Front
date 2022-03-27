@@ -15,7 +15,7 @@ const FaqCustom = () => {
                 }
                 setCustomFaq(sortedFaq);
             });
-    }, [customFaq]);
+    }, []);
 
     const handleComment = (e) => {
         setComment({ comment: e.target.value });
