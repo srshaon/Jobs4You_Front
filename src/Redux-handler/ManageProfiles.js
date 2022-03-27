@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const profilesApi = createApi({
   reducerPath: "profilesApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://afternoon-headland-45054.herokuapp.com/",
+    baseUrl: "http://localhost:5000/",
   }),
 
   tagTypes: ["Profiles"],

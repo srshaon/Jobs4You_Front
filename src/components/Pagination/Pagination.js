@@ -10,8 +10,8 @@ setPageNumber(selected)
         <ReactPaginate className='pagination'
         breakLabel={"..."}
         activeClassName={"active"}
-        previousLabel={"previous"}
-        nextLabel={"next"}
+        previousLabel={"<Previous"}
+        nextLabel={"Next>"}
         marginPagesDisplayed={2}
         pageRangeDisplayed={3}
         containerClassName={"paginationBttns"}

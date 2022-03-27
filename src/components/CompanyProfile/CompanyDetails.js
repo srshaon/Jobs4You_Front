@@ -1,7 +1,7 @@
 import React from "react";
 import { useGetCompaniesQuery } from "../../Redux-handler/ManageProfiles";
 import { useParams } from "react-router-dom";
-
+import defaultImg from "../../assets/Images/no_img_2.png";
 const CompanyDetails = () => {
   const { id } = useParams();
   const { data } = useGetCompaniesQuery(undefined, {
@@ -14,14 +14,14 @@ const CompanyDetails = () => {
     <section className="m-auto" style={{ backgroundColor: "#eee" }}>
       <div className="container py-5">
         <div className="row">
-          <div className="col-8">
+          <div className="">
             <nav
               aria-label="breadcrumb"
               className="bg-light rounded-3 p-3 mb-4"
             >
               <ol className="breadcrumb mb-0">
-                <li className="breadcrumb-item active" aria-current="page">
-                  My Profile
+                <li className="text-primary breadcrumb-item active" aria-current="page">
+                  {data?.cname}'s Profile
                 </li>
               </ol>
             </nav>
@@ -32,26 +32,21 @@ const CompanyDetails = () => {
           <div className="col-lg-4">
             <div className="card mb-4">
               <div className="card-body text-center">
-                <img
-                  src="https://i.ibb.co/k6HhcvX/logo.png"
-                  alt="avatar"
-                  className="rounded-circle img-fluid"
-                  style={{ width: "150px" }}
-                />
+              {data?.img?<img
+              src={data?.img}
+              alt=""
+              className="rounded"
+              width="130"
+            />
+            :<img
+              src={defaultImg}
+              alt=""
+              className="rounded"
+              width="130"
+            />}
                 <h5 className="my-3">{data?.cname}</h5>
                 <p className="text-muted mb-1">{data?.email}</p>
                 <p className="text-muted mb-4">{data?.country}</p>
-                <div className="d-flex justify-content-center mb-2">
-                  <button type="button" className="btn btn-primary">
-                    Follow
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-primary ms-1"
-                  >
-                    Message
-                  </button>
-                </div>
               </div>
             </div>
             <div className="card mb-4 mb-lg-0">
