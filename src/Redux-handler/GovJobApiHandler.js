@@ -28,15 +28,15 @@ export const postApi = createApi({
       }
     }),
 
-    deletePost: builder.mutation({
+    deleteGovJob: builder.mutation({
       query: (id) => {
         console.log("Delete ID:", id)
         return {
-          url: `posts/${id}`,
+          url: `deleteGovjob/${id}`,
           method: 'DELETE'
         }
       },
-
+      invalidatesTags: ["Jobs"]
     }),
 
     createPost: builder.mutation({
@@ -70,4 +70,4 @@ export const postApi = createApi({
 
 })
 
-export const { useGetAllPostQuery, useGetPostByIdQuery, useGetPostByLimitQuery, useDeletePostMutation, useCreatePostMutation, useUpdatePostMutation } = postApi
+export const { useGetAllPostQuery, useGetPostByIdQuery, useGetPostByLimitQuery, useDeletePostMutation, useCreatePostMutation, useUpdatePostMutation,useDeleteGovJobMutation} = postApi

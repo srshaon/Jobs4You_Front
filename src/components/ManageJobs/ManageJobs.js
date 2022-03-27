@@ -18,7 +18,7 @@ const ManageJobs = () => {
         );
         setJobs(postedJobs);
       });
-  }, [jobs]);
+  }, []);
 
   return (
     <div>

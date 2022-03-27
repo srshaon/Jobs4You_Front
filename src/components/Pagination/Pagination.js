@@ -6,16 +6,24 @@ const Pagination = ({pageCount,setPageNumber}) => {
     const changePage=({selected})=>{
 setPageNumber(selected)
     }
-    return (
+    return (  
         <ReactPaginate className='pagination'
-        breakLabel="..."
-        nextLabel="next >"
-        // onPageChange={handlePageClick}
-        // pageRangeDisplayed={5}
+        breakLabel={"..."}
+        activeClassName={"active"}
+        previousLabel={"<Previous"}
+        nextLabel={"Next>"}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        containerClassName={"paginationBttns"}
+        pageClassName={"page-item"}
+        pageLinkClassName={"page-link"}
+        peviousClassName={"page-item"}
+        previousLinkClassName={"page-link"}
+        nextClassName={"page-item"}
+        nextLinkClassName={"page-link"}
+        breakLinkClassName={"page-link"}
         pageCount={pageCount}
         onPageChange={changePage}
-        previousLabel="< previous"
-        // renderOnZeroPageCount={null}
       />
     );
 };

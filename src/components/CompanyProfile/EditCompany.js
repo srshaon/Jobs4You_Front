@@ -159,17 +159,6 @@ const EditCompany = ({ info }) => {
                   />
 
                   <br />
-
-                  <label className="form-label">Email</label>
-                  <input
-                    required
-                    onChange={handleChange}
-                    value={profileInfo.loginEmail}
-                    className="px-3 form-control"
-                    type="text"
-                    name="email"
-                  />
-                  <br />
                   <label className="form-label">Contact</label>
                   <input
                     required

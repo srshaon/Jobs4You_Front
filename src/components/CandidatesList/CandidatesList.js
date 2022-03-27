@@ -23,13 +23,18 @@ const CandidatesList = () => {
   }
   const [pageNumber, setPageNumber] = useState(0);
   const [show, setShow] = useState(false);
+  const [tableHead, setTableHead] = useState([]);
   const candidatePerPage = 10;
   const visitedPage = pageNumber * candidatePerPage;
   const pageCount = Math.ceil(candidates?.length / candidatePerPage);
-  let tableHead = ["Sl", "Name", "Email", "Phone", "Details"];
-  if (!user.role ==='company') {
-    tableHead = ["Sl", "Name", "Email", "Phone", "Details", "Action"];
-  }
+  useEffect(()=>{
+    if (user.role ==='admin') {
+      setTableHead(["Sl", "Name", "Email", "Phone", "Details", "Action"]);
+    }else{
+       setTableHead(["Sl", "Name", "Email", "Phone", "Details"]);
+    }
+  },[role])
+
   useEffect(() => {
     if (isSuccess) {
       setShow(true)
@@ -83,9 +88,9 @@ const CandidatesList = () => {
                       </span>
                     </Link>
                   </td>
-                  {(!role==='company')&&<td>
+                  {(role==='admin')&&<td>
                     {" "}
-                    <span onClick={() => deleteCandidate(_id)}>
+                    <span className="text-danger" onClick={() => deleteCandidate(_id)}>
                       <AiOutlineDelete />
                     </span>
                   </td>}

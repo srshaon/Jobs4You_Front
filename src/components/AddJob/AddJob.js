@@ -14,7 +14,7 @@ const AddJob = ({ profileInfo }) => {
   const { user, role } = useAuth();
   const { register, handleSubmit, reset } = useForm();
   const [uploading, setUploading] = useState(false);
-  const [imgUrl, setImgUrl] = useState(false);
+  const [imgUrl, setImgUrl] = useState("");
   const { handleFile } = useImageVideoUpload(setImgUrl, setUploading);
   const [inputDisabled, setInputDisabled] = useState(true);
   // const [disabledForm, setDisabledForm] = useState("blue");
@@ -49,7 +49,7 @@ const AddJob = ({ profileInfo }) => {
   const navigateToForm = () => {
     history.push("/profileForm");
   };
-  console.log(profileInfo?.length);
+  console.log(imgUrl)
 
   return (
     <div className="add-job">
@@ -271,10 +271,7 @@ const AddJob = ({ profileInfo }) => {
               onChange={(e) => {
                 handleFile(e);
               }}
-              {...register("image", {
-                required: true,
-                disabled: inputDisabled,
-              })}
+              
             />
           </div>
 

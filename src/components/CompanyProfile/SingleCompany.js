@@ -1,21 +1,40 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import "./CompanyProfile.css";
 import { IoIosArrowRoundForward } from "react-icons/io";
 import { Link } from "react-router-dom";
+import useAuth from '../../hooks/useAuth'
+import { useDeleteCompanyByIdMutation } from "../../Redux-handler/ManageProfiles";
+import defaultImg from "../../assets/Images/no_img_2.png";
+import ModalMessage from "../ModalMessage/ModalMessage";
 const SingleCompany = ({ info }) => {
-  const { _id, cname, email, contact } = info;
+  const [show, setShow] = useState(false);
+  const{user,role}=useAuth()
+  const[deleteCompany,{isSuccess}]=useDeleteCompanyByIdMutation()
+  const { _id, cname,img} = info;
+  useEffect(() => {
+    if (isSuccess) {
+      setShow(true)
+    }
+  }, [isSuccess])
   return (
     <div className="container mt-5 d-flex justify-content-center">
+      <ModalMessage show={show} setShow={setShow} message={'Deleted Successfully'} />
       <div className="card com-card p-3">
         <div className="d-flex align-items-center">
           <div className="image">
             {" "}
-            <img
-              src="https://i.ibb.co/k6HhcvX/logo.png"
+            {img?<img
+              src={img}
               alt=""
               className="rounded"
               width="130"
             />
+            :<img
+              src={defaultImg}
+              alt=""
+              className="rounded"
+              width="130"
+            />}
             <p className="mt-4">
               <Link to={`company/${_id}`}>
                 <span>
@@ -48,9 +67,12 @@ const SingleCompany = ({ info }) => {
               <button className="btn btn-sm btn-outline-primary w-100">
                 Chat
               </button>{" "}
-              <button className="btn btn-sm btn-primary w-100 ml-2">
+             { (role==='seeker')?<button className="btn btn-sm btn-primary w-100 ml-2">
                 Follow
-              </button>{" "}
+              </button>
+              :<button onClick={()=>deleteCompany(_id)} className="btn btn-sm btn-danger w-100 ml-2">
+              Delete
+            </button>}{" "}
             </div>
           </div>
         </div>
