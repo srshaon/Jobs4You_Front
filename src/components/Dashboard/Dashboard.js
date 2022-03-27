@@ -1,6 +1,6 @@
 import "./Dashboard.css";
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 
 import { Spinner } from "react-bootstrap";
 import useAuth from "../../hooks/useAuth";
@@ -51,6 +51,7 @@ import AddGovJob from "../AddGovJob/AddGovJob";
 const Dashboard = () => {
   const history = useHistory();
   const { logOut, admin, user, role, setRole, control, setControl } = useAuth();
+  
   console.log(user);
   console.log("this is role:", role);
   // const [control, setControl] = useState("welcome");
@@ -74,6 +75,11 @@ const Dashboard = () => {
     // setControl("companyProfile");
   }
   console.log(profileInfo);
+  useEffect(()=>{
+    if(profileInfo){
+    setControl('welcome')
+    }
+      },[profileInfo])
 
   if (role === "") {
     return <Spinner animation="border" variant="danger" />;
@@ -81,6 +87,7 @@ const Dashboard = () => {
   const navigateToHome = () => {
     history.push("/home");
   };
+  console.log(control);
   return (
     <div className="card dashboard-sec" style={{ overflow: "scroll initial" }}>
       <div className="dashboard-details-div">
@@ -115,16 +122,8 @@ const Dashboard = () => {
                         </span>{" "}
                         Home
                       </li>
-                      <li
-                        onClick={() => setControl("createProfile")}
-                        className="li py-3 px-5"
-                      >
-                        <span className="dashboard-icons px-1">
-                          <MdCreateNewFolder />
-                        </span>{" "}
-                        Create Profile
-                      </li>
-                      <li
+                      
+                     { profileInfo?<li
                         onClick={() => setControl("candiProfile")}
                         className="li py-3 px-5"
                       >
@@ -133,6 +132,15 @@ const Dashboard = () => {
                         </span>{" "}
                         My Profile
                       </li>
+                      :<li
+                        onClick={() => setControl("createCandidate")}
+                        className="li py-3 px-5"
+                      >
+                        <span className="dashboard-icons px-1">
+                          <MdCreateNewFolder />
+                        </span>{" "}
+                        Create Profile
+                      </li>}
 
                       <li
                         onClick={() => setControl("editCandidate")}
@@ -222,17 +230,8 @@ const Dashboard = () => {
                             <ImHome />
                           </span>{" "}
                           Home
-                        </li>
-                        {!profileInfo && <li
-                          onClick={() => setControl("createProfile")}
-                          className="li py-3 px-3"
-                        >
-                          <span className="dashboard-icons px-2">
-                            <CgProfile />
-                          </span>{" "}
-                          Create Profile
-                        </li>}
-                        <li
+                        </li>                       
+                        {profileInfo?<li
                           onClick={() => setControl("companyProfile")}
                           className="li py-3 px-3"
                         >
@@ -241,6 +240,15 @@ const Dashboard = () => {
                           </span>{" "}
                           View Profile
                         </li>
+                        :<li
+                          onClick={() => setControl("createCompany")}
+                          className="li py-3 px-3"
+                        >
+                          <span className="dashboard-icons px-2">
+                            <CgProfile />
+                          </span>{" "}
+                          Create Profile
+                        </li>}
 
                         <li
                           onClick={() => setControl("editCompany")}
@@ -302,10 +310,23 @@ const Dashboard = () => {
                 )}
                 {role === "admin" && (
                   <div>
+                    <div className="text-center pt-4">
+                      <h4
+                        className="px-5 text-center"
+                        style={{
+                          fontWeight: "600",
+                          color: "white",
+                        }}
+                      >
+                        Admin <br />{" "}
+                        <span style={{ fontSize: "18px" }}>Dashboard</span>
+                        <hr />
+                      </h4>
+                    </div>
                     <div>
                       <ul className="dashboard-list">
                         <li
-                          onClick={() => setControl('makeadmin')}
+                          onClick={() => setControl("makeadmin")}
                           className="li py-3 px-3"
                         >
                           <span className="dashboard-icons px-1">
@@ -373,7 +394,10 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div style={{ border: '2px solid blue' }} className="dashboard-second-container">
+        <div
+          style={{ border: "2px solid blue" }}
+          className="dashboard-second-container"
+        >
           <div
             className="welcome-dashboard d-md-flex align-items-center"
             style={{ height: "18vh" }}
@@ -412,7 +436,8 @@ const Dashboard = () => {
             {control === "upload" && <UploadViewResume />}
             {control === "myjobs" && <MyJobs />}
             {control === "skills" && <Skills />}
-            {control === "createProfile" && <EditCompany />}
+            {control === "createCandidate" && <ProfileEdit/> }
+            {control === "createCompany" && <EditCompany />}
             {/* recruiter dashboard */}
             {control === "companyProfile" && <CompanyInfo info={profileInfo} />}
             {control === "companies" && <CompanyProfile />}
@@ -421,11 +446,10 @@ const Dashboard = () => {
             {control === "manageJobs" && <ManageJobs />}
             {control === "editCompany" && <EditCompany info={profileInfo} />}
             {control === `alljobs/:jobId` && <AllJobs></AllJobs>}
-            {control === 'makeadmin' && <MakeAdmin />}
-            {control === 'pendingjobs' && <PendingJobs />}
-            {control === 'addgovtjob' && <AddGovJob />}
+            {control === "makeadmin" && <MakeAdmin />}
+            {control === "pendingjobs" && <PendingJobs />}
+            {control === "addgovtjob" && <AddGovJob />}
             {/* {control === 'addgovtjob' && <AddGovJob />} */}
-
           </div>
         </div>
       </div>

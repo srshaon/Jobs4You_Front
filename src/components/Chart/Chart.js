@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { Spinner, Button, Form } from "react-bootstrap";
 import SinglePie from "./SinglePie";
@@ -7,11 +7,18 @@ import "./Chart.css";
 
 const Chart = () => {
   const { _id } = useParams();
+  const history = useHistory();
   const [postedSkills, setPostedSkills] = useState([]);
   const [gainedSkills, setGainedSkills] = useState([]);
   const [data1, setData1] = useState([]);
   const [data2, setData2] = useState([]);
   const { email } = useAuth().user;
+  const { setControl } = useAuth();
+
+  const handleReplace = (e) => {
+    history.replace('/dashboard');
+    setControl("skills");
+  };
 
   useEffect(() => {
     if (_id && email) {
@@ -125,8 +132,7 @@ const Chart = () => {
       {gainedSkills?.length === 0 && email && (
         <div className="text-center my-5 py-5 chart-spinner smoothy">
           <p>
-            You don't have any skills. Go Back to{" "}
-            <Link to="/dashboard">Dashboard</Link>
+            You don't have any skills. To add, click <button style={{color: 'blue', background: 'white', border: 'none'}} onClick={handleReplace}>here</button>
           </p>
         </div>
       )}

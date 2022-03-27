@@ -226,8 +226,8 @@ const JobDetails = () => {
                       }}
                       src={image}
                       alt=""
-                      // className="w-100 py-4"
-                      // style={{ height: "35vh" }}
+                    // className="w-100 py-4"
+                    // style={{ height: "35vh" }}
                     />
 
                     <div className="info">

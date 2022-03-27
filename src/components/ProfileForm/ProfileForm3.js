@@ -8,7 +8,7 @@ import { useCreateProfileMutation } from "../../Redux-handler/ManageProfiles";
 import { useHistory } from "react-router";
 import useAuth from "./../../hooks/useAuth";
 const ProfileForm3 = (props) => {
-    const { user,admin } = useAuth()
+    const { user,admin,role } = useAuth()
     const [createProfile] = useCreateProfileMutation()
     const { register, handleSubmit } = useForm();
     const { actions, state } = useStateMachine({ clearAction });
@@ -21,12 +21,9 @@ const ProfileForm3 = (props) => {
         console.log(data);
         console.log(state);
         console.log(actions);
-        if(admin==='seeker'){
-            state.data.fname = user?.displayName;
-            state.data.pEmail = user?.email;
-        }else{
+        if(role==='company'){
             state.data.cname = user?.displayName;
-            state.data.email = user?.email;
+            state.data.email = user?.email;   
         }
         state.data.loginEmail = user?.email;
         createProfile(state.data)
@@ -47,8 +44,7 @@ const ProfileForm3 = (props) => {
                     <h4>You have updated all the info.</h4>
                     <h4>Now please submit to save your info.</h4>
 
-
-          <div className="profile-form-button-div d-flex justify-content-center">
+          <div className="profile-form-button-div d-flex justify-content-center ">
             <button className="profile-form-button p-3 w-50" type="submit">
               Submit
             </button>

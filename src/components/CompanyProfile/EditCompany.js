@@ -7,9 +7,12 @@ import { Col,Button } from "react-bootstrap";
 
 import { TiArrowForward } from "react-icons/ti";
 import { HiPlusCircle } from 'react-icons/hi';
+import useAuth from "../../hooks/useAuth";
 
 const EditCompany = ({ info }) => {
   const history = useHistory();
+  const{role}=useAuth()
+  console.log(role)
   const [profileInfo, setProfileInfo] = useState({
     cname: "",
     country: "",
@@ -48,13 +51,13 @@ const EditCompany = ({ info }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("nupa");
-    const { cname, country, email, contact, industry, nob, noe, website } =
+    const { cname, country, loginEmail, contact, industry, nob, noe, website } =
       profileInfo;
     await updateProfile({
       _id: info._id,
       cname,
       country,
-      email,
+      loginEmail,
       contact,
       industry,
       nob,
@@ -161,7 +164,7 @@ const EditCompany = ({ info }) => {
                   <input
                     required
                     onChange={handleChange}
-                    value={profileInfo.email}
+                    value={profileInfo.loginEmail}
                     className="px-3 form-control"
                     type="text"
                     name="email"
@@ -198,7 +201,7 @@ const EditCompany = ({ info }) => {
         ) : (
           <div className="profile-sec my-4 p-5 text-center">
         <h4 className="mb-4" style={{ color: "brown" }}>
-          Company Profile Form
+         Company Profile Form
         </h4>
         <Button className="add-job-btn py-3" onClick={navigateToForm}>
           <HiPlusCircle className="heart pe-1" /> Submit

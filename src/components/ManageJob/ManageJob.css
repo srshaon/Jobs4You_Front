@@ -4,7 +4,7 @@
 }
 
 .table-head {
-  background-color: var(--color-primary);
+  background-color: black !important;
   border: 1px solid #b4a3a3;
 }
 .table-body .table-tr {
