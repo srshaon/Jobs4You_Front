@@ -4,13 +4,15 @@ import { useForm } from "react-hook-form";
 import ModalMessage from "./../ModalMessage/ModalMessage";
 import { saveAs } from "file-saver";
 import "./PdfCreator.css";
+import useImageVideoUpload from "./../../hooks/useImageVideoUpload";
 
 const PdfCreator = () => {
   const [downloading, setDownloading] = useState(false);
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
-  const [imgUrl, setImgUrl] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [imgUrl, setImgUrl] = useState("");
+  const { handleFile } = useImageVideoUpload(setImgUrl, setUploading);
   const {
     register,
     reset,
@@ -55,21 +57,7 @@ const PdfCreator = () => {
       });
   };
 
-  // image upload
-  const handleFile = (e) => {
-    const fileInfo = e.target.files;
-    const imgData = new FormData();
-    imgData.set("key", "cd8b0025cccd4015a70e149fd2ab8ad0");
-    imgData.append("image", fileInfo[0]);
-    setUploading(true);
-    axios.post("https://api.imgbb.com/1/upload", imgData).then((response) => {
-      setImgUrl(response.data.data.url);
-      setUploading(false);
-    });
-  };
   console.log(imgUrl);
-  const productImageRegister = register("productImage");
-  // {required: true}
   return (
     <div className="pb-5">
       {downloading && (
@@ -185,11 +173,10 @@ const PdfCreator = () => {
             <input
               className="form-control"
               type="file"
-              {...productImageRegister}
               onChange={(e) => {
-                productImageRegister.onChange(e);
                 handleFile(e);
               }}
+               
             />
             {errors.exampleRequired && <span>This field is required</span>}
             {uploading ? (
