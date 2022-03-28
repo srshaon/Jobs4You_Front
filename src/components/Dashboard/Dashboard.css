@@ -1,4 +1,6 @@
+
 .dashboard-sec {
+  min-height: 100vh;
   border-radius: 10px;
   background-image: linear-gradient(
     to right,
@@ -16,10 +18,15 @@
     #537890
   );
 }
+.dashboard-second-container{
+  min-height: 100vh;
+  
+}
 
 .dashboard-details-div {
   display: grid;
   grid-template-columns: 20% 80%;
+  height: 100% !important;
 }
 /* .dashboard-second-container {
   background-color: #a6a8a8;

@@ -1,6 +1,6 @@
 import "./Dashboard.css";
 
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Spinner } from "react-bootstrap";
 import useAuth from "../../hooks/useAuth";
@@ -68,11 +68,11 @@ const Dashboard = () => {
     profileInfo = company;
   }
 
-  useEffect(()=>{
-    if(profileInfo){
-    setControl('welcome')
+  useEffect(() => {
+    if (profileInfo) {
+      setControl('welcome')
     }
-      },[profileInfo])
+  }, [profileInfo])
 
   if (role === "") {
     return <Spinner animation="border" variant="danger" />;
@@ -80,17 +80,17 @@ const Dashboard = () => {
   const navigateToHome = () => {
     history.push("/home");
   };
- 
+
   return (
     <div className="card dashboard-sec" style={{ overflow: "scroll initial" }}>
       <div className="dashboard-details-div">
         <div className="w-100">
-          <div className="">
+          <div className="h-100">
             <CDBSidebar
               className="w-100"
               style={{
-                height: "100vh",
-                background: "var(--color-primary)",
+
+                background: "var(--color-primary)"
               }}
             >
               <CDBSidebarContent className="dashboard py-5">
@@ -115,8 +115,8 @@ const Dashboard = () => {
                         </span>{" "}
                         Home
                       </li>
-                      
-                     { profileInfo?<li
+
+                      {profileInfo ? <li
                         onClick={() => setControl("candiProfile")}
                         className="li py-3 px-5"
                       >
@@ -125,15 +125,15 @@ const Dashboard = () => {
                         </span>{" "}
                         My Profile
                       </li>
-                      :<li
-                        onClick={() => setControl("createCandidate")}
-                        className="li py-3 px-5"
-                      >
-                        <span className="dashboard-icons px-1">
-                          <MdCreateNewFolder />
-                        </span>{" "}
-                        Create Profile
-                      </li>}
+                        : <li
+                          onClick={() => setControl("createCandidate")}
+                          className="li py-3 px-5"
+                        >
+                          <span className="dashboard-icons px-1">
+                            <MdCreateNewFolder />
+                          </span>{" "}
+                          Create Profile
+                        </li>}
 
                       <li
                         onClick={() => setControl("editCandidate")}
@@ -223,8 +223,8 @@ const Dashboard = () => {
                             <ImHome />
                           </span>{" "}
                           Home
-                        </li>                       
-                        {profileInfo?<li
+                        </li>
+                        {profileInfo ? <li
                           onClick={() => setControl("companyProfile")}
                           className="li py-3 px-3"
                         >
@@ -233,15 +233,15 @@ const Dashboard = () => {
                           </span>{" "}
                           View Profile
                         </li>
-                        :<li
-                          onClick={() => setControl("createCompany")}
-                          className="li py-3 px-3"
-                        >
-                          <span className="dashboard-icons px-2">
-                            <CgProfile />
-                          </span>{" "}
-                          Create Profile
-                        </li>}
+                          : <li
+                            onClick={() => setControl("createCompany")}
+                            className="li py-3 px-3"
+                          >
+                            <span className="dashboard-icons px-2">
+                              <CgProfile />
+                            </span>{" "}
+                            Create Profile
+                          </li>}
 
                         <li
                           onClick={() => setControl("editCompany")}
@@ -318,12 +318,12 @@ const Dashboard = () => {
                     </div>
                     <div>
                       <ul className="dashboard-list">
-                      <li onClick={navigateToHome} className="li py-3 px-5">
-                        <span className="dashboard-icons px-1">
-                          <ImHome />
-                        </span>{" "}
-                        Home
-                      </li>
+                        <li onClick={navigateToHome} className="li py-3 px-5">
+                          <span className="dashboard-icons px-1">
+                            <ImHome />
+                          </span>{" "}
+                          Home
+                        </li>
                         <li
                           onClick={() => setControl("makeadmin")}
                           className="li py-3 px-3"
@@ -394,7 +394,7 @@ const Dashboard = () => {
         </div>
 
         <div
-          style={{ border: "2px solid blue" }}
+
           className="dashboard-second-container"
         >
           <div
@@ -435,7 +435,7 @@ const Dashboard = () => {
             {control === "upload" && <UploadViewResume />}
             {control === "myjobs" && <MyJobs />}
             {control === "skills" && <Skills />}
-            {control === "createCandidate" && <ProfileEdit/> }
+            {control === "createCandidate" && <ProfileEdit />}
             {control === "createCompany" && <EditCompany />}
             {/* recruiter dashboard */}
             {control === "companyProfile" && <CompanyInfo info={profileInfo} />}

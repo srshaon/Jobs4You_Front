@@ -73,7 +73,11 @@ const Header = () => {
                   BROWSE JOBS
 
                 </NavHashLink>
-
+                {role === "admin" && (
+                  <NavLink className="nav-link" to="/dashboard">
+                    DASHBOARD
+                  </NavLink>
+                )}
                 {role === "seeker" && (
                   <>
                     <NavDropdown
@@ -109,6 +113,7 @@ const Header = () => {
                     <Notifications />
                   </>
                 )}
+
                 <NavDropdown
                   // drop={"end"}
                   title="CAREER ADVICE"
