@@ -112,6 +112,9 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
+            <PrivateRoute path="/register">
+              <Register></Register>
+            </PrivateRoute>
             {/* <Route path="/dashboard">
               <Dashboard></Dashboard>
             </Route> */}

@@ -63,10 +63,10 @@ const Home = () => {
     // setFeauturedJobVisibility('visible');
     // setFeauturedJobDisplay('block');
   };
-  window.onload = function () {
-    console.log("clicked");
-    document.getElementById("feature-job-button").click();
-  };
+  // window.onload = function () {
+  //   console.log("clicked");
+  //   document.getElementById("feature-job-button").click();
+  // };
   return (
     <div style={{ overflowX: "hidden" }} className="home-container-nuzhat">
       {/* <Header></Header> */}
