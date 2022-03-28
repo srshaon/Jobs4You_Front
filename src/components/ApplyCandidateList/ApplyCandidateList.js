@@ -31,7 +31,7 @@ const ApplyCandidateList = () => {
       });
   }, []);
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
+    fetch("https://afternoon-headland-45054.herokuapp.com/")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

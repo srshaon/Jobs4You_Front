@@ -1,5 +1,5 @@
 import "./Home.css";
-import React from "react";
+import React, { useState } from "react";
 import About from "../About/About";
 import TopCompanies from "../TopCompanies/TopCompanies";
 import Resources from "../Resources/Resources";
@@ -18,7 +18,11 @@ import Footer from "../Footer/Footer";
 import useAuth from "../../hooks/useAuth";
 import LatestJobs from "../LatestJobs/LatestJobs";
 import AllReviews from "../AllReviews/AllReviews";
+import { HashLink, NavHashLink } from "react-router-hash-link";
 const Home = () => {
+  const [click, setClick] = useState(false);
+
+  const handleClick = () => setClick(!click);
   const {
     user,
     role,
@@ -168,7 +172,16 @@ const Home = () => {
                       </span>
                     </li>
                   </ul>
-                  <Button className="explore-btn p-3">Browse Jobs</Button>
+                  <NavHashLink
+                    as={HashLink}
+                    to="/home#browsejobs"
+                    activeClassName="active"
+                    className="nav-links"
+                    onClick={handleClick}
+                  >
+
+                    <Button className="explore-btn p-3">Browse Jobs</Button>
+                  </NavHashLink>
                 </div>
               </Col>
               <Col md={7}>

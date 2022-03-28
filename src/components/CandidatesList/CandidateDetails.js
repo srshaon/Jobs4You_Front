@@ -32,61 +32,6 @@ const CandidateDetails = ({ info }) => {
             </div> */}
         {info && (
           // <div className="card mb-4 ms-1">
-          //   <div className="card-body">
-          //     <div className="row">
-          //       <div className="col-sm-3">
-          //         <p className="mb-0">Full-Name</p>
-          //       </div>
-          //       <div className="col-sm-9">
-          //         <p className="text-muted mb-0">
-          //           {info?.fname || info?.cname}
-          //         </p>
-          //       </div>
-          //     </div>
-          //     <hr />
-          //     <div className="row">
-          //       <div className="col-sm-3">
-          //         <p className="mb-0">Email</p>
-          //       </div>
-          //       <div className="col-sm-9">
-          //         <p className="text-muted mb-0">
-          //           {info?.pEmail || info?.email}
-          //         </p>
-          //       </div>
-          //     </div>
-          //     <hr />
-          //     <div className="row">
-          //       <div className="col-sm-3">
-          //         <p className="mb-0">Phone</p>
-          //       </div>
-          //       <div className="col-sm-9">
-          //         <p className="text-muted mb-0">
-          //           (097){info?.pContact || info?.ontact}
-          //         </p>
-          //       </div>
-          //     </div>
-          //     <hr />
-          //     <div className="row">
-          //       <div className="col-sm-3">
-          //         <p className="mb-0">Mobile</p>
-          //       </div>
-          //       <div className="col-sm-9">
-          //         <p className="text-muted mb-0">
-          //           (098) {info?.pContact || info?.ontact}
-          //         </p>
-          //       </div>
-          //     </div>
-          //     <hr />
-          //     <div className="row">
-          //       <div className="col-sm-3">
-          //         <p className="mb-0">Address</p>
-          //       </div>
-          //       <div className="col-sm-9">
-          //         <p className="text-muted mb-0">{info?.address}</p>
-          //       </div>
-          //     </div>
-          //   </div>
-          // </div>
           <div className="row d-md-flex align-items-center justify-content-center">
             <Col md={8} className="p-4 text-center">
               <div className="mt-3 mb-4">
