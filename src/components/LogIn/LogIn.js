@@ -8,28 +8,24 @@ import { signInWithEmailAndPassword } from "@firebase/auth";
 const LogIn = () => {
   const history = useHistory();
   const {
-    user,
-    logOut,
     googleSignIn,
     handleEmailChange,
     handlePasswordChange,
     email,
     password,
     handleNameChange,
-    setName,
     handleRegistration,
     auth,
     saveUser,
     role,
     setRole,
-    admin,
-    setAdmin,
+    error, setError
   } = useAuth();
 
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const [url, setUrl] = useState("");
   const location = useLocation();
-  // console.log(location);
+
   let redirect_Url = location.state?.from || "/dashboard";
   let redirect_Url2 = "/dashboard";
   const redirect = () => {
@@ -67,8 +63,9 @@ const LogIn = () => {
         history.push(redirect_Url);
       })
       .catch((error) => {
-        //console.log(error.message);
+        console.log(error.message);
         if (error.code === "auth/user-not-found") {
+          console.log('hitted');
           setError("Wrong Email");
         } else {
           setError("Wrong Password");
@@ -86,8 +83,8 @@ const LogIn = () => {
   const userFormDisplay = () => {
     setRole("seeker");
     redirect_Url = "/dashboard";
-    // console.log(role);
-    // console.log('hitted first form')
+    setError('');
+
     document.getElementById("user-signup-form").style.visibility = "visible";
     document.getElementById("user-signup-form").style.display = "block";
     document.getElementById("company-signup-form").style.display = "none";
@@ -97,9 +94,8 @@ const LogIn = () => {
   const companyFormDisplay = () => {
     setRole("company");
     redirect_Url = "/dashboard";
-    // console.log(role);
-    // console.log('hitted second form form')
-    // document.getElementById('company-signup-form').style.visibility = 'visible'
+    setError('');
+
     document.getElementById("user-signup-form").style.display = "none";
     document.getElementById("user-signup-form").style.visibility = "hidden";
     document.getElementById("company-signup-form").style.visibility = "visible";
@@ -107,9 +103,11 @@ const LogIn = () => {
 
     document.getElementById("google-signin").style.visibility = "hidden";
   };
+  const handleError = () => {
+    setError('');
+    console.log('clicked')
 
-  // console.log(role);
-
+  }
   return (
     <div className="o login-bg">
       <div className="main">
@@ -117,7 +115,7 @@ const LogIn = () => {
 
         <div className="login">
           <form onSubmit={handleEmailLogin}>
-            <label className="login-label" htmlFor="chk" aria-hidden="true">
+            <label onClick={handleError} className="login-label" htmlFor="chk" aria-hidden="true">
               Login{" "}
             </label>
 
@@ -137,17 +135,9 @@ const LogIn = () => {
               placeholder="Password"
               required=""
             />
-            {/* <button className='login-button'>Login</button> */}
+            <p className="display-error-login" >{error}</p>
             <input className="login-button" type="submit" value="Login" />
           </form>
-          {/* <form>
-                        <label htmlFor="chk" aria-hidden="true">Sign up</label>
-                        <input type="text" name="txt" placeholder="User name" required="" />
-                        <input type="email" name="email" placeholder="Email" required="" />
-                        <input type="password" name="pswd" placeholder="Password" required="" />
-                        <button>Sign up</button>
-                    </form> */}
-          {/* <button onClick={handleGoogleSignIn} className="google-login-button">Google Login</button> */}
           <div className="d-flex justify-content-center">
             <span style={{ color: "white" }} className="login-google-span">
               sign in with
@@ -175,7 +165,7 @@ const LogIn = () => {
           </div>
 
           <form onSubmit={handleEmailRegistration}>
-            <label className="signup-label" htmlFor="chk" aria-hidden="true">
+            <label onClick={handleError} className="signup-label" htmlFor="chk" aria-hidden="true">
               Sign Up
             </label>
 
@@ -207,7 +197,7 @@ const LogIn = () => {
                 placeholder="Password"
                 required=""
               />
-              {/* <button className='signup-button'>Sign Up</button> */}
+              <p className="display-error-signup" >{error}</p>
               <input className="signup-button" type="submit" value="Register" />
             </div>
 
@@ -239,7 +229,7 @@ const LogIn = () => {
                 placeholder="Password"
                 required=""
               />
-              {/* <button className='signup-button'>Sign Up</button> */}
+              <p className="display-error-signup" >{error}</p>
               <input className="signup-button" type="submit" value="Register" />
             </div>
           </form>

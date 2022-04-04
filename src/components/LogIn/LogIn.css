@@ -1,4 +1,18 @@
 /* copy css  */
+.display-error-login {
+  text-align: center;
+  color: whitesmoke;
+  font-size: larger;
+  font-weight: bolder;
+}
+
+.display-error-signup {
+  text-align: center;
+  color: black;
+  font-size: larger;
+  font-weight: bolder;
+}
+
 .o {
   margin: 0;
   padding: 0;
@@ -15,27 +29,27 @@
   background-size: cover;
   opacity: 0.9;
 }
+
 .main {
   width: 350px;
   height: 650px;
   background: red;
   overflow: hidden;
-  background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38")
-    no-repeat center/ cover;
+  background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
   border-radius: 10px;
   box-shadow: 5px 20px 50px #000;
-  background: #525252; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #3d72b4,
-    #525252
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #3d72b4,
-    #525252
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #525252;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right,
+      #3d72b4,
+      #525252);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right,
+      #3d72b4,
+      #525252);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
 #chk {
   display: none;
 }
@@ -60,6 +74,7 @@
   outline: none;
   border-radius: 5px;
 }
+
 .login-label,
 .signup-label {
   color: #fff;
@@ -71,6 +86,7 @@
   cursor: pointer;
   transition: 0.5s ease-in-out;
 }
+
 .signup-button,
 .login-button {
   width: 60%;
@@ -89,6 +105,7 @@
   transition: 0.2s ease-in;
   cursor: pointer;
 }
+
 .google-login-button {
   width: 10%;
   height: 40px;
@@ -107,6 +124,7 @@
   transition: 0.2s ease-in;
   cursor: pointer;
 }
+
 .signin-google-span,
 .login-google-span {
   margin-top: 15px;
@@ -117,13 +135,15 @@
   font-weight: bolder;
   padding-top: 2px;
 }
-.google-signin-div {
-}
+
+.google-signin-div {}
+
 .signup-button:hover,
 .login-button:hover,
 .signup-option-button:hover {
   background: #6d44b8;
 }
+
 .google-login-button:hover {
   background: #fc5c2c;
 }
@@ -142,20 +162,24 @@
   margin: 10px;
 }
 
-#chk:checked ~ .signup {
+#chk:checked~.signup {
   transform: translateY(-580px);
 }
-#chk:checked ~ .login-label {
+
+#chk:checked~.login-label {
   transform: scale(1);
 }
-#chk:checked ~ .signup-label {
+
+#chk:checked~.signup-label {
   transform: scale(0.6);
 }
+
 .signup-option-button-div {
   display: flex;
   position: relative;
   top: 120px;
 }
+
 .signup-option-button {
   width: 60%;
   height: 40px;
