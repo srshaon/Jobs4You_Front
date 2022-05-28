@@ -34,17 +34,13 @@ const JobDetails = () => {
   }, [jobId, applications?.length]);
   // console.log(jobs?.additionalRequirements);
   //Fetch applyList
-  {
-    useEffect(() => {
-      fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
-        .then((res) => res.json())
-        .then((data) => setApplyList(data));
-    }, []);
-    // const applyListFilter = applyList?.find(
-    //   (apply) => apply?.jobId === jobs?._id
-    // );
-    // console.log(applyListFilter);
-  }
+
+  useEffect(() => {
+    fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
+      .then((res) => res.json())
+      .then((data) => setApplyList(data));
+  }, [])
+
   if (jobs.length === 0) {
     return <Spinner animation="border" variant="danger" />;
   }
