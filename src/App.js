@@ -82,9 +82,7 @@ function App() {
             <Route path="/login">
               <LogIn></LogIn>
             </Route>
-            <Route path="/register">
-              <Register></Register>
-            </Route>
+
             <PrivateRoute path="/review">
               <Review></Review>
             </PrivateRoute>
@@ -112,9 +110,7 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard></Dashboard>
             </PrivateRoute>
-            <PrivateRoute path="/register">
-              <Register></Register>
-            </PrivateRoute>
+
             {/* <Route path="/dashboard">
               <Dashboard></Dashboard>
             </Route> */}
@@ -142,7 +138,7 @@ function App() {
             <Route path="/categories">
               <Categories></Categories>
             </Route>
-            
+
             <Route path="/categoryjobs/:categoryName">
               <AllCategoriesJobs></AllCategoriesJobs>
             </Route>

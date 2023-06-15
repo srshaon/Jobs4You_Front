@@ -15,7 +15,7 @@ const AllReviews = () => {
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 2000,
-    cssEase: "linear",
+    cssEase: "linear"
   };
   const [reviews, setReviews] = useState([]);
 
@@ -39,14 +39,14 @@ const AllReviews = () => {
       <h4 className="text-center pb-2" style={{ opacity: "0.6" }}>
         Check valuable reviews from our clients!
       </h4>
-      <Slider {...settings}>
+      <Slider {...settings} className='abcde'>
         {reviews?.map((review) => (
           <div
-            style={{ border: "2px solid" }}
+
             className="bbb mt-4"
             key={review._id}
           >
-            <div className="ccc bbb p-3">
+            <div className="ccc  p-3">
               <div className="review-section-image">
                 <img
                   style={{ borderRadius: "50%" }}
