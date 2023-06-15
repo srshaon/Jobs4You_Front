@@ -4,7 +4,7 @@ export const postApi = createApi({
 
   reducerPath: 'postApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://afternoon-headland-45054.herokuapp.com/',
+    baseUrl: 'https://jobs4you.onrender.com/',
   }),
 
   tagTypes: ["Jobs"],
@@ -70,4 +70,4 @@ export const postApi = createApi({
 
 })
 
-export const { useGetAllPostQuery, useGetPostByIdQuery, useGetPostByLimitQuery, useDeletePostMutation, useCreatePostMutation, useUpdatePostMutation,useDeleteGovJobMutation} = postApi
+export const { useGetAllPostQuery, useGetPostByIdQuery, useGetPostByLimitQuery, useDeletePostMutation, useCreatePostMutation, useUpdatePostMutation, useDeleteGovJobMutation } = postApi

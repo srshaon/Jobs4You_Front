@@ -13,7 +13,7 @@ const ApplyCandidateList = () => {
 
   let x = "sportsfi2017@gmail.com";
   useEffect(() => {
-    fetch(`https://afternoon-headland-45054.herokuapp.com/usersDetails/${x}`)
+    fetch(`https://jobs4you.onrender.com/usersDetails/${x}`)
       .then((res) => res.json())
       .then((data) => {
         // xyz = [...data]
@@ -23,7 +23,7 @@ const ApplyCandidateList = () => {
   }, [x]);
   let xyz = [];
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
+    fetch("https://jobs4you.onrender.com/jobs")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -31,7 +31,7 @@ const ApplyCandidateList = () => {
       });
   }, []);
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/")
+    fetch("https://jobs4you.onrender.com/")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -40,7 +40,7 @@ const ApplyCandidateList = () => {
         let result = [];
         setAllApplyList(pqr);
         pqr.map((x) => {
-          fetch(`https://afternoon-headland-45054.herokuapp.com/usersDetails/${x.email}`)
+          fetch(`https://jobs4you.onrender.com/usersDetails/${x.email}`)
             .then((res) => res.json())
             .then((data) => {
               // xyz = [...data]

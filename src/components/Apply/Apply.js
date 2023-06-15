@@ -33,13 +33,13 @@ const Apply = () => {
   /// Testing
   ////Testing2
   useEffect(() => {
-    fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
+    fetch(`https://jobs4you.onrender.com/jobs/${jobId}`)
       .then((res) => res.json())
       .then((data) => setJobs(data));
   }, []);
   // Candidate Fetch
   useEffect(() => {
-    fetch(`https://afternoon-headland-45054.herokuapp.com/allprofiles`)
+    fetch(`https://jobs4you.onrender.com/allprofiles`)
       .then((res) => res.json())
       .then((data) => setCandidates(data));
   }, [user?.email]);
@@ -107,37 +107,37 @@ const Apply = () => {
     formData.append("resumepdfFile", resumepdfFile);
     formData.append("coverLetterpdfFile", coverLetterpdfFile);
 
-    fetch("https://afternoon-headland-45054.herokuapp.com/applyList", {
+    fetch("https://jobs4you.onrender.com/applyList", {
       method: "POST",
       body: formData,
     })
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          fetch('https://afternoon-headland-45054.herokuapp.com/notifications', {
+          fetch('https://jobs4you.onrender.com/notifications', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({ email: user?.email, message: `You applied at ${jobs?.company} as ${jobs?.job}`, link: 'dashboard', portion: 'myjobs' })
           })
-          .then(res => res.json())
-          .then(data => console.log(data));
+            .then(res => res.json())
+            .then(data => console.log(data));
 
-          fetch('https://afternoon-headland-45054.herokuapp.com/notifications', {
+          fetch('https://jobs4you.onrender.com/notifications', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({ email: jobs?.email, message: `${user?.displayName} has applied in your company as ${jobs?.job}`, link: 'dashboard', portion: 'candidates' })
           })
-          .then(res => res.json())
-          .then(data => console.log(data)); 
+            .then(res => res.json())
+            .then(data => console.log(data));
           alert("successfully applied");
           e.target.reset();
         }
       });
-     history.push(url)
+    history.push(url)
   };
   // console.log(resumepdfFile);
   // console.log(coverLetterpdfFile);
@@ -145,9 +145,9 @@ const Apply = () => {
   // console.log(jobs.employmentStatus)
   if (singleCandidate === undefined) {
     return (
-      <div style={{minHeight: '70vh'}} className="d-flex justify-content-center align-items-center text-center">
+      <div style={{ minHeight: '70vh' }} className="d-flex justify-content-center align-items-center text-center">
         <div>
-          <p className="message-anim">You didn't complete your profile. Please complete it <button style={{background: 'white', border: 'none', color: 'blue'}} onClick={handleReplace}>here</button></p>
+          <p className="message-anim">You didn't complete your profile. Please complete it <button style={{ background: 'white', border: 'none', color: 'blue' }} onClick={handleReplace}>here</button></p>
           <Spinner animation="border" role="status">
             <span className="visually-hidden">Loading...</span>
           </Spinner>

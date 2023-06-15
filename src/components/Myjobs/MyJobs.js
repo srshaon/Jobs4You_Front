@@ -18,13 +18,13 @@ const MyJobs = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
+    fetch("https://jobs4you.onrender.com/applyList")
       .then((res) => res.json())
       .then((data) => setApplyList(data));
   }, []);
   console.log(applyList);
   const applyCollection = applyList?.filter(
-    (applies) => applies?.email ===user?.email
+    (applies) => applies?.email === user?.email
   );
   console.log(applyCollection);
   if (applyCollection?.length === 0) {

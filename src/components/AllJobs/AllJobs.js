@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 const AllJobs = () => {
   const [pqr, setPqr] = useState([]);
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/alljobs")
+    fetch("https://jobs4you.onrender.com/alljobs")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

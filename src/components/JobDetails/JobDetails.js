@@ -14,11 +14,11 @@ const JobDetails = () => {
   const [message, setMessage] = useState("Already Applied")
   const { user } = useAuth();
   useEffect(() => {
-    fetch(`https://afternoon-headland-45054.herokuapp.com/jobs/${jobId}`)
+    fetch(`https://jobs4you.onrender.com/jobs/${jobId}`)
       .then((res) => res.json())
       .then((data) => setJobs(data))
       .then(() => {
-        fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
+        fetch("https://jobs4you.onrender.com/applyList")
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
@@ -36,7 +36,7 @@ const JobDetails = () => {
   //Fetch applyList
 
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
+    fetch("https://jobs4you.onrender.com/applyList")
       .then((res) => res.json())
       .then((data) => setApplyList(data));
   }, [])

@@ -9,7 +9,7 @@ const MakeAdmin = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     // console.log(data);
-    fetch("https://afternoon-headland-45054.herokuapp.com/users/admin", {
+    fetch("https://jobs4you.onrender.com/users/admin", {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -32,7 +32,7 @@ const MakeAdmin = () => {
         <div className="admin-banner">
           <h5
             className="admin-banner-text mt-5"
-            // style={{ backgroundColor: "black", color: "white", padding: "6px" }}
+          // style={{ backgroundColor: "black", color: "white", padding: "6px" }}
           >
             Enter an Email To Make Him/Her an Admin
           </h5>

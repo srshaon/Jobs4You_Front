@@ -3,7 +3,7 @@ import './Register.css'
 const Register = () => {
   const [companies, setCompanies] = useState([]);
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/companies")
+    fetch("https://jobs4you.onrender.com/companies")
       .then((res) => res.json())
       .then((data) => console.log(data));
   });

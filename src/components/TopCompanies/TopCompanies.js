@@ -5,7 +5,7 @@ import Slider from "react-slick";
 const TopCompanies = () => {
   const [companies, setCompanies] = useState([]);
   useEffect(() => {
-    fetch('https://afternoon-headland-45054.herokuapp.com/top')
+    fetch('https://jobs4you.onrender.com/top')
       .then(res => res.json())
       .then(data => setCompanies(data));
   }, []);

@@ -19,7 +19,7 @@ const Review = () => {
     data.ratingValue = rating;
     console.log(data);
 
-    fetch("https://afternoon-headland-45054.herokuapp.com/reviews", {
+    fetch("https://jobs4you.onrender.com/reviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",

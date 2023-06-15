@@ -39,7 +39,7 @@ const ProfileForm2 = (props) => {
     console.log(actions);
   };
   useEffect(() => {
-    fetch(`https://afternoon-headland-45054.herokuapp.com/users/${user.email}`)
+    fetch(`https://jobs4you.onrender.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

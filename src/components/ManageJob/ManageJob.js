@@ -18,7 +18,7 @@ const ManageJob = ({ job }) => {
   const [applications, setApplication] = useState([]);
 
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/applyList")
+    fetch("https://jobs4you.onrender.com/applyList")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -53,7 +53,7 @@ const ManageJob = ({ job }) => {
     );
     if (proceed) {
       const closedJob = { ...job, status: "closed" };
-      const url = `https://afternoon-headland-45054.herokuapp.com/updateJob/${id}`;
+      const url = `https://jobs4you.onrender.com/updateJob/${id}`;
       axios.put(url, closedJob).then((res) => {
         if (res.data.modifiedCount) {
           alert("closed successfully");
@@ -78,7 +78,7 @@ const ManageJob = ({ job }) => {
     // console.log(newData);
     axios
       .put(
-        `https://afternoon-headland-45054.herokuapp.com/jobs/${job._id}`,
+        `https://jobs4you.onrender.com/jobs/${job._id}`,
         newData
       )
       .then((res) => {
@@ -93,7 +93,7 @@ const ManageJob = ({ job }) => {
     setControl(`/alljobs/${job._id}`);
     console.log(control);
   };
-  const something = () => {};
+  const something = () => { };
   return (
     <>
       <tr className="table-tr">

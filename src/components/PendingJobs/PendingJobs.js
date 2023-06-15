@@ -8,7 +8,7 @@ const PendingJobs = () => {
   const [pendingJobs, setPendingJobs] = useState([]);
 
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
+    fetch("https://jobs4you.onrender.com/jobs")
       .then((res) => res.json())
       .then((data) => {
         const pendingJobs = data.filter((job) => job?.status === "pending");
@@ -22,7 +22,7 @@ const PendingJobs = () => {
       "Are you sure that you want to approve the job?"
     );
     if (proceed) {
-      const url = `https://afternoon-headland-45054.herokuapp.com/jobs/${id}`;
+      const url = `https://jobs4you.onrender.com/jobs/${id}`;
       fetch(url, {
         method: "PUT",
       })
@@ -30,7 +30,7 @@ const PendingJobs = () => {
         .then((data) => {
           if (data.modifiedCount > 0) {
             alert("approved successfully");
-            fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
+            fetch("https://jobs4you.onrender.com/jobs")
               .then((res) => res.json())
               .then((data) => {
                 const pendingJobs = data.filter(

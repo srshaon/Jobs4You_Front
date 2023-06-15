@@ -6,7 +6,7 @@ const FaqCustom = () => {
     const [customFaq, setCustomFaq] = useState([]);
 
     useEffect(() => {
-        fetch('https://afternoon-headland-45054.herokuapp.com/customfaq')
+        fetch('https://jobs4you.onrender.com/customfaq')
             .then(res => res.json())
             .then(data => {
                 let sortedFaq = [];
@@ -23,7 +23,7 @@ const FaqCustom = () => {
 
     const postHandle = (e) => {
         e.preventDefault();
-        fetch('https://afternoon-headland-45054.herokuapp.com/customfaq', {
+        fetch('https://jobs4you.onrender.com/customfaq', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

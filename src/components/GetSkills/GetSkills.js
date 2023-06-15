@@ -8,7 +8,7 @@ const GetSkills = ({ skillArray, setSkillArray, skill }) => {
 
   useEffect(() => {
     fetch(
-      `https://afternoon-headland-45054.herokuapp.com/skills/${user?.email}`
+      `https://jobs4you.onrender.com/skills/${user?.email}`
     )
       .then((res) => res.json())
       .then((data) => setGetSkills(data));
@@ -27,7 +27,7 @@ const GetSkills = ({ skillArray, setSkillArray, skill }) => {
     const modifiedSkills = { email: user?.email, skills: modifiedArray };
     console.log(index, tempSkills);
 
-    fetch("https://afternoon-headland-45054.herokuapp.com/skills", {
+    fetch("https://jobs4you.onrender.com/skills", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -37,7 +37,7 @@ const AddJob = ({ profileInfo }) => {
     };
     console.log(newData);
     axios
-      .post("https://afternoon-headland-45054.herokuapp.com/jobs", newData)
+      .post("https://jobs4you.onrender.com/jobs", newData)
       .then((res) => {
         if (res.data.insertedId) {
           alert("added successfully");
@@ -271,7 +271,7 @@ const AddJob = ({ profileInfo }) => {
               onChange={(e) => {
                 handleFile(e);
               }}
-              
+
             />
           </div>
 

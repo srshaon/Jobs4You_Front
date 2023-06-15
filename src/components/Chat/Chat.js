@@ -20,7 +20,7 @@ const Chat = () => {
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
 
-    const ENDPOINT = 'https://afternoon-headland-45054.herokuapp.com/';
+    const ENDPOINT = 'https://jobs4you.onrender.com/';
 
     const location = useLocation();
     useEffect(() => {
@@ -30,7 +30,7 @@ const Chat = () => {
         setRoom(room);
 
         socket = io(ENDPOINT);
-        
+
         // {
         // reconnectionAttempts: 'infinity',
         // withCredentials: true,

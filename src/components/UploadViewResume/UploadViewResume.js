@@ -9,7 +9,7 @@ const UploadViewResume = () => {
   const [resumeView, setResumeView] = useState([]);
 
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/resume")
+    fetch("https://jobs4you.onrender.com/resume")
       .then((res) => res.json())
       .then((data) => setResumeView(data));
   }, []);
@@ -26,7 +26,7 @@ const UploadViewResume = () => {
 
     formData.append("resumepdfFile", resumepdfFile);
 
-    fetch("https://afternoon-headland-45054.herokuapp.com/resume", {
+    fetch("https://jobs4you.onrender.com/resume", {
       method: "POST",
       body: formData,
     })
@@ -34,7 +34,7 @@ const UploadViewResume = () => {
       .then((data) => {
         if (data.insertedId) {
           alert("successfully uploaded");
-          fetch("https://afternoon-headland-45054.herokuapp.com/resume")
+          fetch("https://jobs4you.onrender.com/resume")
             .then((res) => res.json())
             .then((data) => setResumeView(data));
         }
@@ -49,7 +49,7 @@ const UploadViewResume = () => {
     console.log(id);
     const proceed = window.confirm("Are you sure that you want to delete?");
     if (proceed) {
-      const url = `https://afternoon-headland-45054.herokuapp.com/resume/${id}`;
+      const url = `https://jobs4you.onrender.com/resume/${id}`;
       fetch(url, {
         method: "DELETE",
       })

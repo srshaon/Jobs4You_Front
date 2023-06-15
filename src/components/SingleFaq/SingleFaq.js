@@ -13,7 +13,7 @@ const SingleFaq = (props) => {
     const { email } = useAuth().user;
 
     useEffect(() => {
-        fetch(`https://afternoon-headland-45054.herokuapp.com/faqGetLikes?id=${_id}&email=${email}`)
+        fetch(`https://jobs4you.onrender.com/faqGetLikes?id=${_id}&email=${email}`)
             .then(res => res.json())
             .then(data => {
                 if (data?.likes !== undefined) {
@@ -24,7 +24,7 @@ const SingleFaq = (props) => {
     }, [props?.singleFaq]);
 
     useEffect(() => {
-        fetch(`https://afternoon-headland-45054.herokuapp.com/faqGetDisLikes?id=${_id}&email=${email}`)
+        fetch(`https://jobs4you.onrender.com/faqGetDisLikes?id=${_id}&email=${email}`)
             .then(res => res.json())
             .then(data => {
                 if (data?.dislikes !== undefined) {
@@ -35,7 +35,7 @@ const SingleFaq = (props) => {
     }, [props?.singleFaq]);
 
     const reactUpdate = async (doc, react) => {
-        fetch(`https://afternoon-headland-45054.herokuapp.com/faq${react}/${email}`, {
+        fetch(`https://jobs4you.onrender.com/faq${react}/${email}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -80,7 +80,7 @@ const SingleFaq = (props) => {
         const fullDoc = { _id: _id, comment: comment, reply: reply.reply };
 
 
-        fetch('https://afternoon-headland-45054.herokuapp.com/customfaq', {
+        fetch('https://jobs4you.onrender.com/customfaq', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

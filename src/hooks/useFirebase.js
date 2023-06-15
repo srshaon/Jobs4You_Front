@@ -44,7 +44,7 @@ const useFirebase = () => {
 
   useEffect(() => {
     console.log(user.email);
-    fetch(`https://afternoon-headland-45054.herokuapp.com/users/${user.email}`)
+    fetch(`https://jobs4you.onrender.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -163,23 +163,23 @@ const useFirebase = () => {
   });
 
   useEffect(() => {
-    fetch(`https://afternoon-headland-45054.herokuapp.com/notifications/${user?.email}`)
-    .then(res => res.json())
-    .then(data => {
-      let count = 0;
-      setNotifications(data);
-      for (const i of data) {
-        if (!i.isClicked) {
-          count++;
+    fetch(`https://jobs4you.onrender.com/notifications/${user?.email}`)
+      .then(res => res.json())
+      .then(data => {
+        let count = 0;
+        setNotifications(data);
+        for (const i of data) {
+          if (!i.isClicked) {
+            count++;
+          }
         }
-      }
-      setCounter(count);
-    });
-  },[]);
-  
+        setCounter(count);
+      });
+  }, []);
+
   const saveUser = (email, displayName, role, method) => {
     const user = { email, displayName, role };
-    fetch("https://afternoon-headland-45054.herokuapp.com/users", {
+    fetch("https://jobs4you.onrender.com/users", {
       method: method,
       headers: {
         "content-type": "application/json",

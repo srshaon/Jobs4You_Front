@@ -5,7 +5,7 @@ const LatestJobs = () => {
     const [jobs, setJobs] = useState([]);
     useEffect(() => {
         // let z = 0;
-        fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
+        fetch("https://jobs4you.onrender.com/jobs")
             .then((res) => res.json())
             .then((data) => {
 

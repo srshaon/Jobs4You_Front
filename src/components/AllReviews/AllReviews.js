@@ -20,7 +20,7 @@ const AllReviews = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/reviews")
+    fetch("https://jobs4you.onrender.com/reviews")
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

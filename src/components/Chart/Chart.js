@@ -23,13 +23,13 @@ const Chart = () => {
   useEffect(() => {
     if (_id && email) {
       fetch(
-        `https://afternoon-headland-45054.herokuapp.com/posted-skills/${_id}`
+        `https://jobs4you.onrender.com/posted-skills/${_id}`
       )
         .then((res) => res.json())
         .then((data) => setPostedSkills(data))
         .finally(() => {
           fetch(
-            `https://afternoon-headland-45054.herokuapp.com/skills/${email}`
+            `https://jobs4you.onrender.com/skills/${email}`
           )
             .then((res) => res.json())
             .then((data) => setGainedSkills(data));
@@ -94,37 +94,37 @@ const Chart = () => {
               (data2[0]?.value / (data2[0]?.value + data2[1]?.value)) *
               100
             ).toFixed(2) < 50 && (
-              <div>
-                <div className="mb-2">
-                  We encourage you to earn more skills.
+                <div>
+                  <div className="mb-2">
+                    We encourage you to earn more skills.
+                  </div>
+                  <button
+                    style={{ opacity: "0.7" }}
+                    className="apply-btn px-5 not-opened"
+                    disabled
+                  >
+                    Apply for job
+                  </button>
                 </div>
-                <button
-                  style={{ opacity: "0.7" }}
-                  className="apply-btn px-5 not-opened"
-                  disabled
-                >
-                  Apply for job
-                </button>
-              </div>
-            )}
+              )}
             {(
               (data2[0]?.value / (data2[0]?.value + data2[1]?.value)) *
               100
             ).toFixed(2) >= 50 && (
-              <div>
-                <div className="mb-2">
-                  Your skill matches finely to this job.
+                <div>
+                  <div className="mb-2">
+                    Your skill matches finely to this job.
+                  </div>
+                  <Link
+                    to={`/apply/?jobId=${_id}&percentage=${(
+                      (data2[0]?.value / (data2[0]?.value + data2[1]?.value)) *
+                      100
+                    ).toFixed(2)}%`}
+                  >
+                    <Button className="apply-btn px-5">Apply for job</Button>
+                  </Link>
                 </div>
-                <Link
-                  to={`/apply/?jobId=${_id}&percentage=${(
-                    (data2[0]?.value / (data2[0]?.value + data2[1]?.value)) *
-                    100
-                  ).toFixed(2)}%`}
-                >
-                  <Button className="apply-btn px-5">Apply for job</Button>
-                </Link>
-              </div>
-            )}
+              )}
           </div>
         </div>
       )}
@@ -132,7 +132,7 @@ const Chart = () => {
       {gainedSkills?.length === 0 && email && (
         <div className="text-center my-5 py-5 chart-spinner smoothy">
           <p>
-            You don't have any skills. To add, click <button style={{color: 'blue', background: 'white', border: 'none'}} onClick={handleReplace}>here</button>
+            You don't have any skills. To add, click <button style={{ color: 'blue', background: 'white', border: 'none' }} onClick={handleReplace}>here</button>
           </p>
         </div>
       )}

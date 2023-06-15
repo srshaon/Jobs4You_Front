@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 const AllCompanies = () => {
     const [abcde, setAbcde] = useState([]);
     useEffect(() => {
-        fetch("https://afternoon-headland-45054.herokuapp.com/companies")
+        fetch("https://jobs4you.onrender.com/companies")
             .then((res) => res.json())
             .then(data => {
                 console.log(data)
@@ -22,7 +22,7 @@ const AllCompanies = () => {
 export default AllCompanies;
 // const [allCompanies, setAllCompanies] = useState([]);
 // useEffect(() => {
-//   fetch("https://afternoon-headland-45054.herokuapp.com/companyprofiles")
+//   fetch("https://jobs4you.onrender.com/companyprofiles")
 //     .then((res) => res.json())
 //     .then((data) => {
 //       console.log(data);

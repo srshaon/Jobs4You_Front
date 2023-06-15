@@ -8,7 +8,7 @@ const Skills = () => {
   const { email } = useAuth().user;
 
   useEffect(() => {
-    fetch(`https://afternoon-headland-45054.herokuapp.com/skills/${email}`)
+    fetch(`https://jobs4you.onrender.com/skills/${email}`)
       .then((res) => res.json())
       .then((data) => setSkillArray(data));
   }, [email, skill]);
@@ -88,7 +88,7 @@ const Skills = () => {
 
     let addSkills = { email: email, skills: skills };
 
-    fetch("https://afternoon-headland-45054.herokuapp.com/skills", {
+    fetch("https://jobs4you.onrender.com/skills", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

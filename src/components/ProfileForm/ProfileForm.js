@@ -26,11 +26,12 @@ const ProfileForm = (props) => {
     console.log(data);
     console.log(state);
     console.log(actions);
-    if(role==='company'){
-state.data.cname=user.displayName}
+    if (role === 'company') {
+      state.data.cname = user.displayName
+    }
   };
   useEffect(() => {
-    fetch(`https://afternoon-headland-45054.herokuapp.com/users/${user.email}`)
+    fetch(`https://jobs4you.onrender.com/users/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -253,7 +254,7 @@ state.data.cname=user.displayName}
                         className="profile-form-input"
                         defaultValue={""}
                         {...register("fname", { required: true })}
-                        
+
                       />
                     </div>
                     <div>

@@ -15,7 +15,7 @@ const AllCategoriesJobs = () => {
   const { categoryName } = useParams();
   const [jobs, setJobs] = useState([]);
   useEffect(() => {
-    fetch("https://afternoon-headland-45054.herokuapp.com/jobs")
+    fetch("https://jobs4you.onrender.com/jobs")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

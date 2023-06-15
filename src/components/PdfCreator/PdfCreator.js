@@ -40,10 +40,10 @@ const PdfCreator = () => {
     };
     setDownloading(true);
     axios
-      .post("https://afternoon-headland-45054.herokuapp.com/createPdf", info)
+      .post("https://jobs4you.onrender.com/createPdf", info)
       .then((response) => {
         axios
-          .get("https://afternoon-headland-45054.herokuapp.com/fetch-pdf", {
+          .get("https://jobs4you.onrender.com/fetch-pdf", {
             responseType: "blob",
           })
           .then((res) => {
@@ -176,7 +176,7 @@ const PdfCreator = () => {
               onChange={(e) => {
                 handleFile(e);
               }}
-               
+
             />
             {errors.exampleRequired && <span>This field is required</span>}
             {uploading ? (
