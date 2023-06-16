@@ -8,6 +8,7 @@ import { FaStar } from "react-icons/fa";
 
 const AllReviews = () => {
   const settings = {
+    
     dots: false,
     infinite: true,
     slidesToShow: 3,
@@ -15,7 +16,39 @@ const AllReviews = () => {
     autoplay: true,
     speed: 2000,
     autoplaySpeed: 2000,
-    cssEase: "linear"
+    cssEase: "linear",
+    adaptiveHeight: true,
+    responsive : [
+      {
+        breakpoint: 700,
+        settings: {
+          ots: false,
+          infinite: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: true,
+          speed: 2000,
+          autoplaySpeed: 2000,
+          cssEase: "linear",
+          adaptiveHeight: true,
+          vertical: true,                }
+    }
+    ]
+  };
+  const settingsmobile = {
+    
+    
+      dots: false,
+      infinite: true,
+      slidesToShow: 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      speed: 2000,
+      autoplaySpeed: 2000,
+      cssEase: "linear",
+      adaptiveHeight: true,
+      vertical: true
+    
   };
   const [reviews, setReviews] = useState([]);
 

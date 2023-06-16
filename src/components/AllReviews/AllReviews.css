@@ -17,19 +17,18 @@
 .bbb {
   padding: 0px 20px;
 
-  border: 2px solid red;
 
 
 }
 
 .abcde {
-  border: 2px solid black;
+  
 
 }
 
 .ccc {
 
-  border: 2px solid yellow;
+  
   width: 100%;
   border-top: 1px solid purple;
   border-bottom: 1px solid purple;
@@ -57,6 +56,6 @@
     display: grid;
     grid-template-columns: 1fr;
   }
-
+ 
 
 }
